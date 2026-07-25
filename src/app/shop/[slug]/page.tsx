@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { gqlFetch } from "@/lib/graphql-client";
-import { GET_PRODUCT_BY_SLUG, GET_RELATED_PRODUCTS } from "@/lib/queries";
+import { 
+  GET_PRODUCT_BY_SLUG, 
+  GET_RELATED_PRODUCTS,
+  GET_ALL_PRODUCT_SLUGS 
+} from "@/lib/queries";
 import type {
   ProductQueryResponse,
   ProductsQueryResponse,
@@ -58,6 +62,20 @@ export async function generateMetadata({
       images: product.image?.sourceUrl ? [product.image.sourceUrl] : [],
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const data = await gqlFetch<{ products: { nodes: { slug: string }[] } }>(
+      GET_ALL_PRODUCT_SLUGS
+    );
+    return (data?.products?.nodes ?? []).map((p) => ({
+      slug: p.slug,
+    }));
+  } catch (err) {
+    console.error("Failed to generate static params for products", err);
+    return [];
+  }
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

@@ -1,39 +1,44 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { gqlFetch } from "@/lib/graphql-client";
 import { GET_SEARCH_RESULTS } from "@/lib/queries";
 import type { ProductsQueryResponse } from "@/lib/types";
 import ProductGrid from "@/components/product/ProductGrid";
 import Link from "next/link";
 
-interface SearchPageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export const metadata: Metadata = {
-  title: "Search Results — Kaaj Official",
-  description: "Search the Kaaj Official catalog.",
-};
-
-async function getSearchResults(query: string) {
-  if (!query) return [];
-  try {
-    const data = await gqlFetch<ProductsQueryResponse>(GET_SEARCH_RESULTS, {
-      search: query,
-      first: 24,
-    });
-    return data?.products?.nodes ?? [];
-  } catch (err) {
-    console.error("[Search] fetch error:", err);
-    return [];
-  }
-}
-
-export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const resolvedParams = await searchParams;
-  const rawQuery = resolvedParams.q;
-  const query = typeof rawQuery === "string" ? rawQuery : "";
+function SearchResultsContent() {
+  const searchParams = useSearchParams();
+  const rawQuery = searchParams.get("q");
+  const query = rawQuery || "";
   
-  const products = await getSearchResults(query);
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchResults() {
+      if (!query) {
+        setProducts([]);
+        setLoading(false);
+        return;
+      }
+      try {
+        setLoading(true);
+        const data = await gqlFetch<ProductsQueryResponse>(GET_SEARCH_RESULTS, {
+          search: query,
+          first: 24,
+        });
+        setProducts(data?.products?.nodes ?? []);
+      } catch (err) {
+        console.error("[Search] fetch error:", err);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchResults();
+  }, [query]);
 
   return (
     <div className="min-h-screen bg-kaaj-cream">
@@ -53,7 +58,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               "What are you looking for?"
             )}
           </h1>
-          {query && (
+          {query && !loading && (
             <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-cream/60 mt-6">
               {products.length} product{products.length !== 1 ? "s" : ""} found
             </p>
@@ -62,7 +67,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       </div>
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {products.length > 0 ? (
+        {loading ? (
+          <div className="text-center py-20">
+            <div className="w-8 h-8 border-2 border-kaaj-charcoal/20 border-t-kaaj-charcoal rounded-full animate-spin mx-auto"></div>
+          </div>
+        ) : products.length > 0 ? (
           <ProductGrid products={products} columns={4} />
         ) : (
           <div className="text-center py-20 max-w-lg mx-auto">
@@ -94,5 +103,17 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-kaaj-cream flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-kaaj-charcoal/20 border-t-kaaj-charcoal rounded-full animate-spin"></div>
+      </div>
+    }>
+      <SearchResultsContent />
+    </Suspense>
   );
 }

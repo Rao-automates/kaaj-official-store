@@ -225,6 +225,27 @@ export const GET_CATEGORIES = `
           sourceUrl
           altText
         }
+    }
+  }
+`;
+
+// ── Get All Product Slugs (for static export) ─────────────────────────────────
+export const GET_ALL_PRODUCT_SLUGS = `
+  query GetAllProductSlugs {
+    products(first: 100) {
+      nodes {
+        slug
+      }
+    }
+  }
+`;
+
+// ── Get All Category Slugs (for static export) ────────────────────────────────
+export const GET_ALL_CATEGORY_SLUGS = `
+  query GetAllCategorySlugs {
+    productCategories(first: 50) {
+      nodes {
+        slug
       }
     }
   }

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { gqlFetch } from "@/lib/graphql-client";
-import { GET_PRODUCTS_BY_CATEGORY, GET_CATEGORIES } from "@/lib/queries";
+import { 
+  GET_PRODUCTS_BY_CATEGORY, 
+  GET_CATEGORIES,
+  GET_ALL_CATEGORY_SLUGS 
+} from "@/lib/queries";
 import type { ProductsQueryResponse, CategoriesQueryResponse } from "@/lib/types";
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
@@ -60,6 +64,20 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     title: meta?.title ?? name,
     description: meta?.description ?? `Shop ${name} from Kaaj Official.`,
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const data = await gqlFetch<{ productCategories: { nodes: { slug: string }[] } }>(
+      GET_ALL_CATEGORY_SLUGS
+    );
+    return (data?.productCategories?.nodes ?? []).map((c) => ({
+      slug: c.slug,
+    }));
+  } catch (err) {
+    console.error("Failed to generate static params for categories", err);
+    return [];
+  }
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
