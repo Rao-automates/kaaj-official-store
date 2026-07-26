@@ -97,7 +97,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
         <Image
           src="/hero.png"
-          alt={meta.title}
+          alt={meta?.title ?? displayName}
           fill
           priority
           className="object-cover object-center opacity-30 mix-blend-luminosity"
