@@ -84,7 +84,12 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1 space-y-5">
             <div>
-              <p className="font-serif text-3xl tracking-[0.3em] text-kaaj-cream">KAAJ</p>
+              <p 
+                className="font-sans text-3xl text-kaaj-cream font-medium"
+                style={{ letterSpacing: "0.5em", marginLeft: "0.5em" }}
+              >
+                KAAJ
+              </p>
               <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-cream/40 mt-0.5">
                 Official
               </p>

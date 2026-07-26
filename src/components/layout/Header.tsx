@@ -221,8 +221,8 @@ function KaajLogo() {
   return (
     <div className="flex flex-col items-center select-none group-hover:opacity-100 transition-opacity drop-shadow-md">
       <span
-        className="font-serif text-2xl tracking-[0.35em] text-white"
-        style={{ letterSpacing: "0.35em" }}
+        className="font-sans text-2xl text-white font-medium"
+        style={{ letterSpacing: "0.5em", marginLeft: "0.5em" }}
       >
         KAAJ
       </span>
