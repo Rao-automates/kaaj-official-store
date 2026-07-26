@@ -13,7 +13,7 @@ const HELP = [
   { label: "Care Instructions", href: "/shop" },
   { label: "Track Order", href: "/shop" },
   { label: "Returns & Exchange", href: "/shop" },
-  { label: "Contact Us", href: "/shop" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -108,15 +108,6 @@ export default function Footer() {
                 className="w-9 h-9 flex items-center justify-center border border-kaaj-cream/20 text-kaaj-cream/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
               >
                 <InstagramIcon />
-              </a>
-              <a
-                href="https://facebook.com/kaajofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-cream/20 text-kaaj-cream/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
-              >
-                <FacebookIcon />
               </a>
               <a
                 href="https://wa.me/923013305325"
