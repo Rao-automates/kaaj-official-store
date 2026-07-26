@@ -11,8 +11,8 @@ const COLLECTIONS = [
 const HELP = [
   { label: "Size Guide", href: "/shop" },
   { label: "Care Instructions", href: "/shop" },
-  { label: "Track Order", href: "/shop" },
-  { label: "Returns & Exchange", href: "/shop" },
+  { label: "Track Order", href: "/track-order" },
+  { label: "Returns & Exchange", href: "/returns" },
   { label: "Contact Us", href: "/contact" },
 ];
 
