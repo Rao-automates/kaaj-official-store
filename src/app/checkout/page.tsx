@@ -59,10 +59,11 @@ export default function CheckoutPage() {
   };
 
   const isValid = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return (
       form.firstName.trim() !== "" &&
       form.lastName.trim() !== "" &&
-      form.email.trim() !== "" &&
+      emailRegex.test(form.email) &&
       form.phone.length >= 10 &&
       form.address.trim() !== "" &&
       form.city.trim() !== "" &&
@@ -445,7 +446,7 @@ export default function CheckoutPage() {
                     size="lg"
                     fullWidth
                     loading={loading}
-                    disabled={!isValid() || cart.items.length === 0}
+                    disabled={loading || cart.items.length === 0}
                   >
                     Place Order — COD
                   </Button>
