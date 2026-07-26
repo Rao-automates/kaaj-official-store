@@ -157,7 +157,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-kaaj-cream">
       {/* Header */}
-      <div className="bg-kaaj-deep py-14 text-center relative overflow-hidden">
+      <div className="bg-kaaj-deep pt-32 pb-14 text-center relative overflow-hidden">
         <Image
           src="/hero.png"
           alt="Checkout"
@@ -171,7 +171,7 @@ export default function CheckoutPage() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Secure Checkout
           </p>
-          <h1 className="font-serif text-display-md text-kaaj-cream">Checkout</h1>
+          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-cream">Checkout</h1>
         </div>
       </div>
 
