@@ -12,13 +12,15 @@ export const gqlClient = new GraphQLClient(endpoint, {
   headers: {
     "Content-Type": "application/json",
   },
-  // WPGraphQL sometimes needs this for introspection
-  fetch: (url, init) =>
-    fetch(url, {
-      ...init,
-      // Next.js cache config: revalidate every 60s
-      next: { revalidate: 60 },
-    } as RequestInit),
+  fetch: (url, init) => {
+    // Only pass Next.js specific cache options when running on the server
+    const isServer = typeof window === 'undefined';
+    const fetchOptions: any = { ...init };
+    if (isServer) {
+      fetchOptions.next = { revalidate: 60 };
+    }
+    return fetch(url, fetchOptions as RequestInit);
+  }
 });
 
 /** Generic typed query executor */

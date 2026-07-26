@@ -225,6 +225,7 @@ export const GET_CATEGORIES = `
           sourceUrl
           altText
         }
+      }
     }
   }
 `;
