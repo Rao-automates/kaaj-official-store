@@ -3,13 +3,89 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { form, cart, shipping, total, orderNumber } = data;
+    const { form, cart, shipping, total } = data;
 
     if (!form || !form.email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    // Hostinger Mail API Config
+    // 1. Send Order to WooCommerce REST API
+    const WC_KEY = process.env.WC_CONSUMER_KEY;
+    const WC_SECRET = process.env.WC_CONSUMER_SECRET;
+    let finalOrderId = data.orderNumber; // Fallback to frontend generated string
+
+    if (WC_KEY && WC_SECRET) {
+      const auth = Buffer.from(`${WC_KEY}:${WC_SECRET}`).toString("base64");
+      
+      const wcPayload = {
+        payment_method: "cod",
+        payment_method_title: "Cash on Delivery",
+        set_paid: false,
+        billing: {
+          first_name: form.firstName,
+          last_name: form.lastName,
+          address_1: form.address,
+          city: form.city,
+          state: form.province,
+          postcode: form.postcode || "",
+          country: "PK",
+          email: form.email,
+          phone: form.phone
+        },
+        shipping: {
+          first_name: form.firstName,
+          last_name: form.lastName,
+          address_1: form.address,
+          city: form.city,
+          state: form.province,
+          postcode: form.postcode || "",
+          country: "PK"
+        },
+        line_items: cart.map((item: any) => {
+          const decodeId = (gqlId?: string) => {
+            if (!gqlId) return undefined;
+            try {
+              const decoded = Buffer.from(gqlId, 'base64').toString('utf8');
+              const match = decoded.match(/\d+$/);
+              return match ? parseInt(match[0], 10) : undefined;
+            } catch (e) {
+              return undefined;
+            }
+          };
+
+          return {
+            product_id: decodeId(item.productId) || 0,
+            variation_id: decodeId(item.variationId),
+            quantity: item.quantity
+          };
+        }),
+        shipping_lines: [
+          {
+            method_id: "flat_rate",
+            method_title: "Shipping",
+            total: shipping.toString()
+          }
+        ]
+      };
+
+      const wcRes = await fetch("https://api.kaajofficial.com/wp-json/wc/v3/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Basic ${auth}`
+        },
+        body: JSON.stringify(wcPayload)
+      });
+
+      if (wcRes.ok) {
+        const wcData = await wcRes.json();
+        finalOrderId = `#${wcData.id}`;
+      } else {
+        console.error("WooCommerce order creation failed:", await wcRes.text());
+      }
+    }
+
+    // 2. Hostinger Mail API Config
     const HOSTINGER_API_KEY = process.env.HOSTINGER_API_KEY || "f982c94a7c9a6135a03909e7d118ddb853433531b21f4f1357609d72ada5dba4";
     const MAILBOX_ID = process.env.HOSTINGER_MAILBOX_ID || "AC5ecff592b2c510d1d1e30c90b10f";
 
@@ -40,7 +116,7 @@ export async function POST(request: Request) {
           
           <h2 style="font-size: 20px; font-weight: normal; margin-bottom: 20px;">Thank you for your order, ${form.firstName}!</h2>
           <p style="color: #666; line-height: 1.6; margin-bottom: 30px;">
-            Your order <strong>${orderNumber}</strong> has been received and is now being processed. Our team will contact you shortly for confirmation.
+            Your order <strong>${finalOrderId}</strong> has been received and is now being processed. Our team will contact you shortly for confirmation.
           </p>
           
           <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #E5E5E5; padding-bottom: 10px; margin-bottom: 20px;">Order Summary</h3>
@@ -78,12 +154,12 @@ export async function POST(request: Request) {
 
       await client.sendEmail(MAILBOX_ID, {
         to: [form.email],
-        subject: `Your KAAJ Order Receipt - ${orderNumber}`,
+        subject: `Your KAAJ Order Receipt - ${finalOrderId}`,
         html: emailHtml,
       });
     }
 
-    return NextResponse.json({ success: true, orderNumber });
+    return NextResponse.json({ success: true, orderNumber: finalOrderId });
   } catch (error) {
     console.error('Checkout error:', error);
     return NextResponse.json(
