@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -21,10 +19,6 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-  },
-  devIndicators: {
-    appIsrStatus: false,
-    buildActivity: false,
   },
   eslint: {
     ignoreDuringBuilds: true,
