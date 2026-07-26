@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
@@ -17,41 +16,27 @@ export async function POST(request: Request) {
       );
     }
 
-    // Attempt to send email if SMTP credentials are provided in env
-    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
+    // Use Hostinger Mail API
+    const HOSTINGER_API_KEY = process.env.HOSTINGER_API_KEY || "f982c94a7c9a6135a03909e7d118ddb853433531b21f4f1357609d72ada5dba4";
+    const MAILBOX_ID = process.env.HOSTINGER_MAILBOX_ID || "AC5ecff592b2c510d1d1e30c90b10f";
 
-    console.log("SMTP Variables Present?:", {
-      host: !!SMTP_HOST,
-      port: !!SMTP_PORT,
-      user: !!SMTP_USER,
-      pass: !!SMTP_PASS
-    });
-
-    if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
-      const transporter = nodemailer.createTransport({
-        host: SMTP_HOST,
-        port: Number(SMTP_PORT) || 465,
-        secure: true,
-        auth: {
-          user: SMTP_USER,
-          pass: SMTP_PASS,
-        },
-      });
+    if (HOSTINGER_API_KEY && MAILBOX_ID) {
+      const { Configuration, SendApi } = require('hostinger-mail-api-sdk');
+      const config = new Configuration({ accessToken: HOSTINGER_API_KEY });
+      const client = new SendApi(config);
 
       const attachments = [];
       
       if (image && image.size > 0) {
-        const buffer = Buffer.from(await image.arrayBuffer());
+        const base64Content = Buffer.from(await image.arrayBuffer()).toString('base64');
         attachments.push({
           filename: image.name,
-          content: buffer,
-          contentType: image.type,
+          content: base64Content
         });
       }
 
-      await transporter.sendMail({
-        from: `"KAAJ Official Returns" <${SMTP_USER}>`,
-        to: "support@kaajofficial.com",
+      await client.sendEmail(MAILBOX_ID, {
+        to: ["support@kaajofficial.com"],
         subject: `Return Request - Order #${orderId}`,
         text: `
 A new return request has been submitted.
@@ -64,7 +49,6 @@ Additional Details: ${details || 'None provided'}
         attachments: attachments.length > 0 ? attachments : undefined,
       });
     } else {
-      // If no credentials, we still return success for the frontend simulation
       console.log(`[Mock Return Submitted] Order: ${orderId}, Email: ${email}, Reason: ${reason}`);
     }
 
