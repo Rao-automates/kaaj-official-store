@@ -29,5 +29,11 @@
     "postcss": "^8.5.23",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@studio-freight/react-lenis": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
