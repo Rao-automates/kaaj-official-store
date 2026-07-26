@@ -60,12 +60,13 @@ export default function CheckoutPage() {
 
   const isValid = () => {
     return (
-      form.firstName &&
-      form.lastName &&
+      form.firstName.trim() !== "" &&
+      form.lastName.trim() !== "" &&
+      form.email.trim() !== "" &&
       form.phone.length >= 10 &&
-      form.address &&
-      form.city &&
-      form.province
+      form.address.trim() !== "" &&
+      form.city.trim() !== "" &&
+      form.province.trim() !== ""
     );
   };
 
@@ -73,11 +74,33 @@ export default function CheckoutPage() {
     e.preventDefault();
     if (!isValid() || loading || cart.items.length === 0) return;
     setLoading(true);
-    // Simulate order processing
-    await new Promise((r) => setTimeout(r, 1500));
-    setLoading(false);
-    setSubmitted(true);
-    clearCart();
+    
+    try {
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form,
+          cart: cart.items,
+          cartTotal,
+          shipping,
+          total,
+          orderNumber,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to process order");
+      }
+
+      setSubmitted(true);
+      clearCart();
+    } catch (error) {
+      console.error("Checkout error:", error);
+      alert("There was an error processing your order. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass =
@@ -237,13 +260,14 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className={labelClass}>Email (Optional)</label>
+                  <label htmlFor="email" className={labelClass}>Email *</label>
                   <input
                     id="email"
                     name="email"
                     type="email"
                     value={form.email}
                     onChange={handleChange}
+                    required
                     placeholder="ayesha@example.com"
                     className={inputClass}
                   />
