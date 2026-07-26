@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 export default function ReturnsPage() {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [fileError, setFileError] = useState("");
 
   useEffect(() => {
     setMounted(true);
@@ -14,21 +15,28 @@ export default function ReturnsPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFileError("");
     setStatus("loading");
     
     const formData = new FormData(e.currentTarget);
-    const data = {
-      orderId: formData.get("orderId"),
-      email: formData.get("email"),
-      reason: formData.get("reason"),
-      details: formData.get("details"),
-    };
+    
+    // Check file size if a file is attached (4.5MB limit on Vercel, so we limit to 4MB)
+    const file = formData.get("image") as File | null;
+    if (file && file.size > 0) {
+      const sizeMB = file.size / (1024 * 1024);
+      if (sizeMB > 4) {
+        setFileError("Please select an image smaller than 4MB.");
+        setStatus("idle");
+        return;
+      }
+    }
 
     try {
       const res = await fetch("/api/returns", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        // Do NOT set Content-Type header when sending FormData
+        // Fetch automatically sets the correct multipart boundary
+        body: formData,
       });
       
       if (res.ok) {
@@ -92,6 +100,11 @@ export default function ReturnsPage() {
               {status === "error" && (
                 <div className="p-4 border border-red-200 bg-red-50 text-red-600 font-sans text-sm text-center">
                   Something went wrong. Please try again or contact support directly.
+                </div>
+              )}
+              {fileError && (
+                <div className="p-4 border border-red-200 bg-red-50 text-red-600 font-sans text-sm text-center">
+                  {fileError}
                 </div>
               )}
 
@@ -160,6 +173,19 @@ export default function ReturnsPage() {
                   rows={4}
                   placeholder="Please provide any additional information..."
                   className="w-full bg-transparent border border-kaaj-border p-3 font-sans text-sm text-kaaj-charcoal focus:outline-none focus:border-kaaj-gold transition-colors resize-none"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="image" className="block font-sans text-[10px] uppercase tracking-widest text-kaaj-charcoal">
+                  Upload Image (Optional, Max 4MB)
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  className="w-full bg-transparent border border-kaaj-border p-3 font-sans text-sm text-kaaj-charcoal focus:outline-none focus:border-kaaj-gold transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-xs file:font-sans file:uppercase file:tracking-widest file:bg-kaaj-deep file:text-kaaj-cream hover:file:bg-kaaj-charcoal cursor-pointer"
                 />
               </div>
 

@@ -3,7 +3,12 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const { orderId, email, reason, details } = await request.json();
+    const formData = await request.formData();
+    const orderId = formData.get('orderId') as string;
+    const email = formData.get('email') as string;
+    const reason = formData.get('reason') as string;
+    const details = formData.get('details') as string;
+    const image = formData.get('image') as File | null;
 
     if (!orderId || !email || !reason) {
       return NextResponse.json(
@@ -33,6 +38,17 @@ export async function POST(request: Request) {
         },
       });
 
+      const attachments = [];
+      
+      if (image && image.size > 0) {
+        const buffer = Buffer.from(await image.arrayBuffer());
+        attachments.push({
+          filename: image.name,
+          content: buffer,
+          contentType: image.type,
+        });
+      }
+
       await transporter.sendMail({
         from: `"KAAJ Official Returns" <${SMTP_USER}>`,
         to: "support@kaajofficial.com",
@@ -45,6 +61,7 @@ Customer Email: ${email}
 Reason: ${reason}
 Additional Details: ${details || 'None provided'}
         `,
+        attachments: attachments.length > 0 ? attachments : undefined,
       });
     } else {
       // If no credentials, we still return success for the frontend simulation
