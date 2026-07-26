@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils";
 
 interface CategoryPillProps {
   name: string;
-  slug: string;
+  slug?: string;
+  href?: string;
   active?: boolean;
   count?: number;
 }
@@ -13,12 +14,15 @@ interface CategoryPillProps {
 export default function CategoryPill({
   name,
   slug,
+  href,
   active = false,
   count,
 }: CategoryPillProps) {
+  const linkHref = href ?? (slug ? `/categories/${slug}` : "#");
+
   return (
     <Link
-      href={`/categories/${slug}`}
+      href={linkHref}
       className={cn(
         "inline-flex items-center gap-2 px-5 py-2.5",
         "font-sans text-xs uppercase tracking-[0.18em] whitespace-nowrap",

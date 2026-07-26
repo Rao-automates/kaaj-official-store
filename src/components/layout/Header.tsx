@@ -12,7 +12,7 @@ const NAV_LINKS_LEFT = [
 ];
 
 const NAV_LINKS_RIGHT = [
-  { label: "Sale", href: "/categories/sale" },
+  { label: "Sale", href: "/shop" },
 ];
 
 export default function Header() {

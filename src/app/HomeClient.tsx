@@ -48,35 +48,15 @@ export default function HomeClient() {
     fetchData();
   }, []);
 
-  const primaryCategories = [
-    { name: "Shop All", slug: "all" },
-    { name: "Signature Stitched", slug: "shop" },
-    { name: "Sale", slug: "sale" },
-  ];
-
   return (
     <>
       {/* Hero */}
       <HeroBanner />
 
-      {/* Category Strip */}
-      <section className="bg-kaaj-cream border-y border-kaaj-border py-4 overflow-x-auto scrollbar-hide">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-2 min-w-max">
-            {primaryCategories.map((cat) => (
-              <CategoryPill key={cat.slug} name={cat.name} slug={cat.slug === "all" ? "" : cat.slug} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Featured Collection Grid */}
       {!loading && featuredProducts.length > 0 && (
         <FeaturedGrid products={featuredProducts} />
       )}
-
-      {/* Brand Story */}
-      <BrandStory />
 
       {/* New Arrivals */}
       <section className="py-32 bg-kaaj-cream-dark">
