@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import ProductImageGallery from "@/components/product/ProductImageGallery";
 import VariantSelector from "@/components/product/VariantSelector";
@@ -31,6 +32,7 @@ export default function ProductDetailClient({
   relatedProducts,
 }: ProductDetailClientProps) {
   const { addToCart } = useCart();
+  const router = useRouter();
   const [selectedAttrs, setSelectedAttrs] = useState<Record<string, string>>({});
   const [quantity, setQuantity] = useState(1);
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
@@ -92,6 +94,22 @@ export default function ProductDetailClient({
     });
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 2500);
+  };
+
+  const handleOrderNow = () => {
+    if (isOOS || variantNotSelected) return;
+    addToCart({
+      productId: product.id,
+      variationId: matchingVariation?.id,
+      name: product.name,
+      slug: product.slug,
+      price: parsePKR(displayPrice),
+      quantity,
+      image: matchingVariation?.image || product.image,
+      selectedAttributes: selectedAttrs,
+      stockStatus: isOOS ? "OUT_OF_STOCK" : "IN_STOCK",
+    });
+    router.push("/checkout");
   };
 
   const galleryImages = product.galleryImages?.nodes ?? [];
@@ -235,23 +253,35 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              {/* Add to Cart */}
+              {/* Add to Cart & Order Now */}
               <div className="space-y-3">
-                <Button
-                  variant="primary"
-                  size="xl"
-                  fullWidth
-                  onClick={handleAddToCart}
-                  disabled={isOOS || variantNotSelected}
-                >
-                  {isOOS
-                    ? "Out of Stock"
-                    : variantNotSelected
-                    ? "Select Options"
-                    : addedToCart
-                    ? "✓ Added to Bag"
-                    : "Add to Bag"}
-                </Button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Button
+                    variant="outline"
+                    size="xl"
+                    fullWidth
+                    onClick={handleAddToCart}
+                    disabled={isOOS || variantNotSelected}
+                  >
+                    {isOOS
+                      ? "Out of Stock"
+                      : variantNotSelected
+                      ? "Select Options"
+                      : addedToCart
+                      ? "✓ Added"
+                      : "Add to Bag"}
+                  </Button>
+                  
+                  <Button
+                    variant="primary"
+                    size="xl"
+                    fullWidth
+                    onClick={handleOrderNow}
+                    disabled={isOOS || variantNotSelected}
+                  >
+                    {isOOS ? "Out of Stock" : "Order Now"}
+                  </Button>
+                </div>
 
                 {variantNotSelected && (
                   <p className="font-sans text-xs text-kaaj-rose text-center">

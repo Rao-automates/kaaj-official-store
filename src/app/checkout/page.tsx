@@ -342,7 +342,7 @@ export default function CheckoutPage() {
                       Pay when your order arrives at your doorstep.
                     </p>
                   </div>
-                  <span className="text-xl">💵</span>
+                  <span className="text-xl"></span>
                 </div>
               </div>
             </div>
