@@ -60,10 +60,9 @@ export default function HeroBanner() {
         >
           <Link 
             href="/shop"
-            className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden"
+            className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden bg-kaaj-cream hover:bg-kaaj-charcoal hover:border-kaaj-gold border border-transparent transition-all duration-500"
           >
-            <div className="absolute inset-0 w-full h-full border border-kaaj-gold/50 bg-kaaj-charcoal/30 backdrop-blur-md transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:bg-kaaj-gold/20" />
-            <span className="relative font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-gold transition-colors duration-500 group-hover:text-kaaj-cream">
+            <span className="relative font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
               Explore the Collection
             </span>
           </Link>
