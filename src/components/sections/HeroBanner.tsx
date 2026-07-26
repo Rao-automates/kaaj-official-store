@@ -27,7 +27,7 @@ export default function HeroBanner() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kaaj-gold/30 to-transparent" />
 
       {/* Center Aligned Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center flex flex-col items-center mt-12">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center flex flex-col items-center mt-32 sm:mt-24">
         {/* Eyebrow */}
         <div className="flex flex-col items-center gap-3 mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           <span className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.5em] text-kaaj-gold drop-shadow-md">
@@ -62,7 +62,7 @@ export default function HeroBanner() {
             href="/shop"
             className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden"
           >
-            <div className="absolute inset-0 w-full h-full border border-kaaj-gold/50 transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:bg-kaaj-gold/10" />
+            <div className="absolute inset-0 w-full h-full border border-kaaj-gold/50 bg-kaaj-charcoal/30 backdrop-blur-md transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:bg-kaaj-gold/20" />
             <span className="relative font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-gold transition-colors duration-500 group-hover:text-kaaj-cream">
               Explore the Collection
             </span>
