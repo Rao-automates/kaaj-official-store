@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 
 const COLLECTIONS = [
@@ -167,25 +168,7 @@ export default function Footer() {
             <p className="font-sans text-xs text-kaaj-cream/60 leading-relaxed">
               Be the first to know about new collections, exclusive offers, and styling inspiration.
             </p>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col gap-2.5"
-            >
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="w-full bg-kaaj-cream/10 border border-kaaj-cream/20 text-kaaj-cream placeholder-kaaj-cream/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
-              />
-              <button
-                type="submit"
-                className="w-full bg-kaaj-gold text-white py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-gold-dark transition-colors duration-200"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="font-sans text-[10px] text-kaaj-cream/30">
-              No spam. Unsubscribe anytime.
-            </p>
+            <NewsletterForm />
           </div>
         </div>
       </div>
@@ -239,5 +222,77 @@ function WhatsAppIcon() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
     </svg>
+  );
+}
+
+function NewsletterForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("success");
+        setMessage("Thank you! You have successfully subscribed.");
+        setEmail("");
+      } else {
+        throw new Error(data.error || "Failed to subscribe");
+      }
+    } catch (err: any) {
+      setStatus("error");
+      setMessage(err.message || "Something went wrong. Please try again.");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="bg-kaaj-gold/10 border border-kaaj-gold/30 p-4 text-center">
+        <p className="font-sans text-xs text-kaaj-gold uppercase tracking-widest mb-1">Welcome to KAAJ</p>
+        <p className="font-sans text-[10px] text-kaaj-cream/80">{message}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-2.5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2.5">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          placeholder="Your email address"
+          className="w-full bg-kaaj-cream/10 border border-kaaj-cream/20 text-kaaj-cream placeholder-kaaj-cream/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
+          disabled={status === "loading"}
+        />
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="w-full bg-kaaj-gold text-white py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-gold-dark transition-colors duration-200 disabled:opacity-70 flex items-center justify-center gap-2"
+        >
+          {status === "loading" ? "Subscribing..." : "Subscribe"}
+        </button>
+      </form>
+      {status === "error" && (
+        <p className="font-sans text-[10px] text-red-400 mt-1">{message}</p>
+      )}
+      <p className="font-sans text-[10px] text-kaaj-cream/30 mt-1">
+        No spam. Unsubscribe anytime.
+      </p>
+    </div>
   );
 }
