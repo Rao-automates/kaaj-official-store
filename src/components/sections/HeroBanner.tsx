@@ -38,7 +38,7 @@ export default function HeroBanner() {
 
         {/* Headline */}
         <h1
-          className="font-serif text-5xl sm:text-7xl lg:text-[6rem] text-kaaj-cream leading-[1.1] mb-8 animate-fade-up drop-shadow-2xl font-light tracking-tight"
+          className="font-serif text-5xl sm:text-7xl lg:text-[6rem] text-kaaj-cream leading-[1.1] mb-6 sm:mb-8 animate-fade-up drop-shadow-2xl font-light tracking-tight"
           style={{ animationDelay: "0.2s" }}
         >
           Timeless Elegance,<br />
@@ -47,7 +47,7 @@ export default function HeroBanner() {
 
         {/* Sub */}
         <p
-          className="font-sans text-xs sm:text-sm text-kaaj-cream/70 max-w-lg mx-auto leading-relaxed mb-12 animate-fade-up uppercase tracking-[0.2em]"
+          className="hidden sm:block font-sans text-xs sm:text-sm text-kaaj-cream/70 max-w-lg mx-auto leading-relaxed mb-12 animate-fade-up uppercase tracking-[0.2em]"
           style={{ animationDelay: "0.3s" }}
         >
           An exploration of heritage artistry through modern silhouettes. Discover our latest curation of exquisite luxury wear.
@@ -55,14 +55,14 @@ export default function HeroBanner() {
 
         {/* Minimal CTA */}
         <div
-          className="animate-fade-up"
+          className="animate-fade-up mt-4 sm:mt-0"
           style={{ animationDelay: "0.4s" }}
         >
           <Link 
             href="/shop"
-            className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden bg-kaaj-cream hover:bg-kaaj-charcoal hover:border-kaaj-gold border border-transparent transition-all duration-500"
+            className="group relative inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 overflow-hidden bg-kaaj-cream hover:bg-kaaj-charcoal hover:border-kaaj-gold border border-transparent transition-all duration-500"
           >
-            <span className="relative font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
+            <span className="relative font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
               Explore the Collection
             </span>
           </Link>
