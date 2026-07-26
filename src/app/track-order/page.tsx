@@ -4,10 +4,24 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 
+interface OrderData {
+  id: number;
+  status: string;
+  date_created: string;
+  total: string;
+  currency: string;
+  billing: {
+    first_name: string;
+    last_name: string;
+    email: string;
+  };
+}
+
 export default function TrackOrderPage() {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [orderData, setOrderData] = useState<{ id: string, email: string } | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [orderData, setOrderData] = useState<OrderData | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -16,16 +30,75 @@ export default function TrackOrderPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
     
     const formData = new FormData(e.currentTarget);
     const orderId = formData.get("orderId") as string;
     const email = formData.get("email") as string;
 
-    // Simulate API request delay since WC keys are not configured yet
-    setTimeout(() => {
-      setOrderData({ id: orderId, email });
+    try {
+      const res = await fetch("/api/track-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId, email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to find order");
+      }
+
+      // Merge the provided email so we can display it later
+      setOrderData({ ...data.order, billing: { ...data.order.billing, email } });
       setStatus("success");
-    }, 1500);
+    } catch (err: any) {
+      setErrorMessage(err.message);
+      setStatus("error");
+    }
+  };
+
+  const getStatusDisplay = (wcStatus: string) => {
+    switch (wcStatus) {
+      case "completed":
+        return {
+          title: "Completed",
+          desc: "Your order has been fulfilled and dispatched. It should be with you shortly.",
+          icon: (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          )
+        };
+      case "cancelled":
+      case "refunded":
+      case "failed":
+        return {
+          title: "Cancelled",
+          desc: "This order has been cancelled or refunded. If you believe this is an error, please contact support.",
+          icon: (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="15" y1="9" x2="9" y2="15"></line>
+              <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+          )
+        };
+      case "processing":
+      case "on-hold":
+      default:
+        return {
+          title: "Processing",
+          desc: "Your order has been received and is currently being processed. You will receive an email with tracking details once it has been dispatched.",
+          icon: (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          )
+        };
+    }
   };
 
   if (!mounted) return null;
@@ -61,28 +134,25 @@ export default function TrackOrderPage() {
             <div className="text-center mb-10 border-b border-kaaj-border pb-8">
               <h2 className="font-serif text-2xl text-kaaj-charcoal mb-2">Order #{orderData.id}</h2>
               <p className="font-sans text-sm text-kaaj-muted">
-                Placed by {orderData.email}
+                Placed by {orderData.billing.email}
               </p>
             </div>
             
             <div className="space-y-8">
               <div className="flex flex-col items-center justify-center space-y-4">
                 <div className="w-16 h-16 rounded-full border border-kaaj-gold text-kaaj-gold flex items-center justify-center bg-kaaj-gold/5">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  {getStatusDisplay(orderData.status).icon}
                 </div>
                 <h3 className="font-sans text-[10px] uppercase tracking-widest text-kaaj-charcoal">
-                  Processing
+                  {getStatusDisplay(orderData.status).title}
                 </h3>
                 <p className="font-sans text-sm text-kaaj-muted text-center max-w-sm leading-relaxed">
-                  Your order has been received and is currently being processed. You will receive an email with tracking details once it has been dispatched.
+                  {getStatusDisplay(orderData.status).desc}
                 </p>
               </div>
 
               <div className="pt-8 border-t border-kaaj-border text-center">
-                <Button variant="outline" onClick={() => setStatus("idle")}>
+                <Button variant="outline" onClick={() => { setStatus("idle"); setOrderData(null); }}>
                   Track Another Order
                 </Button>
               </div>
@@ -98,6 +168,12 @@ export default function TrackOrderPage() {
             </div>
             
             <form onSubmit={handleSubmit} className="space-y-6">
+              {status === "error" && (
+                <div className="p-4 border border-red-200 bg-red-50 text-red-600 font-sans text-sm text-center">
+                  {errorMessage}
+                </div>
+              )}
+              
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label htmlFor="orderId" className="block font-sans text-[10px] uppercase tracking-widest text-kaaj-charcoal">
