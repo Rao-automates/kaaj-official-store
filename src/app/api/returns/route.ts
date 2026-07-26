@@ -15,6 +15,13 @@ export async function POST(request: Request) {
     // Attempt to send email if SMTP credentials are provided in env
     const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
 
+    console.log("SMTP Variables Present?:", {
+      host: !!SMTP_HOST,
+      port: !!SMTP_PORT,
+      user: !!SMTP_USER,
+      pass: !!SMTP_PASS
+    });
+
     if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
       const transporter = nodemailer.createTransport({
         host: SMTP_HOST,
