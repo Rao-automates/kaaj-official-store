@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     // Use Hostinger Mail API
-    const HOSTINGER_API_KEY = process.env.HOSTINGER_API_KEY || "f982c94a7c9a6135a03909e7d118ddb853433531b21f4f1357609d72ada5dba4";
+    const HOSTINGER_API_KEY = process.env.HOSTINGER_API_KEY;
     const MAILBOX_ID = process.env.HOSTINGER_MAILBOX_ID || "AC5ecff592b2c510d1d1e30c90b10f";
 
     if (HOSTINGER_API_KEY && MAILBOX_ID) {
