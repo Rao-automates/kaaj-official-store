@@ -194,7 +194,7 @@ export default function Header() {
               Follow us
             </p>
             <div className="flex gap-4">
-              <a href="https://instagram.com/kaajofficial" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.instagram.com/wearkaaj/" target="_blank" rel="noopener noreferrer"
                 className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Instagram">
                 <InstagramIcon />
               </a>
@@ -202,7 +202,7 @@ export default function Header() {
                 className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Facebook">
                 <FacebookIcon />
               </a>
-              <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/923013305325" target="_blank" rel="noopener noreferrer"
                 className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="WhatsApp">
                 <WhatsAppIcon />
               </a>

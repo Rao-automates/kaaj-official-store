@@ -96,7 +96,7 @@ export default function Footer() {
             {/* Social */}
             <div className="flex gap-4 pt-2">
               <a
-                href="https://instagram.com/kaajofficial"
+                href="https://www.instagram.com/wearkaaj/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -114,7 +114,7 @@ export default function Footer() {
                 <FacebookIcon />
               </a>
               <a
-                href="https://wa.me/923000000000"
+                href="https://wa.me/923013305325"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

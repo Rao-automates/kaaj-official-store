@@ -143,7 +143,7 @@ export default function CheckoutPage() {
                 Continue Shopping
               </Button>
             </Link>
-            <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/923013305325" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
                 Contact via WhatsApp
               </Button>

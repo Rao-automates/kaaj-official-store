@@ -120,10 +120,10 @@ export default function HomeClient() {
             Follow Us on Instagram
           </p>
           <p className="font-sans text-xs text-kaaj-cream/60 mb-6 uppercase tracking-widest">
-            @kaajofficial
+            @wearkaaj
           </p>
           <a
-            href="https://instagram.com/kaajofficial"
+            href="https://www.instagram.com/wearkaaj/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-gold border border-kaaj-gold px-8 py-3 hover:bg-kaaj-gold hover:text-white transition-all duration-300"
