@@ -152,10 +152,27 @@ export async function POST(request: Request) {
         </div>
       `;
 
+      // 1. Send receipt to Customer
       await client.sendEmail(MAILBOX_ID, {
         to: [form.email],
         subject: `Your KAAJ Order Receipt - ${finalOrderId}`,
         html: emailHtml,
+      });
+
+      // 2. Send notification to Store Owner
+      const adminEmailHtml = `
+        <div style="font-family: sans-serif; color: #1a1a1a; padding: 20px;">
+          <h2>New Order Received: ${finalOrderId}</h2>
+          <p><strong>Customer:</strong> ${form.firstName} ${form.lastName} (${form.email})</p>
+          <p><strong>Total:</strong> Rs. ${total.toLocaleString()}</p>
+          <p>The order has been successfully logged into WooCommerce.</p>
+        </div>
+      `;
+      
+      await client.sendEmail(MAILBOX_ID, {
+        to: ["support@kaajofficial.com"],
+        subject: `New Order! ${finalOrderId} - Rs. ${total.toLocaleString()}`,
+        html: adminEmailHtml,
       });
     }
 
