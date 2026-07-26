@@ -8,6 +8,7 @@ import {
 import type { ProductsQueryResponse, CategoriesQueryResponse } from "@/lib/types";
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
+import Image from "next/image";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -92,8 +93,16 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="min-h-screen bg-kaaj-cream">
-      {/* Category Hero */}
+      {/* Page Header */}
       <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
+        <Image
+          src="/hero.png"
+          alt={meta.title}
+          fill
+          priority
+          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
         <div className="relative z-10">
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">

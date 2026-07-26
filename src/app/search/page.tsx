@@ -7,6 +7,7 @@ import { GET_SEARCH_RESULTS } from "@/lib/queries";
 import type { ProductsQueryResponse } from "@/lib/types";
 import ProductGrid from "@/components/product/ProductGrid";
 import Link from "next/link";
+import Image from "next/image";
 
 function SearchResultsContent() {
   const searchParams = useSearchParams();
@@ -44,6 +45,14 @@ function SearchResultsContent() {
     <div className="min-h-screen bg-kaaj-cream">
       {/* Search Header */}
       <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-16 text-center relative overflow-hidden">
+        <Image
+          src="/hero.png"
+          alt="Search Results"
+          fill
+          priority
+          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
         <div className="relative z-10 px-4">
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">

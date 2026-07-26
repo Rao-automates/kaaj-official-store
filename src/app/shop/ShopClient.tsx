@@ -8,6 +8,7 @@ import type { ProductsQueryResponse, CategoriesQueryResponse } from "@/lib/types
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
+import Image from "next/image";
 
 const SORT_OPTIONS = [
   { value: "", label: "Newest" },
@@ -63,6 +64,14 @@ export default function ShopClient() {
     <div className="min-h-screen bg-kaaj-cream">
       {/* Page Header */}
       <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
+        <Image
+          src="/hero.png"
+          alt="Kaaj Official Collection"
+          fill
+          priority
+          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
         <div className="relative z-10">
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">

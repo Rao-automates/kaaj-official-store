@@ -158,6 +158,14 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-kaaj-cream">
       {/* Header */}
       <div className="bg-kaaj-deep py-14 text-center relative overflow-hidden">
+        <Image
+          src="/hero.png"
+          alt="Checkout"
+          fill
+          priority
+          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
         <div className="relative z-10">
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
