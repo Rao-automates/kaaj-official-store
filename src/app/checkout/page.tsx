@@ -330,9 +330,9 @@ export default function CheckoutPage() {
                     required
                     className={inputClass}
                   >
-                    <option value="">Select Province</option>
+                    <option value="" className="bg-[#363832]">Select Province</option>
                     {PROVINCES.map((p) => (
-                      <option key={p} value={p}>{p}</option>
+                      <option key={p} value={p} className="bg-[#363832]">{p}</option>
                     ))}
                   </select>
                 </div>
