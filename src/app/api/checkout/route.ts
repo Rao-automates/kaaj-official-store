@@ -112,11 +112,11 @@ export async function POST(request: Request) {
 
         return `
         <tr>
-          <td style="padding: 10px; border-bottom: 1px solid #E5E5E5;">
+          <td style="padding: 10px; border-bottom: 1px solid rgba(220, 216, 208, 0.3);">
             <strong>${item.name}</strong> x ${item.quantity}
-            ${attributesStr ? `<br/><span style="font-size: 11px; color: #888;">${attributesStr}</span>` : ''}
+            ${attributesStr ? `<br/><span style="font-size: 11px; color: #A9A499;">${attributesStr}</span>` : ''}
           </td>
-          <td style="padding: 10px; border-bottom: 1px solid #E5E5E5; text-align: right;">
+          <td style="padding: 10px; border-bottom: 1px solid rgba(220, 216, 208, 0.3); text-align: right;">
             Rs. ${(item.price * item.quantity).toLocaleString()}
           </td>
         </tr>
@@ -124,45 +124,45 @@ export async function POST(request: Request) {
 
       // Build the email HTML (Minimal, Luxury style)
       const emailHtml = `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #DCD8D0; background: linear-gradient(to right, #44463F 0%, #363832 100%); max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 40px;">
-            <h1 style="font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; margin: 0;">KAAJ</h1>
-            <p style="font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #666; margin-top: 5px;">Order Confirmation</p>
+            <h1 style="font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: #DCD8D0; margin: 0;">K A A J</h1>
+            <p style="font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #A9A499; margin-top: 5px;">Order Confirmation</p>
           </div>
           
-          <h2 style="font-size: 20px; font-weight: normal; margin-bottom: 20px;">Thank you for your order, ${form.firstName}!</h2>
-          <p style="color: #666; line-height: 1.6; margin-bottom: 30px;">
-            Your order <strong>${finalOrderId}</strong> has been received and is now being processed. Our team will contact you shortly for confirmation.
+          <h2 style="font-size: 20px; font-weight: normal; margin-bottom: 20px; color: #DCD8D0;">Thank you for your order, ${form.firstName}!</h2>
+          <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
+            Your order <strong style="color: #DCD8D0;">${finalOrderId}</strong> has been received and is now being processed. Our team will contact you shortly for confirmation.
           </p>
           
-          <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #E5E5E5; padding-bottom: 10px; margin-bottom: 20px;">Order Summary</h3>
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+          <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(220, 216, 208, 0.3); padding-bottom: 10px; margin-bottom: 20px; color: #DCD8D0;">Order Summary</h3>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; color: #DCD8D0;">
             ${itemsHtml}
             <tr>
-              <td style="padding: 10px; text-align: right; color: #666;">Subtotal</td>
-              <td style="padding: 10px; text-align: right; color: #666;">Rs. ${(total - shipping).toLocaleString()}</td>
+              <td style="padding: 10px; text-align: right; color: #A9A499;">Subtotal</td>
+              <td style="padding: 10px; text-align: right; color: #A9A499;">Rs. ${(total - shipping).toLocaleString()}</td>
             </tr>
             <tr>
-              <td style="padding: 10px; text-align: right; color: #666;">Shipping</td>
-              <td style="padding: 10px; text-align: right; color: #666;">${shipping === 0 ? 'Free' : `Rs. ${shipping.toLocaleString()}`}</td>
+              <td style="padding: 10px; text-align: right; color: #A9A499;">Shipping</td>
+              <td style="padding: 10px; text-align: right; color: #A9A499;">${shipping === 0 ? 'Free' : `Rs. ${shipping.toLocaleString()}`}</td>
             </tr>
             <tr>
-              <td style="padding: 10px; font-weight: bold; text-align: right; font-size: 18px;">Total</td>
-              <td style="padding: 10px; font-weight: bold; text-align: right; font-size: 18px;">Rs. ${total.toLocaleString()}</td>
+              <td style="padding: 10px; font-weight: bold; text-align: right; font-size: 18px; color: #DCD8D0;">Total</td>
+              <td style="padding: 10px; font-weight: bold; text-align: right; font-size: 18px; color: #DCD8D0;">Rs. ${total.toLocaleString()}</td>
             </tr>
           </table>
 
-          <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #E5E5E5; padding-bottom: 10px; margin-bottom: 20px;">Delivery Details</h3>
-          <p style="color: #666; line-height: 1.6;">
-            <strong>${form.firstName} ${form.lastName}</strong><br>
+          <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(220, 216, 208, 0.3); padding-bottom: 10px; margin-bottom: 20px; color: #DCD8D0;">Delivery Details</h3>
+          <p style="color: #DCD8D0; line-height: 1.6;">
+            <strong style="color: #DCD8D0;">${form.firstName} ${form.lastName}</strong><br>
             ${form.address}<br>
             ${form.city}, ${form.province} ${form.postcode || ''}<br>
             Phone: ${form.phone}<br>
             Method: Cash on Delivery
           </p>
 
-          <div style="margin-top: 50px; text-align: center; border-top: 1px solid #E5E5E5; padding-top: 30px;">
-            <p style="font-size: 12px; color: #999;">If you have any questions, please reply to this email.</p>
+          <div style="margin-top: 50px; text-align: center; border-top: 1px solid rgba(220, 216, 208, 0.3); padding-top: 30px;">
+            <p style="font-size: 12px; color: #A9A499;">If you have any questions, please reply to this email.</p>
             <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; margin-top: 20px;">KAAJ OFFICIAL STORE</p>
           </div>
         </div>
