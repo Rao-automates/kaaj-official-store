@@ -105,7 +105,7 @@ export default function CheckoutPage() {
   };
 
   const inputClass =
-    "w-full bg-white border border-kaaj-border text-kaaj-charcoal placeholder-kaaj-muted/60 px-4 py-3 font-sans text-sm focus:outline-none focus:border-kaaj-charcoal transition-colors";
+    "w-full bg-transparent border border-kaaj-border text-kaaj-charcoal placeholder-kaaj-charcoal/40 px-4 py-3 font-sans text-sm focus:outline-none focus:border-kaaj-gold transition-colors";
 
   const labelClass =
     "block font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal mb-1.5";
