@@ -83,17 +83,36 @@ export default function Footer() {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-1 space-y-5">
-            <div>
-              <p 
-                className="font-sans text-3xl text-kaaj-cream font-medium"
-                style={{ letterSpacing: "0.5em", marginLeft: "0.5em" }}
-              >
-                KAAJ
-              </p>
-              <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-cream/40 mt-0.5">
-                Official
-              </p>
+          <div className="lg:col-span-1 space-y-6">
+            <div className="flex flex-col items-start gap-4">
+              {/* The Brand Symbol */}
+              <div className="w-12 h-12 text-kaaj-cream">
+                <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
+                  <g fill="currentColor">
+                    <g transform="translate(100, 100)" stroke="currentColor" fill="none">
+                      <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" />
+                      <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" />
+                      <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="0.75" opacity="0.5" />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              
+              {/* The Logotype */}
+              <div className="text-kaaj-cream">
+                <svg viewBox="0 0 350 100" className="w-32 h-auto">
+                  <text 
+                    x="175" 
+                    y="75" 
+                    fill="currentColor" 
+                    fontSize="72" 
+                    textAnchor="middle"
+                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 200, letterSpacing: "24px" }}
+                  >
+                    KAAJ
+                  </text>
+                </svg>
+              </div>
             </div>
             <p className="font-sans text-xs text-kaaj-cream/60 leading-relaxed max-w-xs">
               Where tradition meets modernity. Kaaj Official brings the finest Pakistani
