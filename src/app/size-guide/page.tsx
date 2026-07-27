@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { sizeData } from "@/components/product/SizeGuideModal";
+import { sizeData } from "@/lib/constants";
 
 export const metadata = {
   title: "Size Guide - KAAJ Official",
