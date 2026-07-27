@@ -120,7 +120,7 @@ export async function POST(request: Request) {
             Rs. ${(item.price * item.quantity).toLocaleString()}
           </td>
         </tr>
-      `).join('');
+      `}).join('');
 
       // Build the email HTML (Minimal, Luxury style)
       const emailHtml = `
