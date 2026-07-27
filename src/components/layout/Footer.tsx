@@ -86,7 +86,7 @@ export default function Footer() {
           <div className="lg:col-span-1 space-y-6">
             <div className="flex flex-col items-start gap-4">
               {/* The Brand Symbol */}
-              <div className="w-20 h-20 text-kaaj-charcoal">
+              <div className="w-28 h-28 text-kaaj-charcoal -ml-2">
                 <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
                   <g fill="currentColor">
                     <g transform="translate(100, 100)" stroke="currentColor" fill="none">
