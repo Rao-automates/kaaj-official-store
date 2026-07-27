@@ -64,8 +64,8 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className={cn(
-              "object-cover transition-transform duration-700 ease-expo-out",
-              "group-hover:scale-105"
+              "object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "group-hover:scale-110"
             )}
             priority={priority}
             onError={() => setImgError(true)}
@@ -79,23 +79,24 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         {/* Quick Add Overlay */}
         <div
           className={cn(
-            "absolute inset-x-0 bottom-0 px-4 py-3",
-            "bg-kaaj-charcoal/90 backdrop-blur-sm",
-            "transform translate-y-full transition-transform duration-400 ease-expo-out",
-            "group-hover:translate-y-0",
+            "absolute inset-0 flex items-center justify-center",
+            "bg-kaaj-cream/20 backdrop-blur-[2px] opacity-0",
+            "transition-opacity duration-700 ease-expo-out",
+            "group-hover:opacity-100",
             isOutOfStock && "hidden"
           )}
         >
           <button
             onClick={handleQuickAdd}
             className={cn(
-              "w-full text-center font-sans text-[10px] uppercase tracking-[0.18em]",
-              "text-kaaj-cream transition-colors duration-200",
+              "font-sans text-[10px] uppercase tracking-[0.3em]",
+              "text-kaaj-charcoal px-6 py-3 border border-kaaj-border/50 bg-kaaj-cream/50",
+              "hover:border-kaaj-gold transition-colors duration-500",
               product.type === "VARIABLE"
-                ? "cursor-pointer hover:text-kaaj-gold-light"
+                ? "cursor-pointer"
                 : adding
-                ? "text-kaaj-gold-light"
-                : "hover:text-kaaj-gold-light"
+                ? "text-kaaj-gold"
+                : ""
             )}
           >
             {product.type === "VARIABLE"

@@ -59,7 +59,7 @@ export default function HomeClient() {
       )}
 
       {/* New Arrivals */}
-      <section className="py-32 bg-kaaj-cream-dark">
+      <section className="py-48 sm:py-64 bg-kaaj-cream-dark">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="flex items-end justify-between mb-16">
@@ -89,7 +89,7 @@ export default function HomeClient() {
 
       {/* Categories Showcase */}
       {(!loading && categories.length > 0) && (
-        <section className="py-32 bg-kaaj-cream">
+        <section className="py-48 sm:py-64 bg-kaaj-cream">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn>
               <div className="flex items-center gap-6 mb-12">

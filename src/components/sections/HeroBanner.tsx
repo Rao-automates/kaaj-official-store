@@ -16,12 +16,9 @@ export default function HeroBanner() {
         sizes="100vw"
       />
 
-      {/* Grain texture overlay for editorial feel */}
-      <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none mix-blend-overlay" />
-
       {/* Center radial gradient vignette for text readability */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-kaaj-charcoal/30 to-kaaj-charcoal/80" />
-      <div className="absolute inset-0 bg-kaaj-charcoal/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-kaaj-cream/20 to-kaaj-cream/80" />
+      <div className="absolute inset-0 bg-kaaj-cream/40" />
 
       {/* Top subtle border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kaaj-gold/30 to-transparent" />
@@ -38,7 +35,7 @@ export default function HeroBanner() {
 
         {/* Headline */}
         <h1
-          className="font-serif text-5xl sm:text-7xl lg:text-[6rem] text-kaaj-cream leading-[1.1] mb-6 sm:mb-8 animate-fade-up drop-shadow-2xl font-light tracking-tight"
+          className="font-serif text-[14vw] leading-[0.85] text-kaaj-charcoal mb-8 sm:mb-12 animate-fade-up font-light tracking-tighter whitespace-nowrap"
           style={{ animationDelay: "0.2s" }}
         >
           Timeless Elegance,<br />
@@ -47,7 +44,7 @@ export default function HeroBanner() {
 
         {/* Sub */}
         <p
-          className="hidden sm:block font-sans text-xs sm:text-sm text-kaaj-cream/70 max-w-lg mx-auto leading-relaxed mb-12 animate-fade-up uppercase tracking-[0.2em]"
+          className="hidden sm:block font-sans text-[9px] text-kaaj-charcoal/80 max-w-lg mx-auto leading-relaxed mb-16 animate-fade-up uppercase tracking-[0.5em]"
           style={{ animationDelay: "0.3s" }}
         >
           An exploration of heritage artistry through modern silhouettes. Discover our latest curation of exquisite luxury wear.
@@ -68,9 +65,6 @@ export default function HeroBanner() {
           </Link>
         </div>
       </div>
-
-      {/* Bottom fade into the next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-kaaj-cream to-transparent" />
 
       {/* Minimal Scroll cue */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-kaaj-charcoal/60 animate-bounce">
