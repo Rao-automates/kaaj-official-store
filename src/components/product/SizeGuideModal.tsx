@@ -8,13 +8,12 @@ interface SizeGuideModalProps {
   onClose: () => void;
 }
 
-const sizeData = [
-  { size: "XS", chest: "34\"", waist: "28\"", hips: "36\"", length: "52\"" },
-  { size: "S", chest: "36\"", waist: "30\"", hips: "38\"", length: "53\"" },
-  { size: "M", chest: "38\"", waist: "32\"", hips: "40\"", length: "54\"" },
-  { size: "L", chest: "40\"", waist: "34\"", hips: "42\"", length: "55\"" },
-  { size: "XL", chest: "42\"", waist: "36\"", hips: "44\"", length: "56\"" },
-  { size: "XXL", chest: "44\"", waist: "38\"", hips: "46\"", length: "57\"" },
+export const sizeData = [
+  { size: "XS", length: "32", shoulder: "14", chest: "19", frontBorder: "24", armHole: "9.5", sleeveLength: "21.5", sleeveOpening: "8" },
+  { size: "S", length: "32", shoulder: "14.5", chest: "20", frontBorder: "24", armHole: "10", sleeveLength: "22", sleeveOpening: "8" },
+  { size: "M", length: "32", shoulder: "15", chest: "21", frontBorder: "25", armHole: "10.5", sleeveLength: "22.5", sleeveOpening: "8" },
+  { size: "L", length: "32", shoulder: "15.5", chest: "22.5", frontBorder: "26", armHole: "11", sleeveLength: "23", sleeveOpening: "8" },
+  { size: "XL", length: "32", shoulder: "16", chest: "24", frontBorder: "27", armHole: "11.75", sleeveLength: "23.5", sleeveOpening: "8" },
 ];
 
 export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps) {
@@ -52,7 +51,7 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
       {/* Panel */}
       <div
         ref={modalRef}
-        className="relative bg-kaaj-cream z-10 w-full sm:max-w-lg max-h-[90vh] overflow-y-auto animate-fade-up"
+        className="relative bg-kaaj-cream z-10 w-full sm:max-w-4xl max-h-[90vh] overflow-y-auto animate-fade-up"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-kaaj-border">
@@ -77,13 +76,13 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
           </p>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-sm font-sans">
+            <table className="w-full text-sm font-sans whitespace-nowrap">
               <thead>
-                <tr className="border-b border-kaaj-border">
-                  {["Size", "Chest", "Waist", "Hips", "Length"].map((h) => (
+                <tr className="border-b border-kaaj-border bg-kaaj-cream-dark">
+                  {["Size", "Length", "Shoulder", "Chest", "Front Border", "Arm Hole", "Sleeve Length", "Sleeve Opening"].map((h) => (
                     <th
                       key={h}
-                      className="py-2.5 px-3 text-left text-[10px] uppercase tracking-[0.15em] text-kaaj-muted font-normal"
+                      className="py-3 px-4 text-center text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal font-semibold border-r border-kaaj-border last:border-r-0"
                     >
                       {h}
                     </th>
@@ -94,16 +93,16 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
                 {sizeData.map((row, i) => (
                   <tr
                     key={row.size}
-                    className={cn(
-                      "border-b border-kaaj-border/50",
-                      i % 2 === 0 ? "bg-transparent" : "bg-kaaj-cream-dark/50"
-                    )}
+                    className="border-b border-kaaj-border/50 hover:bg-kaaj-gold/5 transition-colors"
                   >
-                    <td className="py-3 px-3 font-medium text-kaaj-charcoal">{row.size}</td>
-                    <td className="py-3 px-3 text-kaaj-charcoal">{row.chest}</td>
-                    <td className="py-3 px-3 text-kaaj-charcoal">{row.waist}</td>
-                    <td className="py-3 px-3 text-kaaj-charcoal">{row.hips}</td>
-                    <td className="py-3 px-3 text-kaaj-charcoal">{row.length}</td>
+                    <td className="py-4 px-4 text-center font-bold text-kaaj-charcoal border-r border-kaaj-border bg-kaaj-cream-dark/30">{row.size}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.length}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.shoulder}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.chest}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.frontBorder}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.armHole}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.sleeveLength}</td>
+                    <td className="py-4 px-4 text-center text-kaaj-charcoal">{row.sleeveOpening}</td>
                   </tr>
                 ))}
               </tbody>

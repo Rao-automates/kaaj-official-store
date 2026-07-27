@@ -53,10 +53,18 @@ export async function POST(request: Request) {
             }
           };
 
+          const metaData = [];
+          if (item.selectedAttributes) {
+            for (const [key, value] of Object.entries(item.selectedAttributes)) {
+              metaData.push({ key, value });
+            }
+          }
+
           return {
             product_id: decodeId(item.productId) || 0,
             variation_id: decodeId(item.variationId),
-            quantity: item.quantity
+            quantity: item.quantity,
+            meta_data: metaData.length > 0 ? metaData : undefined
           };
         }),
         shipping_lines: [
@@ -95,10 +103,18 @@ export async function POST(request: Request) {
       const client = new SendApi(config);
 
       // Generate HTML for cart items
-      const itemsHtml = cart.map((item: any) => `
+      const itemsHtml = cart.map((item: any) => {
+        const attributesStr = item.selectedAttributes 
+          ? Object.entries(item.selectedAttributes)
+              .map(([k, v]) => `${k}: ${v}`)
+              .join(', ')
+          : '';
+
+        return `
         <tr>
           <td style="padding: 10px; border-bottom: 1px solid #E5E5E5;">
             <strong>${item.name}</strong> x ${item.quantity}
+            ${attributesStr ? `<br/><span style="font-size: 11px; color: #888;">${attributesStr}</span>` : ''}
           </td>
           <td style="padding: 10px; border-bottom: 1px solid #E5E5E5; text-align: right;">
             Rs. ${(item.price * item.quantity).toLocaleString()}

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import ProductImageGallery from "@/components/product/ProductImageGallery";
 import VariantSelector from "@/components/product/VariantSelector";
-import SizeGuideModal from "@/components/product/SizeGuideModal";
+import SizeGuideModal, { sizeData } from "@/components/product/SizeGuideModal";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import ProductGrid from "@/components/product/ProductGrid";
@@ -219,6 +219,27 @@ export default function ProductDetailClient({
                       Size Guide
                     </button>
                   )}
+                  {/* Specific Size Details */}
+                  {Object.entries(selectedAttrs).map(([key, val]) => {
+                    if (!key.toLowerCase().includes("size")) return null;
+                    const measurements = sizeData.find((s) => s.size === val);
+                    if (!measurements) return null;
+                    
+                    return (
+                      <div key={`size-details-${val}`} className="mt-4 p-4 bg-kaaj-cream-dark/50 border border-kaaj-border/60">
+                        <p className="font-sans text-[11px] uppercase tracking-widest text-kaaj-charcoal font-semibold mb-2">
+                          Size {val} Measurements
+                        </p>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4">
+                          <p className="font-sans text-[10px] text-kaaj-charcoal"><span className="text-kaaj-muted">Length:</span> {measurements.length}"</p>
+                          <p className="font-sans text-[10px] text-kaaj-charcoal"><span className="text-kaaj-muted">Chest:</span> {measurements.chest}"</p>
+                          <p className="font-sans text-[10px] text-kaaj-charcoal"><span className="text-kaaj-muted">Shoulder:</span> {measurements.shoulder}"</p>
+                          <p className="font-sans text-[10px] text-kaaj-charcoal"><span className="text-kaaj-muted">Sleeve:</span> {measurements.sleeveLength}"</p>
+                          <p className="font-sans text-[10px] text-kaaj-charcoal"><span className="text-kaaj-muted">Arm Hole:</span> {measurements.armHole}"</p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
 
