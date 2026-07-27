@@ -216,14 +216,8 @@ export default function Header() {
 function KaajLogo() {
   return (
     <div className="flex flex-col items-center select-none group-hover:opacity-100 transition-opacity drop-shadow-md">
-      <span
-        className="font-sans text-2xl text-white font-medium"
-        style={{ letterSpacing: "0.5em", marginLeft: "0.5em" }}
-      >
-        KAAJ
-      </span>
-      <span className="font-sans text-[7px] uppercase tracking-[0.4em] text-white/70 mt-0.5">
-        Official
+      <span className="font-sans text-2xl text-white font-medium tracking-widest">
+        K A A J
       </span>
     </div>
   );

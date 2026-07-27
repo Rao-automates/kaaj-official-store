@@ -22,11 +22,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kaaj Official — Premium Pakistani Women's Fashion",
-    template: "%s | Kaaj Official",
+    default: "KAAJ — Premium Pakistani Women's Fashion",
+    template: "%s | KAAJ",
   },
   description:
-    "Discover Kaaj Official's exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women's fashion crafted with heritage and contemporary elegance.",
+    "Discover KAAJ's exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women's fashion crafted with heritage and contemporary elegance.",
   keywords: [
     "Pakistani women's fashion",
     "Pret",
@@ -35,20 +35,20 @@ export const metadata: Metadata = {
     "Formals",
     "Pakistani clothing",
     "Eastern wear",
-    "Kaaj Official",
+    "KAAJ",
   ],
   openGraph: {
     type: "website",
     locale: "en_PK",
     url: "https://kaajofficial.com",
-    siteName: "Kaaj Official",
-    title: "Kaaj Official — Premium Pakistani Women's Fashion",
+    siteName: "KAAJ",
+    title: "KAAJ — Premium Pakistani Women's Fashion",
     description:
       "Exquisite Pret, Unstitched, Luxury Lawn, and Formal collections for the modern Pakistani woman.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kaaj Official",
+    title: "KAAJ",
     description: "Premium Pakistani Women's Fashion",
   },
   robots: {

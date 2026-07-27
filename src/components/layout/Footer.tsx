@@ -86,7 +86,7 @@ export default function Footer() {
           <div className="lg:col-span-1 space-y-6">
             <div className="flex flex-col items-start gap-4">
               {/* The Brand Symbol */}
-              <div className="w-12 h-12 text-kaaj-charcoal">
+              <div className="w-20 h-20 text-kaaj-charcoal">
                 <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
                   <g fill="currentColor">
                     <g transform="translate(100, 100)" stroke="currentColor" fill="none">
@@ -97,25 +97,9 @@ export default function Footer() {
                   </g>
                 </svg>
               </div>
-              
-              {/* The Logotype */}
-              <div className="text-kaaj-charcoal">
-                <svg viewBox="0 0 350 100" className="w-32 h-auto">
-                  <text 
-                    x="175" 
-                    y="75" 
-                    fill="currentColor" 
-                    fontSize="72" 
-                    textAnchor="middle"
-                    style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 200, letterSpacing: "24px" }}
-                  >
-                    KAAJ
-                  </text>
-                </svg>
-              </div>
             </div>
-            <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed max-w-xs">
-              Where tradition meets modernity. Kaaj Official brings the finest Pakistani
+            <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed max-w-xs mt-4">
+              Where tradition meets modernity. K A A J brings the finest Pakistani
               craftsmanship to women who celebrate their heritage with pride.
             </p>
             {/* Social */}
@@ -196,7 +180,7 @@ export default function Footer() {
       <div className="border-t border-kaaj-charcoal/10">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-sans text-[10px] text-kaaj-charcoal/40 tracking-wide">
-            © {new Date().getFullYear()} Kaaj Official. All rights reserved.
+            © {new Date().getFullYear()} K A A J. All rights reserved.
           </p>
           <div className="flex gap-4">
             {["Privacy Policy", "Terms & Conditions"].map((label) => (
