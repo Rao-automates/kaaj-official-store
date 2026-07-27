@@ -223,7 +223,15 @@ export default function ProductDetailClient({
                   {/* Specific Size Details */}
                   {Object.entries(selectedAttrs).map(([key, val]) => {
                     if (!key.toLowerCase().includes("size")) return null;
-                    const measurements = sizeData.find((s) => s.size === val);
+                    
+                    let mappedSize = val.toUpperCase();
+                    if (val.toLowerCase() === "small") mappedSize = "S";
+                    if (val.toLowerCase() === "medium") mappedSize = "M";
+                    if (val.toLowerCase() === "large") mappedSize = "L";
+                    if (val.toLowerCase() === "extra small") mappedSize = "XS";
+                    if (val.toLowerCase() === "extra large") mappedSize = "XL";
+
+                    const measurements = sizeData.find((s) => s.size.toUpperCase() === mappedSize);
                     if (!measurements) return null;
                     
                     return (
