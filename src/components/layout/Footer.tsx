@@ -19,9 +19,9 @@ const HELP = [
 
 export default function Footer() {
   return (
-    <footer className="bg-kaaj-charcoal text-kaaj-cream/80">
+    <footer className="bg-transparent border-t border-kaaj-border text-kaaj-charcoal/80">
       {/* Trust Badges */}
-      <div className="border-b border-kaaj-cream/10">
+      <div className="border-b border-kaaj-charcoal/10">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -69,10 +69,10 @@ export default function Footer() {
             ].map((item) => (
               <div key={item.title} className="flex flex-col items-center gap-3">
                 <span className="text-kaaj-gold">{item.icon}</span>
-                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-cream">
+                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal">
                   {item.title}
                 </p>
-                <p className="font-sans text-[10px] text-kaaj-cream/40">{item.sub}</p>
+                <p className="font-sans text-[10px] text-kaaj-charcoal/40">{item.sub}</p>
               </div>
             ))}
           </div>
@@ -86,7 +86,7 @@ export default function Footer() {
           <div className="lg:col-span-1 space-y-6">
             <div className="flex flex-col items-start gap-4">
               {/* The Brand Symbol */}
-              <div className="w-12 h-12 text-kaaj-cream">
+              <div className="w-12 h-12 text-kaaj-charcoal">
                 <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
                   <g fill="currentColor">
                     <g transform="translate(100, 100)" stroke="currentColor" fill="none">
@@ -99,7 +99,7 @@ export default function Footer() {
               </div>
               
               {/* The Logotype */}
-              <div className="text-kaaj-cream">
+              <div className="text-kaaj-charcoal">
                 <svg viewBox="0 0 350 100" className="w-32 h-auto">
                   <text 
                     x="175" 
@@ -114,7 +114,7 @@ export default function Footer() {
                 </svg>
               </div>
             </div>
-            <p className="font-sans text-xs text-kaaj-cream/60 leading-relaxed max-w-xs">
+            <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed max-w-xs">
               Where tradition meets modernity. Kaaj Official brings the finest Pakistani
               craftsmanship to women who celebrate their heritage with pride.
             </p>
@@ -125,7 +125,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-cream/20 text-kaaj-cream/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
               >
                 <InstagramIcon />
               </a>
@@ -134,7 +134,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-cream/20 text-kaaj-cream/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
               >
                 <WhatsAppIcon />
               </a>
@@ -143,7 +143,7 @@ export default function Footer() {
 
           {/* Collections */}
           <div className="space-y-5">
-            <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-cream">
+            <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-charcoal">
               Collections
             </h3>
             <ul className="space-y-3">
@@ -151,7 +151,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-cream/60 hover:text-kaaj-gold transition-colors duration-200"
+                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -162,7 +162,7 @@ export default function Footer() {
 
           {/* Help */}
           <div className="space-y-5">
-            <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-cream">
+            <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-charcoal">
               Help & Information
             </h3>
             <ul className="space-y-3">
@@ -170,7 +170,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-cream/60 hover:text-kaaj-gold transition-colors duration-200"
+                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -181,10 +181,10 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="space-y-5">
-            <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-cream">
+            <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-charcoal">
               Stay Connected
             </h3>
-            <p className="font-sans text-xs text-kaaj-cream/60 leading-relaxed">
+            <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed">
               Be the first to know about new collections, exclusive offers, and styling inspiration.
             </p>
             <NewsletterForm />
@@ -193,9 +193,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-kaaj-cream/10">
+      <div className="border-t border-kaaj-charcoal/10">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-sans text-[10px] text-kaaj-cream/40 tracking-wide">
+          <p className="font-sans text-[10px] text-kaaj-charcoal/40 tracking-wide">
             © {new Date().getFullYear()} Kaaj Official. All rights reserved.
           </p>
           <div className="flex gap-4">
@@ -203,19 +203,19 @@ export default function Footer() {
               <Link
                 key={label}
                 href="/shop"
-                className="font-sans text-[10px] text-kaaj-cream/40 hover:text-kaaj-cream/70 transition-colors"
+                className="font-sans text-[10px] text-kaaj-charcoal/40 hover:text-kaaj-charcoal/70 transition-colors"
               >
                 {label}
               </Link>
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-sans text-[10px] text-kaaj-cream/60 tracking-widest">Made by</span>
+            <span className="font-sans text-[10px] text-kaaj-charcoal/60 tracking-widest">Made by</span>
             <a 
               href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center gap-1.5 font-sans text-[10px] text-kaaj-cream/60 tracking-widest hover:text-kaaj-gold transition-colors group"
+              className="flex items-center gap-1.5 font-sans text-[10px] text-kaaj-charcoal/60 tracking-widest hover:text-kaaj-gold transition-colors group"
             >
               <svg viewBox="0 0 200 200" className="w-4 h-4 text-kaaj-gold group-hover:scale-110 transition-transform">
                 <g fill="currentColor">
@@ -298,7 +298,7 @@ function NewsletterForm() {
     return (
       <div className="bg-kaaj-gold/10 border border-kaaj-gold/30 p-4 text-center">
         <p className="font-sans text-xs text-kaaj-gold uppercase tracking-widest mb-1">Welcome to KAAJ</p>
-        <p className="font-sans text-[10px] text-kaaj-cream/80">{message}</p>
+        <p className="font-sans text-[10px] text-kaaj-charcoal/80">{message}</p>
       </div>
     );
   }
@@ -312,7 +312,7 @@ function NewsletterForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="Your email address"
-          className="w-full bg-kaaj-cream/10 border border-kaaj-cream/20 text-kaaj-cream placeholder-kaaj-cream/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
+          className="w-full bg-kaaj-charcoal/10 border border-kaaj-charcoal/20 text-kaaj-charcoal placeholder-kaaj-charcoal/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
           disabled={status === "loading"}
         />
         <button
@@ -326,7 +326,7 @@ function NewsletterForm() {
       {status === "error" && (
         <p className="font-sans text-[10px] text-red-400 mt-1">{message}</p>
       )}
-      <p className="font-sans text-[10px] text-kaaj-cream/30 mt-1">
+      <p className="font-sans text-[10px] text-kaaj-charcoal/30 mt-1">
         No spam. Unsubscribe anytime.
       </p>
     </div>
