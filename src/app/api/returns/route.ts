@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const formData = await request.formData();
+    const formData: any = await request.formData();
     const orderId = formData.get('orderId') as string;
     const email = formData.get('email') as string;
     const reason = formData.get('reason') as string;
