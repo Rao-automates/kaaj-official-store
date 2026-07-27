@@ -190,9 +190,26 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-          <p className="font-sans text-[10px] text-kaaj-cream/30 tracking-widest">
-            Made by <a href="https://www.linkedin.com/in/mohyuddin-rao/" target="_blank" rel="noopener noreferrer" className="hover:text-kaaj-gold transition-colors">Rao-automates</a>
-          </p>
+          <div className="flex items-center gap-2">
+            <span className="font-sans text-[10px] text-kaaj-cream/60 tracking-widest">Made by</span>
+            <a 
+              href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-1.5 font-sans text-[10px] text-kaaj-cream/60 tracking-widest hover:text-kaaj-gold transition-colors group"
+            >
+              <svg viewBox="0 0 200 200" className="w-4 h-4 text-kaaj-gold group-hover:scale-110 transition-transform">
+                <g fill="currentColor">
+                  <g transform="translate(100, 100)" stroke="currentColor" fill="none">
+                    <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" />
+                    <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" />
+                    <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="0.75" opacity="0.5" />
+                  </g>
+                </g>
+              </svg>
+              Rao-automates
+            </a>
+          </div>
         </div>
       </div>
     </footer>
