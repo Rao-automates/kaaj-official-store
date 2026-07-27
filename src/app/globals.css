@@ -4,22 +4,22 @@
   --font-cormorant: "Cormorant Garamond", Georgia, serif;
   --font-inter: "Inter", system-ui, sans-serif;
 
-  --color-kaaj-cream: #F5F0E8;
-  --color-kaaj-cream-dark: #EDE5D6;
-  --color-kaaj-charcoal: #1C1C1C;
-  --color-kaaj-charcoal-light: #2E2E2E;
+  --color-kaaj-cream: #363832;
+  --color-kaaj-cream-dark: #44463F;
+  --color-kaaj-charcoal: #DCD8D0;
+  --color-kaaj-charcoal-light: #C5C2BB;
   --color-kaaj-gold: #C9A84C;
   --color-kaaj-gold-light: #E2C97E;
   --color-kaaj-gold-dark: #A07C2E;
   --color-kaaj-blush: #E8D5C4;
   --color-kaaj-blush-dark: #D4B99A;
-  --color-kaaj-deep: #2D1B0E;
-  --color-kaaj-deep-light: #4A2E18;
+  --color-kaaj-deep: #1A1A18;
+  --color-kaaj-deep-light: #2A2B29;
   --color-kaaj-rose: #C4856A;
   --color-kaaj-rose-light: #D4A08A;
   --color-kaaj-olive: #6B7053;
-  --color-kaaj-muted: #9C8E82;
-  --color-kaaj-border: #DDD5C8;
+  --color-kaaj-muted: #9C9A95;
+  --color-kaaj-border: rgba(220, 216, 208, 0.15);
 }
 
 /* ── Global Resets ─────────────────────────────────────────────────────────── */
@@ -35,7 +35,8 @@ html {
 }
 
 body {
-  background-color: var(--color-kaaj-cream);
+  background: linear-gradient(to right, #44463F 0%, #363832 100%);
+  background-attachment: fixed;
   color: var(--color-kaaj-charcoal);
   font-family: var(--font-inter), system-ui, sans-serif;
 }
