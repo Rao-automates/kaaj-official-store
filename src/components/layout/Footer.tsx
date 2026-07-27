@@ -191,7 +191,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="font-sans text-[10px] text-kaaj-cream/30 tracking-widest">
-            Made with ♡ in Pakistan
+            Made by <a href="https://www.linkedin.com/in/mohyuddin-rao/" target="_blank" rel="noopener noreferrer" className="hover:text-kaaj-gold transition-colors">Rao-automates</a>
           </p>
         </div>
       </div>
