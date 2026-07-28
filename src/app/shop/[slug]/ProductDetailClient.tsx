@@ -196,9 +196,11 @@ export default function ProductDetailClient({
               )}
               
               {/* Loved By Pill */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#d7d0c8]/50 rounded-full w-fit mt-1">
-                <span className="text-xs drop-shadow-sm">❤️</span>
-                <span className="font-sans text-[11px] text-[#b3413c] font-medium tracking-wide">Loved by {fakeLovedBy} shoppers</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-kaaj-charcoal/5 border border-kaaj-border/60 rounded-sm w-fit mt-1">
+                <svg className="w-3 h-3 text-kaaj-charcoal/60" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span className="font-sans text-[9px] text-kaaj-charcoal font-semibold uppercase tracking-[0.2em]">Loved by {fakeLovedBy}</span>
               </div>
 
               {/* Specs Grid */}
@@ -338,18 +340,27 @@ export default function ProductDetailClient({
 
               {/* Trust & Timeline */}
               <div className="pt-6 border-t border-kaaj-border mt-6 space-y-8">
-                <div className="flex flex-col gap-4 px-4 py-2 border border-kaaj-border/30 bg-kaaj-charcoal/[0.02]">
-                  <div className="flex items-center gap-5">
-                    <span className="font-serif text-sm text-kaaj-charcoal/40 italic">01</span>
-                    <span className="font-sans text-[10px] text-kaaj-charcoal font-bold uppercase tracking-[0.2em]">Secure Checkout</span>
+                <div className="grid grid-cols-3 gap-2 px-1">
+                  <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
+                    <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Secure<br/>Checkout</span>
                   </div>
-                  <div className="flex items-center gap-5">
-                    <span className="font-serif text-sm text-kaaj-charcoal/40 italic">02</span>
-                    <span className="font-sans text-[10px] text-kaaj-charcoal font-bold uppercase tracking-[0.2em]">7-Day Easy Returns</span>
+                  <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
+                    <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="2" y1="12" x2="22" y2="12"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">7-Day<br/>Returns</span>
                   </div>
-                  <div className="flex items-center gap-5">
-                    <span className="font-serif text-sm text-kaaj-charcoal/40 italic">03</span>
-                    <span className="font-sans text-[10px] text-kaaj-charcoal font-bold uppercase tracking-[0.2em]">Handcrafted in PK</span>
+                  <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
+                    <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 3L2 20h20L12 3z"/>
+                    </svg>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Handcrafted<br/>In PK</span>
                   </div>
                 </div>
                 
