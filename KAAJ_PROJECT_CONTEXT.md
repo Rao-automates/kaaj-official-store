@@ -61,6 +61,7 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 ## 5. Metadata, SEO, & Formatting Standards
 *   **The Apostrophe Bug (`&#39;`):** When writing meta descriptions (like in `src/app/layout.tsx`), Next.js automatically escapes standard straight single quotes (`'`) into HTML entities (`&#39;`). Google's search engine crawler sometimes fails to parse this and displays the ugly raw entity in Search Results. 
     *   **Strict Solution:** We strictly use the typographic curly apostrophe (`’`) (HTML entity `&#8217;`) in *all* metadata strings (e.g., `KAAJ’s`, `women’s`). This permanently prevents the HTML entity bug from appearing on Google SERPs.
+*   **Keyword Research & Injection:** The site's global `<meta name="keywords">` have been aggressively optimized for high-intent, long-tail search terms in the fashion industry (e.g., "Pakistani designer dresses", "Luxury pret wear Pakistan", "Pakistani suits online UK USA").
 *   **Brand Formatting:** The brand name must always be formatted as **K A A J** (with single spaces between letters) in user-facing titles, metadata, and footers. Do not use "Kaaj Official".
 *   **Currency Formatting:** All prices are handled by the custom `formatPKR` utility. Ensure strictly typed inputs (string manipulation) when interfacing with the WooCommerce GraphQL/REST returns, as WooCommerce sometimes returns prices as strings or floats inconsistently.
 
