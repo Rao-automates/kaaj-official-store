@@ -132,10 +132,28 @@ export default function CheckoutPage() {
             <h1 className="font-serif text-4xl text-kaaj-charcoal mb-3">
               Thank You, {form.firstName}!
             </h1>
-            <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
-              Your order <strong className="text-kaaj-charcoal">{orderNumber}</strong> has been
-              placed successfully. Our team will confirm your order via call or WhatsApp shortly.
-            </p>
+            {paymentMethod === "bacs" ? (
+              <div className="space-y-4">
+                <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
+                  Your order <strong className="text-kaaj-charcoal">{orderNumber}</strong> has been placed successfully. 
+                  Please make your direct bank transfer to our Meezan Bank account using the details below:
+                </p>
+                <div className="bg-kaaj-charcoal/5 border border-kaaj-border p-4 text-left font-sans text-sm text-kaaj-charcoal">
+                  <p className="mb-1"><span className="text-kaaj-muted">Bank:</span> Meezan Bank</p>
+                  <p className="mb-1"><span className="text-kaaj-muted">Account Title:</span> KAAJ OFFICIAL</p>
+                  <p><span className="text-kaaj-muted">Account Number:</span> [Insert Account Number]</p>
+                </div>
+                <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
+                  Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account. 
+                  <strong className="text-kaaj-charcoal block mt-2">Please send your transaction screenshot on WhatsApp to confirm your order.</strong>
+                </p>
+              </div>
+            ) : (
+              <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
+                Your order <strong className="text-kaaj-charcoal">{orderNumber}</strong> has been
+                placed successfully. Our team will confirm your order via call or WhatsApp shortly.
+              </p>
+            )}
           </div>
 
           <div className="bg-kaaj-cream-dark border border-kaaj-border p-5 text-left space-y-2">
@@ -171,9 +189,9 @@ export default function CheckoutPage() {
                 Continue Shopping
               </Button>
             </Link>
-            <a href="https://wa.me/923013305325" target="_blank" rel="noopener noreferrer">
+            <a href={`https://wa.me/923013305325?text=${encodeURIComponent(`Hello, my order ID is ${orderNumber}. ${paymentMethod === 'bacs' ? 'Here is my transaction screenshot:' : ''}`)}`} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg">
-                Contact via WhatsApp
+                {paymentMethod === "bacs" ? "Send Screenshot on WhatsApp" : "Contact via WhatsApp"}
               </Button>
             </a>
           </div>

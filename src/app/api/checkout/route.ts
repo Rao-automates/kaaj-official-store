@@ -132,9 +132,24 @@ export async function POST(request: Request) {
           </div>
           
           <h2 style="font-size: 20px; font-weight: normal; margin-bottom: 20px; color: #DCD8D0;">Thank you for your order, ${form.firstName}!</h2>
-          <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
-            Your order <strong style="color: #DCD8D0;">${finalOrderId}</strong> has been received and is now being processed. Our team will contact you shortly for confirmation.
-          </p>
+          ${paymentMethod === 'bacs' ? `
+            <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 20px;">
+              Your order <strong style="color: #DCD8D0;">${finalOrderId}</strong> has been received successfully. Please make your direct bank transfer to our Meezan Bank account using the details below:
+            </p>
+            <div style="background-color: rgba(220, 216, 208, 0.05); border: 1px solid rgba(220, 216, 208, 0.2); padding: 15px; margin-bottom: 20px;">
+              <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">Bank:</span> Meezan Bank</p>
+              <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">Account Title:</span> KAAJ OFFICIAL</p>
+              <p style="margin: 0;"><span style="color: #A9A499;">Account Number:</span> [Insert Account Number]</p>
+            </div>
+            <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
+              Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account. <br/><br/>
+              <a href="https://wa.me/923013305325?text=${encodeURIComponent(`Hello, my order ID is ${finalOrderId}. Here is my transaction screenshot:`)}" style="display: inline-block; background-color: #C9A84C; color: #1A1A18; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Send Screenshot via WhatsApp</a>
+            </p>
+          ` : `
+            <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
+              Your order <strong style="color: #DCD8D0;">${finalOrderId}</strong> has been received and is now being processed. Our team will contact you shortly for confirmation.
+            </p>
+          `}
           
           <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(220, 216, 208, 0.3); padding-bottom: 10px; margin-bottom: 20px; color: #DCD8D0;">Order Summary</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; color: #DCD8D0;">
