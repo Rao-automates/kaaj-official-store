@@ -22,13 +22,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "K A A J — Premium Pakistani Women's Fashion",
+    default: "K A A J — Premium Pakistani Women’s Fashion",
     template: "%s | K A A J",
   },
   description:
-    "Discover KAAJ's exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women's fashion crafted with heritage and contemporary elegance.",
+    "Discover KAAJ’s exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women’s fashion crafted with heritage and contemporary elegance.",
   keywords: [
-    "Pakistani women's fashion",
+    "Pakistani women’s fashion",
     "Pret",
     "Unstitched",
     "Luxury Lawn",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: "en_PK",
     url: "https://kaajofficial.com",
     siteName: "K A A J",
-    title: "K A A J — Premium Pakistani Women's Fashion",
+    title: "K A A J — Premium Pakistani Women’s Fashion",
     description:
       "Exquisite Pret, Unstitched, Luxury Lawn, and Formal collections for the modern Pakistani woman.",
   },
