@@ -43,6 +43,9 @@ export default function ProductDetailClient({
   const isVariable = product.type === "VARIABLE";
   const attributes = product.attributes?.nodes ?? [];
   const variations = product.variations?.nodes ?? [];
+  const nonVariationAttributes = attributes.filter((a) => !a.variation);
+  const hash = product.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const fakeLovedBy = (hash % 800) + 100;
 
   // Find the matching variation
   const matchingVariation = useMemo<ProductVariation | null>(() => {
@@ -191,12 +194,36 @@ export default function ProductDetailClient({
                   {stripHtml(product.shortDescription)}
                 </p>
               )}
+              
+              {/* Loved By Pill */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#fce8e6]/80 rounded-full w-fit">
+                <span className="text-[10px]">❤️</span>
+                <span className="font-sans text-[10px] text-[#c73b32] font-semibold tracking-wide">Loved by {fakeLovedBy} shoppers</span>
+              </div>
+
+              {/* Specs Grid */}
+              {nonVariationAttributes.length > 0 && (
+                <div className="grid grid-cols-2 gap-2 mt-4">
+                  {nonVariationAttributes.map((attr) => (
+                    <div key={attr.name} className="flex flex-col gap-0.5 p-3 bg-kaaj-charcoal/5 border border-kaaj-border/60 rounded-sm">
+                      <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-muted flex items-center gap-1.5">
+                        <svg className="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                          <line x1="3" y1="9" x2="21" y2="9"/>
+                        </svg>
+                        {attr.name.replace(/^pa_/, "")}
+                      </span>
+                      <span className="font-sans text-xs font-semibold text-kaaj-charcoal pl-4.5">{attr.options.join(", ")}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="h-px bg-kaaj-border" />
 
               {/* Variant Selectors */}
               {isVariable && attributes.length > 0 && (
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {attributes
                     .filter((attr) => attr.variation)
                     .map((attr) => (
@@ -208,18 +235,22 @@ export default function ProductDetailClient({
                         onChange={(val) =>
                           setSelectedAttrs((prev) => ({ ...prev, [attr.name]: val }))
                         }
+                        rightElement={
+                          attr.name.toLowerCase().includes("size") ? (
+                            <button
+                              onClick={() => setSizeGuideOpen(true)}
+                              className="font-sans text-[10px] uppercase tracking-[0.1em] text-kaaj-charcoal flex items-center gap-1 hover:text-kaaj-gold transition-colors"
+                            >
+                              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M9 4v16"/>
+                              </svg>
+                              Find my size
+                            </button>
+                          ) : undefined
+                        }
                       />
                     ))}
-
-                  {/* Size Guide link */}
-                  {attributes.some((a) => a.name.toLowerCase().includes("size")) && (
-                    <button
-                      onClick={() => setSizeGuideOpen(true)}
-                      className="font-sans text-[11px] uppercase tracking-[0.15em] text-kaaj-muted hover:text-kaaj-charcoal underline-offset-4 underline transition-colors"
-                    >
-                      Size Guide
-                    </button>
-                  )}
                   {/* Specific Size Details */}
                   {Object.entries(selectedAttrs).map(([key, val]) => {
                     if (!key.toLowerCase().includes("size")) return null;
@@ -253,87 +284,83 @@ export default function ProductDetailClient({
               )}
 
               {/* Quantity */}
-              <div className="flex items-center gap-4">
-                <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal">
-                  Qty
+              <div className="flex flex-col gap-2 pt-2">
+                <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-kaaj-charcoal">
+                  Quantity
                 </span>
-                <div className="flex items-center border border-kaaj-border">
+                <div className="flex items-center border border-kaaj-border/80 rounded-sm w-32 bg-kaaj-charcoal/5">
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:bg-kaaj-cream-dark transition-colors"
+                    className="flex-1 h-10 flex items-center justify-center text-kaaj-charcoal hover:bg-kaaj-charcoal/10 transition-colors"
                     aria-label="Decrease quantity"
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12" /></svg>
                   </button>
-                  <span className="w-12 text-center font-sans text-sm text-kaaj-charcoal">
+                  <span className="w-10 text-center font-sans text-sm text-kaaj-charcoal font-medium">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity((q) => q + 1)}
-                    className="w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:bg-kaaj-cream-dark transition-colors"
+                    className="flex-1 h-10 flex items-center justify-center text-kaaj-charcoal hover:bg-kaaj-charcoal/10 transition-colors"
                     aria-label="Increase quantity"
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
                   </button>
                 </div>
               </div>
 
-              {/* Add to Cart & Order Now */}
-              <div className="space-y-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button
-                    variant="outline"
-                    size="xl"
-                    fullWidth
-                    onClick={handleAddToCart}
-                    disabled={isOOS || variantNotSelected}
-                  >
-                    {isOOS
-                      ? "Out of Stock"
-                      : variantNotSelected
-                      ? "Select Options"
-                      : addedToCart
-                      ? "✓ Added"
-                      : "Add to Bag"}
-                  </Button>
-                  
-                  <Button
-                    variant="primary"
-                    size="xl"
-                    fullWidth
-                    onClick={handleOrderNow}
-                    disabled={isOOS || variantNotSelected}
-                  >
-                    {isOOS ? "Out of Stock" : "Order Now"}
-                  </Button>
-                </div>
-
+              {/* Add to Cart */}
+              <div className="pt-4 space-y-3">
+                <button
+                  onClick={handleAddToCart}
+                  disabled={isOOS || variantNotSelected}
+                  className={cn(
+                    "w-full h-14 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-all rounded-sm text-center flex items-center justify-center",
+                    isOOS || variantNotSelected
+                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
+                      : "bg-[#252525] text-white hover:bg-black shadow-lg"
+                  )}
+                >
+                  {isOOS
+                    ? "Out of Stock"
+                    : variantNotSelected
+                    ? "Select Options"
+                    : addedToCart
+                    ? "✓ Added To Cart"
+                    : "ADD TO CART"}
+                </button>
                 {variantNotSelected && (
-                  <p className="font-sans text-xs text-kaaj-rose text-center">
+                  <p className="font-sans text-[10px] text-kaaj-charcoal/60 text-center mt-2">
                     Please select all options above to continue.
                   </p>
                 )}
               </div>
 
-              {/* COD note */}
-              <div className="flex items-center gap-3 bg-kaaj-blush/40 border border-kaaj-blush px-4 py-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D1B0E" strokeWidth="1.5">
-                  <rect x="1" y="4" width="22" height="16" rx="2" />
-                  <line x1="1" y1="10" x2="23" y2="10" />
-                </svg>
-                <div>
-                  <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-deep font-medium">
-                    Cash on Delivery
-                  </p>
-                  <p className="font-sans text-[10px] text-kaaj-deep/60 mt-0.5">
-                    Free delivery on orders over ₨ 5,000
-                  </p>
+              {/* Trust & Timeline */}
+              <div className="pt-6 border-t border-kaaj-border mt-6 space-y-8">
+                <div className="grid grid-cols-3 gap-2 px-2">
+                  <div className="flex flex-col items-center gap-2 text-center">
+                    <svg className="w-5 h-5 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-semibold uppercase tracking-wider">Secure Checkout</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 text-center">
+                    <svg className="w-5 h-5 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                    </svg>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-semibold uppercase tracking-wider">7-Day Easy Return</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 text-center">
+                    <svg className="w-5 h-5 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M2 12h20M12 2L2 12h20L12 2z"/>
+                    </svg>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-semibold uppercase tracking-wider">Handcrafted in PK</span>
+                  </div>
                 </div>
+                
+                <DeliveryTimeline />
               </div>
 
               <div className="h-px bg-kaaj-border" />
@@ -388,5 +415,69 @@ export default function ProductDetailClient({
 
       <SizeGuideModal isOpen={sizeGuideOpen} onClose={() => setSizeGuideOpen(false)} />
     </>
+  );
+}
+
+function DeliveryTimeline() {
+  const formatDate = (date: Date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  
+  const today = new Date();
+  const readyStart = new Date(today); readyStart.setDate(today.getDate() + 1);
+  const readyEnd = new Date(today); readyEnd.setDate(today.getDate() + 2);
+  const delStart = new Date(today); delStart.setDate(today.getDate() + 5);
+  const delEnd = new Date(today); delEnd.setDate(today.getDate() + 10);
+
+  return (
+    <div className="relative pt-4 pb-2 px-6">
+      {/* Connecting Line */}
+      <div className="absolute top-8 left-12 right-12 h-0.5 bg-kaaj-charcoal/20"></div>
+      
+      <div className="flex justify-between relative z-10">
+        {/* Step 1 */}
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-kaaj-charcoal text-white flex items-center justify-center">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+          </div>
+          <div className="text-center">
+            <p className="font-sans text-[9px] font-bold text-kaaj-charcoal">{formatDate(today)}</p>
+            <p className="font-sans text-[9px] text-kaaj-charcoal/60 uppercase tracking-widest mt-0.5">Ordered</p>
+          </div>
+        </div>
+
+        {/* Step 2 */}
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-[#252525] text-white flex items-center justify-center ring-4 ring-kaaj-cream">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div className="text-center">
+            <p className="font-sans text-[9px] font-bold text-kaaj-charcoal">{formatDate(readyStart)} - {formatDate(readyEnd)}</p>
+            <p className="font-sans text-[9px] text-kaaj-charcoal/60 uppercase tracking-widest mt-0.5">Order Ready</p>
+          </div>
+        </div>
+
+        {/* Step 3 */}
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-[#252525] text-white flex items-center justify-center ring-4 ring-kaaj-cream">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div className="text-center">
+            <p className="font-sans text-[9px] font-bold text-kaaj-charcoal">{formatDate(delStart)} - {formatDate(delEnd)}</p>
+            <p className="font-sans text-[9px] text-kaaj-charcoal/60 uppercase tracking-widest mt-0.5">Delivered</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

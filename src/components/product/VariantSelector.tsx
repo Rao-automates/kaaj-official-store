@@ -8,6 +8,7 @@ interface VariantSelectorProps {
   selected: string;
   outOfStockOptions?: string[];
   onChange: (value: string) => void;
+  rightElement?: React.ReactNode;
 }
 
 const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "Free Size"];
@@ -33,19 +34,23 @@ export default function VariantSelector({
   selected,
   outOfStockOptions = [],
   onChange,
+  rightElement,
 }: VariantSelectorProps) {
   const sorted = sortOptions(options, attributeName);
   const displayName = attributeName.replace(/^pa_/, "").replace(/-/g, " ");
 
   return (
     <div className="space-y-2.5">
-      <div className="flex items-center gap-2">
-        <span className="font-sans text-xs uppercase tracking-[0.15em] text-kaaj-charcoal">
-          {displayName}
-        </span>
-        {selected && (
-          <span className="font-sans text-xs text-kaaj-muted">— {selected}</span>
-        )}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-kaaj-charcoal capitalize">
+            {displayName}
+          </span>
+          {selected && (
+            <span className="font-sans text-[11px] text-kaaj-charcoal font-semibold">— {selected}</span>
+          )}
+        </div>
+        {rightElement && <div>{rightElement}</div>}
       </div>
 
       <div className="flex flex-wrap gap-2">
