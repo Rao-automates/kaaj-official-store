@@ -45,8 +45,11 @@ The colors are mapped in `tailwind.config.ts` and `src/app/globals.css`.
         *   SWIFT: MEZNPKKAXXX
     *   **WhatsApp Integration:** Both the checkout success screen and email receipt include dynamic WhatsApp links pre-filled with the `orderNumber` to prompt users to send payment screenshots.
 
-## 5. Ongoing / Future Notes
-*   **SEO:** The brand name has transitioned from "KAAJ OFFICIAL" to just **K A A J**. Ensure all metadata, titles, and footers reflect this spacing.
+## 5. Metadata & SEO Standards
+*   **The Apostrophe Bug (`&#39;`):** When writing meta descriptions (like in `src/app/layout.tsx`), Next.js automatically escapes straight single quotes (`'`) into HTML entities (`&#39;`). Google's search engine sometimes displays this ugly raw entity instead of the quote. **Solution:** We strictly use the typographic curly apostrophe (`’`) in all metadata strings (e.g. `KAAJ’s`, `women’s`). This prevents the HTML entity bug from appearing on Google Search Results.
+*   **Brand Formatting:** The brand name has transitioned from "KAAJ OFFICIAL" to just **K A A J** (with single spaces between letters). Ensure all metadata, titles, and email footers reflect this spacing.
+
+## 6. Ongoing / Future Notes
 *   **Currency Formatting:** Handled by `formatPKR` utility. Ensure strictly typed inputs (string manipulation) when interfacing with the WooCommerce GraphQL/REST returns.
 
 ---
