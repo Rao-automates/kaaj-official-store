@@ -7,5 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: 'https://kaajofficial.com/sitemap.xml',
+    host: 'https://kaajofficial.com',
   }
 }

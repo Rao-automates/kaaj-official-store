@@ -61,6 +61,9 @@ export async function generateMetadata({
     openGraph: {
       images: product.image?.sourceUrl ? [product.image.sourceUrl] : [],
     },
+    alternates: {
+      canonical: `/shop/${slug}`,
+    },
   };
 }
 
@@ -93,10 +96,39 @@ export default async function ProductPage({ params }: ProductPageProps) {
     product.databaseId
   );
 
+  const numericPrice = parseFloat(product.price?.replace(/[^\d.-]/g, '') || '0');
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: product.image?.sourceUrl ? [product.image.sourceUrl] : [],
+    description: product.shortDescription?.replace(/<[^>]*>/g, "") || product.name,
+    offers: {
+      "@type": "Offer",
+      url: `https://kaajofficial.com/shop/${product.slug}`,
+      priceCurrency: "PKR",
+      price: numericPrice,
+      availability: product.stockStatus === "IN_STOCK" 
+        ? "https://schema.org/InStock" 
+        : "https://schema.org/OutOfStock",
+      seller: {
+        "@type": "Organization",
+        name: "K A A J"
+      }
+    }
+  };
+
   return (
-    <ProductDetailClient
-      product={product}
-      relatedProducts={relatedProducts}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProductDetailClient
+        product={product}
+        relatedProducts={relatedProducts}
+      />
+    </>
   );
 }

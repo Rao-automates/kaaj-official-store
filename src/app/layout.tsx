@@ -21,6 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kaajofficial.com"),
   title: {
     default: "K A A J — Premium Pakistani Women’s Fashion",
     template: "%s | K A A J",
@@ -62,8 +63,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "K A A J",
+    url: "https://kaajofficial.com",
+    logo: "https://kaajofficial.com/icon.svg",
+    description: "Premium Pakistani Women’s Fashion",
+    sameAs: [
+      "https://www.instagram.com/wearkaaj/"
+    ]
+  };
+
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans bg-kaaj-cream text-kaaj-charcoal antialiased">
         <CartProvider>
           <Header />
