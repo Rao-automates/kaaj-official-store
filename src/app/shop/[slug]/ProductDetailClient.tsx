@@ -340,29 +340,35 @@ export default function ProductDetailClient({
 
               {/* Trust & Timeline */}
               <div className="pt-6 border-t border-kaaj-border mt-6 space-y-8">
-                <div className="grid grid-cols-3 gap-2 px-1">
-                  <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
-                    <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0110 0v4"/>
-                    </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Secure<br/>Checkout</span>
+                {relatedProducts.length > 0 && (
+                  <div className="flex flex-col gap-3">
+                    <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal font-semibold mb-1">
+                      Pairs well with
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      {relatedProducts.slice(0, 2).map((rp) => (
+                        <Link key={rp.id} href={`/shop/${rp.slug}`} className="group flex items-center gap-4 p-2 border border-kaaj-border/30 bg-kaaj-charcoal/[0.02] hover:bg-kaaj-charcoal/5 transition-colors rounded-sm">
+                          <div className="relative w-12 h-16 flex-shrink-0 bg-kaaj-cream overflow-hidden">
+                            {rp.image?.sourceUrl ? (
+                              <Image
+                                src={rp.image.sourceUrl}
+                                alt={rp.image.altText || rp.name}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-kaaj-charcoal/10" />
+                            )}
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="font-serif text-sm text-kaaj-charcoal line-clamp-1">{rp.name}</span>
+                            <span className="font-sans text-[10px] text-kaaj-muted mt-0.5">{rp.price ? formatPKR(parsePKR(rp.price)) : ""}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
-                    <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="2" y1="12" x2="22" y2="12"/>
-                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                    </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">7-Day<br/>Returns</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
-                    <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M12 3L2 20h20L12 3z"/>
-                    </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Handcrafted<br/>In PK</span>
-                  </div>
-                </div>
+                )}
                 
                 <DeliveryTimeline />
               </div>
