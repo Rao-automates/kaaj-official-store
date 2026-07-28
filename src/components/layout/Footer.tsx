@@ -20,64 +20,6 @@ const HELP = [
 export default function Footer() {
   return (
     <footer className="bg-transparent border-t border-kaaj-border text-kaaj-charcoal/80">
-      {/* Trust Badges */}
-      <div className="border-b border-kaaj-charcoal/10">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { 
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                    <path d="M5 9.5V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-1M5 9.5L1 12v5a2 2 0 002 2h2m-4-9.5h4" />
-                    <circle cx="7" cy="19" r="2" />
-                    <circle cx="19" cy="19" r="2" />
-                  </svg>
-                ), 
-                title: "Free Delivery", 
-                sub: "On orders over ₨ 5,000" 
-              },
-              { 
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                    <rect x="2" y="6" width="20" height="12" rx="2" />
-                    <circle cx="12" cy="12" r="2" />
-                    <path d="M6 12h.01M18 12h.01" />
-                  </svg>
-                ), 
-                title: "Cash on Delivery", 
-                sub: "Nationwide COD available" 
-              },
-              { 
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                    <path d="M2 12a10 10 0 1010-10 10 10 0 00-10 10z" />
-                    <path d="M12 8v4l3 3" />
-                  </svg>
-                ), 
-                title: "Easy Returns", 
-                sub: "7-day return policy" 
-              },
-              { 
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                    <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.5-6.3-4.8-6.3 4.8 2.3-7.5-6-4.6h7.6z" />
-                  </svg>
-                ), 
-                title: "Authentic Craft", 
-                sub: "Hand-picked luxury fabrics" 
-              },
-            ].map((item) => (
-              <div key={item.title} className="flex flex-col items-center gap-3">
-                <span className="text-kaaj-gold">{item.icon}</span>
-                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal">
-                  {item.title}
-                </p>
-                <p className="font-sans text-[10px] text-kaaj-charcoal/40">{item.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Main Footer Content */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
