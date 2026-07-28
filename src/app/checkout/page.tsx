@@ -510,7 +510,7 @@ export default function CheckoutPage() {
                     loading={loading}
                     disabled={loading || cart.items.length === 0}
                   >
-                    Place Order — COD
+                    Place Order — {paymentMethod === 'cod' ? 'COD' : 'Bank Transfer'}
                   </Button>
                   <p className="font-sans text-[10px] text-kaaj-muted text-center mt-3">
                     By placing your order you agree to our Terms & Conditions.

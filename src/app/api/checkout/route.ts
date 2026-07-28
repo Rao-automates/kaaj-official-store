@@ -159,7 +159,7 @@ export async function POST(request: Request) {
             ${form.address}<br>
             ${form.city}, ${form.province} ${form.postcode || ''}<br>
             Phone: ${form.phone}<br>
-            Method: Cash on Delivery
+            Method: ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Direct Bank Transfer'}
           </p>
 
           <div style="margin-top: 50px; text-align: center; border-top: 1px solid rgba(220, 216, 208, 0.3); padding-top: 30px;">
@@ -181,6 +181,7 @@ export async function POST(request: Request) {
         <div style="font-family: sans-serif; color: #1a1a1a; padding: 20px;">
           <h2>New Order Received: ${finalOrderId}</h2>
           <p><strong>Customer:</strong> ${form.firstName} ${form.lastName} (${form.email})</p>
+          <p><strong>Payment Method:</strong> ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Direct Bank Transfer'}</p>
           <p><strong>Total:</strong> Rs. ${total.toLocaleString()}</p>
           <p>The order has been successfully logged into WooCommerce.</p>
         </div>
