@@ -138,8 +138,10 @@ export async function POST(request: Request) {
             </p>
             <div style="background-color: rgba(220, 216, 208, 0.05); border: 1px solid rgba(220, 216, 208, 0.2); padding: 15px; margin-bottom: 20px;">
               <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">Bank:</span> Meezan Bank</p>
-              <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">Account Title:</span> KAAJ OFFICIAL</p>
-              <p style="margin: 0;"><span style="color: #A9A499;">Account Number:</span> [Insert Account Number]</p>
+              <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">Account Title:</span> MEHWISH IMRAN</p>
+              <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">Account Number:</span> 01860103756198</p>
+              <p style="margin: 0 0 5px 0;"><span style="color: #A9A499;">IBAN:</span> PK42MEZN0001860103756198</p>
+              <p style="margin: 0;"><span style="color: #A9A499;">SWIFT/BIC:</span> MEZNPKKAXXX</p>
             </div>
             <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
               Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account. <br/><br/>

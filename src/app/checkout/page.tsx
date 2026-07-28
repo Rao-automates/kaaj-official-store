@@ -140,8 +140,10 @@ export default function CheckoutPage() {
                 </p>
                 <div className="bg-kaaj-charcoal/5 border border-kaaj-border p-4 text-left font-sans text-sm text-kaaj-charcoal">
                   <p className="mb-1"><span className="text-kaaj-muted">Bank:</span> Meezan Bank</p>
-                  <p className="mb-1"><span className="text-kaaj-muted">Account Title:</span> KAAJ OFFICIAL</p>
-                  <p><span className="text-kaaj-muted">Account Number:</span> [Insert Account Number]</p>
+                  <p className="mb-1"><span className="text-kaaj-muted">Account Title:</span> MEHWISH IMRAN</p>
+                  <p className="mb-1"><span className="text-kaaj-muted">Account Number:</span> 01860103756198</p>
+                  <p className="mb-1"><span className="text-kaaj-muted">IBAN:</span> PK42MEZN0001860103756198</p>
+                  <p><span className="text-kaaj-muted">SWIFT/BIC:</span> MEZNPKKAXXX</p>
                 </div>
                 <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
                   Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account. 
