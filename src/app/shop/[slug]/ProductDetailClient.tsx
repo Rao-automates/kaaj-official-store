@@ -196,9 +196,9 @@ export default function ProductDetailClient({
               )}
               
               {/* Loved By Pill */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#fce8e6]/80 rounded-full w-fit">
-                <span className="text-[10px]">❤️</span>
-                <span className="font-sans text-[10px] text-[#c73b32] font-semibold tracking-wide">Loved by {fakeLovedBy} shoppers</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#d7d0c8]/50 rounded-full w-fit mt-1">
+                <span className="text-xs drop-shadow-sm">❤️</span>
+                <span className="font-sans text-[11px] text-[#b3413c] font-medium tracking-wide">Loved by {fakeLovedBy} shoppers</span>
               </div>
 
               {/* Specs Grid */}
@@ -338,25 +338,18 @@ export default function ProductDetailClient({
 
               {/* Trust & Timeline */}
               <div className="pt-6 border-t border-kaaj-border mt-6 space-y-8">
-                <div className="grid grid-cols-3 gap-2 px-2">
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <svg className="w-5 h-5 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0110 0v4"/>
-                    </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-semibold uppercase tracking-wider">Secure Checkout</span>
+                <div className="flex flex-col gap-4 px-4 py-2 border border-kaaj-border/30 bg-kaaj-charcoal/[0.02]">
+                  <div className="flex items-center gap-5">
+                    <span className="font-serif text-sm text-kaaj-charcoal/40 italic">01</span>
+                    <span className="font-sans text-[10px] text-kaaj-charcoal font-bold uppercase tracking-[0.2em]">Secure Checkout</span>
                   </div>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <svg className="w-5 h-5 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                    </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-semibold uppercase tracking-wider">7-Day Easy Return</span>
+                  <div className="flex items-center gap-5">
+                    <span className="font-serif text-sm text-kaaj-charcoal/40 italic">02</span>
+                    <span className="font-sans text-[10px] text-kaaj-charcoal font-bold uppercase tracking-[0.2em]">7-Day Easy Returns</span>
                   </div>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <svg className="w-5 h-5 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M2 12h20M12 2L2 12h20L12 2z"/>
-                    </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-semibold uppercase tracking-wider">Handcrafted in PK</span>
+                  <div className="flex items-center gap-5">
+                    <span className="font-serif text-sm text-kaaj-charcoal/40 italic">03</span>
+                    <span className="font-sans text-[10px] text-kaaj-charcoal font-bold uppercase tracking-[0.2em]">Handcrafted in PK</span>
                   </div>
                 </div>
                 
