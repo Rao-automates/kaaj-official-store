@@ -179,7 +179,7 @@ export async function POST(request: Request) {
 
           <div style="margin-top: 50px; text-align: center; border-top: 1px solid rgba(220, 216, 208, 0.3); padding-top: 30px;">
             <p style="font-size: 12px; color: #A9A499;">If you have any questions, please reply to this email.</p>
-            <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; margin-top: 20px;">KAAJ OFFICIAL STORE</p>
+            <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; margin-top: 20px;">K A A J</p>
           </div>
         </div>
       `;
