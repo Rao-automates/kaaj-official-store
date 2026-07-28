@@ -362,7 +362,7 @@ export default function ProductDetailClient({
                           </div>
                           <div className="flex flex-col">
                             <span className="font-serif text-sm text-kaaj-charcoal line-clamp-1">{rp.name}</span>
-                            <span className="font-sans text-[10px] text-kaaj-muted mt-0.5">{rp.price ? formatPKR(parsePKR(rp.price)) : ""}</span>
+                            <span className="font-sans text-[10px] text-kaaj-muted mt-0.5">{rp.price ? formatPKR(rp.price) : ""}</span>
                           </div>
                         </Link>
                       ))}
