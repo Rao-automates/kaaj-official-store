@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { form, cart, shipping, total } = data;
+    const { form, cart, shipping, total, paymentMethod = 'cod' } = data;
 
     if (!form || !form.email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
@@ -18,8 +18,9 @@ export async function POST(request: Request) {
       const auth = Buffer.from(`${WC_KEY}:${WC_SECRET}`).toString("base64");
       
       const wcPayload = {
-        payment_method: "cod",
-        payment_method_title: "Cash on Delivery",
+        payment_method: paymentMethod === 'bacs' ? "bacs" : "cod",
+        payment_method_title: paymentMethod === 'bacs' ? "Direct Bank Transfer" : "Cash on Delivery",
+        status: paymentMethod === 'bacs' ? "on-hold" : "processing",
         set_paid: false,
         billing: {
           first_name: form.firstName,

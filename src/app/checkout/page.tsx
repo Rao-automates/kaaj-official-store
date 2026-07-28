@@ -44,11 +44,12 @@ export default function CheckoutPage() {
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<"cod" | "bacs">("cod");
   const [orderNumber] = useState(
     () => `KO-${Date.now().toString().slice(-6)}`
   );
 
-  const shipping = cartTotal >= 5000 ? 0 : 250;
+  const shipping = paymentMethod === "bacs" ? 0 : (cartTotal >= 5000 ? 0 : 250);
   const total = cartTotal + shipping;
 
   const handleChange = (
@@ -86,6 +87,7 @@ export default function CheckoutPage() {
           cartTotal,
           shipping,
           total,
+          paymentMethod,
           orderNumber,
         }),
       });
@@ -150,7 +152,9 @@ export default function CheckoutPage() {
             <div className="pt-2 border-t border-kaaj-border mt-3">
               <div className="flex justify-between font-sans text-sm">
                 <span className="text-kaaj-muted">Payment Method</span>
-                <span className="text-kaaj-charcoal font-medium">Cash on Delivery</span>
+                <span className="text-kaaj-charcoal font-medium">
+                  {paymentMethod === "bacs" ? "Direct Bank Transfer" : "Cash on Delivery"}
+                </span>
               </div>
               <div className="flex justify-between font-sans text-sm mt-1">
                 <span className="text-kaaj-muted">Order Total</span>
@@ -355,19 +359,77 @@ export default function CheckoutPage() {
                 <h2 className="font-serif text-2xl text-kaaj-charcoal border-b border-kaaj-border pb-3">
                   Payment Method
                 </h2>
-                <div className="flex items-center gap-4 border border-kaaj-charcoal bg-kaaj-cream p-4">
-                  <div className="w-5 h-5 rounded-full border-2 border-kaaj-charcoal flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-kaaj-charcoal" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-sans text-sm font-medium text-kaaj-charcoal uppercase tracking-wide">
-                      Cash on Delivery (COD)
-                    </p>
-                    <p className="font-sans text-xs text-kaaj-muted mt-0.5">
-                      Pay when your order arrives at your doorstep.
-                    </p>
-                  </div>
-                  <span className="text-xl"></span>
+                <div className="flex flex-col gap-3">
+                  {/* COD */}
+                  <label 
+                    className={`flex items-center gap-4 border p-4 cursor-pointer transition-colors ${
+                      paymentMethod === "cod" 
+                        ? "border-kaaj-charcoal bg-kaaj-cream" 
+                        : "border-kaaj-border bg-transparent hover:bg-kaaj-cream/50"
+                    }`}
+                  >
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      value="cod" 
+                      checked={paymentMethod === "cod"} 
+                      onChange={() => setPaymentMethod("cod")}
+                      className="sr-only"
+                    />
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === "cod" ? "border-kaaj-charcoal" : "border-kaaj-border"
+                    }`}>
+                      {paymentMethod === "cod" && <div className="w-2.5 h-2.5 rounded-full bg-kaaj-charcoal" />}
+                    </div>
+                    <div className="flex-1">
+                      <p className={`font-sans text-sm font-medium uppercase tracking-wide ${
+                        paymentMethod === "cod" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/70"
+                      }`}>
+                        Cash on Delivery (COD)
+                      </p>
+                      <p className="font-sans text-xs text-kaaj-muted mt-0.5">
+                        Pay when your order arrives at your doorstep.
+                      </p>
+                    </div>
+                  </label>
+
+                  {/* BACS */}
+                  <label 
+                    className={`flex items-center gap-4 border p-4 cursor-pointer transition-colors ${
+                      paymentMethod === "bacs" 
+                        ? "border-kaaj-charcoal bg-kaaj-cream" 
+                        : "border-kaaj-border bg-transparent hover:bg-kaaj-cream/50"
+                    }`}
+                  >
+                    <input 
+                      type="radio" 
+                      name="paymentMethod" 
+                      value="bacs" 
+                      checked={paymentMethod === "bacs"} 
+                      onChange={() => setPaymentMethod("bacs")}
+                      className="sr-only"
+                    />
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === "bacs" ? "border-kaaj-charcoal" : "border-kaaj-border"
+                    }`}>
+                      {paymentMethod === "bacs" && <div className="w-2.5 h-2.5 rounded-full bg-kaaj-charcoal" />}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className={`font-sans text-sm font-medium uppercase tracking-wide ${
+                          paymentMethod === "bacs" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/70"
+                        }`}>
+                          Direct Bank Transfer
+                        </p>
+                        <span className="bg-kaaj-gold/20 text-kaaj-gold-dark text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                          Free Delivery
+                        </span>
+                      </div>
+                      <p className="font-sans text-xs text-kaaj-muted mt-0.5">
+                        Make your payment directly into our bank account. Your order will be shipped once the funds have cleared.
+                      </p>
+                    </div>
+                  </label>
                 </div>
               </div>
             </div>
