@@ -38,6 +38,7 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 
 ### A. Product Detail Page (PDP)
 *   **Sticky Mobile Actions ("Buy Now / Add to Cart"):** A sticky bottom bar utilizing `IntersectionObserver` keeps the primary CTA buttons always visible on mobile devices as the user scrolls, significantly improving conversion rates.
+    *   *Mobile UX Fix:* To prevent "white flash" glitches caused by iOS Safari's URL bar expanding/collapsing, the bar is hidden using `translate-y-[150%]` (ensuring it is fully off-screen) and utilizes `pb-[env(safe-area-inset-bottom)]` to extend the background underneath the home indicator.
 *   **Cross-Selling ("Pairs well with"):** Implemented a dynamic cross-selling section at the absolute bottom of the PDP to increase Average Order Value (AOV). It displays complementary products in a clean grid.
 *   **Trust Badges Logic:** We explicitly removed repetitive trust badges from the global site footer. Instead, they are rendered as a premium 3-column layout in the right-hand sticky sidebar of the PDP ("Secure Checkout", "7-Day Returns", "Handcrafted in PK").
 
@@ -46,7 +47,10 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 *   **Dynamic Checkout Button:** The "Place Order" button dynamically updates its text based on the selected payment method (e.g., "Place Order — COD" vs "Place Order — Bank Transfer").
 *   **BACS (Direct Bank Transfer) Incentive & Logic:**
     *   Selecting BACS automatically overrides and sets the shipping fee to `Rs. 0` (Free Delivery Incentive).
-    *   The WooCommerce Order Status is explicitly mapped to `on-hold` via the API, allowing the KAAJ team to manually verify the bank transfer before moving it to `processing`.
+    *   The WooCommerce Order Status is explicitly mapped to `pending` via the API, allowing the KAAJ team to manually verify the bank transfer before moving it to `processing`.
+*   **COD (Cash on Delivery) Logic:**
+    *   The WooCommerce Order Status is explicitly mapped to `processing` via the API, as the customer has fully committed to the purchase and the store must now fulfill it.
+*   **No Customer Accounts (Guest Checkout Only):** To minimize friction for luxury shoppers and avoid technical overhead (authentication/passwords), the site operates strictly via Guest Checkout. Order tracking is handled via a lightweight `/track-order` lookup page.
 *   **Hardcoded Bank Details (API Limitation):** Because the WooCommerce REST API (v3) does not securely expose BACS account details dynamically for headless setups, the bank details are intentionally hardcoded in both `src/app/checkout/page.tsx` and `src/app/api/checkout/route.ts`.
     *   **Meezan Bank Details:** 
         *   **Title:** MEHWISH IMRAN
@@ -73,5 +77,8 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 *   **Brand Formatting:** The brand name must always be formatted as **K A A J** (with single spaces between letters) in user-facing titles, metadata, and footers. Do not use "Kaaj Official".
 *   **Currency Formatting:** All prices are handled by the custom `formatPKR` utility. Ensure strictly typed inputs (string manipulation) when interfacing with the WooCommerce GraphQL/REST returns.
 
+## 6. Store Management Strategy
+*   **No Web Admin Portal:** We explicitly decided *not* to build a custom Next.js admin dashboard. All order management, status updates, and inventory tracking are handled exclusively through the native **WooCommerce Mobile App** (or the WordPress backend if necessary). This keeps the Next.js repository strictly focused on the customer storefront, maximizing security and minimizing technical debt.
+
 ---
-*End of Document. Generated on: July 29, 2026*
+*End of Document. Generated on: July 30, 2026*
