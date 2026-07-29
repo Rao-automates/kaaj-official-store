@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       const wcPayload = {
         payment_method: paymentMethod === 'bacs' ? "bacs" : "cod",
         payment_method_title: paymentMethod === 'bacs' ? "Direct Bank Transfer" : "Cash on Delivery",
-        status: paymentMethod === 'bacs' ? "on-hold" : "processing",
+        status: paymentMethod === 'bacs' ? "pending" : "processing",
         set_paid: false,
         billing: {
           first_name: form.firstName,
