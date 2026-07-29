@@ -39,18 +39,25 @@ export default function ProductDetailClient({
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
   const [descOpen, setDescOpen] = useState(true);
   const [addedToCart, setAddedToCart] = useState(false);
-  const [showStickyBar, setShowStickyBar] = useState(false);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const stickyBarRef = useRef<HTMLDivElement>(null);
 
   // Track when the original button area scrolls out of view
   useEffect(() => {
     const target = buttonsRef.current;
-    if (!target) return;
+    const stickyBar = stickyBarRef.current;
+    if (!target || !stickyBar) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Show sticky bar when the original buttons are NOT visible
-        setShowStickyBar(!entry.isIntersecting);
+        // Direct DOM mutation prevents heavy React re-renders on scroll
+        if (!entry.isIntersecting) {
+          stickyBar.classList.remove("translate-y-full", "opacity-0", "pointer-events-none");
+          stickyBar.classList.add("translate-y-0", "opacity-100");
+        } else {
+          stickyBar.classList.add("translate-y-full", "opacity-0", "pointer-events-none");
+          stickyBar.classList.remove("translate-y-0", "opacity-100");
+        }
       },
       { threshold: 0, rootMargin: "0px" }
     );
@@ -456,12 +463,8 @@ export default function ProductDetailClient({
 
       {/* Sticky Bottom Bar — appears when original buttons scroll out of view */}
       <div
-        className={cn(
-          "fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-expo-out",
-          showStickyBar
-            ? "translate-y-0 opacity-100"
-            : "translate-y-full opacity-0 pointer-events-none"
-        )}
+        ref={stickyBarRef}
+        className="fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-expo-out translate-y-full opacity-0 pointer-events-none will-change-transform"
       >
         <div className="bg-kaaj-deep/95 backdrop-blur-md border-t border-kaaj-border">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
