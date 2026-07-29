@@ -37,6 +37,7 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 ## 4. Key Custom Implementations & Minutiae
 
 ### A. Product Detail Page (PDP)
+*   **Sticky Mobile Actions ("Buy Now / Add to Cart"):** A sticky bottom bar utilizing `IntersectionObserver` keeps the primary CTA buttons always visible on mobile devices as the user scrolls, significantly improving conversion rates.
 *   **Cross-Selling ("Pairs well with"):** Implemented a dynamic cross-selling section at the absolute bottom of the PDP to increase Average Order Value (AOV). It displays complementary products in a clean grid.
 *   **Trust Badges Logic:** We explicitly removed repetitive trust badges from the global site footer. Instead, they are rendered as a premium 3-column layout in the right-hand sticky sidebar of the PDP ("Secure Checkout", "7-Day Returns", "Handcrafted in PK").
 
@@ -58,12 +59,19 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 *   **Footer Branding:** The footer of transactional emails has been explicitly stripped of "KAAJ OFFICIAL STORE" and replaced with the spaced, minimalist mark: **K A A J**. 
 *   **Conditional Rendering:** The email template in `route.ts` uses conditional logic to inject the Meezan Bank details HTML block *only* if `paymentMethod === "bacs"`.
 
-## 5. Metadata, SEO, & Formatting Standards
-*   **The Apostrophe Bug (`&#39;`):** When writing meta descriptions (like in `src/app/layout.tsx`), Next.js automatically escapes standard straight single quotes (`'`) into HTML entities (`&#39;`). Google's search engine crawler sometimes fails to parse this and displays the ugly raw entity in Search Results. 
-    *   **Strict Solution:** We strictly use the typographic curly apostrophe (`’`) (HTML entity `&#8217;`) in *all* metadata strings (e.g., `KAAJ’s`, `women’s`). This permanently prevents the HTML entity bug from appearing on Google SERPs.
-*   **Keyword Research & Injection:** The site's global `<meta name="keywords">` have been aggressively optimized for high-intent, long-tail search terms in the fashion industry (e.g., "Pakistani designer dresses", "Luxury pret wear Pakistan", "Pakistani suits online UK USA").
+## 5. SEO, Metadata, & Security Architecture
+*   **Enterprise JSON-LD Structured Data:**
+    *   **Organization & WebSite:** Injected globally in `src/app/layout.tsx`. Enables Google Sitelinks Search Box via `SearchAction`, and provides local business signals via `contactPoint` and `address`.
+    *   **Product Schema:** Rendered dynamically on `shop/[slug]/page.tsx` including `sku`, `brand`, `itemCondition`, and full pricing/availability offers.
+    *   **BreadcrumbList:** Added to Product and Category pages to render clean SERP navigation paths (e.g., `Home > Shop > Pret`).
+*   **Canonical URLs (Deduplication Strategy):** Every single indexable route explicitly defines an `alternates.canonical` tag to prevent Google duplicate content penalties from query parameters (like `?sort=price`).
+*   **Metadata Wrappers for Client Pages:** Since Next.js `"use client"` files cannot export metadata, thin server-component wrappers (`layout.tsx`) are strictly used for all client-side pages (Contact, Returns, Track Order, Cart, Checkout, Search) to ensure complete `<title>` and `<meta name="description">` coverage.
+*   **Crawl Budget Optimization (`robots.ts`):** Explicitly blocks `/api/`, `/cart`, `/checkout`, and `/search` to ensure Google's crawl budget is focused purely on product discovery.
+*   **Sitemap Generation (`sitemap.ts`):** Automatically maps all static and dynamic (Product, Category) routes. The dynamic product route base is strictly `/shop/` (not `/product/`).
+*   **Security & Performance Headers (`next.config.ts`):** Enforces HSTS, X-Frame-Options (DENY), X-Content-Type-Options (nosniff), and strict Referrer-Policies to maximize Google Trust signals. Enforces `trailingSlash: false`.
+*   **The Apostrophe Bug (`&#39;`):** When writing meta descriptions (like in `src/app/layout.tsx`), Next.js automatically escapes standard straight single quotes (`'`) into HTML entities (`&#39;`). We strictly use the typographic curly apostrophe (`’`) (HTML entity `&#8217;`) in *all* metadata strings (e.g., `KAAJ’s`, `women’s`) to prevent this.
 *   **Brand Formatting:** The brand name must always be formatted as **K A A J** (with single spaces between letters) in user-facing titles, metadata, and footers. Do not use "Kaaj Official".
-*   **Currency Formatting:** All prices are handled by the custom `formatPKR` utility. Ensure strictly typed inputs (string manipulation) when interfacing with the WooCommerce GraphQL/REST returns, as WooCommerce sometimes returns prices as strings or floats inconsistently.
+*   **Currency Formatting:** All prices are handled by the custom `formatPKR` utility. Ensure strictly typed inputs (string manipulation) when interfacing with the WooCommerce GraphQL/REST returns.
 
 ---
 *End of Document. Generated on: July 29, 2026*
