@@ -15,7 +15,6 @@
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.2",
     "hostinger-mail-api-sdk": "^1.0.2",
-    "jose": "^6.2.5",
     "next": "^15.3.4",
     "nodemailer": "^9.0.3",
     "react": "^19.0.0",
