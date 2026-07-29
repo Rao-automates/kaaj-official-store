@@ -5,10 +5,11 @@ import type { ProductsQueryResponse, CategoriesQueryResponse } from "@/lib/types
 
 const URL = 'https://kaajofficial.com'
 
+export const revalidate = 3600; // regenerate sitemap every hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let products: any[] = [];
   try {
-    // Fetch top 100 products for sitemap
     const data = await gqlFetch<ProductsQueryResponse>(GET_PRODUCTS, { first: 100 });
     products = data?.products?.nodes ?? [];
   } catch (err) {
@@ -23,21 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Sitemap category fetch error", err);
   }
 
-  const productRoutes = products.map((product) => ({
-    url: `${URL}/product/${product.slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
-
-  const categoryRoutes = categories.map((category) => ({
-    url: `${URL}/categories/${category.slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
-
-  return [
+  // Static pages — highest priority crawl targets
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: URL,
       lastModified: new Date().toISOString(),
@@ -50,6 +38,50 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    {
+      url: `${URL}/contact`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: `${URL}/size-guide`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: `${URL}/returns`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+    {
+      url: `${URL}/track-order`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+  ];
+
+  // Product pages — fix: was /product/, actual route is /shop/
+  const productRoutes: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${URL}/shop/${product.slug}`,
+    lastModified: product.modified || new Date().toISOString(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // Category pages
+  const categoryRoutes: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${URL}/categories/${category.slug}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticRoutes,
     ...categoryRoutes,
     ...productRoutes,
   ]

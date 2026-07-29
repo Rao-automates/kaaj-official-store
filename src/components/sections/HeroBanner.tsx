@@ -9,7 +9,7 @@ export default function HeroBanner() {
       {/* Background Image */}
       <Image
         src="/hero.png"
-        alt="Kaaj Official - Premium Pakistani Womenswear"
+        alt="KAAJ - Premium Pakistani Womenswear"
         fill
         priority
         className="object-cover object-center opacity-60 mix-blend-luminosity"

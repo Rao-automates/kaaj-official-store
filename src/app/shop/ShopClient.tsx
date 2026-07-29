@@ -66,7 +66,7 @@ export default function ShopClient() {
       <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
         <Image
           src="/hero.png"
-          alt="Kaaj Official Collection"
+          alt="KAAJ Collection"
           fill
           priority
           className="object-cover object-center opacity-30 mix-blend-luminosity"
@@ -79,7 +79,7 @@ export default function ShopClient() {
           </p>
           <h1 className="font-serif text-display-md text-kaaj-cream">Shop All</h1>
           <p className="font-sans text-sm text-kaaj-cream/60 mt-3 max-w-md mx-auto">
-            Discover the complete Kaaj Official range — from everyday pret to occasion-ready formals.
+            Discover the complete KAAJ range — from everyday pret to occasion-ready formals.
           </p>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { sizeData } from "@/lib/constants";
 
 export const metadata = {
-  title: "Size Guide - KAAJ Official",
+  title: "Size Guide | K A A J",
   description: "Find your perfect fit with our comprehensive size guide.",
 };
 

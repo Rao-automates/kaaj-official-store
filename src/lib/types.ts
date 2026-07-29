@@ -37,6 +37,8 @@ export interface Product {
   databaseId: number;
   name: string;
   slug: string;
+  sku?: string;
+  modified?: string;
   type: "SIMPLE" | "VARIABLE" | "GROUPED" | "EXTERNAL";
   status: string;
   description: string;

@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
       await client.sendEmail(MAILBOX_ID, {
         to: [email],
-        subject: "Welcome to KAAJ Official",
+        subject: "Welcome to KAAJ",
         html: emailHtml,
       });
 

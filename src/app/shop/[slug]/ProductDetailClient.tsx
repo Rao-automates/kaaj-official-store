@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -39,6 +39,25 @@ export default function ProductDetailClient({
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
   const [descOpen, setDescOpen] = useState(true);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+
+  // Track when the original button area scrolls out of view
+  useEffect(() => {
+    const target = buttonsRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show sticky bar when the original buttons are NOT visible
+        setShowStickyBar(!entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: "0px" }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
 
   const isVariable = product.type === "VARIABLE";
   const attributes = product.attributes?.nodes ?? [];
@@ -311,8 +330,8 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              {/* Add to Cart */}
-              <div className="pt-4 space-y-3">
+              {/* Add to Cart & Order Now */}
+              <div ref={buttonsRef} className="pt-4 space-y-3">
                 <button
                   onClick={handleAddToCart}
                   disabled={isOOS || variantNotSelected}
@@ -330,6 +349,22 @@ export default function ProductDetailClient({
                     : addedToCart
                     ? "✓ Added To Cart"
                     : "ADD TO CART"}
+                </button>
+                <button
+                  onClick={handleOrderNow}
+                  disabled={isOOS || variantNotSelected}
+                  className={cn(
+                    "w-full h-14 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-all rounded-sm text-center flex items-center justify-center",
+                    isOOS || variantNotSelected
+                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
+                      : "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark shadow-lg"
+                  )}
+                >
+                  {isOOS
+                    ? "Out of Stock"
+                    : variantNotSelected
+                    ? "Select Options"
+                    : "BUY NOW"}
                 </button>
                 {variantNotSelected && (
                   <p className="font-sans text-[10px] text-kaaj-charcoal/60 text-center mt-2">
@@ -418,6 +453,84 @@ export default function ProductDetailClient({
       </div>
 
       <SizeGuideModal isOpen={sizeGuideOpen} onClose={() => setSizeGuideOpen(false)} />
+
+      {/* Sticky Bottom Bar — appears when original buttons scroll out of view */}
+      <div
+        className={cn(
+          "fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-expo-out",
+          showStickyBar
+            ? "translate-y-0 opacity-100"
+            : "translate-y-full opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="bg-kaaj-deep/95 backdrop-blur-md border-t border-kaaj-border">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            {/* Mobile: stack product info and buttons */}
+            <div className="flex items-center gap-3">
+              {/* Product mini-info (hidden on very small screens) */}
+              <div className="hidden sm:flex items-center gap-3 flex-shrink-0 mr-auto">
+                {(matchingVariation?.image || product.image) && (
+                  <div className="relative w-12 h-12 rounded-sm overflow-hidden border border-kaaj-border/40 flex-shrink-0">
+                    <Image
+                      src={(matchingVariation?.image || product.image)?.sourceUrl || ""}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                      sizes="48px"
+                    />
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal/70 truncate max-w-[180px]">
+                    {product.name}
+                  </p>
+                  <p className="font-serif text-sm text-kaaj-charcoal">
+                    {formatPKR(displayPrice)}
+                  </p>
+                </div>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex items-center gap-2 flex-1 sm:flex-none sm:ml-auto">
+                <button
+                  onClick={handleAddToCart}
+                  disabled={isOOS || variantNotSelected}
+                  className={cn(
+                    "flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center",
+                    isOOS || variantNotSelected
+                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
+                      : "bg-[#252525] text-white hover:bg-black border border-kaaj-border/30"
+                  )}
+                >
+                  {isOOS
+                    ? "Sold Out"
+                    : variantNotSelected
+                    ? "Select Options"
+                    : addedToCart
+                    ? "✓ Added"
+                    : "Add to Cart"}
+                </button>
+                <button
+                  onClick={handleOrderNow}
+                  disabled={isOOS || variantNotSelected}
+                  className={cn(
+                    "flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center",
+                    isOOS || variantNotSelected
+                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
+                      : "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark"
+                  )}
+                >
+                  {isOOS
+                    ? "Sold Out"
+                    : variantNotSelected
+                    ? "Select Options"
+                    : "Buy Now"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

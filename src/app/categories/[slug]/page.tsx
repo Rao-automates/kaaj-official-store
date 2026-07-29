@@ -19,7 +19,7 @@ export const revalidate = 60;
 const CATEGORY_META: Record<string, { title: string; description: string }> = {
   pret: {
     title: "Pret — Ready-to-Wear",
-    description: "Shop Kaaj Official's ready-to-wear Pret collection. Beautifully crafted everyday eastern wear.",
+    description: "Shop KAAJ’s ready-to-wear Pret collection. Beautifully crafted everyday eastern wear.",
   },
   unstitched: {
     title: "Unstitched Collection",
@@ -63,7 +63,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const name = slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
     title: meta?.title ?? name,
-    description: meta?.description ?? `Shop ${name} from Kaaj Official.`,
+    description: meta?.description ?? `Shop ${name} from KAAJ.`,
+    alternates: {
+      canonical: `/categories/${slug}`,
+    },
   };
 }
 
@@ -91,8 +94,37 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const meta = CATEGORY_META[slug];
   const displayName = slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://kaajofficial.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Categories",
+        item: "https://kaajofficial.com/categories",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: displayName,
+        item: `https://kaajofficial.com/categories/${slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-kaaj-cream">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* Page Header */}
       <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
         <Image

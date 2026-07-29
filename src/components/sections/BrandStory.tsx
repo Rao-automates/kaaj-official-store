@@ -47,7 +47,7 @@ export default function BrandStory() {
               and precision, the detail that separates a garment from a masterpiece.
             </p>
             <p className="font-sans text-sm md:text-base text-kaaj-cream/60 leading-relaxed font-light pb-16">
-              Kaaj Official was founded on this philosophy: that every piece of clothing should
+              KAAJ was founded on this philosophy: that every piece of clothing should
               tell a story of heritage, crafted with the care and attention that your culture deserves.
             </p>
           </div>

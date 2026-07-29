@@ -23,11 +23,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaajofficial.com"),
   title: {
-    default: "K A A J — Premium Pakistani Women’s Fashion",
+    default: "K A A J — Premium Pakistani Women’s Fashion | KAAJ",
     template: "%s | K A A J",
   },
   description:
-    "Discover KAAJ’s exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women’s fashion crafted with heritage and contemporary elegance.",
+    "KAAJ — Discover KAAJ’s exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women’s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
   keywords: [
     "Pakistani women’s fashion",
     "Pakistani designer dresses",
@@ -52,15 +52,20 @@ export const metadata: Metadata = {
     "Eastern wear",
     "Desi fashion",
     "KAAJ",
+    "KAAJ Pakistan",
+    "KAAJ clothing",
+    "KAAJ fashion",
+    "KAAJ online store",
+    "K A A J",
   ],
   openGraph: {
     type: "website",
     locale: "en_PK",
     url: "https://kaajofficial.com",
     siteName: "K A A J",
-    title: "K A A J — Premium Pakistani Women’s Fashion",
+    title: "K A A J — Premium Pakistani Women’s Fashion | KAAJ",
     description:
-      "Exquisite Pret, Unstitched, Luxury Lawn, and Formal collections for the modern Pakistani woman.",
+      "KAAJ — Exquisite Pret, Unstitched, Luxury Lawn, and Formal collections for the modern Pakistani woman. Shop KAAJ online.",
   },
   twitter: {
     card: "summary_large_image",
@@ -71,6 +76,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
@@ -78,16 +86,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  const jsonLdOrg = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "K A A J",
+    name: "KAAJ",
+    alternateName: "K A A J",
     url: "https://kaajofficial.com",
     logo: "https://kaajofficial.com/icon.svg",
-    description: "Premium Pakistani Women’s Fashion",
+    description: "KAAJ — Premium Pakistani Women’s Fashion. Shop Pret, Unstitched, Luxury Lawn, and Formal wear online.",
     sameAs: [
       "https://www.instagram.com/wearkaaj/"
-    ]
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+92-301-330-5325",
+      contactType: "customer service",
+      availableLanguage: ["English", "Urdu"],
+      areaServed: ["PK", "GB", "US", "AE", "CA"],
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "PK",
+    },
+  };
+
+  const jsonLdWebsite = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "KAAJ",
+    alternateName: "K A A J",
+    url: "https://kaajofficial.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://kaajofficial.com/search?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
@@ -95,7 +131,11 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
         />
       </head>
       <body className="font-sans bg-kaaj-cream text-kaaj-charcoal antialiased">

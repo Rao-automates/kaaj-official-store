@@ -82,7 +82,7 @@ export default function Header() {
             <Link
               href="/"
               className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-transform hover:scale-105 duration-500"
-              aria-label="Kaaj Official Home"
+              aria-label="KAAJ Home"
             >
               <KaajLogo />
             </Link>

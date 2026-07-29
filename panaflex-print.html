@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAAJ - Luxury Panaflex Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@100;200;300;400;500&family=Space+Grotesk:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --deep-olive: #3A3C35;
+            --olive-mid: #44463F;
+            --warm-cream: #DCD8D0;
+            --gold-accent: #C4A97D;
+            --gold-light: #D4BE96;
+            --cream-soft: rgba(220, 216, 208, 0.08);
+            --cream-line: rgba(220, 216, 208, 0.12);
+            --gold-line: rgba(196, 169, 125, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @page {
+            size: 2000px 1000px;
+            margin: 0;
+        }
+
+        body {
+            width: 2000px;
+            height: 1000px;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--warm-cream);
+            background:
+                radial-gradient(ellipse 120% 80% at 25% 50%, #4A4C44 0%, transparent 60%),
+                radial-gradient(ellipse 80% 100% at 85% 30%, #3E403A 0%, transparent 50%),
+                linear-gradient(135deg, #44463F 0%, #363832 40%, #2E302A 100%);
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        /* Vignette via pseudo-element */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            box-shadow: inset 0 0 200px 60px rgba(30, 32, 28, 0.6);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                width: 2000px;
+                height: 1000px;
+            }
+        }
+
+        /* ===== OUTER GOLD FRAME ===== */
+        .frame-outer {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            right: 32px;
+            bottom: 32px;
+            border: 1px solid var(--gold-line);
+        }
+
+        .frame-inner {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+            border: 1px solid rgba(196, 169, 125, 0.10);
+        }
+
+        /* ===== CORNER ORNAMENTS (Pakistani geometric motif) ===== */
+        .corner-ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 5;
+        }
+
+        .corner-ornament svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .co-tl {
+            top: 24px;
+            left: 24px;
+        }
+
+        .co-tr {
+            top: 24px;
+            right: 24px;
+            transform: scaleX(-1);
+        }
+
+        .co-bl {
+            bottom: 24px;
+            left: 24px;
+            transform: scaleY(-1);
+        }
+
+        .co-br {
+            bottom: 24px;
+            right: 24px;
+            transform: scale(-1, -1);
+        }
+
+        /* ===== DECORATIVE GOLD ACCENT LINE ===== */
+        .gold-rule {
+            position: absolute;
+            top: 50%;
+            left: 60px;
+            right: 60px;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--gold-accent) 15%,
+                    var(--gold-accent) 50%,
+                    var(--gold-accent) 85%,
+                    transparent 100%);
+            opacity: 0.18;
+            transform: translateY(-50%);
+        }
+
+        /* ===== MAIN LAYOUT — Asymmetric Editorial ===== */
+        .layout {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr auto;
+            z-index: 10;
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        /* Watermark — large, behind everything */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            width: 700px;
+            height: 700px;
+            opacity: 0.025;
+            pointer-events: none;
+        }
+
+        /* ===== LOGO SYMBOL (refined) ===== */
+        .symbol-mark {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 28px;
+            opacity: 0.75;
+        }
+
+        /* Decorative small ornament above symbol */
+        .top-flourish {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+            opacity: 0.4;
+            margin-bottom: 32px;
+        }
+
+        /* ===== WORDMARK ===== */
+        .wordmark {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: 300px;
+            letter-spacing: 0.22em;
+            margin-right: -0.22em;
+            line-height: 0.78;
+            color: var(--warm-cream);
+            position: relative;
+        }
+
+        /* Gold underline accent beneath wordmark */
+        .wordmark-underline {
+            width: 520px;
+            height: 1px;
+            margin-top: 40px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--gold-accent) 20%,
+                    var(--gold-light) 50%,
+                    var(--gold-accent) 80%,
+                    transparent 100%);
+            opacity: 0.35;
+        }
+
+        /* Small diamond at center of underline */
+        .diamond-center {
+            width: 8px;
+            height: 8px;
+            background: var(--gold-accent);
+            opacity: 0.45;
+            transform: rotate(45deg);
+            margin-top: -4px;
+            align-self: center;
+        }
+
+        /* Tagline */
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 26px;
+            letter-spacing: 0.5em;
+            margin-right: -0.5em;
+            margin-top: 36px;
+            color: var(--gold-light);
+            opacity: 0.65;
+            text-transform: uppercase;
+        }
+
+        /* ===== LEFT / RIGHT VERTICAL TEXT (editorial detail) ===== */
+        .side-text {
+            position: absolute;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--warm-cream);
+            opacity: 0.2;
+            writing-mode: vertical-rl;
+        }
+
+        .side-text-left {
+            left: 54px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .side-text-right {
+            right: 54px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 110px;
+            z-index: 10;
+        }
+
+        /* Top border of footer: thin gold line */
+        .footer-border {
+            position: absolute;
+            top: 0;
+            left: 80px;
+            right: 80px;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--gold-accent) 10%,
+                    var(--gold-accent) 90%,
+                    transparent 100%);
+            opacity: 0.15;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 0;
+            padding: 0 80px;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 48px;
+        }
+
+        /* Ornamental divider between footer items */
+        .footer-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--gold-accent);
+            opacity: 0.2;
+        }
+
+        .footer-diamond-divider {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-diamond-divider::before,
+        .footer-diamond-divider::after {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--gold-accent);
+            opacity: 0.2;
+        }
+
+        .mini-diamond {
+            width: 4px;
+            height: 4px;
+            background: var(--gold-accent);
+            opacity: 0.25;
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .footer-icon {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--gold-accent);
+            stroke-width: 1.2;
+            opacity: 0.5;
+        }
+
+        .footer-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--warm-cream);
+            opacity: 0.6;
+        }
+
+        /* ===== SUBTLE TOP BAR ===== */
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 110px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .top-bar-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--warm-cream);
+            opacity: 0.15;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <!-- ===== GOLD FRAME ===== -->
+    <div class="frame-outer"></div>
+    <div class="frame-inner"></div>
+
+    <!-- ===== CORNER ORNAMENTS ===== -->
+    <div class="corner-ornament co-tl">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,0 L 28,0" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 0,0 L 0,28" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 8,8 L 22,8 L 22,22" stroke="#C4A97D" stroke-width="0.5" fill="none" opacity="0.2" />
+            <rect x="3" y="3" width="3" height="3" fill="#C4A97D" opacity="0.15" transform="rotate(45, 4.5, 4.5)" />
+        </svg>
+    </div>
+    <div class="corner-ornament co-tr">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,0 L 28,0" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 0,0 L 0,28" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 8,8 L 22,8 L 22,22" stroke="#C4A97D" stroke-width="0.5" fill="none" opacity="0.2" />
+            <rect x="3" y="3" width="3" height="3" fill="#C4A97D" opacity="0.15" transform="rotate(45, 4.5, 4.5)" />
+        </svg>
+    </div>
+    <div class="corner-ornament co-bl">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,0 L 28,0" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 0,0 L 0,28" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 8,8 L 22,8 L 22,22" stroke="#C4A97D" stroke-width="0.5" fill="none" opacity="0.2" />
+            <rect x="3" y="3" width="3" height="3" fill="#C4A97D" opacity="0.15" transform="rotate(45, 4.5, 4.5)" />
+        </svg>
+    </div>
+    <div class="corner-ornament co-br">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,0 L 28,0" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 0,0 L 0,28" stroke="#C4A97D" stroke-width="0.8" fill="none" opacity="0.35" />
+            <path d="M 8,8 L 22,8 L 22,22" stroke="#C4A97D" stroke-width="0.5" fill="none" opacity="0.2" />
+            <rect x="3" y="3" width="3" height="3" fill="#C4A97D" opacity="0.15" transform="rotate(45, 4.5, 4.5)" />
+        </svg>
+    </div>
+
+    <!-- ===== DECORATIVE HORIZONTAL GOLD RULE ===== -->
+    <div class="gold-rule"></div>
+
+    <!-- ===== WATERMARK ===== -->
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100, 100)" stroke="currentColor" fill="none">
+                <line x1="-12" y1="-45" x2="-12" y2="45" stroke-width="2" />
+                <path d="M 38,-45 C -28,-20 -28,20 38,45" stroke-width="2" />
+                <path d="M 18,-45 C -18,-20 -18,20 18,45" stroke-width="0.75" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- ===== SIDE VERTICAL TEXT ===== -->
+    <div class="side-text side-text-left">Established — 2026</div>
+    <div class="side-text side-text-right">Karachi — Pakistan</div>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <span class="top-bar-text">The Art of Pakistani Craft</span>
+    </div>
+
+    <!-- ===== HERO CONTENT ===== -->
+    <div class="layout">
+        <div class="hero">
+            <!-- Top ornamental divider -->
+            <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px;">
+                <div
+                    style="width:60px; height:1px; background:linear-gradient(90deg, transparent, var(--gold-accent)); opacity:0.35;">
+                </div>
+                <div
+                    style="width:6px; height:6px; background:var(--gold-accent); opacity:0.4; transform:rotate(45deg);">
+                </div>
+                <div
+                    style="width:60px; height:1px; background:linear-gradient(270deg, transparent, var(--gold-accent)); opacity:0.35;">
+                </div>
+            </div>
+
+            <!-- Wordmark -->
+            <h1 class="wordmark">KAAJ</h1>
+
+            <!-- Gold underline + diamond -->
+            <div class="wordmark-underline"></div>
+            <div class="diamond-center"></div>
+
+            <!-- Tagline -->
+            <h2 class="tagline">Pakistani Women's Fashion</h2>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <div class="footer-border"></div>
+        <div class="footer-content">
+
+            <!-- Instagram -->
+            <div class="footer-item">
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span class="footer-label">@wearkaaj</span>
+            </div>
+
+            <!-- Divider -->
+            <div class="footer-diamond-divider">
+                <div class="mini-diamond"></div>
+            </div>
+
+            <!-- Website -->
+            <div class="footer-item">
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                </svg>
+                <span class="footer-label">kaajofficial.com</span>
+            </div>
+
+            <!-- Divider -->
+            <div class="footer-diamond-divider">
+                <div class="mini-diamond"></div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="footer-item">
+                <svg class="footer-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                    </path>
+                </svg>
+                <span class="footer-label">+92 301 3305325</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -52,13 +52,33 @@ export async function generateMetadata({
   const product = await getProduct(slug);
   if (!product) return { title: "Product Not Found" };
 
+  const cleanDesc = product.shortDescription
+    ? product.shortDescription.replace(/<[^>]*>/g, "").slice(0, 160)
+    : `Shop ${product.name} from KAAJ\u2019s exclusive collection.`;
+
   return {
     title: product.name,
-    description:
-      product.shortDescription
-        ? product.shortDescription.replace(/<[^>]*>/g, "").slice(0, 160)
-        : `Shop ${product.name} from Kaaj Official's exclusive collection.`,
+    description: cleanDesc,
     openGraph: {
+      title: `${product.name} | K A A J`,
+      description: cleanDesc,
+      url: `https://kaajofficial.com/shop/${slug}`,
+      type: "website",
+      images: product.image?.sourceUrl
+        ? [
+            {
+              url: product.image.sourceUrl,
+              width: 800,
+              height: 800,
+              alt: product.image.altText || product.name,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | K A A J`,
+      description: cleanDesc,
       images: product.image?.sourceUrl ? [product.image.sourceUrl] : [],
     },
     alternates: {
@@ -104,6 +124,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
     name: product.name,
     image: product.image?.sourceUrl ? [product.image.sourceUrl] : [],
     description: product.shortDescription?.replace(/<[^>]*>/g, "") || product.name,
+    sku: product.sku || product.slug,
+    brand: {
+      "@type": "Brand",
+      name: "KAAJ",
+    },
+    itemCondition: "https://schema.org/NewCondition",
     offers: {
       "@type": "Offer",
       url: `https://kaajofficial.com/shop/${product.slug}`,
@@ -114,9 +140,41 @@ export default async function ProductPage({ params }: ProductPageProps) {
         : "https://schema.org/OutOfStock",
       seller: {
         "@type": "Organization",
-        name: "K A A J"
-      }
-    }
+        name: "KAAJ"
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "PK",
+        },
+      },
+    },
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://kaajofficial.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Shop",
+        item: "https://kaajofficial.com/shop",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: `https://kaajofficial.com/shop/${product.slug}`,
+      },
+    ],
   };
 
   return (
@@ -124,6 +182,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <ProductDetailClient
         product={product}
