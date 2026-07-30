@@ -140,9 +140,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Collections
           </p>
-          <h1 className="font-serif text-display-md text-kaaj-cream">{displayName}</h1>
+          <h1 className="font-serif text-display-md text-kaaj-charcoal">{displayName}</h1>
           {meta?.description && (
-            <p className="font-sans text-sm text-kaaj-cream/60 mt-3 max-w-md mx-auto">
+            <p className="font-sans text-sm text-kaaj-charcoal/70 mt-3 max-w-md mx-auto">
               {meta.description}
             </p>
           )}

@@ -77,8 +77,8 @@ export default function ShopClient() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Our Collections
           </p>
-          <h1 className="font-serif text-display-md text-kaaj-cream">Shop All</h1>
-          <p className="font-sans text-sm text-kaaj-cream/60 mt-3 max-w-md mx-auto">
+          <h1 className="font-serif text-display-md text-kaaj-charcoal">Shop All</h1>
+          <p className="font-sans text-sm text-kaaj-charcoal/70 mt-3 max-w-md mx-auto">
             Discover the complete KAAJ range — from everyday pret to occasion-ready formals.
           </p>
         </div>
