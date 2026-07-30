@@ -12,6 +12,7 @@ export default function HeroBanner() {
         alt="KAAJ - Premium Pakistani Womenswear"
         fill
         priority
+        fetchPriority="high"
         className="object-cover object-center opacity-60 mix-blend-luminosity"
         sizes="100vw"
       />

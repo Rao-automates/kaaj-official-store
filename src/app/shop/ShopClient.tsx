@@ -69,6 +69,7 @@ export default function ShopClient() {
           alt="KAAJ Collection"
           fill
           priority
+          fetchPriority="high"
           className="object-cover object-center opacity-30 mix-blend-luminosity"
           sizes="100vw"
         />

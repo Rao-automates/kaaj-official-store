@@ -132,6 +132,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           alt={meta?.title ?? displayName}
           fill
           priority
+          fetchPriority="high"
           className="object-cover object-center opacity-30 mix-blend-luminosity"
           sizes="100vw"
         />
