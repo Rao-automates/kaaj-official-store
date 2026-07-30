@@ -244,7 +244,7 @@ function NewsletterForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-kaaj-gold text-white py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-gold-dark transition-colors duration-200 disabled:opacity-70 flex items-center justify-center gap-2"
+          className="w-full bg-kaaj-deep text-kaaj-charcoal py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-deep-light transition-colors duration-200 disabled:opacity-70 flex items-center justify-center gap-2"
         >
           {status === "loading" ? "Subscribing..." : "Subscribe"}
         </button>

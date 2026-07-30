@@ -126,7 +126,7 @@ export default function HomeClient() {
             href="https://www.instagram.com/wearkaaj/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-gold border border-kaaj-gold px-8 py-3 hover:bg-kaaj-gold hover:text-white transition-all duration-300"
+            className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-deep border border-kaaj-deep px-8 py-3 hover:bg-kaaj-deep hover:text-kaaj-charcoal transition-all duration-300"
           >
             Follow for Inspiration
           </a>
