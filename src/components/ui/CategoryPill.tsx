@@ -37,7 +37,7 @@ export default function CategoryPill({
         <span
           className={cn(
             "text-[10px]",
-            active ? "text-kaaj-gold-light" : "text-kaaj-muted"
+            active ? "text-kaaj-gold-light" : "text-kaaj-charcoal/70"
           )}
         >
           ({count})

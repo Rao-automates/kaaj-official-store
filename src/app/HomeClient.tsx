@@ -73,7 +73,7 @@ export default function HomeClient() {
                 href="/shop"
                 className="hidden sm:inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.18em] text-kaaj-charcoal hover:text-kaaj-gold transition-colors duration-300 group pb-2 border-b border-transparent hover:border-kaaj-gold"
               >
-                See More
+                View Collection
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
                   className="group-hover:translate-x-1 transition-transform duration-300">
                   <polyline points="9 18 15 12 9 6" />
@@ -119,7 +119,7 @@ export default function HomeClient() {
           <p className="font-serif text-2xl text-kaaj-cream mb-3">
             Follow Us on Instagram
           </p>
-          <p className="font-sans text-xs text-kaaj-cream/60 mb-6 uppercase tracking-widest">
+          <p className="font-sans text-xs text-kaaj-cream/80 mb-6 uppercase tracking-widest">
             @wearkaaj
           </p>
           <a
