@@ -5,6 +5,7 @@ import { CartProvider } from "@/context/CartContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -145,6 +146,7 @@ export default function RootLayout({
           <main id="main-content">{children}</main>
           <Footer />
         </CartProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
       </body>
     </html>
   );
