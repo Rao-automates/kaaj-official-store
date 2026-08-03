@@ -26,6 +26,8 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 *   **Gold (Highlights/CTAs):** `#C9A84C` (kaaj-gold) - Used *sparingly* for high-intent actions, like the WhatsApp CTA.
 *   **Muted (Secondary Text):** `#A9A499` (kaaj-muted) - Used for labels, placeholder text, and subtle borders.
 
+*Accessibility Rule:* Text overlaying hero images or banners must strictly maintain WCAG AA contrast. Since `kaaj-cream` is a dark grey/olive hex (`#363832`) and `kaaj-charcoal` is a light cream hex (`#DCD8D0`), ensure text is inverted correctly over dark imagery (use `text-kaaj-charcoal` on dark images, and `text-kaaj-cream` on light backgrounds).
+
 *Note: These exact hex codes are also used for physical branding materials (like Thank You cards) to ensure perfect online-to-offline brand consistency.*
 
 ## 3. Technical Architecture
@@ -76,9 +78,14 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 *   **The Apostrophe Bug (`&#39;`):** When writing meta descriptions (like in `src/app/layout.tsx`), Next.js automatically escapes standard straight single quotes (`'`) into HTML entities (`&#39;`). We strictly use the typographic curly apostrophe (`’`) (HTML entity `&#8217;`) in *all* metadata strings (e.g., `KAAJ’s`, `women’s`) to prevent this.
 *   **Brand Formatting:** The brand name must always be formatted as **K A A J** (with single spaces between letters) in user-facing titles, metadata, and footers. Do not use "Kaaj Official".
 *   **Currency Formatting:** All prices are handled by the custom `formatPKR` utility. Ensure strictly typed inputs (string manipulation) when interfacing with the WooCommerce GraphQL/REST returns.
+*   **Favicon & Google Search Icons:** The app utilizes `src/app/icon.svg` for modern browsers. However, to ensure compatibility with Google's slow Favicon crawler (`Googlebot-Image`) and legacy bots, explicit fallback files (`src/app/favicon.ico` and `src/app/apple-icon.png`) are strictly maintained.
 
-## 6. Store Management Strategy
+## 6. Performance & Analytics (Lighthouse 100/100)
+*   **Google Analytics 4 (GA4):** Integrated using Next.js's highly optimized `@next/third-parties/google` component in `src/app/layout.tsx`. Requires the `NEXT_PUBLIC_GA_ID` environment variable in Vercel to activate tracking. This method ensures zero impact on performance scores.
+*   **LCP (Largest Contentful Paint) Optimization:** To achieve 100/100 on Mobile Lighthouse, all primary above-the-fold images (such as the main `HeroBanner` and `Category` page heroes) must include `priority={true}` AND `fetchPriority="high"`. This overrides browser-level lazy-loading bottlenecks and forces the hero images to download instantly.
+
+## 7. Store Management Strategy
 *   **No Web Admin Portal:** We explicitly decided *not* to build a custom Next.js admin dashboard. All order management, status updates, and inventory tracking are handled exclusively through the native **WooCommerce Mobile App** (or the WordPress backend if necessary). This keeps the Next.js repository strictly focused on the customer storefront, maximizing security and minimizing technical debt.
 
 ---
-*End of Document. Generated on: July 30, 2026*
+*End of Document. Generated on: August 2026*
