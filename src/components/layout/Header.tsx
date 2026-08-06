@@ -42,10 +42,10 @@ export default function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-50 transition-colors duration-300 py-3",
           scrolled
-            ? "bg-kaaj-charcoal/70 backdrop-blur-xl border-b border-white/5 py-2 shadow-2xl"
-            : "bg-gradient-to-b from-black/60 to-transparent py-4"
+            ? "bg-kaaj-charcoal/80 backdrop-blur-md border-b border-white/5 shadow-2xl"
+            : "bg-gradient-to-b from-black/60 to-transparent"
         )}
       >
         {/* Main Header */}

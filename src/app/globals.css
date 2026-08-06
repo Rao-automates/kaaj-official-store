@@ -44,12 +44,19 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #44463F 0%, #363832 50%, #2E302A 100%);
-  background-attachment: fixed;
   color: var(--color-kaaj-charcoal);
   font-family: var(--font-inter), system-ui, sans-serif;
   position: relative;
   overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #44463F 0%, #363832 50%, #2E302A 100%);
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {

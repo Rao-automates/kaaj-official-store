@@ -13,7 +13,7 @@ export default function HeroBanner() {
         fill
         priority
         fetchPriority="high"
-        className="object-cover object-center opacity-60 mix-blend-luminosity"
+        className="object-cover object-center opacity-60 grayscale"
         sizes="100vw"
       />
 
