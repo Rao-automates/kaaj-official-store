@@ -26,18 +26,19 @@ export default function CategoryPill({
       className={cn(
         "inline-flex items-center gap-2 px-5 py-2.5",
         "font-sans text-xs uppercase tracking-[0.18em] whitespace-nowrap",
-        "border transition-all duration-300",
+        "border transition-all duration-500 transform-gpu",
+        "wipe-fill",
         active
-          ? "bg-kaaj-charcoal text-kaaj-cream border-kaaj-charcoal"
-          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-charcoal hover:bg-kaaj-cream-dark"
+          ? "bg-kaaj-charcoal text-kaaj-cream border-kaaj-charcoal shadow-lg shadow-kaaj-charcoal/20"
+          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-charcoal/50 hover:text-kaaj-charcoal hover:scale-[1.03]"
       )}
     >
       {name}
       {count !== undefined && (
         <span
           className={cn(
-            "text-[10px]",
-            active ? "text-kaaj-gold-light" : "text-kaaj-charcoal/70"
+            "text-[10px] transition-colors duration-300",
+            active ? "text-kaaj-gold-light" : "text-kaaj-charcoal/50"
           )}
         >
           ({count})

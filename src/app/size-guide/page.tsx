@@ -32,7 +32,7 @@ export default function SizeGuidePage() {
         </div>
 
         {/* Table Container */}
-        <div className="bg-white border border-kaaj-border p-4 sm:p-8 shadow-sm">
+        <div className="bg-kaaj-deep/20 border border-kaaj-gold/10 p-4 sm:p-8 backdrop-blur-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-sm font-sans whitespace-nowrap">
               <thead>
@@ -69,8 +69,8 @@ export default function SizeGuidePage() {
         </div>
 
         {/* Important Note */}
-        <div className="mt-8 bg-kaaj-blush/30 border border-kaaj-blush p-6 text-center">
-          <p className="font-sans text-xs sm:text-sm text-kaaj-deep leading-relaxed max-w-2xl mx-auto">
+        <div className="mt-8 bg-kaaj-deep/40 border border-kaaj-gold/20 p-6 text-center">
+          <p className="font-sans text-xs sm:text-sm text-kaaj-charcoal leading-relaxed max-w-2xl mx-auto">
             <strong className="uppercase tracking-widest font-semibold mr-2 block sm:inline">Note:</strong>
             Sizes may vary slightly between collections due to the nature of hand-crafted fabrics and embroidery. 
             For unstitched fabric, please consult your local tailor for exact measurements.

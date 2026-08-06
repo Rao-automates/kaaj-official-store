@@ -63,7 +63,7 @@ export default function ShopClient() {
   return (
     <div className="min-h-screen bg-kaaj-cream">
       {/* Page Header */}
-      <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
+      <div className="bg-kaaj-deep text-kaaj-charcoal pt-40 pb-20 text-center relative overflow-hidden">
         <Image
           src="/hero.png"
           alt="KAAJ Collection"

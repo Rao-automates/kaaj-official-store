@@ -219,7 +219,7 @@ export default function CheckoutPage() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Secure Checkout
           </p>
-          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-cream">Checkout</h1>
+          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-charcoal">Checkout</h1>
         </div>
       </div>
 

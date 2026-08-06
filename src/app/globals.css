@@ -22,6 +22,15 @@
   --color-kaaj-border: rgba(220, 216, 208, 0.15);
 }
 
+/* ── CSS Custom Properties for Glass & Premium Effects ─────────────────── */
+:root {
+  --glass-bg: rgba(54, 56, 50, 0.6);
+  --glass-border: rgba(220, 216, 208, 0.08);
+  --glass-blur: 20px;
+  --glass-bg-light: rgba(220, 216, 208, 0.08);
+  --glass-border-light: rgba(220, 216, 208, 0.12);
+}
+
 /* ── Global Resets ─────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -35,11 +44,12 @@ html {
 }
 
 body {
-  background: linear-gradient(to right, #44463F 0%, #363832 100%);
+  background: linear-gradient(135deg, #44463F 0%, #363832 50%, #2E302A 100%);
   background-attachment: fixed;
   color: var(--color-kaaj-charcoal);
   font-family: var(--font-inter), system-ui, sans-serif;
   position: relative;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -59,18 +69,25 @@ h1, h2, h3, h4 {
 
 /* ── Scrollbar ──────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-kaaj-cream);
+  background: var(--color-kaaj-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-kaaj-border);
-  border-radius: 0;
+  background: rgba(220, 216, 208, 0.15);
+  border-radius: 999px;
+  transition: background 0.3s;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-kaaj-muted);
+  background: var(--color-kaaj-gold);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 216, 208, 0.15) var(--color-kaaj-deep);
 }
 
 /* Hide scrollbar utility */
@@ -88,7 +105,7 @@ h1, h2, h3, h4 {
   color: white;
 }
 
-/* ── Animations ─────────────────────────────────────────────────────────────── */
+/* ── Core Animations ───────────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -111,9 +128,114 @@ h1, h2, h3, h4 {
 .animate-slide-in-right { animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .animate-skeleton   { animation: skeleton 1.5s ease-in-out infinite; }
 
+/* ── Premium Animations ────────────────────────────────────────────────────── */
+
+/* Text clip reveal — words/lines slide up from behind a mask */
+@keyframes clipReveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(20px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+.animate-clip-reveal {
+  animation: clipReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Shimmer sweep — gold highlight sweeps across */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-kaaj-gold-light) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Shimmer sweep for skeleton loading */
+@keyframes shimmerSkeleton {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(4px) rotate(-0.5deg); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glow pulse for gold accents */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+  50% { box-shadow: 0 0 20px 2px rgba(201, 168, 76, 0.15); }
+}
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Draw line — horizontal line draws itself */
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.animate-draw-line {
+  transform-origin: left;
+  animation: drawLine 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Subtle bounce for badges */
+@keyframes microBounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-micro-bounce {
+  animation: microBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Rotate close icon */
+@keyframes spinIn {
+  from { transform: rotate(-90deg); opacity: 0; }
+  to { transform: rotate(0deg); opacity: 1; }
+}
+
+/* Scale spring */
+@keyframes scaleSpring {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.03); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Gradient shift for living backgrounds */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Scroll progress bar */
+@keyframes progressGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(201, 168, 76, 0.3); }
+  50% { box-shadow: 0 0 12px rgba(201, 168, 76, 0.6); }
+}
+
 /* ── Transitions ─────────────────────────────────────────────────────────────── */
 .ease-expo-out     { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
 .ease-expo-in-out  { transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1); }
+.ease-spring       { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
 
 /* ── Focus ───────────────────────────────────────────────────────────────────── */
 :focus-visible {
@@ -121,9 +243,107 @@ h1, h2, h3, h4 {
   outline-offset: 2px;
 }
 
+/* ── Glassmorphism Utilities ─────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border-light);
+}
+
+.glass-strong {
+  background: rgba(54, 56, 50, 0.85);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(220, 216, 208, 0.1);
+}
+
 /* ── Grain texture ───────────────────────────────────────────────────────────── */
 .bg-grain {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── Magnetic hover utility ──────────────────────────────────────────────────── */
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.magnetic-hover:hover {
+  transform: scale(1.02);
+}
+
+/* ── Premium button shimmer ──────────────────────────────────────────────────── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(201, 168, 76, 0.12) 45%,
+    rgba(201, 168, 76, 0.2) 50%,
+    rgba(201, 168, 76, 0.12) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-shimmer:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── Wipe fill hover (for pills/tags) ────────────────────────────────────────── */
+.wipe-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.wipe-fill::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-kaaj-cream-dark);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.wipe-fill:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Underline wipe for nav links ────────────────────────────────────────────── */
+.underline-wipe {
+  position: relative;
+}
+.underline-wipe::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-kaaj-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.underline-wipe:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* ── Product description prose ───────────────────────────────────────────────── */
@@ -151,4 +371,13 @@ h1, h2, h3, h4 {
 .product-description ul li::before {
   content: "—";
   color: var(--color-kaaj-gold);
+}
+
+/* ── Horizontal scroll snap ──────────────────────────────────────────────────── */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-x > * {
+  scroll-snap-align: start;
 }

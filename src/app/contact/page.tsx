@@ -31,7 +31,7 @@ export default function ContactPage() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Get in Touch
           </p>
-          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-cream">
+          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-charcoal">
             Contact Us
           </h1>
         </div>

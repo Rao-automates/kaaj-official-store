@@ -9,10 +9,20 @@ export function Skeleton({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "bg-kaaj-cream-dark animate-skeleton rounded-none",
+        "rounded-sm relative overflow-hidden bg-kaaj-cream-dark",
         className
       )}
-    />
+    >
+      {/* Premium shimmer gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, rgba(220,216,208,0.06) 40%, rgba(220,216,208,0.12) 50%, rgba(220,216,208,0.06) 60%, transparent 100%)",
+          backgroundSize: "200% 100%",
+          animation: "shimmerSkeleton 2s ease-in-out infinite",
+        }}
+      />
+    </div>
   );
 }
 

@@ -68,7 +68,7 @@ export default function ReturnsPage() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Client Services
           </p>
-          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-cream">
+          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-charcoal">
             Returns & Exchange
           </h1>
         </div>
@@ -185,7 +185,7 @@ export default function ReturnsPage() {
                   id="image"
                   name="image"
                   accept="image/*"
-                  className="w-full bg-transparent border border-kaaj-border p-3 font-sans text-sm text-kaaj-charcoal focus:outline-none focus:border-kaaj-gold transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-xs file:font-sans file:uppercase file:tracking-widest file:bg-kaaj-deep file:text-kaaj-cream hover:file:bg-kaaj-charcoal cursor-pointer"
+                  className="w-full bg-transparent border border-kaaj-border p-3 font-sans text-sm text-kaaj-charcoal focus:outline-none focus:border-kaaj-gold transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-xs file:font-sans file:uppercase file:tracking-widest file:bg-kaaj-deep file:text-kaaj-charcoal hover:file:bg-kaaj-charcoal cursor-pointer"
                 />
               </div>
 

@@ -21,7 +21,7 @@ export default function CartPage() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Your Selection
           </p>
-          <h1 className="font-serif text-display-md text-kaaj-cream">
+          <h1 className="font-serif text-display-md text-kaaj-charcoal">
             Shopping Bag
           </h1>
         </div>

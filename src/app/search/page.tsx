@@ -44,7 +44,7 @@ function SearchResultsContent() {
   return (
     <div className="min-h-screen bg-kaaj-cream">
       {/* Search Header */}
-      <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-16 text-center relative overflow-hidden">
+      <div className="bg-kaaj-deep text-kaaj-charcoal pt-40 pb-16 text-center relative overflow-hidden">
         <Image
           src="/hero.png"
           alt="Search Results"
@@ -58,7 +58,7 @@ function SearchResultsContent() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Search Results
           </p>
-          <h1 className="font-serif text-3xl md:text-display-sm text-kaaj-cream max-w-3xl mx-auto leading-tight">
+          <h1 className="font-serif text-3xl md:text-display-sm text-kaaj-charcoal max-w-3xl mx-auto leading-tight">
             {query ? (
               <>
                 Showing results for <span className="text-kaaj-gold">"{query}"</span>
@@ -68,7 +68,7 @@ function SearchResultsContent() {
             )}
           </h1>
           {query && !loading && (
-            <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-cream/60 mt-6">
+            <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 mt-6">
               {products.length} product{products.length !== 1 ? "s" : ""} found
             </p>
           )}
@@ -104,7 +104,7 @@ function SearchResultsContent() {
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center border border-kaaj-charcoal text-kaaj-charcoal hover:bg-kaaj-charcoal hover:text-kaaj-cream transition-colors duration-300 px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em]"
+              className="inline-flex items-center justify-center border border-kaaj-charcoal text-kaaj-charcoal hover:bg-kaaj-charcoal hover:text-kaaj-charcoal transition-colors duration-300 px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em]"
             >
               Back to Shop
             </Link>

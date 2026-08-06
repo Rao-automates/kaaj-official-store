@@ -47,7 +47,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   return (
     <Link href={`/shop/${product.slug}`} className="group block">
       {/* Image Container */}
-      <div className="relative overflow-hidden bg-kaaj-cream-dark aspect-[3/4] mb-3">
+      <div className="relative overflow-hidden bg-kaaj-cream-dark aspect-[3/4] mb-4 shadow-lg shadow-black/5 group-hover:shadow-xl group-hover:shadow-black/10 transition-shadow duration-700">
         {/* Badges */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
           {onSale && discount && (
@@ -56,7 +56,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           {isOutOfStock && <Badge variant="soldout" />}
         </div>
 
-        {/* Product Image */}
+        {/* Product Image with ken-burns */}
         {imageUrl && !imgError ? (
           <Image
             src={imageUrl}
@@ -64,8 +64,8 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className={cn(
-              "object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
-              "group-hover:scale-110"
+              "object-cover transition-all duration-[2500ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "group-hover:scale-110 group-hover:rotate-[0.5deg]"
             )}
             priority={priority}
             onError={() => setImgError(true)}
@@ -76,13 +76,13 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           </div>
         )}
 
-        {/* Quick Add Overlay */}
+        {/* Quick Add — slides up from bottom */}
         <div
           className={cn(
-            "absolute inset-0 flex items-center justify-center",
-            "bg-kaaj-cream/20 backdrop-blur-[2px] opacity-0",
-            "transition-opacity duration-700 ease-expo-out",
-            "group-hover:opacity-100",
+            "absolute bottom-0 left-0 right-0 flex items-center justify-center",
+            "py-4 transform translate-y-full",
+            "glass transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            "group-hover:translate-y-0",
             isOutOfStock && "hidden"
           )}
         >
@@ -90,8 +90,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             onClick={handleQuickAdd}
             className={cn(
               "font-sans text-[10px] uppercase tracking-[0.3em]",
-              "text-kaaj-charcoal px-6 py-3 border border-kaaj-border/50 bg-kaaj-cream/50",
-              "hover:border-kaaj-gold transition-colors duration-500",
+              "text-white/90 hover:text-kaaj-gold transition-colors duration-300",
               product.type === "VARIABLE"
                 ? "cursor-pointer"
                 : adding
@@ -103,23 +102,23 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               ? "Select Options"
               : adding
               ? "✓ Added"
-              : "Quick Add"}
+              : "Quick Add +"}
           </button>
         </div>
       </div>
 
       {/* Info */}
-      <div className="space-y-1">
+      <div className="space-y-1.5">
         {category && (
-          <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-kaaj-muted">
+          <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-kaaj-muted transition-colors duration-300 group-hover:text-kaaj-gold/70">
             {category.name}
           </p>
         )}
-        <h3 className="font-serif text-base leading-snug text-kaaj-charcoal group-hover:text-kaaj-deep transition-colors duration-200 line-clamp-2">
+        <h3 className="font-serif text-base leading-snug text-kaaj-charcoal group-hover:text-kaaj-charcoal-light transition-all duration-300 line-clamp-2 group-hover:tracking-wide">
           {product.name}
         </h3>
         <div className="flex items-center gap-2 pt-0.5">
-          <span className="font-sans text-sm text-kaaj-charcoal">
+          <span className="font-sans text-sm text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
             {formatPKR(product.salePrice || product.price)}
           </span>
           {onSale && product.regularPrice && (
@@ -135,7 +134,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
 function KaajPlaceholder() {
   return (
-    <div className="flex flex-col items-center gap-2 opacity-20">
+    <div className="flex flex-col items-center gap-2 opacity-20 animate-float">
       <svg
         width="48"
         height="48"
