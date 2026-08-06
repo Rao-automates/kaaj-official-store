@@ -88,15 +88,11 @@ export default function Header() {
 
               <button
                 onClick={openDrawer}
-                className="relative w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
+                className="relative w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:text-kaaj-gold transition-colors text-lg"
                 aria-label={`Open cart${mounted && itemCount > 0 ? `, ${itemCount} items` : ""}`}
               >
                 <span className="font-sans text-[10px] uppercase tracking-[0.2em] hidden sm:block mr-2">Cart</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <path d="M16 10a4 4 0 01-8 0" />
-                </svg>
+                <span role="img" aria-label="cart">🛒</span>
                 {mounted && itemCount > 0 && (
                   <span className="absolute top-0 right-0 w-4 h-4 bg-kaaj-gold text-[#2E302A] text-[9px] font-sans flex items-center justify-center rounded-full">
                     {itemCount > 9 ? "9+" : itemCount}
@@ -183,8 +179,8 @@ export default function Header() {
 function KaajLogo() {
   return (
     <div className="flex flex-col items-center select-none group-hover:opacity-80 transition-opacity">
-      <span className="font-sans font-medium text-xl text-kaaj-charcoal tracking-[0.4em] drop-shadow-md">
-        KAAJ
+      <span className="font-serif text-3xl text-kaaj-charcoal tracking-[0.3em] drop-shadow-md">
+        K A A J
       </span>
     </div>
   );

@@ -35,10 +35,10 @@ export default function HeroBanner() {
 
         {/* Massive Headline matching Logo */}
         <h1 
-          className="font-sans font-medium tracking-[0.3em] text-[clamp(4rem,15vw,12rem)] leading-[0.75] text-kaaj-charcoal animate-fade-up -ml-1 md:-ml-4 drop-shadow-lg"
+          className="font-serif tracking-[0.2em] text-[clamp(4rem,12vw,10rem)] leading-[0.75] text-kaaj-charcoal animate-fade-up -ml-1 md:-ml-4 drop-shadow-lg"
           style={{ animationDelay: "0.2s" }}
         >
-          KAAJ
+          K A A J
         </h1>
         
         {/* CTA & Subtext Grid */}
