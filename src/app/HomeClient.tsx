@@ -1,52 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import HeroBanner from "@/components/sections/HeroBanner";
 import FeaturedGrid from "@/components/sections/FeaturedGrid";
 import BrandStory from "@/components/sections/BrandStory";
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
 import FadeIn from "@/components/ui/FadeIn";
-import { gqlFetch } from "@/lib/graphql-client";
-import {
-  GET_PRODUCTS,
-  GET_FEATURED_PRODUCTS,
-  GET_CATEGORIES,
-} from "@/lib/queries";
-import type {
-  ProductsQueryResponse,
-  CategoriesQueryResponse,
-} from "@/lib/types";
 import Link from "next/link";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
 
-export default function HomeClient() {
-  const [featuredProducts, setFeaturedProducts] = useState<any[]>([]);
-  const [newArrivals, setNewArrivals] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+interface HomeClientProps {
+  initialFeatured: any[];
+  initialArrivals: any[];
+  initialCategories: any[];
+}
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const [featured, arrivals, cats] = await Promise.all([
-          gqlFetch<ProductsQueryResponse>(GET_FEATURED_PRODUCTS),
-          gqlFetch<ProductsQueryResponse>(GET_PRODUCTS, { first: 8 }),
-          gqlFetch<CategoriesQueryResponse>(GET_CATEGORIES),
-        ]);
-
-        setFeaturedProducts(featured?.products?.nodes ?? []);
-        setNewArrivals(arrivals?.products?.nodes ?? []);
-        setCategories(cats?.productCategories?.nodes ?? []);
-      } catch (err) {
-        console.error("[Homepage] fetch error:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+export default function HomeClient({ 
+  initialFeatured, 
+  initialArrivals, 
+  initialCategories 
+}: HomeClientProps) {
 
   return (
     <>
@@ -54,8 +27,8 @@ export default function HomeClient() {
       <HeroBanner />
 
       {/* Featured Collection Grid */}
-      {!loading && featuredProducts.length > 0 && (
-        <FeaturedGrid products={featuredProducts} />
+      {initialFeatured.length > 0 && (
+        <FeaturedGrid products={initialFeatured} />
       )}
 
       {/* New Arrivals */}
@@ -82,13 +55,13 @@ export default function HomeClient() {
             </div>
           </FadeIn>
           <FadeIn delay={0.2} direction="none">
-            {loading ? <ProductGridSkeleton count={4} /> : <ProductGrid products={newArrivals} columns={4} />}
+            <ProductGrid products={initialArrivals} columns={4} />
           </FadeIn>
         </div>
       </section>
 
       {/* Categories Showcase */}
-      {(!loading && categories.length > 0) && (
+      {initialCategories.length > 0 && (
         <section className="py-48 sm:py-64 bg-kaaj-cream">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn>
@@ -100,7 +73,7 @@ export default function HomeClient() {
               </div>
             </FadeIn>
             <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
+              {initialCategories.map((cat) => (
                 <CategoryPill
                   key={cat.slug}
                   name={cat.name}

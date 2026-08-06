@@ -23,6 +23,41 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  return <HomeClient />;
+import { gqlFetch } from "@/lib/graphql-client";
+import {
+  GET_PRODUCTS,
+  GET_FEATURED_PRODUCTS,
+  GET_CATEGORIES,
+} from "@/lib/queries";
+import type {
+  ProductsQueryResponse,
+  CategoriesQueryResponse,
+} from "@/lib/types";
+
+export default async function HomePage() {
+  let featuredProducts: any[] = [];
+  let newArrivals: any[] = [];
+  let categories: any[] = [];
+
+  try {
+    const [featured, arrivals, cats] = await Promise.all([
+      gqlFetch<ProductsQueryResponse>(GET_FEATURED_PRODUCTS),
+      gqlFetch<ProductsQueryResponse>(GET_PRODUCTS, { first: 8 }),
+      gqlFetch<CategoriesQueryResponse>(GET_CATEGORIES),
+    ]);
+
+    featuredProducts = featured?.products?.nodes ?? [];
+    newArrivals = arrivals?.products?.nodes ?? [];
+    categories = cats?.productCategories?.nodes ?? [];
+  } catch (err) {
+    console.error("[SSR] Homepage fetch error:", err);
+  }
+
+  return (
+    <HomeClient 
+      initialFeatured={featuredProducts} 
+      initialArrivals={newArrivals} 
+      initialCategories={categories} 
+    />
+  );
 }

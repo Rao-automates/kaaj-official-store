@@ -58,7 +58,7 @@ export default function HeroBanner() {
         >
           <Link 
             href="/shop"
-            className="group relative inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 overflow-hidden bg-kaaj-cream hover:bg-kaaj-charcoal hover:border-kaaj-gold border border-transparent transition-all duration-500"
+            className="group relative inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 overflow-hidden bg-kaaj-cream hover:bg-kaaj-charcoal hover:border-kaaj-gold border border-transparent transition-colors duration-500"
           >
             <span className="relative font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
               Explore the Collection
