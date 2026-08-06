@@ -179,8 +179,8 @@ export default function Header() {
 function KaajLogo() {
   return (
     <div className="flex flex-col items-center select-none group-hover:opacity-80 transition-opacity">
-      <span className="font-serif text-3xl text-kaaj-charcoal tracking-[0.3em] drop-shadow-md">
-        K A A J
+      <span className="font-sans font-medium text-xl text-kaaj-charcoal tracking-[0.4em] drop-shadow-md">
+        KAAJ
       </span>
     </div>
   );
