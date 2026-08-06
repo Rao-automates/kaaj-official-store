@@ -464,7 +464,7 @@ export default function ProductDetailClient({
       {/* Sticky Bottom Bar — appears when original buttons scroll out of view */}
       <div
         ref={stickyBarRef}
-        className="fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-expo-out translate-y-[150%] opacity-0 pointer-events-none will-change-transform"
+        className="fixed bottom-0 left-0 right-0 z-50 transition-[transform,opacity] duration-300 ease-expo-out translate-y-[150%] opacity-0 pointer-events-none transform-gpu will-change-transform"
       >
         <div className="bg-kaaj-deep/95 backdrop-blur-md border-t border-kaaj-border pb-[env(safe-area-inset-bottom)]">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-3">

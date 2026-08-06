@@ -46,7 +46,7 @@ export default function CartDrawer() {
         className={cn(
           "fixed right-0 top-0 h-full w-full sm:w-[420px] bg-kaaj-cream z-50",
           "flex flex-col shadow-2xl",
-          "transition-transform duration-400 ease-expo-out",
+          "transition-transform duration-400 ease-expo-out transform-gpu will-change-transform",
           isDrawerOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
