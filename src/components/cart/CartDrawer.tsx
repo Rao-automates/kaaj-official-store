@@ -22,7 +22,7 @@ export default function CartDrawer() {
     <>
       <AnimatePresence>
         {isDrawerOpen && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={closeDrawer} />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/50 md:backdrop-blur-sm z-40" onClick={closeDrawer} />
         )}
       </AnimatePresence>
 
@@ -77,7 +77,7 @@ export default function CartDrawer() {
 
         {cart.items.length > 0 && (
           <div className="flex-shrink-0 border-t border-kaaj-border px-6 py-5 space-y-4">
-            <div className="flex items-center gap-2 bg-kaaj-blush/40 px-3 py-2.5 border border-kaaj-blush backdrop-blur-sm">
+            <div className="flex items-center gap-2 bg-kaaj-blush/40 px-3 py-2.5 border border-kaaj-blush md:backdrop-blur-sm">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2D1B0E" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" /></svg>
               <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-deep">Cash on Delivery available</p>
             </div>

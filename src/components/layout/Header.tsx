@@ -165,7 +165,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60 md:backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
 
