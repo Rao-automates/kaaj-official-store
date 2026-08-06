@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: kaaj-n8n
+    restart: always
+    environment:
+      # Configure n8n to expect HTTPS routing
+      - N8N_HOST=${N8N_HOST:-n8n.kaajofficial.com}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://${N8N_HOST:-n8n.kaajofficial.com}/
+      - GENERIC_TIMEZONE=Asia/Karachi
+      # Use basic auth to secure the n8n webhook/API endpoints if needed, but primarily relying on UI login
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: kaaj-nginx
+    restart: always
+    ports:
+      # Public HTTP/HTTPS ports
+      - "80:80"
+      - "443:443"
+      # Admin UI port for Nginx Proxy Manager
+      - "81:81"
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+
+volumes:
+  n8n_data:
+  npm_data:
+  npm_letsencrypt:
