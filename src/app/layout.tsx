@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import PerformanceProvider from "@/components/providers/PerformanceProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -141,6 +142,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-kaaj-cream text-kaaj-charcoal antialiased">
         <CartProvider>
+          <PerformanceProvider />
           <Header />
           <CartDrawer />
           <main id="main-content">{children}</main>
