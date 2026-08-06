@@ -86,23 +86,33 @@ export default function HomeClient({
         </section>
       )}
 
-      {/* Instagram CTA strip */}
+      {/* Social CTA strip */}
       <section className="bg-kaaj-charcoal py-12">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="font-serif text-2xl text-kaaj-cream mb-3">
-            Follow Us on Instagram
+            Join Our Community
           </p>
-          <p className="font-sans text-xs text-kaaj-cream/80 mb-6 uppercase tracking-widest">
+          <p className="font-sans text-xs text-kaaj-cream/80 mb-6 tracking-widest lowercase">
             @wearkaaj
           </p>
-          <a
-            href="https://www.instagram.com/wearkaaj/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-deep border border-kaaj-deep px-8 py-3 hover:bg-kaaj-deep hover:text-kaaj-charcoal transition-all duration-300"
-          >
-            Follow for Inspiration
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://www.instagram.com/wearkaaj/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-deep border border-kaaj-deep px-8 py-3 hover:bg-kaaj-deep hover:text-kaaj-charcoal transition-colors duration-300 w-full sm:w-auto justify-center"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/people/K-A-A-J/61593156713945/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-deep border border-kaaj-deep px-8 py-3 hover:bg-kaaj-deep hover:text-kaaj-charcoal transition-colors duration-300 w-full sm:w-auto justify-center"
+            >
+              Facebook
+            </a>
+          </div>
         </div>
       </section>
     </>
