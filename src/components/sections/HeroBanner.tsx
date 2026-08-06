@@ -33,9 +33,9 @@ export default function HeroBanner() {
           </span>
         </div>
 
-        {/* Massive Headline */}
+        {/* Massive Headline matching Logo */}
         <h1 
-          className="font-serif text-[clamp(5rem,20vw,16rem)] leading-[0.75] text-kaaj-charcoal animate-fade-up tracking-tighter -ml-1 md:-ml-4 drop-shadow-lg"
+          className="font-serif font-light tracking-wide text-[clamp(5rem,20vw,16rem)] leading-[0.75] text-kaaj-charcoal animate-fade-up -ml-1 md:-ml-4 drop-shadow-lg"
           style={{ animationDelay: "0.2s" }}
         >
           KAAJ

@@ -53,7 +53,7 @@ export default function Header() {
             {/* Left: Universal Hamburger */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="w-12 h-12 flex items-center justify-start text-kaaj-cream hover:text-kaaj-gold transition-colors"
+              className="w-12 h-12 flex items-center justify-start text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
               aria-label="Open menu"
             >
               <div className="flex flex-col gap-[5px]">
@@ -77,7 +77,7 @@ export default function Header() {
             <div className="flex items-center gap-2 sm:gap-6">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="w-10 h-10 flex items-center justify-center text-kaaj-cream hover:text-kaaj-gold transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
                 aria-label="Search"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -88,7 +88,7 @@ export default function Header() {
 
               <button
                 onClick={openDrawer}
-                className="relative w-10 h-10 flex items-center justify-center text-kaaj-cream hover:text-kaaj-gold transition-colors"
+                className="relative w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
                 aria-label={`Open cart${mounted && itemCount > 0 ? `, ${itemCount} items` : ""}`}
               >
                 <span className="font-sans text-[10px] uppercase tracking-[0.2em] hidden sm:block mr-2">Cart</span>
@@ -140,7 +140,7 @@ export default function Header() {
                 <div className="overflow-hidden">
                   <span className={cn(
                     "block font-serif text-3xl sm:text-4xl tracking-tight transition-transform duration-500",
-                    link.label === "Sale" ? "text-kaaj-rose group-hover:text-kaaj-rose/70" : "text-kaaj-cream group-hover:text-kaaj-gold",
+                    link.label === "Sale" ? "text-kaaj-rose group-hover:text-kaaj-rose/70" : "text-kaaj-charcoal group-hover:text-kaaj-gold",
                     menuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   )}
                   style={{ transitionDelay: `${idx * 100}ms` }}
@@ -153,20 +153,20 @@ export default function Header() {
           </nav>
           
           <div className="px-12 py-12 border-t border-white/5">
-            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-cream/50 mb-6">
+            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal/50 mb-6">
               Connect
             </p>
             <div className="flex gap-6">
               <a href="https://www.instagram.com/wearkaaj/" target="_blank" rel="noopener noreferrer"
-                className="text-kaaj-cream hover:text-kaaj-gold transition-colors" aria-label="Instagram">
+                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Instagram">
                 <InstagramIcon />
               </a>
               <a href="https://www.facebook.com/people/K-A-A-J/61593156713945/" target="_blank" rel="noopener noreferrer"
-                className="text-kaaj-cream hover:text-kaaj-gold transition-colors" aria-label="Facebook">
+                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Facebook">
                 <FacebookIcon />
               </a>
               <a href="https://wa.me/923013305325" target="_blank" rel="noopener noreferrer"
-                className="text-kaaj-cream hover:text-kaaj-gold transition-colors" aria-label="WhatsApp">
+                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="WhatsApp">
                 <WhatsAppIcon />
               </a>
             </div>
@@ -183,7 +183,7 @@ export default function Header() {
 function KaajLogo() {
   return (
     <div className="flex flex-col items-center select-none group-hover:opacity-80 transition-opacity">
-      <span className="font-serif text-2xl text-kaaj-cream tracking-widest drop-shadow-md">
+      <span className="font-serif text-2xl text-kaaj-charcoal tracking-widest drop-shadow-md">
         KAAJ
       </span>
     </div>
