@@ -211,7 +211,7 @@ export default function CheckoutPage() {
           alt="Checkout"
           fill
           priority
-          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          className="object-cover object-center opacity-30 grayscale"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />

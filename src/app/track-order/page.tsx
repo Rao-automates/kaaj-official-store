@@ -112,7 +112,7 @@ export default function TrackOrderPage() {
           alt="Track Order"
           fill
           priority
-          className="object-cover object-center opacity-20 mix-blend-luminosity"
+          className="object-cover object-center opacity-20 grayscale"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
