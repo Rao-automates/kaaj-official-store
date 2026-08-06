@@ -87,5 +87,19 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 ## 7. Store Management Strategy
 *   **No Web Admin Portal:** We explicitly decided *not* to build a custom Next.js admin dashboard. All order management, status updates, and inventory tracking are handled exclusively through the native **WooCommerce Mobile App** (or the WordPress backend if necessary). This keeps the Next.js repository strictly focused on the customer storefront, maximizing security and minimizing technical debt.
 
+## 8. Future Enhancements & Automation
+
+### WhatsApp Order Confirmations (Zero-Cost Architecture)
+A robust, free architecture has been designed to automate WhatsApp order confirmations using the Meta Cloud API and headless WooCommerce webhooks. This architecture avoids paid SaaS plugins entirely.
+
+*   **Infrastructure:** To remain completely free, the system will use an **Oracle Cloud Always Free Tier** VPS (Compute Instance). 
+*   **Automation Engine:** A self-hosted **n8n Community Edition** instance will be deployed via Docker on the Oracle VPS. The `infrastructure/docker-compose.yml` file has been scaffolded to support this.
+*   **Routing & SSL:** **Nginx Proxy Manager** (via Docker) will handle Let's Encrypt SSL certificates automatically, which is a strict requirement for n8n webhooks and the Meta API.
+*   **Data Flow:** 
+    1.  WordPress/WooCommerce triggers an `Order Created` webhook.
+    2.  n8n receives the JSON payload.
+    3.  A custom JavaScript node within n8n sanitizes the Pakistani phone number (stripping leading zeros/spaces and converting to the strict international format `923XXXXXXXXX`).
+    4.  n8n hits the Meta WhatsApp Cloud API using a Permanent System User Token to send a pre-approved template message to the customer.
+
 ---
 *End of Document. Generated on: August 2026*
