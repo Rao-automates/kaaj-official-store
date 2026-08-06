@@ -5,71 +5,64 @@ import Image from "next/image";
 
 export default function HeroBanner() {
   return (
-    <section className="relative w-full min-h-[95vh] flex items-center justify-center overflow-hidden bg-kaaj-charcoal">
-      {/* Background Image */}
-      <Image
-        src="/hero.png"
-        alt="KAAJ - Premium Pakistani Womenswear"
-        fill
-        priority
-        fetchPriority="high"
-        className="object-cover object-center opacity-60 grayscale"
-        sizes="100vw"
-      />
-
-      {/* Center radial gradient vignette for text readability */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-kaaj-cream/20 to-kaaj-cream/80" />
-      <div className="absolute inset-0 bg-kaaj-cream/40" />
-
-      {/* Top subtle border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kaaj-gold/30 to-transparent" />
-
-      {/* Center Aligned Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center flex flex-col items-center mt-32 sm:mt-24">
-        {/* Eyebrow */}
-        <div className="flex flex-col items-center gap-3 mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          <span className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.5em] text-kaaj-gold drop-shadow-md">
-            The Atelier Collection
-          </span>
-          <div className="h-8 w-px bg-kaaj-gold/50" />
-        </div>
-
-        {/* Headline */}
-        <h1
-          className="font-serif text-[14vw] leading-[0.85] text-kaaj-charcoal mb-8 sm:mb-12 animate-fade-up font-light tracking-tighter whitespace-nowrap"
-          style={{ animationDelay: "0.2s" }}
-        >
-          Timeless Elegance,<br />
-          <span className="italic text-kaaj-gold/90">Redefined.</span>
-        </h1>
-
-        {/* Sub */}
-        <p
-          className="hidden sm:block font-sans text-[9px] text-kaaj-charcoal/80 max-w-lg mx-auto leading-relaxed mb-16 animate-fade-up uppercase tracking-[0.5em]"
-          style={{ animationDelay: "0.3s" }}
-        >
-          An exploration of heritage artistry through modern silhouettes. Discover our latest curation of exquisite luxury wear.
-        </p>
-
-        {/* Minimal CTA */}
-        <div
-          className="animate-fade-up mt-4 sm:mt-0"
-          style={{ animationDelay: "0.4s" }}
-        >
-          <Link 
-            href="/shop"
-            className="group relative inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 overflow-hidden bg-kaaj-cream hover:bg-kaaj-charcoal hover:border-kaaj-gold border border-transparent transition-colors duration-500"
-          >
-            <span className="relative font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
-              Explore the Collection
-            </span>
-          </Link>
-        </div>
+    <section className="relative w-full min-h-[100dvh] flex items-center bg-transparent pt-20 pb-12 overflow-hidden">
+      
+      {/* Editorial Image Block (Right aligned, sharp edges) */}
+      <div className="absolute top-0 right-0 w-[90%] md:w-[65%] h-[75vh] md:h-full z-0 transform-gpu transition-transform duration-1000 ease-out translate-y-0">
+        <Image
+          src="/hero.png"
+          alt="KAAJ - Premium Pakistani Womenswear"
+          fill
+          priority
+          fetchPriority="high"
+          className="object-cover object-center grayscale opacity-80"
+          sizes="(max-width: 768px) 100vw, 65vw"
+        />
+        {/* Edge fade for mobile readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#2E302A] md:hidden" />
       </div>
 
-      {/* Minimal Scroll cue */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-kaaj-charcoal/60 animate-bounce">
-        <div className="h-12 w-px bg-gradient-to-b from-transparent via-kaaj-charcoal to-kaaj-charcoal" />
+      {/* Content Overlay */}
+      <div className="relative z-10 w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-end min-h-[80dvh] md:min-h-[90dvh]">
+        
+        {/* Eyebrow */}
+        <div className="animate-fade-up flex items-center gap-4 mb-6 md:mb-12" style={{ animationDelay: "0.1s" }}>
+          <div className="h-px w-8 md:w-12 bg-kaaj-gold/70" />
+          <span className="font-sans text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-kaaj-gold">
+            The Atelier Collection
+          </span>
+        </div>
+
+        {/* Massive Headline */}
+        <h1 
+          className="font-serif text-[clamp(5rem,20vw,16rem)] leading-[0.75] text-kaaj-charcoal animate-fade-up tracking-tighter -ml-1 md:-ml-4 drop-shadow-lg"
+          style={{ animationDelay: "0.2s" }}
+        >
+          KAAJ
+        </h1>
+        
+        {/* CTA & Subtext Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mt-12 md:mt-24 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+          <div className="md:col-span-6 lg:col-span-5">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/90 leading-loose">
+              An exploration of heritage artistry through modern silhouettes. Discover our latest curation.
+            </p>
+          </div>
+          
+          <div className="md:col-span-6 lg:col-span-7 flex md:justify-end">
+            <Link 
+              href="/shop"
+              className="group flex items-center gap-6 pb-4 border-b border-kaaj-charcoal/20 hover:border-kaaj-gold transition-colors duration-500 w-full md:w-auto"
+            >
+              <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
+                Explore Collection
+              </span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors group-hover:translate-x-2 duration-500 transform-gpu will-change-transform">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import FadeIn from "@/components/ui/FadeIn";
 
 export default function BrandStory() {
   return (
-    <section className="py-40 bg-kaaj-deep text-kaaj-cream relative overflow-hidden">
+    <section className="py-32 md:py-64 bg-transparent text-kaaj-cream relative overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
 
