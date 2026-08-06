@@ -47,7 +47,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   return (
     <Link href={`/shop/${product.slug}`} className="group block">
       {/* Image Container */}
-      <div className="relative overflow-hidden bg-kaaj-cream-dark aspect-[2/3] mb-6">
+      <div className="relative overflow-hidden bg-kaaj-cream-dark aspect-[3/4] mb-3">
         {/* Badges */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
           {onSale && discount && (
@@ -109,31 +109,24 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       </div>
 
       {/* Info */}
-      <div className="space-y-3 px-2 md:px-0">
-        <div className="flex flex-col gap-1.5">
-          <div className="space-y-1">
-            {category && (
-              <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-kaaj-muted/80">
-                {category.name}
-              </p>
-            )}
-            <h3 className="font-serif text-2xl md:text-3xl font-light leading-none text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-300">
-              {product.name}
-            </h3>
-          </div>
-          <div className="flex items-center gap-3">
-            {onSale && product.regularPrice && (
-              <span className="font-sans text-[10px] tracking-[0.2em] text-kaaj-muted line-through">
-                {formatPKR(product.regularPrice)}
-              </span>
-            )}
-            <span className={cn(
-              "font-sans text-[11px] tracking-[0.2em] uppercase",
-              onSale ? "text-kaaj-gold" : "text-kaaj-charcoal"
-            )}>
-              {formatPKR(product.salePrice || product.price)}
+      <div className="space-y-1">
+        {category && (
+          <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-kaaj-muted">
+            {category.name}
+          </p>
+        )}
+        <h3 className="font-serif text-base leading-snug text-kaaj-charcoal group-hover:text-kaaj-deep transition-colors duration-200 line-clamp-2">
+          {product.name}
+        </h3>
+        <div className="flex items-center gap-2 pt-0.5">
+          <span className="font-sans text-sm text-kaaj-charcoal">
+            {formatPKR(product.salePrice || product.price)}
+          </span>
+          {onSale && product.regularPrice && (
+            <span className="font-sans text-xs text-kaaj-muted line-through">
+              {formatPKR(product.regularPrice)}
             </span>
-          </div>
+          )}
         </div>
       </div>
     </Link>

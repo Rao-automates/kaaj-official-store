@@ -66,9 +66,8 @@ export default function ProductGrid({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-        "gap-y-16 md:gap-x-1 md:gap-y-20 w-full",
-        "[&>*:nth-child(5n+1)]:md:col-span-2 [&>*:nth-child(5n+1)]:lg:col-span-2",
+        "grid gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-12",
+        columnClasses[columns],
         className
       )}
     >
