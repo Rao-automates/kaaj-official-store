@@ -20,13 +20,11 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 *   **Secondary Font (UI/Body):** Inter (Google Fonts). Mapped to `--font-inter`. Used for readable, crisp UI elements like buttons, badges, and small text.
 
 ### Color Palette (The "Washed Linen" Theme)
-*   **Cream (Backgrounds):** `#363832` (kaaj-cream) - Used for the main dark body background (Dark Olive/Grey).
-*   **Charcoal (Primary Text/Accents):** `#DCD8D0` (kaaj-charcoal) - Used for main light headings and body text on dark backgrounds.
-*   **Deep/Olive (Secondary Accents):** `#1A1A18` (kaaj-deep) - Used for the darkest accents and footer backgrounds.
+*   **Cream (Backgrounds):** `#DCD8D0` (kaaj-cream) - Used for the main body background.
+*   **Charcoal (Primary Text/Accents):** `#1A1A18` (kaaj-charcoal) - Used for main headings, body text, and heavy borders.
+*   **Deep/Olive (Secondary Accents):** `#363832` (kaaj-deep) - Used for subtle dark accents.
 *   **Gold (Highlights/CTAs):** `#C9A84C` (kaaj-gold) - Used *sparingly* for high-intent actions, like the WhatsApp CTA.
 *   **Muted (Secondary Text):** `#A9A499` (kaaj-muted) - Used for labels, placeholder text, and subtle borders.
-
-*Accessibility Rule:* Text overlaying hero images or banners must strictly maintain WCAG AA contrast. Since `kaaj-cream` is a dark grey/olive hex (`#363832`) and `kaaj-charcoal` is a light cream hex (`#DCD8D0`), ensure text is inverted correctly over dark imagery (use `text-kaaj-charcoal` on dark images, and `text-kaaj-cream` on light backgrounds). This rule was recently enforced across all page headers and the size guide to ensure a premium, high-visibility "agency-level" aesthetic.
 
 *Note: These exact hex codes are also used for physical branding materials (like Thank You cards) to ensure perfect online-to-offline brand consistency.*
 
