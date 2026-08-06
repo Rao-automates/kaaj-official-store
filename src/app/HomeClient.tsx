@@ -87,12 +87,12 @@ export default function HomeClient({
       )}
 
       {/* Social CTA strip */}
-      <section className="bg-kaaj-charcoal py-12">
+      <section className="bg-kaaj-cream py-12 border-t border-kaaj-charcoal/10">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="font-serif text-2xl text-kaaj-cream mb-3">
+          <p className="font-serif text-2xl text-kaaj-charcoal mb-3">
             Join Our Community
           </p>
-          <p className="font-sans text-xs text-kaaj-cream/80 mb-6 tracking-widest lowercase">
+          <p className="font-sans text-xs text-kaaj-charcoal/80 mb-6 tracking-widest lowercase">
             @wearkaaj
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -100,7 +100,7 @@ export default function HomeClient({
               href="https://www.instagram.com/wearkaaj/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-deep border border-kaaj-deep px-8 py-3 hover:bg-kaaj-deep hover:text-kaaj-charcoal transition-colors duration-300 w-full sm:w-auto justify-center"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal border border-kaaj-charcoal/50 px-8 py-3 hover:bg-kaaj-charcoal hover:text-kaaj-cream transition-colors duration-300 w-full sm:w-auto justify-center"
             >
               Instagram
             </a>
@@ -108,7 +108,7 @@ export default function HomeClient({
               href="https://www.facebook.com/people/K-A-A-J/61593156713945/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-deep border border-kaaj-deep px-8 py-3 hover:bg-kaaj-deep hover:text-kaaj-charcoal transition-colors duration-300 w-full sm:w-auto justify-center"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal border border-kaaj-charcoal/50 px-8 py-3 hover:bg-kaaj-charcoal hover:text-kaaj-cream transition-colors duration-300 w-full sm:w-auto justify-center"
             >
               Facebook
             </a>
