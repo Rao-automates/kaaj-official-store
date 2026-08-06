@@ -198,6 +198,10 @@ export default function Header() {
                 className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Instagram">
                 <InstagramIcon />
               </a>
+              <a href="https://www.facebook.com/people/K-A-A-J/61593156713945/" target="_blank" rel="noopener noreferrer"
+                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
               <a href="https://wa.me/923013305325" target="_blank" rel="noopener noreferrer"
                 className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="WhatsApp">
                 <WhatsAppIcon />

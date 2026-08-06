@@ -56,6 +56,15 @@ export default function Footer() {
                 <InstagramIcon />
               </a>
               <a
+                href="https://www.facebook.com/people/K-A-A-J/61593156713945/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
+              >
+                <FacebookIcon />
+              </a>
+              <a
                 href="https://wa.me/923013305325"
                 target="_blank"
                 rel="noopener noreferrer"
