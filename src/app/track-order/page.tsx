@@ -120,7 +120,7 @@ export default function TrackOrderPage() {
           <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
             — Order Status
           </p>
-          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-charcoal">
+          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-cream">
             Track Your Order
           </h1>
         </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
 import type { Product } from "@/lib/types";
@@ -21,19 +20,6 @@ const columnClasses: Record<2 | 3 | 4, string> = {
   4: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-      delay: i * 0.08,
-    },
-  }),
-};
-
 export default function ProductGrid({
   products,
   loading = false,
@@ -50,11 +36,7 @@ export default function ProductGrid({
       <div className="py-24 text-center">
         <div className="max-w-sm mx-auto space-y-4">
           {/* Decorative kaaj motif */}
-          <motion.div
-            className="flex justify-center opacity-20"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
+          <div className="flex justify-center opacity-20">
             <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
               <path
                 d="M24 4C24 4 16 12 8 20C16 28 24 44 24 44C24 44 32 28 40 20C32 12 24 4 24 4Z"
@@ -63,7 +45,7 @@ export default function ProductGrid({
               />
               <circle cx="24" cy="20" r="4" stroke="#1C1C1C" strokeWidth="1.5" />
             </svg>
-          </motion.div>
+          </div>
           <p className="font-serif text-2xl text-kaaj-charcoal">
             {emptyMessage || "New arrivals coming soon"}
           </p>
@@ -72,7 +54,7 @@ export default function ProductGrid({
           </p>
           <Link
             href="/shop"
-            className="inline-block mt-4 font-sans text-xs uppercase tracking-[0.18em] text-kaaj-charcoal border-b border-kaaj-charcoal pb-0.5 hover:text-kaaj-gold hover:border-kaaj-gold transition-all duration-300"
+            className="inline-block mt-4 font-sans text-xs uppercase tracking-[0.18em] text-kaaj-charcoal border-b border-kaaj-charcoal pb-0.5 hover:text-kaaj-gold transition-colors duration-200"
           >
             Browse all collections
           </Link>
@@ -90,16 +72,7 @@ export default function ProductGrid({
       )}
     >
       {products.map((product, idx) => (
-        <motion.div
-          key={product.id}
-          custom={idx}
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-30px" }}
-        >
-          <ProductCard product={product} priority={idx < 4} />
-        </motion.div>
+        <ProductCard key={product.id} product={product} priority={idx < 4} />
       ))}
     </div>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const COLLECTIONS = [
@@ -20,15 +19,7 @@ const HELP = [
 
 export default function Footer() {
   return (
-    <footer className="bg-kaaj-deep/50 backdrop-blur-sm border-t border-kaaj-border text-kaaj-charcoal/80 relative overflow-hidden">
-      {/* Animated top gold line */}
-      <motion.div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kaaj-gold/30 to-transparent"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-      />
+    <footer className="bg-transparent border-t border-kaaj-border text-kaaj-charcoal/80">
 
       {/* Main Footer Content */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -37,11 +28,7 @@ export default function Footer() {
           <div className="lg:col-span-1 space-y-6">
             <div className="flex flex-col items-start gap-4">
               {/* The Brand Symbol */}
-              <motion.div
-                className="w-28 h-28 text-kaaj-charcoal -ml-2 cursor-default"
-                whileHover={{ scale: 1.1, rotate: 3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
+              <div className="w-28 h-28 text-kaaj-charcoal -ml-2">
                 <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
                   <g fill="currentColor">
                     <g transform="translate(100, 100)" stroke="currentColor" fill="none">
@@ -51,20 +38,20 @@ export default function Footer() {
                     </g>
                   </g>
                 </svg>
-              </motion.div>
+              </div>
             </div>
             <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed max-w-xs mt-4">
               Where tradition meets modernity. K A A J brings the finest Pakistani
               craftsmanship to women who celebrate their heritage with pride.
             </p>
             {/* Social */}
-            <div className="flex gap-3 pt-2">
+            <div className="flex gap-4 pt-2">
               <a
                 href="https://www.instagram.com/wearkaaj/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold hover:scale-110 hover:shadow-md hover:shadow-kaaj-gold/10 transition-all duration-300"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
               >
                 <InstagramIcon />
               </a>
@@ -73,7 +60,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold hover:scale-110 hover:shadow-md hover:shadow-kaaj-gold/10 transition-all duration-300"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
               >
                 <WhatsAppIcon />
               </a>
@@ -90,7 +77,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-all duration-300 underline-wipe inline-block"
+                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -109,7 +96,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-all duration-300 underline-wipe inline-block"
+                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -142,7 +129,7 @@ export default function Footer() {
               <Link
                 key={label}
                 href="/shop"
-                className="font-sans text-[10px] text-kaaj-charcoal/40 hover:text-kaaj-charcoal/70 transition-colors duration-300"
+                className="font-sans text-[10px] text-kaaj-charcoal/40 hover:text-kaaj-charcoal/70 transition-colors"
               >
                 {label}
               </Link>
@@ -204,7 +191,6 @@ function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
-  const [focused, setFocused] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -236,45 +222,29 @@ function NewsletterForm() {
 
   if (status === "success") {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="bg-kaaj-gold/10 border border-kaaj-gold/30 p-4 text-center backdrop-blur-sm"
-      >
+      <div className="bg-kaaj-gold/10 border border-kaaj-gold/30 p-4 text-center">
         <p className="font-sans text-xs text-kaaj-gold uppercase tracking-widest mb-1">Welcome to KAAJ</p>
         <p className="font-sans text-[10px] text-kaaj-charcoal/80">{message}</p>
-      </motion.div>
+      </div>
     );
   }
 
   return (
     <div className="flex flex-col gap-2.5">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2.5">
-        <div className="relative">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            required
-            placeholder="Your email address"
-            className="w-full bg-kaaj-charcoal/10 border border-kaaj-charcoal/20 text-kaaj-charcoal placeholder-kaaj-charcoal/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-all duration-500"
-            disabled={status === "loading"}
-          />
-          {/* Animated focus underline */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-px bg-kaaj-gold"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: focused ? 1 : 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: "center" }}
-          />
-        </div>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          placeholder="Your email address"
+          className="w-full bg-kaaj-charcoal/10 border border-kaaj-charcoal/20 text-kaaj-charcoal placeholder-kaaj-charcoal/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
+          disabled={status === "loading"}
+        />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-kaaj-deep text-kaaj-charcoal py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-deep-light transition-all duration-300 disabled:opacity-70 flex items-center justify-center gap-2 btn-shimmer"
+          className="w-full bg-kaaj-deep text-kaaj-charcoal py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-deep-light transition-colors duration-200 disabled:opacity-70 flex items-center justify-center gap-2"
         >
           {status === "loading" ? "Subscribing..." : "Subscribe"}
         </button>

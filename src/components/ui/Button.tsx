@@ -12,20 +12,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   fullWidth?: boolean;
   href?: string;
-  shimmer?: boolean;
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-kaaj-charcoal text-kaaj-cream hover:bg-kaaj-charcoal-light active:scale-[0.97] shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/20",
+    "bg-kaaj-charcoal text-kaaj-cream hover:bg-kaaj-charcoal-light active:scale-[0.98]",
   secondary:
-    "bg-kaaj-cream text-kaaj-charcoal border border-kaaj-border hover:bg-kaaj-blush active:scale-[0.97] shadow-md shadow-black/5",
+    "bg-kaaj-cream text-kaaj-charcoal border border-kaaj-border hover:bg-kaaj-blush active:scale-[0.98]",
   ghost:
-    "bg-transparent text-kaaj-charcoal hover:bg-kaaj-cream/60 active:scale-[0.97]",
+    "bg-transparent text-kaaj-charcoal hover:bg-kaaj-cream/60 active:scale-[0.98]",
   outline:
-    "bg-transparent text-kaaj-charcoal border border-kaaj-charcoal hover:bg-kaaj-charcoal hover:text-kaaj-cream active:scale-[0.97]",
+    "bg-transparent text-kaaj-charcoal border border-kaaj-charcoal hover:bg-kaaj-charcoal hover:text-kaaj-cream active:scale-[0.98]",
   gold:
-    "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark active:scale-[0.97] shadow-lg shadow-kaaj-gold/20 hover:shadow-xl hover:shadow-kaaj-gold/30",
+    "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark active:scale-[0.98]",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -42,7 +41,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = "md",
       loading = false,
       fullWidth = false,
-      shimmer = false,
       className,
       children,
       disabled,
@@ -56,13 +54,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || loading}
         className={cn(
           "inline-flex items-center justify-center gap-2",
-          "font-sans uppercase transition-all duration-500",
+          "font-sans uppercase transition-all duration-300",
           "disabled:opacity-50 disabled:cursor-not-allowed",
-          "transform-gpu",
           variantClasses[variant],
           sizeClasses[size],
           fullWidth && "w-full",
-          shimmer && "btn-shimmer",
           className
         )}
         {...props}

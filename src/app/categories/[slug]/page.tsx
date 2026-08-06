@@ -9,7 +9,6 @@ import type { ProductsQueryResponse, CategoriesQueryResponse } from "@/lib/types
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
 import Image from "next/image";
-import { AnimatedHeroTitle, AnimatedLine } from "@/components/ui/AnimatedElements";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -127,7 +126,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       {/* Page Header */}
-      <div className="bg-kaaj-deep text-kaaj-charcoal pt-40 pb-20 text-center relative overflow-hidden">
+      <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
         <Image
           src="/hero.png"
           alt={meta?.title ?? displayName}
@@ -137,21 +136,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           className="object-cover object-center opacity-30 mix-blend-luminosity"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-kaaj-deep/60 via-kaaj-deep/30 to-kaaj-deep/70" />
         <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
-        <AnimatedLine />
         <div className="relative z-10">
-          <AnimatedHeroTitle>
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
-              — Collections
+          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
+            — Collections
+          </p>
+          <h1 className="font-serif text-display-md text-kaaj-charcoal">{displayName}</h1>
+          {meta?.description && (
+            <p className="font-sans text-sm text-kaaj-charcoal/70 mt-3 max-w-md mx-auto">
+              {meta.description}
             </p>
-            <h1 className="font-serif text-display-md text-kaaj-charcoal">{displayName}</h1>
-            {meta?.description && (
-              <p className="font-sans text-sm text-kaaj-charcoal/70 mt-3 max-w-md mx-auto">
-                {meta.description}
-              </p>
-            )}
-          </AnimatedHeroTitle>
+          )}
         </div>
       </div>
 
