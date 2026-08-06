@@ -61,35 +61,28 @@ export default function ShopClient() {
   }, [currentSort]);
 
   return (
-    <div className="min-h-screen bg-kaaj-cream">
-      {/* Page Header */}
-      <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
-        <Image
-          src="/hero.png"
-          alt="KAAJ Collection"
-          fill
-          priority
-          fetchPriority="high"
-          className="object-cover object-center opacity-30 grayscale"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
-        <div className="relative z-10">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
-            — Our Collections
+    <div className="min-h-screen bg-transparent pt-32 md:pt-48 pb-32">
+      {/* Page Header - Editorial */}
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-32">
+        <div className="flex flex-col items-start max-w-4xl">
+          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-6 flex items-center gap-4">
+            <span className="w-8 h-px bg-kaaj-gold" /> The Archives
           </p>
-          <h1 className="font-serif text-display-md text-kaaj-charcoal">Shop All</h1>
-          <p className="font-sans text-sm text-kaaj-charcoal/70 mt-3 max-w-md mx-auto">
-            Discover the complete KAAJ range — from everyday pret to occasion-ready formals.
+          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+            Shop All.
+          </h1>
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 max-w-xl leading-relaxed">
+            Discover the complete KAAJ range — an exploration of heritage artistry through modern silhouettes.
           </p>
         </div>
       </div>
 
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filters Row */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col xl:flex-row items-start xl:items-end justify-between gap-8 mb-16 pb-8 border-b border-kaaj-charcoal/10">
+          
           {/* Category Pills */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3 max-w-3xl">
             <CategoryPill name="All" slug="" active={true} />
             {categories.map((cat) => (
               <CategoryPill key={cat.slug} name={cat.name} slug={cat.slug} count={cat.count} />
@@ -97,11 +90,11 @@ export default function ShopClient() {
           </div>
 
           {/* Sort */}
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-muted">
-              Sort:
+          <div className="flex items-center gap-4 flex-shrink-0">
+            <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50">
+              Sort
             </span>
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               {SORT_OPTIONS.map((opt) => (
                 <button
                   key={opt.value}
@@ -114,10 +107,10 @@ export default function ShopClient() {
                     }
                     router.push(newParams.toString() ? `/shop?${newParams.toString()}` : "/shop");
                   }}
-                  className={`px-3 py-1.5 font-sans text-[10px] uppercase tracking-wide border transition-colors duration-200 ${
+                  className={`px-4 py-2 font-sans text-[9px] uppercase tracking-[0.2em] transition-colors duration-500 border ${
                     currentSort === opt.value
-                      ? "bg-kaaj-charcoal text-kaaj-cream border-kaaj-charcoal"
-                      : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-charcoal"
+                      ? "bg-kaaj-charcoal text-[#2E302A] border-kaaj-charcoal"
+                      : "bg-transparent text-kaaj-charcoal border-kaaj-charcoal/20 hover:border-kaaj-charcoal"
                   }`}
                 >
                   {opt.label}
@@ -129,10 +122,10 @@ export default function ShopClient() {
 
         {/* Result count */}
         {!loading && (
-          <p className="font-sans text-xs text-kaaj-muted mb-6">
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/40 mb-8">
             {products.length > 0
-              ? `${products.length} product${products.length === 1 ? "" : "s"}`
-              : "0 products"}
+              ? `Showing ${products.length} works`
+              : "0 works"}
           </p>
         )}
 

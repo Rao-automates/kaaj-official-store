@@ -147,13 +147,10 @@ export default function ProductDetailClient({
 
   return (
     <>
-      <div className="min-h-screen bg-kaaj-cream">
-        {/* Header spacer block to support the transparent global header */}
-        <div className="bg-kaaj-deep h-[100px] w-full" />
-
+      <div className="min-h-screen bg-transparent pt-24 pb-16">
         {/* Breadcrumb */}
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-muted">
+          <nav className="flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal/50">
             <Link href="/" className="hover:text-kaaj-charcoal transition-colors">Home</Link>
             <span>/</span>
             <Link href="/shop" className="hover:text-kaaj-charcoal transition-colors">Shop</Link>
@@ -208,7 +205,7 @@ export default function ProductDetailClient({
                   {formatPKR(displayPrice)}
                 </span>
                 {onSale && displayRegularPrice && (
-                  <span className="font-sans text-sm text-kaaj-muted line-through">
+                  <span className="font-sans text-sm text-kaaj-charcoal/50 line-through">
                     {formatPKR(displayRegularPrice)}
                   </span>
                 )}
@@ -216,13 +213,13 @@ export default function ProductDetailClient({
 
               {/* Short Description */}
               {product.shortDescription && (
-                <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
+                <p className="font-sans text-sm text-kaaj-charcoal/70 leading-relaxed">
                   {stripHtml(product.shortDescription)}
                 </p>
               )}
               
               {/* Loved By Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-kaaj-charcoal/5 border border-kaaj-border/60 rounded-sm w-fit mt-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm w-fit mt-1">
                 <svg className="w-3 h-3 text-kaaj-charcoal/60" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>
@@ -233,8 +230,8 @@ export default function ProductDetailClient({
               {nonVariationAttributes.length > 0 && (
                 <div className="grid grid-cols-2 gap-2 mt-4">
                   {nonVariationAttributes.map((attr) => (
-                    <div key={attr.name} className="flex flex-col gap-0.5 p-3 bg-kaaj-charcoal/5 border border-kaaj-border/60 rounded-sm">
-                      <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-muted flex items-center gap-1.5">
+                    <div key={attr.name} className="flex flex-col gap-0.5 p-3 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm">
+                      <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 flex items-center gap-1.5">
                         <svg className="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                           <line x1="3" y1="9" x2="21" y2="9"/>
@@ -247,7 +244,7 @@ export default function ProductDetailClient({
                 </div>
               )}
 
-              <div className="h-px bg-kaaj-border" />
+              <div className="h-px bg-kaaj-charcoal/10" />
 
               {/* Variant Selectors */}
               {isVariable && attributes.length > 0 && (

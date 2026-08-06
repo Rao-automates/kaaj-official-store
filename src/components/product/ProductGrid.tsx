@@ -34,29 +34,21 @@ export default function ProductGrid({
   if (!products || products.length === 0) {
     return (
       <div className="py-24 text-center">
-        <div className="max-w-sm mx-auto space-y-4">
-          {/* Decorative kaaj motif */}
+        <div className="max-w-sm mx-auto space-y-6">
           <div className="flex justify-center opacity-20">
-            <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
-              <path
-                d="M24 4C24 4 16 12 8 20C16 28 24 44 24 44C24 44 32 28 40 20C32 12 24 4 24 4Z"
-                stroke="#1C1C1C"
-                strokeWidth="1.5"
-              />
-              <circle cx="24" cy="20" r="4" stroke="#1C1C1C" strokeWidth="1.5" />
-            </svg>
+            <div className="w-16 h-px bg-kaaj-charcoal/50" />
           </div>
-          <p className="font-serif text-2xl text-kaaj-charcoal">
-            {emptyMessage || "New arrivals coming soon"}
+          <p className="font-serif text-3xl text-kaaj-charcoal">
+            {emptyMessage || "New works arriving soon."}
           </p>
-          <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
-            Our artisans are crafting something exquisite. Follow us on Instagram for updates.
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 leading-loose">
+            Our ateliers are crafting something exquisite. Follow us on Instagram for updates.
           </p>
           <Link
             href="/shop"
-            className="inline-block mt-4 font-sans text-xs uppercase tracking-[0.18em] text-kaaj-charcoal border-b border-kaaj-charcoal pb-0.5 hover:text-kaaj-gold transition-colors duration-200"
+            className="inline-block mt-4 font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal border-b border-kaaj-charcoal/30 pb-2 hover:border-kaaj-gold transition-colors duration-500"
           >
-            Browse all collections
+            Browse Archives
           </Link>
         </div>
       </div>
@@ -66,7 +58,7 @@ export default function ProductGrid({
   return (
     <div
       className={cn(
-        "grid gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-12",
+        "grid gap-x-4 gap-y-16 md:gap-x-6 md:gap-y-24",
         columnClasses[columns],
         className
       )}

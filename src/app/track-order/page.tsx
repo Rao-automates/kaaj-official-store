@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 
@@ -49,7 +48,6 @@ export default function TrackOrderPage() {
         throw new Error(data.error || "Failed to find order");
       }
 
-      // Merge the provided email so we can display it later
       setOrderData({ ...data.order, billing: { ...data.order.billing, email } });
       setStatus("success");
     } catch (err: any) {
@@ -104,79 +102,76 @@ export default function TrackOrderPage() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-kaaj-cream flex flex-col">
-      {/* Header Section */}
-      <div className="bg-kaaj-deep pt-32 pb-14 text-center relative overflow-hidden flex-shrink-0">
-        <Image
-          src="/hero.png"
-          alt="Track Order"
-          fill
-          priority
-          className="object-cover object-center opacity-20 grayscale"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
-        <div className="relative z-10 px-4">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
-            — Order Status
+    <div className="min-h-screen bg-transparent flex flex-col pt-32 md:pt-48 pb-32">
+      {/* Editorial Header */}
+      <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
+        <div className="flex flex-col items-start max-w-4xl">
+          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-6 flex items-center gap-4">
+            <span className="w-8 h-px bg-kaaj-gold" /> Order Status
           </p>
-          <h1 className="font-serif text-3xl sm:text-5xl text-kaaj-cream">
-            Track Your Order
+          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+            Tracking.
           </h1>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 max-w-2xl mx-auto w-full px-4 sm:px-6 py-20">
+      <div className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6">
         
         {status === "success" && orderData ? (
-          <div className="bg-kaaj-cream-dark border border-kaaj-border p-8 md:p-12">
-            <div className="text-center mb-10 border-b border-kaaj-border pb-8">
-              <h2 className="font-serif text-2xl text-kaaj-charcoal mb-2">Order #{orderData.id}</h2>
-              <p className="font-sans text-sm text-kaaj-muted">
+          <div className="border border-kaaj-charcoal/20 p-8 md:p-16">
+            <div className="text-center mb-12 border-b border-kaaj-charcoal/10 pb-12">
+              <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Order #{orderData.id}</h2>
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50">
                 Placed by {orderData.billing.email}
               </p>
             </div>
             
-            <div className="space-y-8">
-              <div className="flex flex-col items-center justify-center space-y-4">
-                <div className="w-16 h-16 rounded-full border border-kaaj-gold text-kaaj-gold flex items-center justify-center bg-kaaj-gold/5">
+            <div className="space-y-12">
+              <div className="flex flex-col items-center justify-center space-y-6">
+                <div className="w-16 h-16 rounded-full border border-kaaj-gold/30 text-kaaj-gold flex items-center justify-center bg-kaaj-gold/5">
                   {getStatusDisplay(orderData.status).icon}
                 </div>
-                <h3 className="font-sans text-[10px] uppercase tracking-widest text-kaaj-charcoal">
+                <h3 className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal">
                   {getStatusDisplay(orderData.status).title}
                 </h3>
-                <p className="font-sans text-sm text-kaaj-muted text-center max-w-sm leading-relaxed">
+                <p className="font-sans text-sm text-kaaj-charcoal/60 text-center max-w-md leading-relaxed">
                   {getStatusDisplay(orderData.status).desc}
                 </p>
               </div>
 
-              <div className="pt-8 border-t border-kaaj-border text-center">
-                <Button variant="outline" onClick={() => { setStatus("idle"); setOrderData(null); }}>
-                  Track Another Order
-                </Button>
+              <div className="pt-12 border-t border-kaaj-charcoal/10 text-center">
+                <button 
+                  type="button"
+                  onClick={() => { setStatus("idle"); setOrderData(null); }}
+                  className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-charcoal/20 hover:border-kaaj-gold transition-colors duration-500 justify-center"
+                >
+                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
+                    Track Another Order
+                  </span>
+                </button>
               </div>
             </div>
           </div>
         ) : (
-          <div className="bg-kaaj-cream-dark border border-kaaj-border p-8 md:p-12">
-            <div className="text-center mb-10">
-              <h2 className="font-serif text-2xl text-kaaj-charcoal mb-3">Order Details</h2>
-              <p className="font-sans text-sm text-kaaj-muted leading-relaxed">
+          <div className="border border-kaaj-charcoal/20 p-8 md:p-16">
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Order Details</h2>
+              <p className="font-sans text-xs text-kaaj-charcoal/50 leading-relaxed max-w-lg mx-auto">
                 To track your order please enter your Order ID in the box below and the email address you used during checkout.
               </p>
             </div>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-12 max-w-lg mx-auto">
               {status === "error" && (
-                <div className="p-4 border border-red-200 bg-red-50 text-red-600 font-sans text-sm text-center">
+                <div className="p-4 border border-red-500/20 text-red-400 font-sans text-xs uppercase tracking-widest text-center">
                   {errorMessage}
                 </div>
               )}
               
-              <div className="space-y-4">
+              <div className="space-y-8">
                 <div className="space-y-2">
-                  <label htmlFor="orderId" className="block font-sans text-[10px] uppercase tracking-widest text-kaaj-charcoal">
+                  <label htmlFor="orderId" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
                     Order ID *
                   </label>
                   <input
@@ -184,12 +179,12 @@ export default function TrackOrderPage() {
                     id="orderId"
                     name="orderId"
                     required
-                    placeholder="Found in your order confirmation email"
-                    className="w-full bg-transparent border border-kaaj-border p-3 font-sans text-sm text-kaaj-charcoal focus:outline-none focus:border-kaaj-gold transition-colors"
+                    placeholder="Found in your confirmation email"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block font-sans text-[10px] uppercase tracking-widest text-kaaj-charcoal">
+                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
                     Billing Email *
                   </label>
                   <input
@@ -197,22 +192,28 @@ export default function TrackOrderPage() {
                     id="email"
                     name="email"
                     required
-                    placeholder="Email you used during checkout"
-                    className="w-full bg-transparent border border-kaaj-border p-3 font-sans text-sm text-kaaj-charcoal focus:outline-none focus:border-kaaj-gold transition-colors"
+                    placeholder="Email used during checkout"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
                   />
                 </div>
               </div>
 
-              <div className="pt-4">
-                <Button 
-                  type="submit" 
-                  variant="primary" 
-                  fullWidth 
-                  size="lg"
+              <div className="pt-4 text-center">
+                <button 
+                  type="submit"
                   disabled={status === "loading"}
+                  className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-charcoal/20 hover:border-kaaj-gold transition-colors duration-500 justify-center w-full sm:w-auto"
                 >
-                  {status === "loading" ? "Finding Order..." : "Track Order"}
-                </Button>
+                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
+                    {status === "loading" ? "Finding Order..." : "Track Order"}
+                  </span>
+                  {!status && (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                      className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors group-hover:translate-x-2 duration-500 transform-gpu will-change-transform">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  )}
+                </button>
               </div>
             </form>
           </div>
