@@ -1,11 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import HeroBanner from "@/components/sections/HeroBanner";
 import FeaturedGrid from "@/components/sections/FeaturedGrid";
 import BrandStory from "@/components/sections/BrandStory";
-import ProductCard from "@/components/product/ProductCard";
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
 import Marquee from "@/components/ui/Marquee";
@@ -16,45 +14,6 @@ interface HomeClientProps {
   initialFeatured: any[];
   initialArrivals: any[];
   initialCategories: any[];
-}
-
-/* ── Horizontal Scroll Section (Desktop Only) ──────────────────────────── */
-function HorizontalScrollSection({ products }: { products: any[] }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(products.length - 1) * 25}%`]);
-
-  return (
-    <div ref={containerRef} className="hidden lg:block relative" style={{ height: `${products.length * 50}vh` }}>
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        {/* Scroll progress indicator */}
-        <motion.div
-          className="absolute top-0 left-0 right-0 h-[2px] bg-kaaj-gold/40 origin-left z-10"
-          style={{ scaleX: scrollYProgress }}
-        />
-
-        <motion.div className="flex gap-8 pl-[5vw]" style={{ x }}>
-          {products.map((product, idx) => (
-            <motion.div
-              key={product.id}
-              className="w-[320px] flex-shrink-0"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <ProductCard product={product} priority={idx < 2} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  );
 }
 
 export default function HomeClient({
@@ -78,10 +37,10 @@ export default function HomeClient({
         <FeaturedGrid products={initialFeatured} />
       )}
 
-      {/* Brand Story — was imported but never rendered! */}
+      {/* Brand Story */}
       <BrandStory />
 
-      {/* Second Marquee Divider */}
+      {/* Second Marquee */}
       <Marquee
         text="PRET · UNSTITCHED · LUXURY LAWN · FORMALS · KAAJ"
         speed="slow"
@@ -99,7 +58,7 @@ export default function HomeClient({
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
                     style={{ transformOrigin: "left" }}
                   />
                   Just In
@@ -122,7 +81,7 @@ export default function HomeClient({
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-all group-hover:translate-x-3 duration-700 transform-gpu will-change-transform"
+                  className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-all group-hover:translate-x-3 duration-700 transform-gpu"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -131,45 +90,23 @@ export default function HomeClient({
             </div>
           </FadeIn>
 
-          {/* Desktop: Horizontal scroll gallery */}
-          {initialArrivals.length > 0 && (
-            <HorizontalScrollSection products={initialArrivals} />
-          )}
-
-          {/* Mobile: Staggered 2-column grid */}
-          <div className="lg:hidden">
-            <FadeIn delay={0.2} direction="none">
-              <ProductGrid products={initialArrivals} columns={2} />
-            </FadeIn>
-          </div>
+          <FadeIn delay={0.15} direction="none">
+            <ProductGrid products={initialArrivals} columns={4} />
+          </FadeIn>
         </div>
       </section>
 
-      {/* Categories Showcase */}
+      {/* Categories */}
       {initialCategories.length > 0 && (
         <section className="py-24 sm:py-40 section-deep section-divider-top">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <FadeIn>
               <div className="flex items-center gap-6 mb-16">
-                <motion.div
-                  className="h-px w-12 bg-kaaj-gold/40"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ transformOrigin: "right" }}
-                />
+                <div className="h-px w-12 bg-kaaj-gold/30" />
                 <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/60">
                   Explore by Category
                 </p>
-                <motion.div
-                  className="h-px w-12 bg-kaaj-gold/40"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ transformOrigin: "left" }}
-                />
+                <div className="h-px w-12 bg-kaaj-gold/30" />
               </div>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -188,13 +125,8 @@ export default function HomeClient({
         </section>
       )}
 
-      {/* Artful Social CTA */}
-      <section className="relative py-32 sm:py-48 section-void overflow-hidden">
-        {/* Radial glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-kaaj-gold/[0.04] blur-[100px]" />
-        </div>
-
+      {/* Social CTA — minimal, not template */}
+      <section className="relative py-32 sm:py-48 section-void">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
           <FadeIn>
             <p className="font-serif text-[clamp(2.5rem,6vw,4rem)] text-kaaj-charcoal mb-4 leading-[1.1] tracking-tight">
@@ -202,7 +134,7 @@ export default function HomeClient({
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.15}>
+          <FadeIn delay={0.1}>
             <a
               href="https://www.instagram.com/wearkaaj/"
               target="_blank"
@@ -213,7 +145,7 @@ export default function HomeClient({
             </a>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
+          <FadeIn delay={0.2}>
             <div className="flex items-center gap-8">
               <a
                 href="https://www.instagram.com/wearkaaj/"

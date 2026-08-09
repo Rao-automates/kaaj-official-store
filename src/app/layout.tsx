@@ -3,7 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import PerformanceProvider from "@/components/providers/PerformanceProvider";
-import SmoothScroll from "@/components/providers/SmoothScroll";
+// Lenis smooth scroll removed — caused lag on high-res displays
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -143,13 +143,11 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-kaaj-cream text-kaaj-charcoal antialiased">
         <CartProvider>
-          <SmoothScroll>
-            <PerformanceProvider />
-            <Header />
-            <CartDrawer />
-            <main id="main-content">{children}</main>
-            <Footer />
-          </SmoothScroll>
+          <PerformanceProvider />
+          <Header />
+          <CartDrawer />
+          <main id="main-content">{children}</main>
+          <Footer />
         </CartProvider>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>

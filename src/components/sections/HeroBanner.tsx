@@ -2,27 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const HEADLINE_LETTERS = ["K", "A", "A", "J"];
 
 export default function HeroBanner() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [hasScrolled, setHasScrolled] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Parallax: image moves slower than scroll
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  // Image desaturates and dims as user scrolls
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.5], [0.85, 0.4]);
-  // Content fades out as user scrolls past
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.4], [0, -60]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,15 +19,9 @@ export default function HeroBanner() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full min-h-[100dvh] flex items-end bg-transparent overflow-hidden"
-    >
-      {/* Parallax Hero Image */}
-      <motion.div
-        className="absolute top-0 right-0 w-full md:w-[70%] h-[85vh] md:h-[120%] z-0 transform-gpu"
-        style={{ y: imageY, opacity: imageOpacity }}
-      >
+    <section className="relative w-full min-h-[100dvh] flex items-end bg-transparent overflow-hidden">
+      {/* Hero Image — no scroll-linked transforms for performance */}
+      <div className="absolute top-0 right-0 w-full md:w-[70%] h-[85vh] md:h-full z-0">
         <Image
           src="/hero.png"
           alt="KAAJ - Premium Pakistani Womenswear"
@@ -54,13 +34,10 @@ export default function HeroBanner() {
         {/* Cinematic gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#2E302A] via-[#2E302A]/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#363832] via-transparent to-transparent hidden md:block" />
-      </motion.div>
+      </div>
 
-      {/* Content — fades out on scroll */}
-      <motion.div
-        className="relative z-10 w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24"
-        style={{ opacity: contentOpacity, y: contentY }}
-      >
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24">
         {/* Eyebrow with animated line */}
         <motion.div
           className="flex items-center gap-4 mb-8 md:mb-14"
@@ -72,7 +49,7 @@ export default function HeroBanner() {
             className="h-px w-8 md:w-16 bg-kaaj-gold/70"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             style={{ transformOrigin: "left" }}
           />
           <span className="font-sans text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-kaaj-gold">
@@ -92,7 +69,7 @@ export default function HeroBanner() {
                 transition={{
                   duration: 1,
                   delay: 0.2 + i * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                 }}
               >
                 {letter}
@@ -106,7 +83,7 @@ export default function HeroBanner() {
           className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
         >
           <div className="md:col-span-6 lg:col-span-5">
             <p className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-kaaj-charcoal/80 leading-[2]">
@@ -129,7 +106,7 @@ export default function HeroBanner() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
-                className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-all group-hover:translate-x-3 duration-700 transform-gpu will-change-transform"
+                className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-all group-hover:translate-x-3 duration-700 transform-gpu"
               >
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -137,9 +114,9 @@ export default function HeroBanner() {
             </Link>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* Scroll Indicator — fades out after first scroll */}
+      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
@@ -149,12 +126,7 @@ export default function HeroBanner() {
         <span className="font-sans text-[8px] uppercase tracking-[0.4em] text-kaaj-charcoal/40">
           Scroll
         </span>
-        <motion.div
-          className="w-px h-8 bg-gradient-to-b from-kaaj-gold/60 to-transparent"
-          animate={{ scaleY: [1, 0.5, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          style={{ transformOrigin: "top" }}
-        />
+        <div className="w-px h-8 bg-gradient-to-b from-kaaj-gold/60 to-transparent animate-scroll-pulse" />
       </motion.div>
     </section>
   );
