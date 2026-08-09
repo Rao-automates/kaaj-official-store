@@ -20,6 +20,7 @@
   --color-kaaj-olive: #6B7053;
   --color-kaaj-muted: #9C9A95;
   --color-kaaj-border: rgba(220, 216, 208, 0.15);
+  --color-kaaj-void: #0D0D0C;
 }
 
 /* ── CSS Custom Properties for Glass & Premium Effects ─────────────────── */
@@ -48,6 +49,9 @@ body {
   font-family: var(--font-inter), system-ui, sans-serif;
   position: relative;
   overflow-x: hidden;
+  /* Mobile touch optimizations */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 body::after {
@@ -242,6 +246,55 @@ h1, h2, h3, h4 {
   50% { box-shadow: 0 0 12px rgba(201, 168, 76, 0.6); }
 }
 
+/* ── NEW: Marquee Animation ─────────────────────────────────────────────────── */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marqueeScroll 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ── NEW: Scroll Indicator Pulse ────────────────────────────────────────────── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
+}
+.animate-scroll-pulse {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ── NEW: Text Reveal (letter-by-letter) ────────────────────────────────────── */
+@keyframes textRevealUp {
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── NEW: Diagonal Wipe ─────────────────────────────────────────────────────── */
+@keyframes diagonalWipe {
+  from {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* ── NEW: Line Grow ─────────────────────────────────────────────────────────── */
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* ── Transitions ─────────────────────────────────────────────────────────────── */
 .ease-expo-out     { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
 .ease-expo-in-out  { transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1); }
@@ -251,6 +304,31 @@ h1, h2, h3, h4 {
 :focus-visible {
   outline: 2px solid var(--color-kaaj-gold);
   outline-offset: 2px;
+}
+
+/* ── Section Contrast System ────────────────────────────────────────────────── */
+.section-deep {
+  background: linear-gradient(180deg, #1A1A18 0%, #141413 100%);
+}
+.section-void {
+  background: linear-gradient(180deg, #0D0D0C 0%, #0A0A09 100%);
+}
+.section-olive {
+  background: transparent; /* default olive from body */
+}
+
+/* Gradient section dividers instead of hard borders */
+.section-divider-top {
+  position: relative;
+}
+.section-divider-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.25), transparent);
 }
 
 /* ── Glassmorphism Utilities ─────────────────────────────────────────────────── */
@@ -328,6 +406,16 @@ body.high-perf-device .glass-overlay {
 }
 .magnetic-hover:hover {
   transform: scale(1.02);
+}
+
+/* ── Mobile Touch: Tactile Press States ──────────────────────────────────────── */
+@media (hover: none) {
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
 }
 
 /* ── Premium button shimmer ──────────────────────────────────────────────────── */

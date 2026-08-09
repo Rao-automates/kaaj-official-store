@@ -19,10 +19,20 @@ const HELP = [
 
 export default function Footer() {
   return (
-    <footer className="bg-transparent border-t border-kaaj-border text-kaaj-charcoal/80">
+    <footer className="relative bg-transparent border-t border-kaaj-border text-kaaj-charcoal/80 overflow-hidden">
+
+      {/* Large KAAJ watermark */}
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 pointer-events-none select-none" aria-hidden="true">
+        <span
+          className="font-sans font-medium text-[20vw] leading-none tracking-[0.3em] text-kaaj-charcoal/[0.025] whitespace-nowrap"
+          style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
+        >
+          KAAJ
+        </span>
+      </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1 space-y-6">
@@ -51,7 +61,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
               >
                 <InstagramIcon />
               </a>
@@ -60,7 +70,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
               >
                 <FacebookIcon />
               </a>
@@ -69,7 +79,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-colors duration-200"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
               >
                 <WhatsAppIcon />
               </a>
@@ -86,7 +96,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-200"
+                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-300 inline-block hover:translate-x-1 transform"
                   >
                     {link.label}
                   </Link>
@@ -105,7 +115,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-200"
+                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-300 inline-block hover:translate-x-1 transform"
                   >
                     {link.label}
                   </Link>
@@ -128,7 +138,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-kaaj-charcoal/10">
+      <div className="relative z-10 border-t border-kaaj-charcoal/10">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-sans text-[10px] text-kaaj-charcoal/40 tracking-wide">
             © {new Date().getFullYear()} K A A J. All rights reserved.
@@ -240,22 +250,22 @@ function NewsletterForm() {
 
   return (
     <div className="flex flex-col gap-2.5">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2.5">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="Your email address"
-          className="w-full bg-kaaj-charcoal/10 border border-kaaj-charcoal/20 text-kaaj-charcoal placeholder-kaaj-charcoal/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
+          className="flex-1 bg-kaaj-charcoal/10 border border-kaaj-charcoal/20 text-kaaj-charcoal placeholder-kaaj-charcoal/30 px-4 py-3 font-sans text-xs focus:outline-none focus:border-kaaj-gold transition-colors"
           disabled={status === "loading"}
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-kaaj-deep text-kaaj-charcoal py-3 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-deep-light transition-colors duration-200 disabled:opacity-70 flex items-center justify-center gap-2"
+          className="bg-kaaj-deep text-kaaj-charcoal py-3 px-6 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-deep-light transition-colors duration-300 disabled:opacity-70 flex items-center justify-center gap-2 whitespace-nowrap btn-shimmer"
         >
-          {status === "loading" ? "Subscribing..." : "Subscribe"}
+          {status === "loading" ? "..." : "Subscribe"}
         </button>
       </form>
       {status === "error" && (

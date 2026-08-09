@@ -25,6 +25,7 @@ const config: Config = {
           "rose-light": "#D4A08A",
           olive: "#6B7053",
           muted: "#9C9A95",
+          void: "#0D0D0C",
           border: "rgba(220, 216, 208, 0.15)",
         },
       },
