@@ -49,7 +49,7 @@ export default function Header() {
         {/* Main Header */}
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            
+
             {/* Left: Universal Hamburger */}
             <button
               onClick={() => setMenuOpen(true)}
@@ -91,7 +91,7 @@ export default function Header() {
                 className="relative w-10 h-10 flex items-center justify-center text-kaaj-charcoal hover:text-kaaj-gold transition-colors text-lg"
                 aria-label={`Open cart${mounted && itemCount > 0 ? `, ${itemCount} items` : ""}`}
               >
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] hidden sm:block mr-2">Bag</span>
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em] hidden sm:block mr-2"></span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
                   <line x1="3" y1="6" x2="21" y2="6" />
@@ -127,7 +127,7 @@ export default function Header() {
           )}
         >
           {/* Spacing for header */}
-          <div className="h-28" /> 
+          <div className="h-28" />
 
           <nav className="flex-1 flex flex-col px-12 py-8 gap-6">
             {NAV_LINKS.map((link, idx) => (
@@ -143,7 +143,7 @@ export default function Header() {
                     link.label === "Sale" ? "text-kaaj-rose group-hover:text-kaaj-rose/70" : "text-kaaj-charcoal group-hover:text-kaaj-gold",
                     menuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   )}
-                  style={{ transitionDelay: `${idx * 100}ms` }}
+                    style={{ transitionDelay: `${idx * 100}ms` }}
                   >
                     {link.label}
                   </span>
@@ -151,7 +151,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          
+
           <div className="px-12 py-12 border-t border-white/5">
             <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal/50 mb-6">
               Connect
