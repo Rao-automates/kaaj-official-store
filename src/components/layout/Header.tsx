@@ -57,16 +57,25 @@ export default function Header() {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
 
-            {/* Left: Universal Hamburger */}
+            {/* Left: Hamburger ↔ Close toggle */}
             <button
-              onClick={() => setMenuOpen(true)}
-              className="w-12 h-12 flex items-center justify-start text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
-              aria-label="Open menu"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="relative w-12 h-12 flex items-center justify-start text-kaaj-charcoal hover:text-kaaj-gold transition-colors z-[60]"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
-              <div className="flex flex-col gap-[5px]">
-                <div className="h-[1px] w-6 bg-current transition-all" />
-                <div className="h-[1px] w-4 bg-current transition-all" />
-                <div className="h-[1px] w-6 bg-current transition-all" />
+              <div className="relative w-6 h-4 flex flex-col justify-between">
+                <div className={cn(
+                  "h-[1px] bg-current transition-all duration-500 origin-left",
+                  menuOpen ? "rotate-45 w-[22px] translate-x-[2px] -translate-y-[1px]" : "w-6"
+                )} />
+                <div className={cn(
+                  "h-[1px] w-4 bg-current transition-all duration-300",
+                  menuOpen ? "opacity-0 translate-x-4" : "opacity-100"
+                )} />
+                <div className={cn(
+                  "h-[1px] bg-current transition-all duration-500 origin-left",
+                  menuOpen ? "-rotate-45 w-[22px] translate-x-[2px] translate-y-[1px]" : "w-6"
+                )} />
               </div>
             </button>
 
@@ -138,19 +147,8 @@ export default function Header() {
             menuOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          {/* Menu header with close button */}
-          <div className="flex items-center justify-end h-28 px-8">
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="w-10 h-10 flex items-center justify-center text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-300"
-              aria-label="Close menu"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          </div>
+          {/* Spacing for header */}
+          <div className="h-28" />
 
           <nav className="flex-1 flex flex-col px-12 py-8 gap-6">
             {NAV_LINKS.map((link, idx) => (

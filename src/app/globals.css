@@ -293,6 +293,30 @@ h1, h2, h3, h4 {
   to { transform: scaleX(1); }
 }
 
+/* ── Hero Zoom — CSS-only, GPU composited ──────────────────────────────────── */
+@keyframes heroZoom {
+  from { transform: scale(1.12); }
+  to   { transform: scale(1); }
+}
+.hero-zoom {
+  animation: heroZoom 10s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* ── Reduced Motion — disables all animations on low-power/accessibility ──── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-zoom {
+    animation: none;
+    transform: scale(1);
+  }
+}
+
 /* ── Transitions ─────────────────────────────────────────────────────────────── */
 .ease-expo-out     { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
 .ease-expo-in-out  { transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1); }
