@@ -11,7 +11,7 @@ export default function BrandStory() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Two-column editorial layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-0 items-start">
-          
+
           {/* Left: The story */}
           <div className="md:col-span-5 md:col-start-2">
             <motion.div
@@ -23,21 +23,21 @@ export default function BrandStory() {
               <p className="font-sans text-[9px] uppercase tracking-[0.5em] text-kaaj-gold/70 mb-8">
                 The name
               </p>
-              
+
               <h2 className="font-serif text-5xl md:text-7xl text-kaaj-charcoal leading-[0.9] tracking-tight mb-10">
-                Kaaj
+                KAAJ
               </h2>
 
               <div className="w-12 h-px bg-kaaj-gold/30 mb-10" />
 
               <p className="font-sans text-sm md:text-[15px] text-kaaj-charcoal/60 leading-[1.9] font-light max-w-md">
-                In Pakistani tailoring, the <em className="text-kaaj-charcoal/80 not-italic font-normal">kaaj</em> is the 
-                buttonhole — the final handmade stitch that completes a garment. It&apos;s never rushed. 
+                In Pakistani tailoring, the <em className="text-kaaj-charcoal/80 not-italic font-normal">kaaj</em> is the
+                buttonhole — the final handmade stitch that completes a garment. It&apos;s never rushed.
                 It&apos;s the detail that separates craft from clothing.
               </p>
 
               <p className="font-sans text-xs text-kaaj-charcoal/40 leading-[1.9] font-light max-w-md mt-6">
-                We named ourselves after it because we believe every piece should carry that same intention — 
+                We named ourselves after it because we believe every piece should carry that same intention —
                 made with care, finished by hand, meant to last.
               </p>
             </motion.div>

@@ -53,7 +53,7 @@ export default function HeroBanner() {
             style={{ transformOrigin: "left" }}
           />
           <span className="font-sans text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-kaaj-gold">
-            The Atelier Collection
+            {/*The Atelier Collection*/}
           </span>
         </motion.div>
 
