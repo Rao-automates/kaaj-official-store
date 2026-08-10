@@ -38,24 +38,7 @@ export default function HeroBanner() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24">
-        {/* Eyebrow with animated line */}
-        <motion.div
-          className="flex items-center gap-4 mb-8 md:mb-14"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <motion.div
-            className="h-px w-8 md:w-16 bg-kaaj-gold/70"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-            style={{ transformOrigin: "left" }}
-          />
-          <span className="font-sans text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-kaaj-gold">
-            {/*The Atelier Collection*/}
-          </span>
-        </motion.div>
+
 
         {/* Staggered Letter Reveal Headline */}
         <h1 className="flex items-baseline -ml-1 md:-ml-4 mb-12 md:mb-20">

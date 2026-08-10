@@ -43,17 +43,7 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
         <FadeIn>
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-24 md:mb-40 gap-8">
             <div className="max-w-2xl">
-              <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-6 flex items-center gap-4">
-                <motion.span
-                  className="inline-block w-8 h-px bg-kaaj-gold"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ transformOrigin: "left" }}
-                />
-                Curated
-              </p>
+
               <h2 className="font-serif text-[clamp(2.5rem,8vw,6rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
                 Featured Works.
               </h2>

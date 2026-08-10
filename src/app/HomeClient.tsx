@@ -52,17 +52,7 @@ export default function HomeClient({
           <FadeIn>
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-24 gap-8">
               <div>
-                <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-6 flex items-center gap-4">
-                  <motion.span
-                    className="inline-block w-8 h-px bg-kaaj-gold"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                    style={{ transformOrigin: "left" }}
-                  />
-                  Just In
-                </p>
+
                 <h2 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
                   New Arrivals.
                 </h2>
@@ -102,11 +92,11 @@ export default function HomeClient({
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <FadeIn>
               <div className="flex items-center gap-6 mb-16">
-                <div className="h-px w-12 bg-kaaj-gold/30" />
+                <div className="h-px w-12 bg-kaaj-charcoal/10" />
                 <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/60">
                   Explore by Category
                 </p>
-                <div className="h-px w-12 bg-kaaj-gold/30" />
+                <div className="h-px w-12 bg-kaaj-charcoal/10" />
               </div>
             </FadeIn>
             <FadeIn delay={0.2}>
