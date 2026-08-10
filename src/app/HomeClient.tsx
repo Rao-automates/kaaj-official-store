@@ -1,12 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import HeroBanner from "@/components/sections/HeroBanner";
 import FeaturedGrid from "@/components/sections/FeaturedGrid";
 import BrandStory from "@/components/sections/BrandStory";
 import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
-import Marquee from "@/components/ui/Marquee";
 import FadeIn from "@/components/ui/FadeIn";
 import Link from "next/link";
 
@@ -23,28 +21,13 @@ export default function HomeClient({
 }: HomeClientProps) {
   return (
     <>
-      {/* Hero */}
-      <HeroBanner />
-
-      {/* Marquee Divider */}
-      <Marquee
-        text="HERITAGE · CRAFTSMANSHIP · MODERNITY · KAAJ"
-        speed="normal"
-      />
+      {/* Brand Story — THE landing section */}
+      <BrandStory />
 
       {/* Featured Collection Grid */}
       {initialFeatured.length > 0 && (
         <FeaturedGrid products={initialFeatured} />
       )}
-
-      {/* Brand Story */}
-      <BrandStory />
-
-      {/* Second Marquee */}
-      <Marquee
-        text="PRET · UNSTITCHED · LUXURY LAWN · FORMALS · KAAJ"
-        speed="slow"
-      />
 
       {/* New Arrivals */}
       <section className="py-24 sm:py-40 bg-transparent section-divider-top">

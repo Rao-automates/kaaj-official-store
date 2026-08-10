@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
@@ -15,14 +16,20 @@ const NAV_LINKS = [
 
 export default function Header() {
   const { itemCount, openDrawer } = useCart();
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+      setPastHero(window.scrollY > window.innerHeight * 0.6);
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -63,10 +70,15 @@ export default function Header() {
               </div>
             </button>
 
-            {/* Center: Logo */}
+            {/* Center: Logo — hidden on homepage hero, visible after scroll or on other pages */}
             <Link
               href="/"
-              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-transform hover:scale-105 duration-500"
+              className={cn(
+                "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-700 hover:scale-105",
+                isHomepage && !pastHero && !menuOpen
+                  ? "opacity-0 pointer-events-none translate-y-2"
+                  : "opacity-100 pointer-events-auto translate-y-0"
+              )}
               aria-label="KAAJ Home"
               onClick={() => setMenuOpen(false)}
             >
