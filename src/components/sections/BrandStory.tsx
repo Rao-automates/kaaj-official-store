@@ -56,7 +56,7 @@ export default function BrandStory() {
         {LETTERS.map((letter, i) => (
           <span key={i} className="overflow-hidden inline-block">
             <motion.span
-              className="inline-block text-center leading-[0.78] select-none cursor-default drop-shadow-2xl transform-gpu"
+              className="inline-block text-center leading-[0.78] select-none cursor-default drop-shadow-2xl transform-gpu text-[clamp(4.2rem,18vw,16rem)] sm:text-[clamp(5rem,20vw,16rem)] tracking-[0.2em] sm:tracking-[0.3em]"
               style={{
                 fontFamily: "var(--font-inter), 'Inter', sans-serif",
                 fontWeight: 500,
@@ -68,8 +68,6 @@ export default function BrandStory() {
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
               }}
-              /* Mobile: tighter letter-spacing, slightly smaller
-                 Desktop: full 0.3em spacing as before */
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -126,20 +124,6 @@ export default function BrandStory() {
       >
         <div className="w-px h-10 sm:h-12 bg-gradient-to-b from-[#EAE6DF]/20 to-transparent animate-scroll-pulse" />
       </motion.div>
-
-      {/* Responsive KAAJ text sizing via CSS — avoids inline style limitations */}
-      <style jsx>{`
-        h1 > span > span {
-          font-size: clamp(4.2rem, 18vw, 16rem);
-          letter-spacing: 0.2em;
-        }
-        @media (min-width: 640px) {
-          h1 > span > span {
-            font-size: clamp(5rem, 20vw, 16rem);
-            letter-spacing: 0.3em;
-          }
-        }
-      `}</style>
 
     </section>
   );
