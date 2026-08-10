@@ -146,32 +146,26 @@ export default function BrandStory() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="w-[55vw] h-[55vw] drop-shadow-2xl">
-            <svg viewBox="50 50 100 100" className="w-full h-full overflow-visible">
+          <div className="w-[110vw] h-[110vw] drop-shadow-2xl">
+            <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
                   <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
+                {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>
-              <g transform="translate(100, 100)" stroke="url(#hero-silk)" fill="none" filter="url(#glow)">
-                {/* Exact original paths and stroke widths from the footer */}
-                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" strokeLinecap="round" />
-                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" strokeLinecap="round" />
-                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="0.75" opacity="0.5" strokeLinecap="round" />
+              <g transform="translate(100, 100)" stroke="url(#hero-silk)" fill="none">
+                {/* Exact original paths preserved for shape. Stroke width increased to make it bold. */}
+                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="6" strokeLinecap="round" />
+                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="6" strokeLinecap="round" />
+                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
               </g>
             </svg>
           </div>
           
-          {/* Elegant Sub-branding - Made noticeably larger */}
+          {/* Elegant Sub-branding - Made noticeably larger and pulled up closer to symbol */}
           <motion.p 
-            className="font-inter text-[24px] font-medium tracking-[1em] text-[#EAE6DF] mt-6 ml-[1em] drop-shadow-md"
+            className="font-inter text-[24px] font-medium tracking-[1em] text-[#EAE6DF] mt-[-14vw] ml-[1em] drop-shadow-md"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
