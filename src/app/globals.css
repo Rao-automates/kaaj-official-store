@@ -295,13 +295,14 @@ h1, h2, h3, h4 {
 
 /* ── Hero Zoom — CSS-only, GPU composited ──────────────────────────────────── */
 @keyframes heroZoom {
-  from { transform: scale(1.12); }
-  to   { transform: scale(1); }
+  from { transform: scale(1.12) translateZ(0); }
+  to   { transform: scale(1) translateZ(0); }
 }
 .hero-zoom {
   animation: heroZoom 10s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform;
-  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* ── Reduced Motion — disables all animations on low-power/accessibility ──── */

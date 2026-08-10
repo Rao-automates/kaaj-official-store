@@ -146,7 +146,7 @@ export default function BrandStory() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="w-[110vw] h-[110vw] drop-shadow-2xl">
+          <div className="w-[150vw] h-[150vw] drop-shadow-2xl pointer-events-none">
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
@@ -154,7 +154,7 @@ export default function BrandStory() {
                 </pattern>
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>
-              <g transform="translate(100, 100)" stroke="url(#hero-silk)" fill="none">
+              <g transform="translate(87, 100)" stroke="url(#hero-silk)" fill="none">
                 {/* Exact original paths preserved for shape. Stroke width increased to make it bold. Sharp edges restored. */}
                 <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="6" />
                 <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="6" />
@@ -165,7 +165,7 @@ export default function BrandStory() {
           
           {/* Elegant Sub-branding - Made noticeably larger and pulled up closer to symbol */}
           <motion.p 
-            className="font-inter text-[24px] font-medium tracking-[1em] text-[#EAE6DF] mt-[-14vw] ml-[1em] drop-shadow-md"
+            className="font-inter text-[32px] font-medium tracking-[1em] text-[#EAE6DF] mt-[-35vw] ml-[1em] drop-shadow-md"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
