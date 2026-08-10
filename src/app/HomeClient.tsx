@@ -129,7 +129,7 @@ export default function HomeClient({
               href="https://www.instagram.com/wearkaaj/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block font-sans text-[11px] tracking-[0.3em] uppercase text-kaaj-gold hover:text-kaaj-gold-light transition-colors duration-500 mb-16"
+              className="inline-block font-sans text-[11px] tracking-[0.3em] lowercase text-kaaj-gold hover:text-kaaj-gold-light transition-colors duration-500 mb-16"
             >
               @wearkaaj
             </a>
