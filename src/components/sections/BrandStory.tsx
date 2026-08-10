@@ -139,6 +139,7 @@ export default function BrandStory() {
         </div>
 
         {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
+        {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
         <motion.div 
           className="relative z-10 flex flex-col items-center mt-[-8vh]"
           initial={{ opacity: 0, scale: 0.85 }}
@@ -152,7 +153,7 @@ export default function BrandStory() {
                   <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -160,21 +161,17 @@ export default function BrandStory() {
                 </filter>
               </defs>
               <g transform="translate(100, 100)" stroke="url(#hero-silk)" fill="none" filter="url(#glow)">
-                {/* 
-                  Thickened lines (strokeWidth="16") to reveal the silk texture. 
-                  Coordinates scaled slightly so the thick lines don't completely overlap,
-                  creating a beautiful interlocking thread effect.
-                */}
-                <line x1="-22" y1="-65" x2="-22" y2="65" strokeWidth="16" strokeLinecap="round" />
-                <path d="M 50,-65 C -45,-30 -45,30 50,65" strokeWidth="16" strokeLinecap="round" />
-                <path d="M 20,-65 C -25,-30 -25,30 20,65" strokeWidth="6" opacity="0.8" strokeLinecap="round" />
+                {/* Exact original paths and stroke widths from the footer */}
+                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" strokeLinecap="round" />
+                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" strokeLinecap="round" />
+                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="0.75" opacity="0.5" strokeLinecap="round" />
               </g>
             </svg>
           </div>
           
-          {/* Elegant Sub-branding - Made slightly bigger as requested */}
+          {/* Elegant Sub-branding - Made noticeably larger */}
           <motion.p 
-            className="font-inter text-[15px] font-medium tracking-[1.2em] text-[#EAE6DF] mt-8 ml-[1.2em] drop-shadow-md"
+            className="font-inter text-[24px] font-medium tracking-[1em] text-[#EAE6DF] mt-6 ml-[1em] drop-shadow-md"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
