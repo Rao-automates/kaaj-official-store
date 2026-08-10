@@ -49,59 +49,30 @@ export default function BrandStory() {
         <div className="absolute inset-0 z-0 bg-[#0A0A09]/60" />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/50 via-transparent to-[#0A0A09]" />
         <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0A0A09]/20 via-transparent to-[#0A0A09]/20" />
+
         <h1 className="relative z-[2] flex items-center justify-center w-full px-4">
           {LETTERS.map((letter, i) => (
-            <React.Fragment key={i}>
-              <span className="overflow-hidden inline-block pb-4">
-                <motion.span
-                  className="inline-block text-center leading-[0.78] select-none cursor-default drop-shadow-2xl transform-gpu text-[clamp(5rem,20vw,16rem)] tracking-[0.3em]"
-                  style={{
-                    fontFamily: "var(--font-inter), 'Inter', sans-serif",
-                    fontWeight: 500,
-                    backgroundImage: "url(/ultimate-silk.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center 40%",
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    color: "transparent",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                  initial={{ opacity: 0, y: "60%" }}
-                  animate={{ opacity: 1, y: "0%" }}
-                  transition={{ duration: 1.2, delay: 0.15 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {letter}
-                </motion.span>
-              </span>
-              
-              {/* Desktop Symbol perfectly locked between the two A's (only renders on desktop, hidden on sm) */}
-              {i === 1 && (
-                <div className="relative w-0 h-0 z-[-1] hidden sm:flex items-center justify-center pointer-events-none text-[clamp(5rem,20vw,16rem)]">
-                  {/* Shift left by 0.15em (using the massive font size) to counteract exactly half of the tracking space from the first 'A' */}
-                  <motion.div 
-                    className="absolute flex items-center justify-center pointer-events-none translate-x-[-0.15em]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-                  >
-                    <div className="w-[80vw] h-[80vw] max-w-[1200px] max-h-[1200px] drop-shadow-2xl">
-                      <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-                        <defs>
-                          <pattern id="desktop-symbol-texture" patternUnits="userSpaceOnUse" width="200" height="200">
-                            <image href="/royal-embroidery.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
-                          </pattern>
-                        </defs>
-                        <g transform="translate(112, 100)" stroke="url(#desktop-symbol-texture)" fill="none">
-                          <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" />
-                          <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" />
-                          <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="0.75" opacity="0.8" />
-                        </g>
-                      </svg>
-                    </div>
-                  </motion.div>
-                </div>
-              )}
-            </React.Fragment>
+            <span key={i} className="overflow-hidden inline-block pb-4">
+              <motion.span
+                className="inline-block text-center leading-[0.78] select-none cursor-default drop-shadow-2xl transform-gpu text-[clamp(5rem,20vw,16rem)] tracking-[0.3em]"
+                style={{
+                  fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                  fontWeight: 500,
+                  backgroundImage: "url(/ultimate-silk.png)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center 40%",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                initial={{ opacity: 0, y: "60%" }}
+                animate={{ opacity: 1, y: "0%" }}
+                transition={{ duration: 1.2, delay: 0.15 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {letter}
+              </motion.span>
+            </span>
           ))}
         </h1>
 
@@ -188,7 +159,8 @@ export default function BrandStory() {
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
-                  <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
+                  {/* Updated to royal-embroidery to match desktop and improve visibility */}
+                  <image href="/royal-embroidery.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>
