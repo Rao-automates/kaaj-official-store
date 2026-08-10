@@ -51,12 +51,14 @@ export default function BrandStory() {
       {/* Grain — desktop only */}
       <div className="absolute inset-0 bg-grain opacity-25 pointer-events-none z-[1] hidden md:block" />
 
-      {/* Staggered KAAJ — silk-filled, logo font */}
-      <h1 className="relative z-[2] flex items-baseline justify-center px-4">
+      {/* ==============================================================
+       *  DESKTOP LAYOUT (Massive Centered Text)
+       * ============================================================== */}
+      <h1 className="relative z-[2] hidden sm:flex items-baseline justify-center px-4">
         {LETTERS.map((letter, i) => (
           <span key={i} className="overflow-hidden inline-block">
             <motion.span
-              className="inline-block text-center leading-[0.78] select-none cursor-default drop-shadow-2xl transform-gpu text-[clamp(4.2rem,18vw,16rem)] sm:text-[clamp(5rem,20vw,16rem)] tracking-[0.2em] sm:tracking-[0.3em]"
+              className="inline-block text-center leading-[0.78] select-none cursor-default drop-shadow-2xl transform-gpu text-[clamp(5rem,20vw,16rem)] tracking-[0.3em]"
               style={{
                 fontFamily: "var(--font-inter), 'Inter', sans-serif",
                 fontWeight: 500,
@@ -82,14 +84,13 @@ export default function BrandStory() {
         ))}
       </h1>
 
-      {/* Subline + CTA — pushed down slightly on mobile for breathing room */}
       <motion.div
-        className="relative z-[2] flex flex-col items-center mt-8 sm:mt-14 px-6"
+        className="relative z-[2] hidden sm:flex flex-col items-center mt-14 px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6, ease }}
       >
-        <p className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#EAE6DF]/45 leading-[2] text-center max-w-xs sm:max-w-sm mb-8 sm:mb-12">
+        <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-[#EAE6DF]/45 leading-[2] text-center max-w-sm mb-12">
           Heritage artistry, modern silhouettes.
         </p>
 
@@ -97,7 +98,7 @@ export default function BrandStory() {
           href="/shop"
           className="group flex items-center gap-5 pb-3 border-b border-[#EAE6DF]/10 hover:border-[#C9A84C]/40 transition-all duration-500"
         >
-          <span className="font-sans text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.3em] text-[#EAE6DF]/60 group-hover:text-[#C9A84C] transition-colors duration-500">
+          <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-[#EAE6DF]/60 group-hover:text-[#C9A84C] transition-colors duration-500">
             Explore Collection
           </span>
           <svg
@@ -109,6 +110,47 @@ export default function BrandStory() {
             strokeWidth="1.5"
             className="text-[#EAE6DF]/40 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-2 duration-500 transform-gpu"
           >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </Link>
+      </motion.div>
+
+      {/* ==============================================================
+       *  MOBILE LAYOUT (Editorial Bottom-Left Aligned)
+       * ============================================================== */}
+      <motion.div 
+        className="absolute inset-0 z-[2] flex sm:hidden flex-col justify-end items-start px-6 pb-28"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <h1 
+          className="font-medium tracking-[0.3em] text-5xl mb-6 select-none drop-shadow-xl"
+          style={{
+            fontFamily: "var(--font-inter), 'Inter', sans-serif",
+            backgroundImage: "url(/ultimate-silk.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          KAAJ
+        </h1>
+        <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-[#EAE6DF]/70 leading-[1.8] max-w-[260px] mb-8">
+          Heritage artistry, modern silhouettes.
+        </p>
+        <Link
+          href="/shop"
+          className="group flex items-center gap-4 pb-2 border-b border-[#EAE6DF]/20 hover:border-[#C9A84C]/50 transition-all duration-500"
+        >
+          <span className="font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#EAE6DF]/90">
+            Explore Collection
+          </span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EAE6DF]/80">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
