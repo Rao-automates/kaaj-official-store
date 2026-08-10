@@ -147,7 +147,7 @@ export default function BrandStory() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="w-[55vw] h-[55vw] drop-shadow-2xl">
-            <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
+            <svg viewBox="50 50 100 100" className="w-full h-full overflow-visible">
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
                   <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
