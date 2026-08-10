@@ -125,19 +125,27 @@ export default function BrandStory() {
        * ============================================================== */}
       <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#0A0A09] overflow-hidden z-[2]">
         
-        {/* Moody Background Texture - Animation isolated to wrapper to prevent object-fit lag */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-0 hero-zoom">
+        {/* Moody Background Texture - Extreme GPU Optimization */}
+        <div className="absolute inset-0 z-0 bg-[#0A0A09]">
+          <motion.div 
+            className="absolute inset-0 z-0 transform-gpu"
+            initial={{ scale: 1.12 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 10, ease: "easeOut" }}
+            style={{ willChange: "transform" }}
+          >
             <Image
               src="/hero-new.png"
               alt="KAAJ Editorial"
               fill
+              sizes="(max-width: 640px) 50vw"
+              quality={40}
               className="object-cover object-[center_30%] opacity-35"
               priority
             />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-transparent to-[#0A0A09] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A09]/90 via-transparent to-[#0A0A09]/90 pointer-events-none" />
+          </motion.div>
+          {/* Single gradient to reduce GPU overdraw pixel-blending lag */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-[#0A0A09]/40 to-[#0A0A09] pointer-events-none" />
         </div>
 
         {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
