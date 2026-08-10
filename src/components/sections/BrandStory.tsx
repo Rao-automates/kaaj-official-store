@@ -5,95 +5,101 @@ import Image from "next/image";
 
 export default function BrandStory() {
   return (
-    <section className="relative py-32 md:py-48 overflow-hidden section-void flex flex-col items-center justify-center min-h-[100dvh]">
-      {/* Grain & Atmosphere */}
-      <div className="absolute inset-0 bg-grain opacity-[0.15] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full bg-kaaj-gold/[0.02] blur-[100px] pointer-events-none z-0" />
+    <section className="relative w-full min-h-[120vh] bg-kaaj-void text-kaaj-charcoal overflow-hidden flex items-center py-32 md:py-48">
+      {/* Heavy Grain for cinematic feel */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'300\\'%3E%3Cfilter id=\\'noise\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.8\\' numOctaves=\\'3\\' stitchTiles=\\'stitch\\'/%3E%3CfeColorMatrix type=\\'saturate\\' values=\\'0\\'/%3E%3C/filter%3E%3Crect width=\\'300\\' height=\\'300\\' filter=\\'url(%23noise)\\' opacity=\\'0.05\\'/%3E%3C/svg%3E')] opacity-60 mix-blend-overlay pointer-events-none z-0" />
+
+      {/* Massive Background Typography - purely artistic tension */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none z-0 overflow-hidden flex flex-col items-center select-none">
+        <h2 className="font-serif text-[28vw] leading-[0.75] text-kaaj-charcoal/[0.04] tracking-tighter uppercase whitespace-nowrap blur-[2px]">
+          A Refusal
+        </h2>
+        <h2 className="font-serif text-[28vw] leading-[0.75] text-kaaj-charcoal/[0.04] tracking-tighter uppercase whitespace-nowrap blur-[2px]">
+          To Rush
+        </h2>
+      </div>
 
       <div className="relative z-10 w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Massive Typography - Brutalist Editorial */}
-        <div className="relative w-full flex flex-col items-center justify-center text-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-8 items-center">
           
-          <motion.h2 
-            className="font-serif text-[clamp(5rem,18vw,14rem)] leading-[0.75] tracking-tighter text-kaaj-charcoal/90 uppercase z-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          >
-            The Final
-          </motion.h2>
+          {/* Left: The Raw Copy */}
+          <div className="lg:col-span-5 lg:col-start-2 flex flex-col justify-center">
+            
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+            >
+              <div className="flex items-center gap-6 mb-12">
+                <span className="block w-12 h-px bg-kaaj-gold" />
+                <span className="font-sans text-[9px] uppercase tracking-[0.5em] text-kaaj-gold">
+                  01 // The Hand
+                </span>
+              </div>
 
-          {/* Floating Image breaking the text — this creates the "artful" tension */}
-          <motion.div 
-            className="relative w-56 h-72 md:w-96 md:h-[32rem] my-[-2rem] md:my-[-6rem] z-20 grayscale hover:grayscale-0 transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          >
-            <Image
-              src="/hero.png" // Using the highly textured editorial fabric image
-              alt="The Art of Kaaj"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 60vw, 30vw"
-            />
-            {/* Cinematic dark overlay on the image */}
-            <div className="absolute inset-0 bg-gradient-to-t from-kaaj-void/80 via-transparent to-transparent" />
-          </motion.div>
-          
-          <motion.h2 
-            className="font-serif text-[clamp(5rem,18vw,14rem)] leading-[0.75] tracking-tighter text-kaaj-gold uppercase relative z-30"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          >
-            <span className="text-kaaj-charcoal/30 italic mr-2 md:mr-6 lowercase font-light">&amp;</span>Stitch.
-          </motion.h2>
+              <h3 className="font-serif text-[clamp(3.5rem,6vw,6rem)] leading-[0.85] tracking-tight mb-12">
+                It starts <br/>
+                <span className="italic text-kaaj-charcoal/40 font-light pr-2">with a</span> <br/>
+                needle.
+              </h3>
 
+              <div className="space-y-8 max-w-md relative">
+                {/* Decorative architectural line */}
+                <div className="absolute -left-6 top-2 bottom-2 w-px bg-kaaj-charcoal/10 hidden md:block" />
+                
+                <p className="font-sans text-sm md:text-[15px] text-kaaj-charcoal/90 leading-[2.2] font-light">
+                  The <em className="italic text-kaaj-charcoal">Kaaj</em> isn&apos;t just a buttonhole. It is the final breath before the garment is born. A quiet act of defiance against mass production.
+                </p>
+                <p className="font-sans text-sm md:text-[15px] text-kaaj-charcoal/50 leading-[2.2] font-light">
+                  We don&apos;t just make clothes. We preserve the human touch. Every single stitch is a refusal to rush.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right: The Art Installation Image */}
+          <div className="lg:col-span-5 lg:col-start-8 relative mt-12 lg:mt-0">
+            
+            {/* Vertical text element (Magazine style) */}
+            <div className="absolute -left-16 top-1/2 -translate-y-1/2 hidden lg:block z-20">
+              <span className="font-sans text-[9px] uppercase tracking-[0.5em] text-kaaj-charcoal/40 whitespace-nowrap" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+                Preserving the craft
+              </span>
+            </div>
+
+            <motion.div 
+              className="relative w-full max-w-md mx-auto aspect-[3/4] z-10 group"
+              initial={{ opacity: 0, clipPath: "inset(20% 0 0 0)" }}
+              whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+            >
+              {/* Image Container with strict brutalist border */}
+              <div className="absolute inset-0 border border-kaaj-charcoal/20 p-2 md:p-4 bg-kaaj-void/50">
+                <div className="relative w-full h-full overflow-hidden">
+                  <Image
+                    src="/art-needle.png"
+                    alt="A single golden needle piercing fabric"
+                    fill
+                    className="object-cover scale-105 group-hover:scale-100 transition-transform duration-[2s] ease-[cubic-bezier(0.16,1,0.3,1)] grayscale-[40%] group-hover:grayscale-0"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                  />
+                  {/* Internal dark gradient to ground the image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-kaaj-void/90 via-kaaj-void/20 to-transparent opacity-80" />
+                </div>
+              </div>
+
+              {/* Overlapping text over the image that breaks boundaries */}
+              <div className="absolute -bottom-12 -right-4 sm:-right-12 z-30 pointer-events-none">
+                <h2 className="font-serif text-[5.5rem] sm:text-7xl md:text-8xl text-kaaj-gold drop-shadow-[0_20px_20px_rgba(0,0,0,0.8)] italic pr-4">
+                  KAAJ
+                </h2>
+              </div>
+            </motion.div>
+            
+          </div>
         </div>
-
-        {/* Small manifesto text anchored at the bottom corners */}
-        <div className="mt-24 md:mt-40 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 pt-12 relative">
-          
-          {/* Subtle dividing line */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-kaaj-charcoal/0 via-kaaj-charcoal/20 to-kaaj-charcoal/0" />
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <p className="font-sans text-[9px] uppercase tracking-[0.5em] text-kaaj-gold mb-6 flex items-center gap-4">
-              <span className="w-6 h-px bg-kaaj-gold/50 inline-block" />
-              Philosophy
-            </p>
-            <p className="font-sans text-sm md:text-base text-kaaj-charcoal/60 leading-[2] font-light max-w-sm pl-10">
-              In the craft of Pakistani fashion, the <em className="text-kaaj-charcoal not-italic font-medium">kaaj</em> — the buttonhole — is the final touch that transforms fabric into art. It is the meeting point of tradition and precision.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="md:text-right flex flex-col md:items-end justify-between"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.6 }}
-          >
-            <p className="font-sans text-[9px] uppercase tracking-[0.5em] text-kaaj-charcoal/40 mb-6 flex items-center gap-4 justify-end">
-              Est. 2026
-              <span className="w-6 h-px bg-kaaj-charcoal/20 inline-block md:hidden" />
-            </p>
-            <p className="font-sans text-sm md:text-base text-kaaj-charcoal/60 leading-[2] font-light max-w-sm pr-0 md:pr-10">
-              We named ourselves after it because we believe every piece should carry that same intention — made with care, finished by hand, meant to last.
-            </p>
-          </motion.div>
-        </div>
-
       </div>
     </section>
   );
