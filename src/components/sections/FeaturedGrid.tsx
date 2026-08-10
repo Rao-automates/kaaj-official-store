@@ -36,7 +36,9 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
   if (!hasProducts) return null;
 
   return (
-    <section className="py-24 md:py-48 bg-transparent section-divider-top">
+    <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 bg-transparent section-divider-top">
+      {/* Smooth transition gradient from dark hero */}
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#0A0A09] to-transparent pointer-events-none -mt-1" />
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header - Editorial minimal */}
