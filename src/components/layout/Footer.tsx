@@ -21,15 +21,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-transparent border-t border-kaaj-border text-kaaj-charcoal/80 overflow-hidden">
 
-      {/* Large KAAJ watermark */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 pointer-events-none select-none" aria-hidden="true">
-        <span
-          className="font-sans font-medium text-[20vw] leading-none tracking-[0.3em] text-kaaj-charcoal/[0.025] whitespace-nowrap"
-          style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif" }}
-        >
-          KAAJ
-        </span>
-      </div>
+
 
       {/* Main Footer Content */}
       <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
