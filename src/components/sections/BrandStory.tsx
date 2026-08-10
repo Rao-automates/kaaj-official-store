@@ -119,30 +119,28 @@ export default function BrandStory() {
       {/* ==============================================================
        *  MOBILE LAYOUT (High-Fashion Minimalist Split)
        * ============================================================== */}
-      <motion.div 
+      <div 
         className="absolute inset-0 z-[10] flex sm:hidden flex-col bg-[#0A0A09] overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
       >
-        {/* Top 60%: The Editorial Photography */}
-        <div className="relative w-full h-[60vh]">
+        {/* Top Section: The Editorial Photography
+            Using aspect-ratio instead of vh prevents layout jumps when the mobile URL bar collapses */}
+        <div className="relative w-full aspect-[4/5]">
           <Image
             src="/hero-new.png"
             alt="KAAJ Editorial"
             fill
-            className="object-cover object-[center_30%] hero-zoom"
+            className="object-cover object-[center_30%]" /* Removed hero-zoom to stop Safari sub-pixel jitter */
             priority
           />
           {/* Gradients to seamlessly blend the image into the charcoal background */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-[#0A0A09]/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A09]/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A09]/50 via-transparent to-transparent" />
         </div>
 
-        {/* Bottom 40%: The Brand Identity (Quiet Luxury) */}
+        {/* Bottom Section: The Brand Identity (Quiet Luxury) */}
         <div className="relative flex-1 w-full flex flex-col items-center justify-start pt-2 pb-10 px-6">
           <motion.h1 
-            className="font-medium tracking-[0.45em] text-[2.5rem] select-none ml-2"
+            className="font-medium tracking-[0.45em] text-[2.5rem] select-none ml-2 transform-gpu"
             style={{
               fontFamily: "var(--font-inter), 'Inter', sans-serif",
               backgroundImage: "url(/ultimate-silk.png)",
@@ -153,24 +151,29 @@ export default function BrandStory() {
               color: "transparent",
               WebkitTextFillColor: "transparent",
             }}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            /* 
+              CRITICAL FIX: Removed 'y' translation.
+              Animating background-clip: text causes massive repaint jitter on mobile. 
+              Only animate opacity for a buttery smooth fade.
+            */
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
           >
             KAAJ
           </motion.h1>
 
           <motion.p 
-            className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#EAE6DF]/40 mt-5 text-center max-w-[220px] leading-[2]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#EAE6DF]/40 mt-5 text-center max-w-[220px] leading-[2] transform-gpu"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             Heritage artistry, modern silhouettes.
           </motion.p>
 
           <motion.div 
-            className="mt-auto"
+            className="mt-auto transform-gpu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -187,7 +190,7 @@ export default function BrandStory() {
             </Link>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator (Global) */}
       <motion.div
