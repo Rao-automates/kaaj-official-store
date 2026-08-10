@@ -138,33 +138,43 @@ export default function BrandStory() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A09]/90 via-transparent to-[#0A0A09]/90" />
         </div>
 
-        {/* The Massive Monogram (K) */}
+        {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
         <motion.div 
           className="relative z-10 flex flex-col items-center mt-[-8vh]"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span 
-            className="inline-block leading-[0.8] select-none drop-shadow-2xl transform-gpu text-[75vw] tracking-tighter ml-[-2vw]"
-            style={{
-              fontFamily: "var(--font-inter), 'Inter', sans-serif",
-              fontWeight: 500,
-              backgroundImage: "url(/ultimate-silk.png)",
-              backgroundSize: "cover",
-              backgroundPosition: "center 40%",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            K
-          </span>
+          <div className="w-[55vw] h-[55vw] drop-shadow-2xl">
+            <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
+              <defs>
+                <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
+                  <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
+                </pattern>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <g transform="translate(100, 100)" stroke="url(#hero-silk)" fill="none" filter="url(#glow)">
+                {/* 
+                  Thickened lines (strokeWidth="16") to reveal the silk texture. 
+                  Coordinates scaled slightly so the thick lines don't completely overlap,
+                  creating a beautiful interlocking thread effect.
+                */}
+                <line x1="-22" y1="-65" x2="-22" y2="65" strokeWidth="16" strokeLinecap="round" />
+                <path d="M 50,-65 C -45,-30 -45,30 50,65" strokeWidth="16" strokeLinecap="round" />
+                <path d="M 20,-65 C -25,-30 -25,30 20,65" strokeWidth="6" opacity="0.8" strokeLinecap="round" />
+              </g>
+            </svg>
+          </div>
           
-          {/* Elegant Sub-branding */}
+          {/* Elegant Sub-branding - Made slightly bigger as requested */}
           <motion.p 
-            className="font-inter text-[12px] tracking-[1.5em] text-[#EAE6DF] mt-6 ml-[1.5em] drop-shadow-md"
+            className="font-inter text-[15px] font-medium tracking-[1.2em] text-[#EAE6DF] mt-8 ml-[1.2em] drop-shadow-md"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
