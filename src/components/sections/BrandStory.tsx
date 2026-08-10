@@ -155,10 +155,10 @@ export default function BrandStory() {
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>
               <g transform="translate(100, 100)" stroke="url(#hero-silk)" fill="none">
-                {/* Exact original paths preserved for shape. Stroke width increased to make it bold. */}
-                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="6" strokeLinecap="round" />
-                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="6" strokeLinecap="round" />
-                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
+                {/* Exact original paths preserved for shape. Stroke width increased to make it bold. Sharp edges restored. */}
+                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="6" />
+                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="6" />
+                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="2.5" opacity="0.6" />
               </g>
             </svg>
           </div>
