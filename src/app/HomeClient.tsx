@@ -38,7 +38,7 @@ export default function HomeClient({
       )}
 
       {/* Brand Story */}
-      {/*BrandStory />*/}
+      <BrandStory />
 
       {/* Second Marquee */}
       <Marquee
