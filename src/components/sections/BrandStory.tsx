@@ -117,61 +117,76 @@ export default function BrandStory() {
       </motion.div>
 
       {/* ==============================================================
-       *  MOBILE LAYOUT (The Vertical Silk Monolith)
+       *  MOBILE LAYOUT (High-Fashion Minimalist Split)
        * ============================================================== */}
       <motion.div 
-        className="absolute inset-0 z-[10] flex sm:hidden flex-col items-center justify-center"
+        className="absolute inset-0 z-[10] flex sm:hidden flex-col bg-[#0A0A09] overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="flex flex-col items-center justify-center mt-[-8vh]">
-          {LETTERS.map((letter, i) => (
-            <motion.span
-              key={i}
-              className="inline-block text-center leading-[0.82] select-none drop-shadow-2xl transform-gpu text-[48vw] tracking-tighter"
-              style={{
-                fontFamily: "var(--font-inter), 'Inter', sans-serif",
-                fontWeight: 500,
-                backgroundImage: "url(/ultimate-silk.png)",
-                backgroundSize: "cover",
-                backgroundPosition: `center ${30 + (i * 10)}%`, // Shifts the silk texture per letter
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-                WebkitTextFillColor: "transparent",
-              }}
-              initial={{ y: "50%", opacity: 0 }}
-              animate={{ y: "0%", opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.15 + i * 0.1, ease }}
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </h1>
+        {/* Top 60%: The Editorial Photography */}
+        <div className="relative w-full h-[60vh]">
+          <Image
+            src="/hero-new.png"
+            alt="KAAJ Editorial"
+            fill
+            className="object-cover object-[center_30%] hero-zoom"
+            priority
+          />
+          {/* Gradients to seamlessly blend the image into the charcoal background */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-[#0A0A09]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A09]/60 via-transparent to-transparent" />
+        </div>
 
-        <motion.div 
-          className="absolute bottom-12 left-0 right-0 flex flex-col items-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[#EAE6DF]/60 leading-[2] text-center mb-6">
-            Heritage artistry.
-          </p>
-          <Link
-            href="/shop"
-            className="group flex items-center gap-4 pb-2 border-b border-[#EAE6DF]/15 hover:border-[#C9A84C]/50 transition-all duration-500"
+        {/* Bottom 40%: The Brand Identity (Quiet Luxury) */}
+        <div className="relative flex-1 w-full flex flex-col items-center justify-start pt-2 pb-10 px-6">
+          <motion.h1 
+            className="font-medium tracking-[0.45em] text-[2.5rem] select-none ml-2"
+            style={{
+              fontFamily: "var(--font-inter), 'Inter', sans-serif",
+              backgroundImage: "url(/ultimate-silk.png)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+              WebkitTextFillColor: "transparent",
+            }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#EAE6DF]/90">
-              Explore
-            </span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EAE6DF]/80">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
-        </motion.div>
+            KAAJ
+          </motion.h1>
+
+          <motion.p 
+            className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#EAE6DF]/40 mt-5 text-center max-w-[220px] leading-[2]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            Heritage artistry, modern silhouettes.
+          </motion.p>
+
+          <motion.div 
+            className="mt-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            <Link
+              href="/shop"
+              className="group flex flex-col items-center gap-4"
+            >
+              {/* Bespoke vertical line indicator */}
+              <div className="w-px h-10 bg-gradient-to-b from-transparent via-[#EAE6DF]/20 to-[#EAE6DF]/50 group-hover:to-[#C9A84C] transition-colors duration-500" />
+              <span className="font-sans text-[9px] font-medium uppercase tracking-[0.3em] text-[#EAE6DF]/70 group-hover:text-[#C9A84C] transition-colors duration-500">
+                Explore
+              </span>
+            </Link>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Scroll indicator (Global) */}
