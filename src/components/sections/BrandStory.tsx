@@ -117,44 +117,110 @@ export default function BrandStory() {
       </motion.div>
 
       {/* ==============================================================
-       *  MOBILE LAYOUT (Editorial Bottom-Left Aligned)
+       *  MOBILE LAYOUT (The Avant-Garde 2x2 Grid)
        * ============================================================== */}
       <motion.div 
-        className="absolute inset-0 z-[2] flex sm:hidden flex-col justify-end items-start px-6 pb-28"
+        className="absolute inset-0 z-[2] flex sm:hidden flex-col items-center justify-center overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
-        <h1 
-          className="font-medium tracking-[0.3em] text-5xl mb-6 select-none drop-shadow-xl"
-          style={{
-            fontFamily: "var(--font-inter), 'Inter', sans-serif",
-            backgroundImage: "url(/ultimate-silk.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          KAAJ
-        </h1>
-        <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-[#EAE6DF]/70 leading-[1.8] max-w-[260px] mb-8">
-          Heritage artistry, modern silhouettes.
-        </p>
-        <Link
-          href="/shop"
-          className="group flex items-center gap-4 pb-2 border-b border-[#EAE6DF]/20 hover:border-[#C9A84C]/50 transition-all duration-500"
-        >
-          <span className="font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#EAE6DF]/90">
-            Explore Collection
-          </span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EAE6DF]/80">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </Link>
+        {/* Gallery Print Frame */}
+        <div className="absolute inset-4 sm:inset-6 border border-[#EAE6DF]/10 pointer-events-none z-10" />
+
+        {/* 2x2 Grid of Massive Letters */}
+        <div className="flex flex-col items-center select-none z-20 mt-[-10vh]">
+          {/* Top Row: K A */}
+          <div className="flex gap-2">
+            <span
+              className="text-[40vw] leading-[0.85] tracking-tight transform-gpu drop-shadow-2xl"
+              style={{
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontWeight: 500,
+                backgroundImage: "url(/ultimate-silk.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center 30%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              K
+            </span>
+            <span
+              className="text-[40vw] leading-[0.85] tracking-tight transform-gpu drop-shadow-2xl"
+              style={{
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontWeight: 500,
+                backgroundImage: "url(/ultimate-silk.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center 40%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              A
+            </span>
+          </div>
+          
+          {/* Bottom Row: A J */}
+          <div className="flex gap-2">
+            <span
+              className="text-[40vw] leading-[0.85] tracking-tight transform-gpu drop-shadow-2xl"
+              style={{
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontWeight: 500,
+                backgroundImage: "url(/ultimate-silk.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center 50%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              A
+            </span>
+            <span
+              className="text-[40vw] leading-[0.85] tracking-tight transform-gpu drop-shadow-2xl"
+              style={{
+                fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                fontWeight: 500,
+                backgroundImage: "url(/ultimate-silk.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center 60%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              J
+            </span>
+          </div>
+        </div>
+
+        {/* Minimalist Subline & CTA at absolute bottom */}
+        <div className="absolute bottom-12 left-0 right-0 flex flex-col items-center z-20">
+          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#EAE6DF]/40 leading-[2] text-center max-w-[240px] mb-6">
+            Heritage artistry, modern silhouettes.
+          </p>
+          <Link
+            href="/shop"
+            className="group flex items-center gap-4 pb-2 border-b border-[#EAE6DF]/15 hover:border-[#C9A84C]/50 transition-all duration-500"
+          >
+            <span className="font-sans text-[9px] font-medium uppercase tracking-[0.2em] text-[#EAE6DF]/80">
+              Explore
+            </span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EAE6DF]/60">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}
