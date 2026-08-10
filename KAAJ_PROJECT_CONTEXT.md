@@ -85,7 +85,66 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 ## 7. Store Management Strategy
 *   **No Web Admin Portal:** We explicitly decided *not* to build a custom Next.js admin dashboard. All order management, status updates, and inventory tracking are handled exclusively through the native **WooCommerce Mobile App** (or the WordPress backend if necessary). This keeps the Next.js repository strictly focused on the customer storefront, maximizing security and minimizing technical debt.
 
-## 8. Future Enhancements & Automation
+## 8. Homepage Architecture & Brand Story (August 2026 Redesign)
+
+### A. Page Flow (Current)
+The homepage no longer uses a separate `HeroBanner` component. The flow is:
+1.  **BrandStory** (full-viewport hero/landing) — `src/components/sections/BrandStory.tsx`
+2.  **FeaturedGrid** (asymmetric editorial product grid) — `src/components/sections/FeaturedGrid.tsx`
+3.  **New Arrivals** (standard 4-column product grid)
+4.  **Categories** (pill-based category navigation)
+5.  **Social CTA** (Instagram/Facebook links)
+
+*   The old `HeroBanner.tsx` still exists in the codebase but is **not imported** by `HomeClient.tsx`.
+*   Both Marquee text dividers were removed for a cleaner, uninterrupted flow.
+
+### B. Brand Story / Hero Section (`BrandStory.tsx`)
+This is THE landing section — the first thing users see.
+
+*   **Visual Concept:** Massive "KAAJ" text with a **silk texture clipped into the letterforms** (`background-clip: text`). The silk image (`/ultimate-silk.png`) fills each letter, creating a unique art-direction effect.
+*   **Typography:** Uses **Inter (logo font)** — `font-weight: 500`, `letter-spacing: 0.3em`. NOT the serif `Cormorant`. This matches the brand logo exactly.
+*   **Background:** A single hero image (`/hero-new.png`) — a moody, editorial atelier shot with warm golden lighting.
+*   **Letter Animation:** Staggered reveal (K → A → A → J), each letter slides up from `y: 110%` with offset delays.
+*   **Hero Zoom:** CSS-only slow zoom animation (`heroZoom` keyframe in `globals.css`) — starts at `scale(1.12)` and eases to `scale(1)` over 10 seconds. GPU-composited via `will-change: transform`.
+*   **Cinematic Overlays:** `bg-[#0A0A09]/60` base darkener + vertical gradient (`from-50% via-transparent to-100%`) + lateral gradients for depth.
+*   **Grain:** Desktop only (`hidden md:block`) to save mobile GPU.
+*   **CTA:** "Explore Collection" link with arrow → `/shop`. Gold hover state.
+*   **Scroll Indicator:** Gradient line at bottom, auto-hides after scroll > 100px.
+
+### C. Section Transitions
+*   The `FeaturedGrid` component includes a smooth gradient overlay (`bg-gradient-to-b from-[#0A0A09] to-transparent`) at the top to seamlessly blend from the dark hero section into the olive body background.
+
+## 9. Header Behavior
+
+### A. Logo Visibility Logic
+*   **On the homepage:** The KAAJ logo in the header is **hidden** while the user is in the Brand Story hero section (since "KAAJ" is already displayed in massive text-clip). It **fades in** (700ms, with a subtle `translate-y` shift) once the user scrolls past 60% of the viewport height (`window.innerHeight * 0.6`).
+*   **On all other pages:** The logo is always visible.
+*   **When menu is open:** The logo is always visible (regardless of scroll position).
+*   **Implementation:** Uses `usePathname()` from `next/navigation` and a `pastHero` state variable tracked via scroll listener.
+
+### B. Hamburger → Close (X) Animation
+*   The hamburger button in the header **transforms into an X icon** when the menu is open, using CSS transitions on three `<div>` lines:
+    *   Top line: `rotate-45` + translate to form one half of the X.
+    *   Middle line: `opacity-0 translate-x-4` (fades out and slides right).
+    *   Bottom line: `-rotate-45` + translate to form the other half.
+*   The button has `z-[60]` so it always sits above the menu panel (`z-40`) and is always clickable.
+*   It toggles `setMenuOpen(!menuOpen)` — a single button for both open and close.
+
+## 10. Mobile Performance Optimizations
+
+All animations are tuned for low-end phone processors:
+
+*   **Hero Zoom:** CSS-only `@keyframes heroZoom` (not framer-motion). Uses `will-change: transform` and `transform-style: preserve-3d` for GPU compositor path. Zero main-thread JavaScript.
+*   **Grain Overlay:** Hidden on mobile (`hidden md:block`). SVG filter-based grain is expensive on low-end GPUs.
+*   **`transform-gpu`:** Applied to all framer-motion animated elements to force GPU compositing.
+*   **Shorter Durations:** Letter animations reduced from 1s → 0.8s. Hover transitions reduced from 700ms → 500ms. Snappier feel on slow devices.
+*   **Backdrop Blur:** Only enabled on desktop via `@media (min-width: 768px)`. Mobile uses solid backgrounds (`rgba(54, 56, 50, 0.95)`).
+*   **`prefers-reduced-motion`:** Full CSS support in `globals.css`. When enabled:
+    *   All `animation-duration` and `transition-duration` set to `0.01ms`.
+    *   Hero zoom disabled (`animation: none; transform: scale(1)`).
+*   **Touch States:** `@media (hover: none)` applies `transform: scale(0.97)` on `:active` for tactile press feedback without hover overhead.
+
+## 11. Future Enhancements & Automation
 
 ### WhatsApp Order Confirmations (Zero-Cost Architecture)
 A robust, free architecture has been designed to automate WhatsApp order confirmations using the Meta Cloud API and headless WooCommerce webhooks. This architecture avoids paid SaaS plugins entirely.
@@ -100,4 +159,5 @@ A robust, free architecture has been designed to automate WhatsApp order confirm
     4.  n8n hits the Meta WhatsApp Cloud API using a Permanent System User Token to send a pre-approved template message to the customer.
 
 ---
-*End of Document. Generated on: August 2026*
+*End of Document. Last updated: August 10, 2026*
+

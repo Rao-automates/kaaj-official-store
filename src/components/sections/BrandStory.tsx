@@ -8,11 +8,9 @@ import { useEffect, useState } from "react";
 /* ─────────────────────────────────────────────────────────────
  *  KAAJ — Brand Story / Hero Landing
  *
- *  Optimized for low-end mobile:
- *  - No JS-driven zoom animation (CSS only, GPU-accelerated)
- *  - Grain disabled on mobile
- *  - Reduced motion respected
- *  - transform-gpu on all animated elements
+ *  Mobile-first. Optimized for low-end processors.
+ *  Silk-textured KAAJ letterforms + hero backdrop + CTA.
+ *  Uses Inter (logo font) — no serif.
  * ───────────────────────────────────────────────────────────── */
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -32,7 +30,7 @@ export default function BrandStory() {
   return (
     <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-[#0A0A09] overflow-hidden">
 
-      {/* Hero image — CSS-only zoom for GPU performance */}
+      {/* Hero image — CSS-only zoom, mobile-optimized crop */}
       <div className="absolute inset-0 z-0 hero-zoom">
         <Image
           src="/hero-new.png"
@@ -40,20 +38,21 @@ export default function BrandStory() {
           fill
           priority
           fetchPriority="high"
-          className="object-cover object-center"
+          className="object-cover object-[center_30%] sm:object-center"
           sizes="100vw"
         />
       </div>
 
-      {/* Cinematic overlays — simple composites, no blur */}
-      <div className="absolute inset-0 z-0 bg-[#0A0A09]/60" />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/50 via-transparent to-[#0A0A09]" />
+      {/* Cinematic overlays — lighter on mobile so image shows through */}
+      <div className="absolute inset-0 z-0 bg-[#0A0A09]/50 sm:bg-[#0A0A09]/60" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/60 via-transparent to-[#0A0A09]/90" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0A0A09]/20 via-transparent to-[#0A0A09]/20 hidden sm:block" />
 
-      {/* Grain — desktop only to save mobile GPU */}
+      {/* Grain — desktop only */}
       <div className="absolute inset-0 bg-grain opacity-25 pointer-events-none z-[1] hidden md:block" />
 
       {/* Staggered KAAJ — silk-filled, logo font */}
-      <h1 className="relative z-[2] flex items-baseline justify-center">
+      <h1 className="relative z-[2] flex items-baseline justify-center px-4">
         {LETTERS.map((letter, i) => (
           <span key={i} className="overflow-hidden inline-block">
             <motion.span
@@ -61,8 +60,6 @@ export default function BrandStory() {
               style={{
                 fontFamily: "var(--font-inter), 'Inter', sans-serif",
                 fontWeight: 500,
-                fontSize: "clamp(5rem, 20vw, 16rem)",
-                letterSpacing: "0.3em",
                 backgroundImage: "url(/ultimate-silk.png)",
                 backgroundSize: "cover",
                 backgroundPosition: "center 40%",
@@ -71,6 +68,8 @@ export default function BrandStory() {
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
               }}
+              /* Mobile: tighter letter-spacing, slightly smaller
+                 Desktop: full 0.3em spacing as before */
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{
@@ -85,14 +84,14 @@ export default function BrandStory() {
         ))}
       </h1>
 
-      {/* Subline + CTA */}
+      {/* Subline + CTA — pushed down slightly on mobile for breathing room */}
       <motion.div
-        className="relative z-[2] flex flex-col items-center mt-10 sm:mt-14 px-6 transform-gpu"
+        className="relative z-[2] flex flex-col items-center mt-8 sm:mt-14 px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6, ease }}
       >
-        <p className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-[#EAE6DF]/40 leading-[2] text-center max-w-sm mb-10 sm:mb-12">
+        <p className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#EAE6DF]/45 leading-[2] text-center max-w-xs sm:max-w-sm mb-8 sm:mb-12">
           Heritage artistry, modern silhouettes.
         </p>
 
@@ -125,8 +124,22 @@ export default function BrandStory() {
         animate={{ opacity: hasScrolled ? 0 : 1 }}
         transition={{ duration: 0.4 }}
       >
-        <div className="w-px h-12 bg-gradient-to-b from-[#EAE6DF]/20 to-transparent animate-scroll-pulse" />
+        <div className="w-px h-10 sm:h-12 bg-gradient-to-b from-[#EAE6DF]/20 to-transparent animate-scroll-pulse" />
       </motion.div>
+
+      {/* Responsive KAAJ text sizing via CSS — avoids inline style limitations */}
+      <style jsx>{`
+        h1 > span > span {
+          font-size: clamp(4.2rem, 18vw, 16rem);
+          letter-spacing: 0.2em;
+        }
+        @media (min-width: 640px) {
+          h1 > span > span {
+            font-size: clamp(5rem, 20vw, 16rem);
+            letter-spacing: 0.3em;
+          }
+        }
+      `}</style>
 
     </section>
   );
