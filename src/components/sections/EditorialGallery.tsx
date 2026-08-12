@@ -21,14 +21,14 @@ export default function EditorialGallery() {
         {/* Modern Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <FadeIn>
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[#141413]/40 mb-6 border-b border-[#141413]/10 pb-3 px-6">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-olive mb-6 border-b border-kaaj-olive/20 pb-3 px-6 drop-shadow-sm">
               New Collection
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="flex flex-row items-center justify-center">
-              <span className="font-serif text-[clamp(2.5rem,6vw,4rem)] uppercase tracking-[0.3em] font-medium text-[#141413]">
-                AKS
+              <span className="font-serif text-[clamp(4rem,10vw,7rem)] font-medium text-[#141413] leading-none pb-4">
+                عکس
               </span>
             </h2>
           </FadeIn>

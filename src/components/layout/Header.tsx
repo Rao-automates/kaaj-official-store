@@ -160,7 +160,7 @@ export default function Header() {
               >
                 <div className="overflow-hidden">
                   <span className={cn(
-                    "block font-serif text-3xl sm:text-4xl tracking-tight transition-transform duration-500",
+                    "block font-sans text-2xl sm:text-3xl uppercase tracking-[0.1em] font-medium transition-transform duration-500",
                     link.label === "Sale" ? "text-kaaj-rose group-hover:text-kaaj-rose/70" : "text-kaaj-charcoal group-hover:text-kaaj-gold",
                     menuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   )}
@@ -173,8 +173,8 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="px-12 py-12 border-t border-white/5">
-            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal/50 mb-6">
+          <div className="px-12 py-12 border-t border-black/5">
+            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-olive mb-6 drop-shadow-sm">
               Connect
             </p>
             <div className="flex gap-6">

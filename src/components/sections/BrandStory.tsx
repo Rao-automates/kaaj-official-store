@@ -77,7 +77,7 @@ export default function BrandStory() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-[#141413]/60 leading-[2] text-left max-w-[280px] mb-8">
+          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-kaaj-olive leading-[2] text-left max-w-[280px] mb-8 drop-shadow-sm">
             Heritage artistry, modern silhouettes.
           </p>
 
@@ -138,8 +138,9 @@ export default function BrandStory() {
               priority
             />
           </motion.div>
-          {/* Single gradient to ensure text readability at the bottom, without muting the dress */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/80 via-transparent to-transparent pointer-events-none" />
+          {/* Gradients to ensure text readability at the top and bottom, without muting the dress */}
+          <div className="absolute top-0 inset-x-0 h-[25vh] bg-gradient-to-b from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/90 via-transparent to-transparent pointer-events-none" />
         </div>
 
         {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
@@ -182,7 +183,7 @@ export default function BrandStory() {
           transition={{ duration: 1, delay: 1.2 }}
         >
           <div className="w-px h-10 bg-gradient-to-b from-[#141413]/40 to-transparent mb-8 animate-scroll-pulse" />
-          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#141413]/60 text-center mb-6">
+          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-olive text-center mb-6 drop-shadow-sm">
             Heritage artistry.
           </p>
           <Link
