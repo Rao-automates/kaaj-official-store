@@ -136,15 +136,18 @@ export default function Footer() {
             © {new Date().getFullYear()} K A A J. All rights reserved.
           </p>
           <div className="flex gap-4">
-            {["Privacy Policy", "Terms & Conditions"].map((label) => (
-              <Link
-                key={label}
-                href="/shop"
-                className="font-sans text-[10px] text-kaaj-cream/60 hover:text-kaaj-cream transition-colors"
-              >
-                {label}
-              </Link>
-            ))}
+            <Link
+              href="/privacy"
+              className="font-sans text-[10px] text-kaaj-cream/60 hover:text-kaaj-cream transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="font-sans text-[10px] text-kaaj-cream/60 hover:text-kaaj-cream transition-colors"
+            >
+              Terms & Conditions
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <span className="font-sans text-[10px] text-kaaj-cream/80 tracking-widest">Made by</span>
