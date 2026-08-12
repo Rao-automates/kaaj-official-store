@@ -26,7 +26,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaajofficial.com"),
   title: {
-    default: "K A A J — Premium Pakistani Women’s Fashion | KAAJ",
+    default: "K A A J",
     template: "%s | K A A J",
   },
   description:
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     locale: "en_PK",
     url: "https://kaajofficial.com",
     siteName: "K A A J",
-    title: "K A A J — Premium Pakistani Women’s Fashion | KAAJ",
+    title: "K A A J",
     description:
       "KAAJ — Exquisite Pret, Unstitched, Luxury Lawn, and Formal collections for the modern Pakistani woman. Shop KAAJ online.",
   },
