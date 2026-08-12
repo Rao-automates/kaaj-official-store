@@ -58,10 +58,9 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  color: "rgba(255, 255, 255, 0.15)",
-                  WebkitTextStroke: "2px rgba(255, 255, 255, 0.6)",
-                  textShadow: "0 10px 30px rgba(0,0,0,0.5)",
-                  backdropFilter: "blur(4px)",
+                  color: "#EAE6DF",
+                  WebkitTextStroke: "none",
+                  textShadow: "none",
                 }}
                 initial={{ opacity: 0, y: "60%" }}
                 animate={{ opacity: 1, y: "0%" }}
@@ -155,11 +154,8 @@ export default function BrandStory() {
           <div className="w-[150vw] h-[150vw] drop-shadow-2xl pointer-events-none">
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
-                <filter id="frost">
-                  <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="black" floodOpacity="0.4" />
-                </filter>
               </defs>
-              <g transform="translate(87, 100)" stroke="rgba(255, 255, 255, 0.6)" fill="rgba(255, 255, 255, 0.15)" filter="url(#frost)">
+              <g transform="translate(87, 100)" stroke="#EAE6DF" fill="none">
                 {/* Exact original paths preserved for shape. Stroke width reduced by half to make it less bold. Sharp edges restored. */}
                 <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="3" />
                 <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="3" />
