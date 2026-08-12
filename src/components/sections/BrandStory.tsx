@@ -58,7 +58,7 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  backgroundImage: "url(/ultimate-silk.png)",
+                  backgroundImage: "url(/images/pink-flower-texture.png)",
                   backgroundSize: "cover",
                   backgroundPosition: "center 40%",
                   WebkitBackgroundClip: "text",
@@ -159,8 +159,8 @@ export default function BrandStory() {
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
-                  {/* Updated to ultimate-silk to match desktop KAAJ logo texture */}
-                  <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
+                  {/* Updated to pink-flower-texture based on user request for a light pink floral look */}
+                  <image href="/images/pink-flower-texture.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>
