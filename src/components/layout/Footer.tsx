@@ -130,7 +130,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-kaaj-charcoal/10">
+      <div className="relative z-10 border-t border-kaaj-olive/20">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-sans text-[10px] text-kaaj-charcoal/40 tracking-wide">
             © {new Date().getFullYear()} K A A J. All rights reserved.
@@ -255,7 +255,7 @@ function NewsletterForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="bg-kaaj-deep text-kaaj-charcoal py-3 px-6 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-deep-light transition-colors duration-300 disabled:opacity-70 flex items-center justify-center gap-2 whitespace-nowrap btn-shimmer"
+          className="bg-kaaj-olive text-kaaj-cream py-3 px-6 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-olive/90 transition-colors duration-300 disabled:opacity-70 flex items-center justify-center gap-2 whitespace-nowrap btn-shimmer"
         >
           {status === "loading" ? "..." : "Subscribe"}
         </button>
