@@ -8,7 +8,6 @@ import React, { useEffect, useState } from "react";
 const DESKTOP_SLIDES = [
   "/images/hero-slide-1.webp",
   "/images/hero-slide-2.webp",
-  "/images/hero-slide-3.webp",
 ];
 
 /* ─────────────────────────────────────────────────────────────
@@ -37,7 +36,7 @@ export default function BrandStory() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % DESKTOP_SLIDES.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
@@ -53,11 +52,14 @@ export default function BrandStory() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full"
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 1, scale: 1.05 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ 
+                opacity: { duration: 2.5, ease: "easeInOut" },
+                scale: { duration: 10, ease: "linear" }
+              }}
+              className="absolute inset-0 w-full h-full origin-center"
             >
               <Image
                 src={DESKTOP_SLIDES[currentSlide]}
