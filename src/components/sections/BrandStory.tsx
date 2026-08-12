@@ -36,7 +36,7 @@ export default function BrandStory() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % DESKTOP_SLIDES.length);
-    }, 8000);
+    }, 12000);
     return () => clearInterval(timer);
   }, []);
 
@@ -56,8 +56,8 @@ export default function BrandStory() {
               animate={{ opacity: 1, scale: 1.05 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ 
-                opacity: { duration: 2.5, ease: "easeInOut" },
-                scale: { duration: 10, ease: "linear" }
+                opacity: { duration: 1.5, ease: "easeInOut" },
+                scale: { duration: 12, ease: "linear" }
               }}
               className="absolute inset-0 w-full h-full origin-center"
             >

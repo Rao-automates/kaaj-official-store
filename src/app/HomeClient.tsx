@@ -30,6 +30,9 @@ export default function HomeClient({
         <FeaturedGrid products={initialFeatured} />
       )}
 
+      {/* Editorial Lookbook (Aks Collection) */}
+      <EditorialGallery />
+
       {/* New Arrivals */}
       <section className="py-24 sm:py-40 bg-transparent section-divider-top">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,8 +102,7 @@ export default function HomeClient({
         </section>
       )}
 
-      {/* Editorial Lookbook */}
-      <EditorialGallery />
+
 
       {/* Social CTA — minimal, not template */}
       <section className="relative py-32 sm:py-48 section-void">
