@@ -1,14 +1,9 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
-const DESKTOP_SLIDES = [
-  "/images/hero-slide-1.webp",
-  "/images/hero-slide-2.webp",
-];
 
 /* ─────────────────────────────────────────────────────────────
  *  KAAJ — Brand Story / Hero Landing
@@ -23,7 +18,6 @@ const LETTERS = ["K", "A", "A", "J"];
 
 export default function BrandStory() {
   const [hasScrolled, setHasScrolled] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,13 +27,6 @@ export default function BrandStory() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % DESKTOP_SLIDES.length);
-    }, 12000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-[#0A0A09] overflow-hidden">
 
@@ -47,31 +34,17 @@ export default function BrandStory() {
        *  DESKTOP LAYOUT (Massive Centered Text)
        * ============================================================== */}
       <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center z-[2]">
-        {/* Desktop Image & Overlays (Slideshow) */}
-        <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{ opacity: 1, scale: 1.05 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ 
-                opacity: { duration: 1.5, ease: "easeInOut" },
-                scale: { duration: 12, ease: "linear" }
-              }}
-              className="absolute inset-0 w-full h-full origin-center"
-            >
-              <Image
-                src={DESKTOP_SLIDES[currentSlide]}
-                alt="KAAJ — Premium Pakistani Womenswear"
-                fill
-                priority={currentSlide === 0}
-                fetchPriority={currentSlide === 0 ? "high" : "auto"}
-                className="object-cover object-center"
-                sizes="100vw"
-              />
-            </motion.div>
-          </AnimatePresence>
+        {/* Desktop Image & Overlays */}
+        <div className="absolute inset-0 z-0 hero-zoom">
+          <Image
+            src="/images/hero-slide-1.webp"
+            alt="KAAJ — Premium Pakistani Womenswear"
+            fill
+            priority
+            fetchPriority="high"
+            className="object-cover object-center"
+            sizes="100vw"
+          />
         </div>
         <div className="absolute inset-0 z-0 bg-[#0A0A09]/60" />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/50 via-transparent to-[#0A0A09]" />

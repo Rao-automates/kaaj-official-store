@@ -9,6 +9,7 @@ const IMAGES = [
   "/images/launch_1_decoration/ed-4.webp",
   "/images/launch_1_decoration/ed-5.webp",
   "/images/launch_1_decoration/ed-6.webp",
+  "/images/launch_1_decoration/ed-7.webp",
 ];
 
 export default function EditorialGallery() {
