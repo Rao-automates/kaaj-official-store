@@ -130,9 +130,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-kaaj-olive/20">
+      <div className="relative z-10 bg-kaaj-olive text-kaaj-cream">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-sans text-[10px] text-kaaj-charcoal/40 tracking-wide">
+          <p className="font-sans text-[10px] text-kaaj-cream/60 tracking-wide">
             © {new Date().getFullYear()} K A A J. All rights reserved.
           </p>
           <div className="flex gap-4">
@@ -140,21 +140,21 @@ export default function Footer() {
               <Link
                 key={label}
                 href="/shop"
-                className="font-sans text-[10px] text-kaaj-charcoal/40 hover:text-kaaj-charcoal/70 transition-colors"
+                className="font-sans text-[10px] text-kaaj-cream/60 hover:text-kaaj-cream transition-colors"
               >
                 {label}
               </Link>
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-sans text-[10px] text-kaaj-charcoal/60 tracking-widest">Made by</span>
+            <span className="font-sans text-[10px] text-kaaj-cream/80 tracking-widest">Made by</span>
             <a 
               href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center gap-1.5 font-sans text-[10px] text-kaaj-charcoal/60 tracking-widest hover:text-kaaj-gold transition-colors group"
+              className="flex items-center gap-1.5 font-sans text-[10px] text-kaaj-cream/80 tracking-widest hover:text-kaaj-gold-light transition-colors group"
             >
-              <svg viewBox="0 0 200 200" className="w-4 h-4 text-kaaj-gold group-hover:scale-110 transition-transform">
+              <svg viewBox="0 0 200 200" className="w-4 h-4 text-kaaj-gold-light group-hover:scale-110 transition-transform">
                 <g fill="currentColor">
                   <g transform="translate(100, 100)" stroke="currentColor" fill="none">
                     <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" />
