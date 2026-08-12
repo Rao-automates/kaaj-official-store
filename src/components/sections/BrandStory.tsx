@@ -186,8 +186,8 @@ export default function BrandStory() {
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
-                  {/* Updated to royal-embroidery to match desktop and improve visibility */}
-                  <image href="/royal-embroidery.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
+                  {/* Updated to ultimate-silk to match desktop KAAJ logo texture */}
+                  <image href="/ultimate-silk.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>

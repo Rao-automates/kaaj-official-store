@@ -9,8 +9,6 @@ const IMAGES = [
   "/images/launch_1_decoration/ed-4.webp",
   "/images/launch_1_decoration/ed-5.webp",
   "/images/launch_1_decoration/ed-6.webp",
-  "/images/launch_1_decoration/ed-7.webp",
-  "/images/launch_1_decoration/ed-8.webp",
 ];
 
 export default function EditorialGallery() {
@@ -26,8 +24,9 @@ export default function EditorialGallery() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] text-[#EAE6DF] flex flex-col md:flex-row items-center justify-center gap-3 flex-wrap font-serif">
-              <span className="font-light tracking-tight">Aks by Kaaj</span>
+            <h2 className="text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] text-[#EAE6DF] flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 flex-wrap">
+              <span className="font-serif italic font-light tracking-tight text-[#EAE6DF]/90">Aks by</span>
+              <span className="font-sans uppercase tracking-[0.25em] font-medium text-[#EAE6DF] drop-shadow-lg">KAAJ</span>
             </h2>
           </FadeIn>
         </div>
