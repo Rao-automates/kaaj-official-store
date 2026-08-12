@@ -129,11 +129,11 @@ export default function BrandStory() {
             style={{ willChange: "transform" }}
           >
             <Image
-              src="/images/hero-mobile.webp"
+              src="/images/launch_1_decoration/IMG_4792.JPG"
               alt="KAAJ Editorial"
               fill
-              sizes="(max-width: 640px) 50vw"
-              quality={40}
+              sizes="100vw"
+              quality={100}
               className="object-cover object-[center_30%]"
               priority
             />
