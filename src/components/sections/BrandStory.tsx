@@ -58,13 +58,10 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  backgroundImage: "url(/images/blush-silk.png)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center 40%",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent",
-                  WebkitTextFillColor: "transparent",
+                  color: "rgba(255, 255, 255, 0.15)",
+                  WebkitTextStroke: "2px rgba(255, 255, 255, 0.6)",
+                  textShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                  backdropFilter: "blur(4px)",
                 }}
                 initial={{ opacity: 0, y: "60%" }}
                 animate={{ opacity: 1, y: "0%" }}
@@ -158,13 +155,11 @@ export default function BrandStory() {
           <div className="w-[150vw] h-[150vw] drop-shadow-2xl pointer-events-none">
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
-                <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
-                  {/* Updated to pink-flower-texture based on user request for a light pink floral look */}
-                  <image href="/images/pink-flower-texture.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
-                </pattern>
-                {/* Removed heavy glow filter to prevent mobile rendering glitches */}
+                <filter id="frost">
+                  <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="black" floodOpacity="0.4" />
+                </filter>
               </defs>
-              <g transform="translate(87, 100)" stroke="url(#hero-silk)" fill="none">
+              <g transform="translate(87, 100)" stroke="rgba(255, 255, 255, 0.6)" fill="rgba(255, 255, 255, 0.15)" filter="url(#frost)">
                 {/* Exact original paths preserved for shape. Stroke width reduced by half to make it less bold. Sharp edges restored. */}
                 <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="3" />
                 <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="3" />
