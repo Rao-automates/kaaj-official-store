@@ -49,7 +49,7 @@ export default function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-colors duration-500 py-4 transform-gpu will-change-transform",
           scrolled || menuOpen
-            ? "bg-[#2E302A]/95 backdrop-blur-md border-b border-white/5"
+            ? "bg-[#FAF9F6]/95 backdrop-blur-md border-b border-black/5"
             : "bg-transparent"
         )}
       >
@@ -142,7 +142,7 @@ export default function Header() {
         />
         <div
           className={cn(
-            "absolute left-0 top-0 h-full w-full sm:w-[400px] bg-[#2E302A] border-r border-white/5 flex flex-col transform-gpu will-change-transform",
+            "absolute left-0 top-0 h-full w-full sm:w-[400px] bg-[#FAF9F6] border-r border-black/5 flex flex-col transform-gpu will-change-transform",
             "transition-transform duration-700 ease-expo-out",
             menuOpen ? "translate-x-0" : "-translate-x-full"
           )}

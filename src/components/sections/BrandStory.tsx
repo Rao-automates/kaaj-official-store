@@ -28,7 +28,7 @@ export default function BrandStory() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-[#0A0A09] overflow-hidden">
+    <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-[#FAF9F6] overflow-hidden">
 
       {/* ==============================================================
        *  DESKTOP LAYOUT (Massive Centered Text)
@@ -46,8 +46,8 @@ export default function BrandStory() {
             sizes="100vw"
           />
         </div>
-        <div className="absolute inset-0 z-0 bg-[#0A0A09]/10" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/30 via-transparent to-[#0A0A09]/60" />
+        <div className="absolute inset-0 z-0 bg-[#FAF9F6]/10" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6]/30 via-transparent to-[#FAF9F6]/60" />
 
         <h1 className="relative z-[2] flex items-center justify-center w-full px-4">
           {LETTERS.map((letter, i) => (
@@ -57,7 +57,7 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  color: "#EAE6DF",
+                  color: "#141413",
                   WebkitTextStroke: "none",
                   textShadow: "none",
                 }}
@@ -77,15 +77,15 @@ export default function BrandStory() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-[#EAE6DF]/45 leading-[2] text-left max-w-[280px] mb-8 shadow-black drop-shadow-md">
+          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-[#141413]/60 leading-[2] text-left max-w-[280px] mb-8">
             Heritage artistry, modern silhouettes.
           </p>
 
           <Link
             href="/shop"
-            className="group flex items-center justify-start gap-5 pb-3 border-b border-[#EAE6DF]/10 hover:border-[#C9A84C]/60 transition-all duration-500 w-full"
+            className="group flex items-center justify-start gap-5 pb-3 border-b border-[#141413]/10 hover:border-[#C9A84C]/60 transition-all duration-500 w-full"
           >
-            <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-[#EAE6DF]/60 group-hover:text-[#C9A84C] transition-colors duration-500 shadow-black drop-shadow-md">
+            <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-[#141413]/80 group-hover:text-[#C9A84C] transition-colors duration-500">
               Explore Collection
             </span>
             <svg
@@ -95,7 +95,7 @@ export default function BrandStory() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
-              className="text-[#EAE6DF]/40 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-2 duration-500 transform-gpu"
+              className="text-[#141413]/60 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-2 duration-500 transform-gpu"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -110,17 +110,17 @@ export default function BrandStory() {
           animate={{ opacity: hasScrolled ? 0 : 1 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="w-px h-12 bg-gradient-to-b from-[#EAE6DF]/20 to-transparent animate-scroll-pulse" />
+          <div className="w-px h-12 bg-gradient-to-b from-[#141413]/20 to-transparent animate-scroll-pulse" />
         </motion.div>
       </div>
 
       {/* ==============================================================
        *  MOBILE LAYOUT (The Monogram Jewel) - COMPLETELY REDESIGNED
        * ============================================================== */}
-      <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#0A0A09] overflow-hidden z-[2]">
+      <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#FAF9F6] overflow-hidden z-[2]">
         
         {/* Moody Background Texture - Extreme GPU Optimization */}
-        <div className="absolute inset-0 z-0 bg-[#0A0A09]">
+        <div className="absolute inset-0 z-0 bg-[#FAF9F6]">
           <motion.div 
             className="absolute inset-0 z-0 transform-gpu"
             initial={{ scale: 1.12 }}
@@ -139,7 +139,7 @@ export default function BrandStory() {
             />
           </motion.div>
           {/* Single gradient to ensure text readability at the bottom, without muting the dress */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09]/80 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/80 via-transparent to-transparent pointer-events-none" />
         </div>
 
         {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
@@ -154,7 +154,7 @@ export default function BrandStory() {
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
               <defs>
               </defs>
-              <g transform="translate(87, 100)" stroke="#EAE6DF" fill="none">
+              <g transform="translate(87, 100)" stroke="#141413" fill="none">
                 {/* Exact original paths preserved for shape. Stroke width reduced by half to make it less bold. Sharp edges restored. */}
                 <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="3" />
                 <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="3" />
@@ -165,7 +165,7 @@ export default function BrandStory() {
           
           {/* Elegant Sub-branding - Made noticeably larger and pulled up closer to symbol */}
           <motion.p 
-            className="font-inter text-[32px] font-medium tracking-[1em] text-[#EAE6DF] mt-[-35vw] ml-[1em] drop-shadow-md"
+            className="font-inter text-[32px] font-medium tracking-[1em] text-[#141413] mt-[-35vw] ml-[1em]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
@@ -181,18 +181,18 @@ export default function BrandStory() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
         >
-          <div className="w-px h-10 bg-gradient-to-b from-[#EAE6DF]/40 to-transparent mb-8 animate-scroll-pulse" />
-          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#EAE6DF]/60 text-center mb-6">
+          <div className="w-px h-10 bg-gradient-to-b from-[#141413]/40 to-transparent mb-8 animate-scroll-pulse" />
+          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-[#141413]/60 text-center mb-6">
             Heritage artistry.
           </p>
           <Link
             href="/shop"
-            className="group flex items-center gap-4 pb-2 border-b border-[#EAE6DF]/20 hover:border-[#C9A84C]/60 transition-all duration-500"
+            className="group flex items-center gap-4 pb-2 border-b border-[#141413]/20 hover:border-[#C9A84C]/60 transition-all duration-500"
           >
-            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-[#EAE6DF]/90 group-hover:text-[#C9A84C] transition-colors duration-500">
+            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-[#141413]/90 group-hover:text-[#C9A84C] transition-colors duration-500">
               Explore
             </span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#EAE6DF]/80 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-1 duration-500">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#141413]/80 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-1 duration-500">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
@@ -207,7 +207,7 @@ export default function BrandStory() {
         animate={{ opacity: hasScrolled ? 0 : 1 }}
         transition={{ duration: 0.4 }}
       >
-        <div className="w-px h-10 sm:h-12 bg-gradient-to-b from-[#EAE6DF]/30 sm:from-[#EAE6DF]/20 to-transparent animate-scroll-pulse" />
+        <div className="w-px h-10 sm:h-12 bg-gradient-to-b from-[#141413]/30 sm:from-[#141413]/20 to-transparent animate-scroll-pulse" />
       </motion.div>
 
     </section>
