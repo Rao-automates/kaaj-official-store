@@ -10,50 +10,49 @@ const IMAGES = [
   "/images/launch_1_decoration/ed-5.webp",
   "/images/launch_1_decoration/ed-6.webp",
   "/images/launch_1_decoration/ed-7.webp",
+  "/images/launch_1_decoration/ed-8.webp",
 ];
 
 export default function EditorialGallery() {
   return (
-    <section className="py-32 sm:py-48 bg-[#0A0A09] relative overflow-hidden border-t border-white/5">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="py-24 md:py-32 bg-[#0A0A09] relative overflow-hidden">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-20 md:mb-32">
+        {/* Modern Header */}
+        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <FadeIn>
-            <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-[#EAE6DF]/50 mb-8 border-b border-[#EAE6DF]/10 pb-4 px-8">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[#EAE6DF]/40 mb-6 border-b border-[#EAE6DF]/10 pb-3 px-6">
               New Collection
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 className="text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] text-[#EAE6DF] flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 flex-wrap">
-              <span className="font-serif italic font-light tracking-tight text-[#EAE6DF]/90">Aks by</span>
-              <span className="font-sans uppercase tracking-[0.25em] font-medium text-[#EAE6DF] drop-shadow-lg">KAAJ</span>
+            <h2 className="flex flex-row items-center justify-center gap-3 md:gap-5 flex-wrap">
+              <span className="font-sans text-[clamp(1.5rem,4vw,2.5rem)] font-light uppercase tracking-[0.2em] text-[#EAE6DF]/80">
+                Aks by
+              </span>
+              <span className="font-sans text-[clamp(2rem,5vw,3.5rem)] uppercase tracking-[0.3em] font-medium text-[#EAE6DF] drop-shadow-md">
+                KAAJ
+              </span>
             </h2>
           </FadeIn>
         </div>
 
         {/* 
-          CSS Columns Masonry Layout:
-          Mobile: 2 columns 
-          Desktop: 4 columns
-          Increased gaps for a more luxurious editorial feel.
+          Ultra-Modern Clean Grid Layout
+          Instead of messy masonry, a strict symmetrical grid is used for a premium, high-fashion catalog feel.
         */}
-        <div className="columns-2 md:columns-4 gap-6 md:gap-8 lg:gap-12 space-y-6 md:space-y-8 lg:space-y-12 pb-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6 pb-20">
           {IMAGES.map((src, i) => (
-            <FadeIn key={i} delay={0.1 + (i * 0.05)}>
-              <div 
-                className="relative w-full overflow-hidden group bg-transparent break-inside-avoid"
-                style={{ 
-                  aspectRatio: i % 3 === 0 ? "3/4" : i % 2 === 0 ? "4/5" : "2/3" 
-                }}
-              >
-                <div className="absolute inset-0 bg-[#EAE6DF]/5 group-hover:bg-transparent transition-colors duration-1000 z-10 pointer-events-none" />
+            <FadeIn key={i} delay={0.05 * i}>
+              <div className="relative aspect-[3/4] w-full overflow-hidden group bg-[#111]">
+                {/* Subtle dark gradient overlay to make images feel richer */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <Image 
                   src={src}
-                  alt={`Aks by Kaaj Editorial Look ${i + 1}`}
+                  alt={`Aks by Kaaj Editorial ${i + 1}`}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-all duration-[2s] group-hover:scale-105 group-hover:brightness-110"
+                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
                 />
               </div>
             </FadeIn>
@@ -61,7 +60,7 @@ export default function EditorialGallery() {
         </div>
 
         {/* Footer CTA */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-4">
           <FadeIn delay={0.2}>
             <Link
               href="/shop"
@@ -70,7 +69,7 @@ export default function EditorialGallery() {
               <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-[#EAE6DF]/60 group-hover:text-[#C9A84C] transition-colors duration-500">
                 Explore The Pieces
               </span>
-              <div className="h-12 w-px bg-gradient-to-b from-[#EAE6DF]/20 to-transparent group-hover:from-[#C9A84C]/60 transition-colors duration-500" />
+              <div className="h-10 w-px bg-gradient-to-b from-[#EAE6DF]/20 to-transparent group-hover:from-[#C9A84C]/60 transition-colors duration-500" />
             </Link>
           </FadeIn>
         </div>
