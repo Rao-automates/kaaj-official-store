@@ -37,7 +37,7 @@ export default function BrandStory() {
         {/* Desktop Image & Overlays */}
         <div className="absolute inset-0 z-0 hero-zoom">
           <Image
-            src="/hero-new.png"
+            src="/images/hero-desktop.webp"
             alt="KAAJ — Premium Pakistani Womenswear"
             fill
             priority
@@ -58,7 +58,7 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  backgroundImage: "url(/ultimate-silk.png)",
+                  backgroundImage: "url(/images/text-fill.webp)",
                   backgroundSize: "cover",
                   backgroundPosition: "center 40%",
                   WebkitBackgroundClip: "text",
@@ -134,7 +134,7 @@ export default function BrandStory() {
             style={{ willChange: "transform" }}
           >
             <Image
-              src="/hero-new.png"
+              src="/images/hero-desktop.webp"
               alt="KAAJ Editorial"
               fill
               sizes="(max-width: 640px) 50vw"
@@ -160,7 +160,7 @@ export default function BrandStory() {
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
                   {/* Updated to royal-embroidery to match desktop and improve visibility */}
-                  <image href="/royal-embroidery.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
+                  <image href="/images/logo-fill.webp" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>

@@ -7,6 +7,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
 import FadeIn from "@/components/ui/FadeIn";
 import Link from "next/link";
+import EditorialGallery from "@/components/sections/EditorialGallery";
 
 interface HomeClientProps {
   initialFeatured: any[];
@@ -97,6 +98,9 @@ export default function HomeClient({
           </div>
         </section>
       )}
+
+      {/* Editorial Lookbook */}
+      <EditorialGallery />
 
       {/* Social CTA — minimal, not template */}
       <section className="relative py-32 sm:py-48 section-void">
