@@ -1,9 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+
+const DESKTOP_SLIDES = [
+  "/images/hero-slide-1.webp",
+  "/images/hero-slide-2.webp",
+  "/images/hero-slide-3.webp",
+];
 
 /* ─────────────────────────────────────────────────────────────
  *  KAAJ — Brand Story / Hero Landing
@@ -18,6 +24,7 @@ const LETTERS = ["K", "A", "A", "J"];
 
 export default function BrandStory() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +34,13 @@ export default function BrandStory() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % DESKTOP_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-[#0A0A09] overflow-hidden">
 
@@ -34,17 +48,28 @@ export default function BrandStory() {
        *  DESKTOP LAYOUT (Massive Centered Text)
        * ============================================================== */}
       <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center z-[2]">
-        {/* Desktop Image & Overlays */}
-        <div className="absolute inset-0 z-0 hero-zoom">
-          <Image
-            src="/images/hero-desktop.webp"
-            alt="KAAJ — Premium Pakistani Womenswear"
-            fill
-            priority
-            fetchPriority="high"
-            className="object-cover object-center"
-            sizes="100vw"
-          />
+        {/* Desktop Image & Overlays (Slideshow) */}
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={DESKTOP_SLIDES[currentSlide]}
+                alt="KAAJ — Premium Pakistani Womenswear"
+                fill
+                priority={currentSlide === 0}
+                fetchPriority={currentSlide === 0 ? "high" : "auto"}
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
         <div className="absolute inset-0 z-0 bg-[#0A0A09]/60" />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/50 via-transparent to-[#0A0A09]" />
@@ -58,7 +83,7 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  backgroundImage: "url(/images/text-fill.webp)",
+                  backgroundImage: "url(/ultimate-silk.png)",
                   backgroundSize: "cover",
                   backgroundPosition: "center 40%",
                   WebkitBackgroundClip: "text",
@@ -134,7 +159,7 @@ export default function BrandStory() {
             style={{ willChange: "transform" }}
           >
             <Image
-              src="/images/hero-desktop.webp"
+              src="/images/hero-mobile.webp"
               alt="KAAJ Editorial"
               fill
               sizes="(max-width: 640px) 50vw"
@@ -160,7 +185,7 @@ export default function BrandStory() {
               <defs>
                 <pattern id="hero-silk" patternUnits="userSpaceOnUse" width="200" height="200">
                   {/* Updated to royal-embroidery to match desktop and improve visibility */}
-                  <image href="/images/logo-fill.webp" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
+                  <image href="/royal-embroidery.png" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
                 </pattern>
                 {/* Removed heavy glow filter to prevent mobile rendering glitches */}
               </defs>
