@@ -58,7 +58,7 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 500,
-                  backgroundImage: "url(/images/pink-flower-texture.png)",
+                  backgroundImage: "url(/images/blush-silk.png)",
                   backgroundSize: "cover",
                   backgroundPosition: "center 40%",
                   WebkitBackgroundClip: "text",
