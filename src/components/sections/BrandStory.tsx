@@ -46,9 +46,8 @@ export default function BrandStory() {
             sizes="100vw"
           />
         </div>
-        <div className="absolute inset-0 z-0 bg-[#0A0A09]/60" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/50 via-transparent to-[#0A0A09]" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0A0A09]/20 via-transparent to-[#0A0A09]/20" />
+        <div className="absolute inset-0 z-0 bg-[#0A0A09]/10" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0A0A09]/30 via-transparent to-[#0A0A09]/60" />
 
         <h1 className="relative z-[2] flex items-center justify-center w-full px-4">
           {LETTERS.map((letter, i) => (
@@ -135,12 +134,12 @@ export default function BrandStory() {
               fill
               sizes="(max-width: 640px) 50vw"
               quality={40}
-              className="object-cover object-[center_30%] opacity-35"
+              className="object-cover object-[center_30%]"
               priority
             />
           </motion.div>
-          {/* Single gradient to reduce GPU overdraw pixel-blending lag */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-[#0A0A09]/40 to-[#0A0A09] pointer-events-none" />
+          {/* Single gradient to ensure text readability at the bottom, without muting the dress */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A09]/80 via-transparent to-transparent pointer-events-none" />
         </div>
 
         {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
