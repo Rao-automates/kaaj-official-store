@@ -28,8 +28,8 @@ export default function CategoryPill({
         "font-sans text-xs uppercase tracking-[0.18em] whitespace-nowrap",
         "border transition-all duration-300",
         active
-          ? "bg-kaaj-charcoal text-kaaj-cream border-kaaj-charcoal"
-          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-charcoal hover:bg-kaaj-cream-dark"
+          ? "bg-kaaj-olive text-kaaj-cream border-kaaj-olive"
+          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-olive hover:text-kaaj-olive"
       )}
     >
       {name}
@@ -37,7 +37,7 @@ export default function CategoryPill({
         <span
           className={cn(
             "text-[10px]",
-            active ? "text-kaaj-gold-light" : "text-kaaj-charcoal/70"
+            active ? "text-kaaj-cream/70" : "text-kaaj-charcoal/70"
           )}
         >
           ({count})
