@@ -46,9 +46,6 @@ function SearchResultsContent() {
       {/* Search Header */}
       <div className="bg-kaaj-cream pt-40 pb-16 text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-4 flex items-center justify-center gap-4">
-            <span className="w-8 h-px bg-kaaj-charcoal" /> Search Results
-          </p>
           <h1 className="font-serif text-[clamp(2rem,6vw,4rem)] leading-[1] text-kaaj-charcoal tracking-tight mb-4">
             {query ? (
               <>

@@ -17,9 +17,6 @@ export default function ContactPage() {
       {/* Editorial Header */}
       <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-32">
         <div className="flex flex-col items-start max-w-4xl">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-6 flex items-center gap-4">
-            <span className="w-8 h-px bg-kaaj-gold" /> Concierge
-          </p>
           <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Contact.
           </h1>
