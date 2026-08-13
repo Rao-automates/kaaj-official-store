@@ -11,6 +11,15 @@ This document serves as the absolute master context file for the **KAAJ** storef
     *   Asymmetrical, editorial layouts are preferred over rigid, boxy designs.
     *   High use of negative space (whitespace is a design element, not empty space).
     *   No cluttered, generic "Trust Badges" in global footers. Badges are kept minimal, text-based, and placed strategically (e.g., in the PDP sidebar only).
+    *   **No Generic "Eyebrows":** Sub-headers with decorative lines (e.g., `--- Legal Information`) have been stripped out site-wide to maintain a purist, typography-driven brutalist aesthetic.
+    *   **No Photo Banners:** Secondary pages like Categories (`/categories/[slug]`) and Search (`/search`) use solid cream, typography-focused headers rather than generic photo banners.
+
+## 1.5 Text Contrast & Accessibility Standards
+To ensure readability while maintaining the light theme "Quiet Luxury" look, strict minimum opacity bounds are enforced for `text-kaaj-charcoal`:
+*   **General Descriptions / Body Text:** Minimum `70%` opacity (`text-kaaj-charcoal/70`).
+*   **Form Labels:** Minimum `80%` opacity (`text-kaaj-charcoal/80`).
+*   **Input Placeholders:** Minimum `50%` opacity (`placeholder:text-kaaj-charcoal/50`).
+*   **Decorative Background Text (e.g., Marquee):** Adjusted dynamically, but strictly adhering to legibility rules.
 
 ## 2. Design System: Typography & Color Palette
 The design system is strictly enforced via `tailwind.config.ts` and `src/app/globals.css`.
@@ -36,11 +45,14 @@ The design system is strictly enforced via `tailwind.config.ts` and `src/app/glo
 
 ## 4. Key Custom Implementations & Minutiae
 
-### A. Product Detail Page (PDP)
+### A. Product Detail Page (PDP) & Store Navigation
 *   **Sticky Mobile Actions ("Buy Now / Add to Cart"):** A sticky bottom bar utilizing `IntersectionObserver` keeps the primary CTA buttons always visible on mobile devices as the user scrolls, significantly improving conversion rates.
     *   *Mobile UX Fix:* To prevent "white flash" glitches caused by iOS Safari's URL bar expanding/collapsing, the bar is hidden using `translate-y-[150%]` (ensuring it is fully off-screen) and utilizes `pb-[env(safe-area-inset-bottom)]` to extend the background underneath the home indicator.
 *   **Cross-Selling ("Pairs well with"):** Implemented a dynamic cross-selling section at the absolute bottom of the PDP to increase Average Order Value (AOV). It displays complementary products in a clean grid.
 *   **Trust Badges Logic:** We explicitly removed repetitive trust badges from the global site footer. Instead, they are rendered as a premium 3-column layout in the right-hand sticky sidebar of the PDP ("Secure Checkout", "7-Day Returns", "Handcrafted in PK").
+*   **Category Navigation:** 
+    *   The **"Uncategorized"** product category is strictly filtered out of all GraphQL returns on the client side (`ShopClient`, `CategoryPage`, `HomeClient`, `Sitemap`) to prevent customers from seeing unpolished store data.
+    *   An explicit **"All"** category pill (`href="/shop"`) is manually injected into the category template (`/categories/[slug]`) to ensure customers can always reset their filters seamlessly.
 
 ### B. Checkout Flow & Payment Logic
 *   **Payment Methods Supported:** "Cash on Delivery (COD)" and "Direct Bank Transfer (BACS)".
@@ -159,5 +171,5 @@ A robust, free architecture has been designed to automate WhatsApp order confirm
     4.  n8n hits the Meta WhatsApp Cloud API using a Permanent System User Token to send a pre-approved template message to the customer.
 
 ---
-*End of Document. Last updated: August 10, 2026*
+*End of Document. Last updated: August 13, 2026*
 
