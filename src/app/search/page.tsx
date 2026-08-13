@@ -44,31 +44,22 @@ function SearchResultsContent() {
   return (
     <div className="min-h-screen bg-kaaj-cream">
       {/* Search Header */}
-      <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-16 text-center relative overflow-hidden">
-        <Image
-          src="/hero.png"
-          alt="Search Results"
-          fill
-          priority
-          className="object-cover object-center opacity-30 grayscale"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
-        <div className="relative z-10 px-4">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
-            — Search Results
+      <div className="bg-kaaj-cream pt-40 pb-16 text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-4 flex items-center justify-center gap-4">
+            <span className="w-8 h-px bg-kaaj-charcoal" /> Search Results
           </p>
-          <h1 className="font-serif text-3xl md:text-display-sm text-kaaj-cream max-w-3xl mx-auto leading-tight">
+          <h1 className="font-serif text-[clamp(2rem,6vw,4rem)] leading-[1] text-kaaj-charcoal tracking-tight mb-4">
             {query ? (
               <>
-                Showing results for <span className="text-kaaj-gold">"{query}"</span>
+                Results for <span className="text-kaaj-charcoal/60">"{query}"</span>
               </>
             ) : (
               "What are you looking for?"
             )}
           </h1>
           {query && !loading && (
-            <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-cream/60 mt-6">
+            <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 mt-6">
               {products.length} product{products.length !== 1 ? "s" : ""} found
             </p>
           )}

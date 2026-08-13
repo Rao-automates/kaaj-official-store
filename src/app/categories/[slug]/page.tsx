@@ -126,24 +126,16 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       {/* Page Header */}
-      <div className="bg-kaaj-deep text-kaaj-cream pt-40 pb-20 text-center relative overflow-hidden">
-        <Image
-          src="/hero.png"
-          alt={meta?.title ?? displayName}
-          fill
-          priority
-          fetchPriority="high"
-          className="object-cover object-center opacity-30 grayscale"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-grain opacity-50 pointer-events-none" />
-        <div className="relative z-10">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-4">
-            — Collections
+      <div className="bg-kaaj-cream pt-40 pb-16 text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-4 flex items-center justify-center gap-4">
+            <span className="w-8 h-px bg-kaaj-charcoal" /> Collections
           </p>
-          <h1 className="font-serif text-display-md text-kaaj-charcoal">{displayName}</h1>
+          <h1 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter mb-4">
+            {displayName}.
+          </h1>
           {meta?.description && (
-            <p className="font-sans text-sm text-kaaj-charcoal/70 mt-3 max-w-md mx-auto">
+            <p className="font-sans text-sm text-kaaj-charcoal/70 max-w-md mx-auto leading-relaxed">
               {meta.description}
             </p>
           )}
