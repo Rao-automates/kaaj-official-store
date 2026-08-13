@@ -15,7 +15,7 @@ export default function SizeGuidePage() {
           <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Sizing.
           </h1>
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 max-w-xl leading-relaxed">
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 max-w-xl leading-relaxed">
             All measurements are in inches. For the best fit, measure over your undergarments.
             If you are between sizes, we recommend sizing up for comfort.
           </p>
@@ -62,7 +62,7 @@ export default function SizeGuidePage() {
 
         {/* Important Note */}
         <div className="mt-12 text-center">
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 leading-loose max-w-2xl mx-auto">
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 leading-loose max-w-2xl mx-auto">
             <span className="text-kaaj-gold mr-2 block sm:inline">Note:</span>
             Sizes may vary slightly between collections due to the nature of hand-crafted fabrics and embroidery. 
             For unstitched fabric, please consult your local tailor for exact measurements.

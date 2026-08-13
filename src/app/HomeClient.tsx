@@ -80,7 +80,7 @@ export default function HomeClient({
             <FadeIn>
               <div className="flex items-center gap-6 mb-16">
                 <div className="h-px w-12 bg-kaaj-charcoal/10" />
-                <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/60">
+                <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/70">
                   Explore by Category
                 </p>
                 <div className="h-px w-12 bg-kaaj-charcoal/10" />
@@ -132,12 +132,12 @@ export default function HomeClient({
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-3 py-6 px-10 border border-kaaj-charcoal/10 hover:border-kaaj-charcoal/30 transition-all duration-500 hover:-translate-y-1"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-kaaj-charcoal/60 group-hover:text-kaaj-gold transition-colors duration-500">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-kaaj-charcoal/70 group-hover:text-kaaj-gold transition-colors duration-500">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <circle cx="12" cy="12" r="5" />
                   <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                 </svg>
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/60 group-hover:text-kaaj-gold transition-colors duration-500">
+                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 group-hover:text-kaaj-gold transition-colors duration-500">
                   Instagram
                 </span>
               </a>
@@ -147,10 +147,10 @@ export default function HomeClient({
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-3 py-6 px-10 border border-kaaj-charcoal/10 hover:border-kaaj-charcoal/30 transition-all duration-500 hover:-translate-y-1"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-kaaj-charcoal/60 group-hover:text-kaaj-gold transition-colors duration-500">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-kaaj-charcoal/70 group-hover:text-kaaj-gold transition-colors duration-500">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                 </svg>
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/60 group-hover:text-kaaj-gold transition-colors duration-500">
+                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 group-hover:text-kaaj-gold transition-colors duration-500">
                   Facebook
                 </span>
               </a>

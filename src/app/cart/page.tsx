@@ -37,7 +37,7 @@ export default function CartPage() {
             <p className="font-serif text-3xl text-kaaj-charcoal mb-4">
               Your bag is empty
             </p>
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 mb-12 max-w-xs mx-auto leading-loose">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 mb-12 max-w-xs mx-auto leading-loose">
               Explore our curated archives and find something you love.
             </p>
             <Link href="/shop" className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-charcoal/20 hover:border-kaaj-gold transition-colors duration-500 justify-center">
@@ -56,7 +56,7 @@ export default function CartPage() {
                 </h2>
                 <Link
                   href="/shop"
-                  className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 hover:text-kaaj-gold transition-colors"
+                  className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 hover:text-kaaj-gold transition-colors"
                 >
                   Continue Shopping
                 </Link>
@@ -97,7 +97,7 @@ export default function CartPage() {
                         </Link>
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="flex-shrink-0 text-kaaj-charcoal/40 hover:text-kaaj-gold transition-colors mt-1"
+                          className="flex-shrink-0 text-kaaj-charcoal/70 hover:text-kaaj-gold transition-colors mt-1"
                           aria-label="Remove item"
                         >
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -110,7 +110,7 @@ export default function CartPage() {
                       {/* Attributes */}
                       <div className="mt-4 space-y-2">
                         {Object.entries(item.selectedAttributes).map(([key, val]) => (
-                          <p key={key} className="font-sans text-[10px] text-kaaj-charcoal/60 uppercase tracking-[0.2em]">
+                          <p key={key} className="font-sans text-[10px] text-kaaj-charcoal/70 uppercase tracking-[0.2em]">
                             {key.replace(/^pa_/, "").replace(/-/g, " ")}: <span className="text-kaaj-charcoal">{val}</span>
                           </p>
                         ))}
@@ -182,7 +182,7 @@ export default function CartPage() {
                 <div className="h-px bg-kaaj-charcoal/20 my-8" />
 
                 <div className="flex justify-between items-end mb-10">
-                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/50">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70">
                     Total
                   </span>
                   <span className="font-serif text-3xl text-kaaj-charcoal">
@@ -205,7 +205,7 @@ export default function CartPage() {
                   </button>
                 </Link>
 
-                <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/40 text-center mt-6">
+                <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 text-center mt-6">
                   Secure checkout · No hidden fees
                 </p>
               </div>

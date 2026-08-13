@@ -49,14 +49,14 @@ function SearchResultsContent() {
           <h1 className="font-serif text-[clamp(2rem,6vw,4rem)] leading-[1] text-kaaj-charcoal tracking-tight mb-4">
             {query ? (
               <>
-                Results for <span className="text-kaaj-charcoal/60">"{query}"</span>
+                Results for <span className="text-kaaj-charcoal/70">"{query}"</span>
               </>
             ) : (
               "What are you looking for?"
             )}
           </h1>
           {query && !loading && (
-            <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 mt-6">
+            <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 mt-6">
               {products.length} product{products.length !== 1 ? "s" : ""} found
             </p>
           )}
@@ -79,7 +79,7 @@ function SearchResultsContent() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1"
-              className="mx-auto text-kaaj-charcoal/30 mb-6"
+              className="mx-auto text-kaaj-charcoal/70 mb-6"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />

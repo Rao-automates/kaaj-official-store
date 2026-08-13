@@ -10,7 +10,7 @@ export default function NotFound() {
       <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-kaaj-charcoal mb-8">
         Page Not Found
       </h2>
-      <p className="font-sans text-xs text-kaaj-charcoal/60 max-w-md mx-auto mb-10 leading-relaxed">
+      <p className="font-sans text-xs text-kaaj-charcoal/70 max-w-md mx-auto mb-10 leading-relaxed">
         The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
       </p>
       <Link
@@ -27,7 +27,7 @@ export default function NotFound() {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
-          className="text-kaaj-charcoal/60 group-hover:text-kaaj-charcoal transition-all group-hover:translate-x-1 duration-500"
+          className="text-kaaj-charcoal/70 group-hover:text-kaaj-charcoal transition-all group-hover:translate-x-1 duration-500"
         >
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />

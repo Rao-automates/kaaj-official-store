@@ -42,7 +42,7 @@ export default function Footer() {
                 </svg>
               </div>
             </div>
-            <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed max-w-xs mt-4">
+            <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed max-w-xs mt-4">
               Where tradition meets modernity. K A A J brings the finest Pakistani
               craftsmanship to women who celebrate their heritage with pride.
             </p>
@@ -53,7 +53,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/70 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
               >
                 <InstagramIcon />
               </a>
@@ -62,7 +62,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/70 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
               >
                 <FacebookIcon />
               </a>
@@ -71,7 +71,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/60 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
+                className="w-9 h-9 flex items-center justify-center border border-kaaj-charcoal/20 text-kaaj-charcoal/70 hover:border-kaaj-gold hover:text-kaaj-gold transition-all duration-300 hover:scale-105"
               >
                 <WhatsAppIcon />
               </a>
@@ -88,7 +88,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-300 inline-block hover:translate-x-1 transform"
+                    className="font-sans text-xs text-kaaj-charcoal/70 hover:text-kaaj-gold transition-colors duration-300 inline-block hover:translate-x-1 transform"
                   >
                     {link.label}
                   </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors duration-300 inline-block hover:translate-x-1 transform"
+                    className="font-sans text-xs text-kaaj-charcoal/70 hover:text-kaaj-gold transition-colors duration-300 inline-block hover:translate-x-1 transform"
                   >
                     {link.label}
                   </Link>
@@ -121,7 +121,7 @@ export default function Footer() {
             <h3 className="font-sans text-[10px] uppercase tracking-[0.25em] text-kaaj-charcoal">
               Stay Connected
             </h3>
-            <p className="font-sans text-xs text-kaaj-charcoal/60 leading-relaxed">
+            <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed">
               Be the first to know about new collections, exclusive offers, and styling inspiration.
             </p>
             <NewsletterForm />
@@ -266,7 +266,7 @@ function NewsletterForm() {
       {status === "error" && (
         <p className="font-sans text-[10px] text-red-400 mt-1">{message}</p>
       )}
-      <p className="font-sans text-[10px] text-kaaj-charcoal/30 mt-1">
+      <p className="font-sans text-[10px] text-kaaj-charcoal/70 mt-1">
         No spam. Unsubscribe anytime.
       </p>
     </div>

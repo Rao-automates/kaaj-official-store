@@ -65,7 +65,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-kaaj-charcoal/50 hover:text-kaaj-gold transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-kaaj-charcoal/70 hover:text-kaaj-gold transition-colors"
             aria-label="Submit search"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -89,7 +89,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   router.push(`/search?q=${encodeURIComponent(term)}`);
                   setQuery("");
                 }}
-                className="font-sans text-xs text-kaaj-charcoal/60 hover:text-kaaj-charcoal border border-kaaj-charcoal/10 rounded-full px-4 py-2 hover:border-kaaj-gold transition-colors"
+                className="font-sans text-xs text-kaaj-charcoal/70 hover:text-kaaj-charcoal border border-kaaj-charcoal/10 rounded-full px-4 py-2 hover:border-kaaj-gold transition-colors"
               >
                 {term}
               </button>

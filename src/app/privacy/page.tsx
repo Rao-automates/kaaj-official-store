@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
           <h1 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 mb-8">
             Privacy Policy.
           </h1>
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 leading-relaxed">
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 leading-relaxed">
             Effective Date: {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
           </p>
         </div>

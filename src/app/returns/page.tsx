@@ -81,7 +81,7 @@ export default function ReturnsPage() {
         {status === "success" ? (
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16 text-center">
             <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Request Received</h2>
-            <p className="font-sans text-xs text-kaaj-charcoal/60 mb-12 leading-relaxed max-w-md mx-auto">
+            <p className="font-sans text-xs text-kaaj-charcoal/70 mb-12 leading-relaxed max-w-md mx-auto">
               Your return request has been submitted successfully. Our client services team will review your request and get back to you within 24-48 hours.
             </p>
             <button 
@@ -98,7 +98,7 @@ export default function ReturnsPage() {
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Initiate a Return</h2>
-              <p className="font-sans text-xs text-kaaj-charcoal/50 leading-relaxed max-w-lg mx-auto">
+              <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed max-w-lg mx-auto">
                 Please enter your order details below to request a return or exchange.
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function ReturnsPage() {
                     <option value="Not as Expected" className="bg-white text-kaaj-charcoal">Item not as expected</option>
                     <option value="Other" className="bg-white text-kaaj-charcoal">Other</option>
                   </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/40">
+                  <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/70">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>

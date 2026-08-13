@@ -107,7 +107,7 @@ export default function CheckoutPage() {
   };
 
   const inputClass =
-    "w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/40 rounded-none";
+    "w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 rounded-none";
 
   const labelClass =
     "block font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 mb-1";
@@ -136,23 +136,23 @@ export default function CheckoutPage() {
             <div className="max-w-2xl mx-auto space-y-6">
               {paymentMethod === "bacs" ? (
                 <>
-                  <p className="font-sans text-sm text-kaaj-charcoal/60 leading-relaxed">
+                  <p className="font-sans text-sm text-kaaj-charcoal/70 leading-relaxed">
                     Your order <strong className="text-kaaj-charcoal font-medium">{orderNumber}</strong> has been placed successfully. 
                     Please make your direct bank transfer to our account using the details below:
                   </p>
                   <div className="bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 p-8 text-left font-sans text-sm text-kaaj-charcoal space-y-3">
-                    <p><span className="text-kaaj-charcoal/50 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">Bank</span> Meezan Bank</p>
-                    <p><span className="text-kaaj-charcoal/50 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">Account Title</span> MEHWISH IMRAN</p>
-                    <p><span className="text-kaaj-charcoal/50 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">Account #</span> 01860103756198</p>
-                    <p><span className="text-kaaj-charcoal/50 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">IBAN</span> PK42MEZN0001860103756198</p>
+                    <p><span className="text-kaaj-charcoal/70 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">Bank</span> Meezan Bank</p>
+                    <p><span className="text-kaaj-charcoal/70 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">Account Title</span> MEHWISH IMRAN</p>
+                    <p><span className="text-kaaj-charcoal/70 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">Account #</span> 01860103756198</p>
+                    <p><span className="text-kaaj-charcoal/70 inline-block w-32 uppercase tracking-[0.2em] text-[10px]">IBAN</span> PK42MEZN0001860103756198</p>
                   </div>
-                  <p className="font-sans text-xs text-kaaj-charcoal/50 leading-relaxed mt-6">
+                  <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed mt-6">
                     Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared. 
                     <strong className="text-kaaj-charcoal font-medium block mt-2">Please send your transaction screenshot on WhatsApp to confirm your order.</strong>
                   </p>
                 </>
               ) : (
-                <p className="font-sans text-sm text-kaaj-charcoal/60 leading-relaxed">
+                <p className="font-sans text-sm text-kaaj-charcoal/70 leading-relaxed">
                   Your order <strong className="text-kaaj-charcoal font-medium">{orderNumber}</strong> has been
                   placed successfully. Our team will confirm your order via call or WhatsApp shortly.
                 </p>
@@ -161,27 +161,27 @@ export default function CheckoutPage() {
           </div>
 
           <div className="max-w-2xl mx-auto border border-kaaj-charcoal/10 p-8 text-left">
-            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 mb-6">
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 mb-6">
               Delivery Details
             </p>
             <div className="space-y-1">
               <p className="font-serif text-xl text-kaaj-charcoal">
                 {form.firstName} {form.lastName}
               </p>
-              <p className="font-sans text-sm text-kaaj-charcoal/60 pt-2">
+              <p className="font-sans text-sm text-kaaj-charcoal/70 pt-2">
                 {form.address}, {form.city}, {form.province}
               </p>
-              <p className="font-sans text-sm text-kaaj-charcoal/60">{form.phone}</p>
+              <p className="font-sans text-sm text-kaaj-charcoal/70">{form.phone}</p>
             </div>
             <div className="pt-8 mt-8 border-t border-kaaj-charcoal/10">
               <div className="flex justify-between items-end mb-2">
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50">Payment Method</span>
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70">Payment Method</span>
                 <span className="font-sans text-sm text-kaaj-charcoal">
                   {paymentMethod === "bacs" ? "Direct Bank Transfer" : "Cash on Delivery"}
                 </span>
               </div>
               <div className="flex justify-between items-end">
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50">Order Total</span>
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70">Order Total</span>
                 <span className="font-serif text-2xl text-kaaj-charcoal">
                   {formatPKR(String(total))}
                 </span>
@@ -220,7 +220,7 @@ export default function CheckoutPage() {
       {cart.items.length === 0 ? (
         <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center py-20 border border-kaaj-charcoal/20">
           <p className="font-serif text-3xl text-kaaj-charcoal mb-4">Your bag is empty</p>
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 mb-12 max-w-xs mx-auto leading-loose">
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 mb-12 max-w-xs mx-auto leading-loose">
             Explore our curated archives and find something you love.
           </p>
           <Link href="/shop" className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-charcoal/20 hover:border-kaaj-gold transition-colors duration-500 justify-center">
@@ -361,7 +361,7 @@ export default function CheckoutPage() {
                         <option key={p} value={p} className="bg-white text-kaaj-charcoal">{p}</option>
                       ))}
                     </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/40">
+                    <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/70">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
@@ -411,11 +411,11 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex-1">
                       <p className={`font-serif text-xl transition-colors duration-500 ${
-                        paymentMethod === "cod" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/60"
+                        paymentMethod === "cod" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/70"
                       }`}>
                         Cash on Delivery
                       </p>
-                      <p className="font-sans text-xs text-kaaj-charcoal/40 mt-1">
+                      <p className="font-sans text-xs text-kaaj-charcoal/70 mt-1">
                         Pay when your order arrives at your doorstep.
                       </p>
                     </div>
@@ -445,7 +445,7 @@ export default function CheckoutPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-4">
                         <p className={`font-serif text-xl transition-colors duration-500 ${
-                          paymentMethod === "bacs" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/60"
+                          paymentMethod === "bacs" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/70"
                         }`}>
                           Bank Transfer
                         </p>
@@ -453,7 +453,7 @@ export default function CheckoutPage() {
                           Complimentary Delivery
                         </span>
                       </div>
-                      <p className="font-sans text-xs text-kaaj-charcoal/40 mt-1">
+                      <p className="font-sans text-xs text-kaaj-charcoal/70 mt-1">
                         Transfer directly to our bank account. Order ships upon clearance.
                       </p>
                     </div>
@@ -493,7 +493,7 @@ export default function CheckoutPage() {
                             {item.name}
                           </p>
                           {Object.entries(item.selectedAttributes).map(([k, v]) => (
-                            <p key={k} className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 mt-1">
+                            <p key={k} className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 mt-1">
                               {k.replace(/^pa_/, "")}: <span className="text-kaaj-charcoal/80">{v}</span>
                             </p>
                           ))}
@@ -525,7 +525,7 @@ export default function CheckoutPage() {
                 <div className="h-px bg-kaaj-charcoal/20 mb-8" />
                 
                 <div className="flex justify-between items-end mb-8">
-                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/50">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70">
                     Total
                   </span>
                   <span className="font-serif text-3xl text-kaaj-charcoal">
@@ -543,7 +543,7 @@ export default function CheckoutPage() {
                       {loading ? "Processing..." : `Place Order — ${paymentMethod === 'cod' ? 'COD' : 'Bank Transfer'}`}
                     </span>
                   </button>
-                  <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/40 text-center mt-4">
+                  <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 text-center mt-4">
                     By placing your order you agree to our Terms & Conditions.
                   </p>
                 </div>

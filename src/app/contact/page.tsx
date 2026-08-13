@@ -20,7 +20,7 @@ export default function ContactPage() {
           <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Contact.
           </h1>
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 max-w-xl leading-relaxed">
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 max-w-xl leading-relaxed">
             Our client services team is at your complete disposal for any inquiries regarding collections, sizing, or bespoke requests.
           </p>
         </div>

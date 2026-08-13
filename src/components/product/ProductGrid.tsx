@@ -41,7 +41,7 @@ export default function ProductGrid({
           <p className="font-serif text-3xl text-kaaj-charcoal">
             {emptyMessage || "New works arriving soon."}
           </p>
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 leading-loose">
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 leading-loose">
             Our ateliers are crafting something exquisite. Follow us on Instagram for updates.
           </p>
           <Link

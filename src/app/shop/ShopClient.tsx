@@ -70,7 +70,7 @@ export default function ShopClient() {
           <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Shop All.
           </h1>
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/60 max-w-xl leading-relaxed">
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 max-w-xl leading-relaxed">
             Discover the complete KAAJ range — an exploration of heritage artistry through modern silhouettes.
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function ShopClient() {
 
           {/* Sort */}
           <div className="flex items-center gap-4 flex-shrink-0">
-            <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50">
+            <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/70">
               Sort
             </span>
             <div className="flex gap-2">
@@ -121,7 +121,7 @@ export default function ShopClient() {
 
         {/* Result count */}
         {!loading && (
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/40 mb-8">
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 mb-8">
             {products.length > 0
               ? `Showing ${products.length} works`
               : "0 works"}

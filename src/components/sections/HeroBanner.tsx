@@ -106,7 +106,7 @@ export default function HeroBanner() {
         animate={{ opacity: hasScrolled ? 0 : 1 }}
         transition={{ duration: 0.6 }}
       >
-        <span className="font-sans text-[8px] uppercase tracking-[0.4em] text-kaaj-charcoal/40">
+        <span className="font-sans text-[8px] uppercase tracking-[0.4em] text-kaaj-charcoal/70">
           Scroll
         </span>
         <div className="w-px h-8 bg-gradient-to-b from-kaaj-gold/60 to-transparent animate-scroll-pulse" />

@@ -150,7 +150,7 @@ export default function ProductDetailClient({
       <div className="min-h-screen bg-transparent pt-24 pb-16">
         {/* Breadcrumb */}
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal/50">
+          <nav className="flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal/70">
             <Link href="/" className="hover:text-kaaj-charcoal transition-colors">Home</Link>
             <span>/</span>
             <Link href="/shop" className="hover:text-kaaj-charcoal transition-colors">Shop</Link>
@@ -205,7 +205,7 @@ export default function ProductDetailClient({
                   {formatPKR(displayPrice)}
                 </span>
                 {onSale && displayRegularPrice && (
-                  <span className="font-sans text-sm text-kaaj-charcoal/50 line-through">
+                  <span className="font-sans text-sm text-kaaj-charcoal/70 line-through">
                     {formatPKR(displayRegularPrice)}
                   </span>
                 )}
@@ -220,7 +220,7 @@ export default function ProductDetailClient({
               
               {/* Loved By Pill */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm w-fit mt-1">
-                <svg className="w-3 h-3 text-kaaj-charcoal/60" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <svg className="w-3 h-3 text-kaaj-charcoal/70" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>
                 <span className="font-sans text-[9px] text-kaaj-charcoal font-semibold uppercase tracking-[0.2em]">Loved by {fakeLovedBy}</span>
@@ -231,7 +231,7 @@ export default function ProductDetailClient({
                 <div className="grid grid-cols-2 gap-2 mt-4">
                   {nonVariationAttributes.map((attr) => (
                     <div key={attr.name} className="flex flex-col gap-0.5 p-3 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm">
-                      <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/50 flex items-center gap-1.5">
+                      <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 flex items-center gap-1.5">
                         <svg className="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                           <line x1="3" y1="9" x2="21" y2="9"/>
@@ -371,7 +371,7 @@ export default function ProductDetailClient({
                     : "BUY NOW"}
                 </button>
                 {variantNotSelected && (
-                  <p className="font-sans text-[10px] text-kaaj-charcoal/60 text-center mt-2">
+                  <p className="font-sans text-[10px] text-kaaj-charcoal/70 text-center mt-2">
                     Please select all options above to continue.
                   </p>
                 )}
@@ -561,7 +561,7 @@ function DeliveryTimeline() {
           </div>
           <div className="text-center">
             <p className="font-sans text-[9px] font-bold text-kaaj-charcoal">{formatDate(today)}</p>
-            <p className="font-sans text-[9px] text-kaaj-charcoal/60 uppercase tracking-widest mt-0.5">Ordered</p>
+            <p className="font-sans text-[9px] text-kaaj-charcoal/70 uppercase tracking-widest mt-0.5">Ordered</p>
           </div>
         </div>
 
@@ -577,7 +577,7 @@ function DeliveryTimeline() {
           </div>
           <div className="text-center">
             <p className="font-sans text-[9px] font-bold text-kaaj-charcoal">{formatDate(readyStart)} - {formatDate(readyEnd)}</p>
-            <p className="font-sans text-[9px] text-kaaj-charcoal/60 uppercase tracking-widest mt-0.5">Order Ready</p>
+            <p className="font-sans text-[9px] text-kaaj-charcoal/70 uppercase tracking-widest mt-0.5">Order Ready</p>
           </div>
         </div>
 
@@ -591,7 +591,7 @@ function DeliveryTimeline() {
           </div>
           <div className="text-center">
             <p className="font-sans text-[9px] font-bold text-kaaj-charcoal">{formatDate(delStart)} - {formatDate(delEnd)}</p>
-            <p className="font-sans text-[9px] text-kaaj-charcoal/60 uppercase tracking-widest mt-0.5">Delivered</p>
+            <p className="font-sans text-[9px] text-kaaj-charcoal/70 uppercase tracking-widest mt-0.5">Delivered</p>
           </div>
         </div>
       </div>
