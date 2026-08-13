@@ -29,7 +29,14 @@ export async function POST(request: Request) {
     }
 
     // 2. Parse Order Data
-    const order = JSON.parse(payloadText || '{}');
+    let order: any = {};
+    try {
+      order = JSON.parse(payloadText || '{}');
+    } catch (e) {
+      // WooCommerce sends a 'ping' event (webhook_id=...) when you click save, which is not valid JSON.
+      // We catch this to prevent a 500 error and just return 200 to satisfy WooCommerce.
+      return NextResponse.json({ message: 'Ping received or invalid JSON' }, { status: 200 });
+    }
     
     // We only care about specific statuses
     const allowedStatuses = ['processing', 'completed', 'cancelled'];
