@@ -119,7 +119,7 @@ export default function TrackOrderPage() {
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16">
             <div className="text-center mb-12 border-b border-kaaj-charcoal/10 pb-12">
               <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Order #{orderData.id}</h2>
-              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/50">
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70">
                 Placed by {orderData.billing.email}
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function TrackOrderPage() {
                 <h3 className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal">
                   {getStatusDisplay(orderData.status).title}
                 </h3>
-                <p className="font-sans text-sm text-kaaj-charcoal/60 text-center max-w-md leading-relaxed">
+                <p className="font-sans text-sm text-kaaj-charcoal/80 text-center max-w-md leading-relaxed">
                   {getStatusDisplay(orderData.status).desc}
                 </p>
               </div>
@@ -154,7 +154,7 @@ export default function TrackOrderPage() {
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Order Details</h2>
-              <p className="font-sans text-xs text-kaaj-charcoal/50 leading-relaxed max-w-lg mx-auto">
+              <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed max-w-lg mx-auto">
                 To track your order please enter your Order ID in the box below and the email address you used during checkout.
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function TrackOrderPage() {
               
               <div className="space-y-8">
                 <div className="space-y-2">
-                  <label htmlFor="orderId" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                  <label htmlFor="orderId" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                     Order ID *
                   </label>
                   <input
@@ -177,11 +177,11 @@ export default function TrackOrderPage() {
                     name="orderId"
                     required
                     placeholder="Found in your confirmation email"
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/50 rounded-none"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                     Billing Email *
                   </label>
                   <input
@@ -190,7 +190,7 @@ export default function TrackOrderPage() {
                     name="email"
                     required
                     placeholder="Email used during checkout"
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/50 rounded-none"
                   />
                 </div>
               </div>
