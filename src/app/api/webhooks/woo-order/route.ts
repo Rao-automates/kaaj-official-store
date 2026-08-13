@@ -33,15 +33,18 @@ export async function POST(request: Request) {
     try {
       order = JSON.parse(payloadText || '{}');
     } catch (e) {
-      // WooCommerce sends a 'ping' event (webhook_id=...) when you click save, which is not valid JSON.
-      // We catch this to prevent a 500 error and just return 200 to satisfy WooCommerce.
+      console.log('Webhook ping received or invalid JSON payload');
       return NextResponse.json({ message: 'Ping received or invalid JSON' }, { status: 200 });
     }
     
+    const status = order.status;
+    console.log(`[Webhook] Received update for order ID: ${order.id}, Status: ${status}`);
+
     // We only care about specific statuses
     const allowedStatuses = ['processing', 'completed', 'cancelled'];
-    if (!allowedStatuses.includes(order.status)) {
-      return NextResponse.json({ message: `Ignored status: ${order.status}` }, { status: 200 });
+    if (!allowedStatuses.includes(status)) {
+      console.log(`[Webhook] Ignored status: ${status}. Only processing, completed, cancelled are supported.`);
+      return NextResponse.json({ message: `Ignored status: ${status}` }, { status: 200 });
     }
 
     // 3. Hostinger Mail API Config
@@ -49,7 +52,7 @@ export async function POST(request: Request) {
     const MAILBOX_ID = process.env.HOSTINGER_MAILBOX_ID || "AC5ecff592b2c510d1d1e30c90b10f";
 
     if (!HOSTINGER_API_KEY || !MAILBOX_ID) {
-      console.error('Hostinger Mail API credentials missing.');
+      console.error('[Webhook] Hostinger Mail API credentials missing.');
       return NextResponse.json({ error: 'Mail config missing' }, { status: 500 });
     }
 
@@ -64,11 +67,13 @@ export async function POST(request: Request) {
     const total = order.total || '0';
     const shipping = order.shipping_total || '0';
     const paymentMethod = order.payment_method_title || 'Unknown';
-    const status = order.status;
 
     if (!customerEmail) {
+      console.error(`[Webhook] No customer email found for order ${orderNumber}`);
       return NextResponse.json({ error: 'No customer email found' }, { status: 400 });
     }
+
+    console.log(`[Webhook] Preparing to send ${status} email to ${customerEmail}`);
 
     // 5. Generate Items HTML
     const itemsHtml = (order.line_items || []).map((item: any) => {
@@ -172,9 +177,10 @@ export async function POST(request: Request) {
       html: emailHtml,
     });
 
+    console.log(`[Webhook] SUCCESS: Email dispatched to ${customerEmail} via Hostinger.`);
     return NextResponse.json({ success: true, message: `Status email sent for ${orderNumber} (${status})` });
   } catch (error) {
-    console.error('Webhook error:', error);
+    console.error('[Webhook] CRITICAL ERROR:', error);
     return NextResponse.json(
       { error: 'An error occurred while processing webhook.' },
       { status: 500 }
