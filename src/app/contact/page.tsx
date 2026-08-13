@@ -89,30 +89,30 @@ export default function ContactPage() {
             <form className="space-y-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">Name</label>
+                  <label htmlFor="name" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">Name</label>
                   <input 
                     type="text" 
                     id="name"
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 rounded-none"
                     placeholder="Jane Doe"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">Email</label>
+                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">Email</label>
                   <input 
                     type="email" 
                     id="email"
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 rounded-none"
                     placeholder="jane@example.com"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="message" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">Message</label>
+                <label htmlFor="message" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">Message</label>
                 <textarea 
                   id="message"
                   rows={4}
-                  className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 resize-none rounded-none"
+                  className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 resize-none rounded-none"
                   placeholder="How can we assist you?"
                 ></textarea>
               </div>

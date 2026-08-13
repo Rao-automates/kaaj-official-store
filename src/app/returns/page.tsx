@@ -62,7 +62,24 @@ export default function ReturnsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6">
+      <div className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 space-y-16">
+        
+        {/* Policies */}
+        <div className="prose prose-sm md:prose-base prose-kaaj max-w-none text-kaaj-charcoal/80 font-sans leading-loose space-y-8">
+          <section>
+            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">DAMAGED, SHORT-MEASURED, OR DEFECTIVE ITEMS</h2>
+            <p>
+              If an order arrives damaged, short-measured beyond tolerance, or incorrect, you must notify us within 48 hours of delivery via email at <a href="mailto:support@kaajofficial.com" className="underline hover:text-kaaj-gold transition-colors">support@kaajofficial.com</a> with order details and photographic evidence. Verified defective or wrong items will be replaced or corrected at our cost, including return shipping.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">REFUND POLICY & SALE ITEMS</h2>
+            <p>
+              We operate on an Exchange or Store Credit policy. Cash refunds are not issued except in cases where an item is defective and a replacement is unavailable. Items purchased on sale, clearance, or custom promotional drop are Final Sale and non-exchangeable unless defective.
+            </p>
+          </section>
+        </div>
         
         {status === "success" ? (
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16 text-center">
@@ -103,7 +120,7 @@ export default function ReturnsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label htmlFor="orderId" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                  <label htmlFor="orderId" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                     Order Number *
                   </label>
                   <input
@@ -112,11 +129,11 @@ export default function ReturnsPage() {
                     name="orderId"
                     required
                     placeholder="e.g. 12345"
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 rounded-none"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                  <label htmlFor="email" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                     Email Address *
                   </label>
                   <input
@@ -125,13 +142,13 @@ export default function ReturnsPage() {
                     name="email"
                     required
                     placeholder="you@example.com"
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 rounded-none"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="reason" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                <label htmlFor="reason" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                   Reason for Return *
                 </label>
                 <div className="relative">
@@ -139,14 +156,14 @@ export default function ReturnsPage() {
                     id="reason"
                     name="reason"
                     required
-                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors appearance-none rounded-none"
+                    className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors appearance-none rounded-none"
                   >
-                    <option value="" className="bg-[#2a2c26]">Select a reason...</option>
-                    <option value="Incorrect Item" className="bg-[#2a2c26]">Received incorrect item</option>
-                    <option value="Damaged" className="bg-[#2a2c26]">Item arrived damaged/defective</option>
-                    <option value="Size Issue" className="bg-[#2a2c26]">Sizing issue</option>
-                    <option value="Not as Expected" className="bg-[#2a2c26]">Item not as expected</option>
-                    <option value="Other" className="bg-[#2a2c26]">Other</option>
+                    <option value="" className="bg-white text-kaaj-charcoal">Select a reason...</option>
+                    <option value="Incorrect Item" className="bg-white text-kaaj-charcoal">Received incorrect item</option>
+                    <option value="Damaged" className="bg-white text-kaaj-charcoal">Item arrived damaged/defective</option>
+                    <option value="Size Issue" className="bg-white text-kaaj-charcoal">Sizing issue</option>
+                    <option value="Not as Expected" className="bg-white text-kaaj-charcoal">Item not as expected</option>
+                    <option value="Other" className="bg-white text-kaaj-charcoal">Other</option>
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/40">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -157,7 +174,7 @@ export default function ReturnsPage() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="details" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                <label htmlFor="details" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                   Additional Details
                 </label>
                 <textarea
@@ -165,12 +182,12 @@ export default function ReturnsPage() {
                   name="details"
                   rows={4}
                   placeholder="Please provide any additional information..."
-                  className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 resize-none rounded-none"
+                  className="w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/50 resize-none rounded-none"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="image" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 block">
+                <label htmlFor="image" className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 block">
                   Upload Image (Optional, Max 4MB)
                 </label>
                 <input

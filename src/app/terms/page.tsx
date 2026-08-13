@@ -56,6 +56,20 @@ export default function TermsConditionsPage() {
               These terms and conditions are governed by and construed in accordance with the laws of Pakistan and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
             </p>
           </section>
+
+          <section>
+            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">6.2 DAMAGED, SHORT-MEASURED, OR DEFECTIVE ITEMS</h2>
+            <p>
+              If an order arrives damaged, short-measured beyond tolerance, or incorrect, you must notify us within 48 hours of delivery via email at <a href="mailto:support@kaajofficial.com" className="underline hover:text-kaaj-gold transition-colors">support@kaajofficial.com</a> with order details and photographic evidence. Verified defective or wrong items will be replaced or corrected at our cost, including return shipping.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">6.3 REFUND POLICY & SALE ITEMS</h2>
+            <p>
+              We operate on an Exchange or Store Credit policy. Cash refunds are not issued except in cases where an item is defective and a replacement is unavailable. Items purchased on sale, clearance, or custom promotional drop are Final Sale and non-exchangeable unless defective.
+            </p>
+          </section>
         </div>
       </div>
     </div>
