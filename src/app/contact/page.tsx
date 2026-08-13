@@ -44,7 +44,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 mb-2">
+                  <h3 className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 mb-2">
                     WhatsApp Chat
                   </h3>
                   <a 
@@ -55,7 +55,7 @@ export default function ContactPage() {
                   >
                     +92 301 330 5325
                   </a>
-                  <p className="font-sans text-[9px] uppercase tracking-widest text-kaaj-charcoal/40 mt-4">
+                  <p className="font-sans text-[9px] uppercase tracking-widest text-kaaj-charcoal/70 mt-4">
                     Mon-Sat, 10am to 7pm PKT
                   </p>
                 </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 mb-2">
+                  <h3 className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 mb-2">
                     Email Support
                   </h3>
                   <a 
