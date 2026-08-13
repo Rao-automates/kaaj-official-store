@@ -86,10 +86,12 @@ export async function generateStaticParams() {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const [products, allCategories] = await Promise.all([
+  const [products, rawCategories] = await Promise.all([
     getCategoryProducts(slug),
     getAllCategories(),
   ]);
+
+  const allCategories = rawCategories.filter((c: any) => c.slug !== "uncategorized");
 
   const meta = CATEGORY_META[slug];
   const displayName = slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());

@@ -50,7 +50,9 @@ export default function ShopClient() {
         }
 
         setProducts(fetchedProducts);
-        setCategories(catData?.productCategories?.nodes ?? []);
+        setCategories(
+          (catData?.productCategories?.nodes ?? []).filter((c: any) => c.slug !== "uncategorized")
+        );
       } catch (err) {
         console.error("Failed to fetch shop data", err);
       } finally {

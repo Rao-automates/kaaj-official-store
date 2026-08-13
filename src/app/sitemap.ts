@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let categories: any[] = [];
   try {
     const data = await gqlFetch<CategoriesQueryResponse>(GET_CATEGORIES);
-    categories = data?.productCategories?.nodes ?? [];
+    categories = (data?.productCategories?.nodes ?? []).filter((c: any) => c.slug !== "uncategorized");
   } catch (err) {
     console.error("Sitemap category fetch error", err);
   }

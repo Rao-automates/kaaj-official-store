@@ -48,7 +48,7 @@ export default async function HomePage() {
 
     featuredProducts = featured?.products?.nodes ?? [];
     newArrivals = arrivals?.products?.nodes ?? [];
-    categories = cats?.productCategories?.nodes ?? [];
+    categories = (cats?.productCategories?.nodes ?? []).filter((c: any) => c.slug !== "uncategorized");
   } catch (err) {
     console.error("[SSR] Homepage fetch error:", err);
   }
