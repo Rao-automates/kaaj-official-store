@@ -3,7 +3,10 @@ import crypto from 'crypto';
 
 export async function POST(request: Request) {
   try {
-    const payload = await request.text();
+    const rawBody = await request.arrayBuffer();
+    const payloadBuffer = Buffer.from(rawBody);
+    const payloadText = payloadBuffer.toString('utf8');
+    
     const headers = request.headers;
     const signature = headers.get('x-wc-webhook-signature');
     const topic = headers.get('x-wc-webhook-topic'); // e.g., order.updated
@@ -14,7 +17,7 @@ export async function POST(request: Request) {
     if (webhookSecret && signature) {
       const expectedSignature = crypto
         .createHmac('sha256', webhookSecret)
-        .update(payload)
+        .update(payloadBuffer) // MUST use raw buffer for accurate HMAC
         .digest('base64');
 
       if (signature !== expectedSignature) {
@@ -26,7 +29,7 @@ export async function POST(request: Request) {
     }
 
     // 2. Parse Order Data
-    const order = JSON.parse(payload);
+    const order = JSON.parse(payloadText || '{}');
     
     // We only care about specific statuses
     const allowedStatuses = ['processing', 'completed', 'cancelled'];
