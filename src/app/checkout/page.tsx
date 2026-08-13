@@ -107,10 +107,10 @@ export default function CheckoutPage() {
   };
 
   const inputClass =
-    "w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-gold transition-colors placeholder:text-kaaj-charcoal/20 rounded-none";
+    "w-full bg-transparent border-0 border-b border-kaaj-charcoal/20 px-0 py-3 text-kaaj-charcoal font-sans text-sm focus:outline-none focus:ring-0 focus:border-kaaj-charcoal transition-colors placeholder:text-kaaj-charcoal/40 rounded-none";
 
   const labelClass =
-    "block font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 mb-1";
+    "block font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 mb-1";
 
   if (submitted) {
     return (
@@ -195,8 +195,8 @@ export default function CheckoutPage() {
                 Continue Shopping
               </span>
             </Link>
-            <a href={`https://wa.me/923013305325?text=${encodeURIComponent(`Hello, my order ID is ${orderNumber}. ${paymentMethod === 'bacs' ? 'Here is my transaction screenshot:' : ''}`)}`} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-4 py-4 px-12 border border-transparent bg-kaaj-charcoal hover:bg-transparent hover:border-kaaj-gold transition-colors duration-500 justify-center">
-              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#2E302A] group-hover:text-kaaj-gold transition-colors duration-500">
+            <a href={`https://wa.me/923013305325?text=${encodeURIComponent(`Hello, my order ID is ${orderNumber}. ${paymentMethod === 'bacs' ? 'Here is my transaction screenshot:' : ''}`)}`} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-charcoal bg-kaaj-charcoal hover:bg-transparent hover:border-kaaj-gold transition-colors duration-500 justify-center">
+              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-cream group-hover:text-kaaj-gold transition-colors duration-500">
                 {paymentMethod === "bacs" ? "Send Screenshot on WhatsApp" : "Contact via WhatsApp"}
               </span>
             </a>
@@ -359,9 +359,9 @@ export default function CheckoutPage() {
                       required
                       className={`${inputClass} appearance-none cursor-pointer`}
                     >
-                      <option value="" className="bg-[#2a2c26]">Select Province</option>
+                      <option value="" className="bg-white text-kaaj-charcoal">Select Province</option>
                       {PROVINCES.map((p) => (
-                        <option key={p} value={p} className="bg-[#2a2c26]">{p}</option>
+                        <option key={p} value={p} className="bg-white text-kaaj-charcoal">{p}</option>
                       ))}
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/40">
@@ -540,7 +540,7 @@ export default function CheckoutPage() {
                   <button
                     type="submit"
                     disabled={loading || cart.items.length === 0}
-                    className="group relative w-full flex items-center justify-center gap-4 py-4 border border-kaaj-charcoal hover:border-kaaj-gold transition-colors duration-500 bg-kaaj-charcoal text-[#2E302A] hover:bg-transparent hover:text-kaaj-gold disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group relative w-full flex items-center justify-center gap-4 py-4 border border-kaaj-charcoal hover:border-kaaj-gold transition-colors duration-500 bg-kaaj-charcoal text-kaaj-cream hover:bg-transparent hover:text-kaaj-gold disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="font-sans text-[10px] uppercase tracking-[0.3em] transition-colors duration-500">
                       {loading ? "Processing..." : `Place Order — ${paymentMethod === 'cod' ? 'COD' : 'Bank Transfer'}`}
