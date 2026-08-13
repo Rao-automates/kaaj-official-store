@@ -64,14 +64,14 @@ export default function ReturnsPage() {
         {/* Policies */}
         <div className="prose prose-sm md:prose-base prose-kaaj max-w-none text-kaaj-charcoal/80 font-sans leading-loose space-y-8">
           <section>
-            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">6. DAMAGED, SHORT-MEASURED, OR DEFECTIVE ITEMS</h2>
+            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">DAMAGED, SHORT-MEASURED, OR DEFECTIVE ITEMS</h2>
             <p>
               If an order arrives damaged, short-measured beyond tolerance, or incorrect, you must notify us within 48 hours of delivery via email at <a href="mailto:support@kaajofficial.com" className="underline hover:text-kaaj-gold transition-colors">support@kaajofficial.com</a> with order details and photographic evidence. Verified defective or wrong items will be replaced or corrected at our cost, including return shipping.
             </p>
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">7. REFUND POLICY & SALE ITEMS</h2>
+            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">REFUND POLICY & SALE ITEMS</h2>
             <p>
               We operate on an Exchange or Store Credit policy. Cash refunds are not issued except in cases where an item is defective and a replacement is unavailable. Items purchased on sale, clearance, or custom promotional drop are Final Sale and non-exchangeable unless defective.
             </p>
