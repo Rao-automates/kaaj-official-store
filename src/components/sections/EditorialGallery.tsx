@@ -21,7 +21,7 @@ export default function EditorialGallery() {
         {/* Modern Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <FadeIn>
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-olive mb-6 border-b border-kaaj-olive/20 pb-3 px-6 drop-shadow-sm">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-6 border-b border-kaaj-charcoal/20 pb-3 px-6 drop-shadow-sm">
               New Collection
             </p>
           </FadeIn>

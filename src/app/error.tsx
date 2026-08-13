@@ -21,7 +21,7 @@ export default function Error({
       <h1 className="font-serif text-4xl md:text-6xl text-kaaj-charcoal tracking-tighter mb-4">
         Unexpected Error
       </h1>
-      <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-kaaj-olive mb-8">
+      <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-kaaj-charcoal mb-8">
         Something went wrong
       </h2>
       <p className="font-sans text-xs text-kaaj-charcoal/60 max-w-md mx-auto mb-10 leading-relaxed">
@@ -31,9 +31,9 @@ export default function Error({
       <div className="flex gap-6 items-center">
         <button
           onClick={() => reset()}
-          className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-olive/40 hover:border-kaaj-olive transition-colors duration-700"
+          className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-charcoal/40 hover:border-kaaj-charcoal transition-colors duration-700"
         >
-          <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-olive transition-colors duration-700">
+          <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-charcoal transition-colors duration-700">
             Try Again
           </span>
         </button>

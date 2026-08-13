@@ -29,7 +29,7 @@ export default function CategoryPill({
         "border transition-all duration-300",
         active
           ? "bg-kaaj-olive text-kaaj-cream border-kaaj-olive"
-          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-olive hover:text-kaaj-olive"
+          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-olive hover:text-kaaj-charcoal"
       )}
     >
       {name}

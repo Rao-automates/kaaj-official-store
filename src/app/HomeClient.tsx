@@ -46,7 +46,7 @@ export default function HomeClient({
               </div>
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-olive/40 hover:border-kaaj-olive transition-colors duration-700"
+                className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-charcoal/40 hover:border-kaaj-charcoal transition-colors duration-700"
               >
                 <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-700">
                   View Collection
@@ -130,7 +130,7 @@ export default function HomeClient({
                 href="https://www.instagram.com/wearkaaj/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 py-6 px-10 border border-kaaj-olive/10 hover:border-kaaj-olive/30 transition-all duration-500 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-3 py-6 px-10 border border-kaaj-charcoal/10 hover:border-kaaj-charcoal/30 transition-all duration-500 hover:-translate-y-1"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-kaaj-charcoal/60 group-hover:text-kaaj-gold transition-colors duration-500">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -145,7 +145,7 @@ export default function HomeClient({
                 href="https://www.facebook.com/people/K-A-A-J/61593156713945/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 py-6 px-10 border border-kaaj-olive/10 hover:border-kaaj-olive/30 transition-all duration-500 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-3 py-6 px-10 border border-kaaj-charcoal/10 hover:border-kaaj-charcoal/30 transition-all duration-500 hover:-translate-y-1"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-kaaj-charcoal/60 group-hover:text-kaaj-gold transition-colors duration-500">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />

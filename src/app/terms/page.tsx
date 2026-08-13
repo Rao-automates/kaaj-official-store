@@ -10,8 +10,8 @@ export default function TermsConditionsPage() {
     <div className="min-h-screen bg-kaaj-cream pt-32 md:pt-48 pb-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-olive mb-6 flex items-center gap-4">
-            <span className="w-8 h-px bg-kaaj-olive" /> Legal Information
+          <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-6 flex items-center gap-4">
+            <span className="w-8 h-px bg-kaaj-charcoal" /> Legal Information
           </p>
           <h1 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 mb-8">
             Terms & Conditions.

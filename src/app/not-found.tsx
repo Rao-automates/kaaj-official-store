@@ -7,7 +7,7 @@ export default function NotFound() {
       <h1 className="font-serif text-6xl md:text-8xl text-kaaj-charcoal tracking-tighter mb-4">
         404
       </h1>
-      <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-kaaj-olive mb-8">
+      <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-kaaj-charcoal mb-8">
         Page Not Found
       </h2>
       <p className="font-sans text-xs text-kaaj-charcoal/60 max-w-md mx-auto mb-10 leading-relaxed">
@@ -15,9 +15,9 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-olive/40 hover:border-kaaj-olive transition-colors duration-700"
+        className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-charcoal/40 hover:border-kaaj-charcoal transition-colors duration-700"
       >
-        <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-olive transition-colors duration-700">
+        <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-charcoal transition-colors duration-700">
           Return Home
         </span>
         <svg
@@ -27,7 +27,7 @@ export default function NotFound() {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
-          className="text-kaaj-charcoal/60 group-hover:text-kaaj-olive transition-all group-hover:translate-x-1 duration-500"
+          className="text-kaaj-charcoal/60 group-hover:text-kaaj-charcoal transition-all group-hover:translate-x-1 duration-500"
         >
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
