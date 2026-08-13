@@ -143,17 +143,21 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Category nav */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {allCategories.map((cat) => (
-            <CategoryPill
-              key={cat.slug}
-              name={cat.name}
-              slug={cat.slug}
-              active={cat.slug === slug}
-              count={cat.count}
-            />
-          ))}
+        {/* Filters Row */}
+        <div className="flex flex-col xl:flex-row items-start xl:items-end justify-between gap-8 mb-16 pb-8 border-b border-kaaj-charcoal/10">
+          {/* Category Pills */}
+          <div className="flex flex-wrap gap-3 max-w-3xl">
+            <CategoryPill name="All" href="/shop" active={false} />
+            {allCategories.map((cat) => (
+              <CategoryPill
+                key={cat.slug}
+                name={cat.name}
+                slug={cat.slug}
+                active={cat.slug === slug}
+                count={cat.count}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Count */}

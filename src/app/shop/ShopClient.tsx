@@ -83,7 +83,7 @@ export default function ShopClient() {
           
           {/* Category Pills */}
           <div className="flex flex-wrap gap-3 max-w-3xl">
-            <CategoryPill name="All" slug="" active={true} />
+            <CategoryPill name="All" href="/shop" active={true} />
             {categories.map((cat) => (
               <CategoryPill key={cat.slug} name={cat.name} slug={cat.slug} count={cat.count} />
             ))}
