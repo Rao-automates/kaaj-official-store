@@ -77,7 +77,7 @@ export default function BrandStory() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-kaaj-charcoal leading-[2] text-left max-w-[280px] mb-8 drop-shadow-sm">
+          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-kaaj-olive leading-[2] text-left max-w-[280px] mb-8 drop-shadow-sm">
             Heritage artistry, modern silhouettes.
           </p>
 
@@ -183,7 +183,7 @@ export default function BrandStory() {
           transition={{ duration: 1, delay: 1.2 }}
         >
           <div className="w-px h-10 bg-gradient-to-b from-[#141413]/40 to-transparent mb-8 animate-scroll-pulse" />
-          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal text-center mb-6 drop-shadow-sm">
+          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-olive text-center mb-6 drop-shadow-sm">
             Heritage artistry.
           </p>
           <Link

@@ -174,7 +174,7 @@ export default function Header() {
           </nav>
 
           <div className="px-12 py-12 border-t border-black/5">
-            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-6 drop-shadow-sm">
+            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-olive mb-6 drop-shadow-sm">
               Connect
             </p>
             <div className="flex gap-6">
