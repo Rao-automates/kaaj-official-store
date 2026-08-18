@@ -60,7 +60,10 @@ export default function Header() {
             {/* Left: Hamburger ↔ Close toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="relative w-12 h-12 flex items-center justify-start text-kaaj-charcoal hover:text-kaaj-gold transition-colors z-[60]"
+              className={cn(
+                "relative w-12 h-12 flex items-center justify-start transition-colors z-[60]",
+                menuOpen ? "text-white hover:text-kaaj-gold" : "text-kaaj-charcoal hover:text-kaaj-gold"
+              )}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
               <div className="relative w-6 h-4 flex flex-col justify-between">
@@ -142,7 +145,7 @@ export default function Header() {
         />
         <div
           className={cn(
-            "absolute left-0 top-0 h-full w-full sm:w-[400px] bg-[#FAF9F6] border-r border-black/5 flex flex-col transform-gpu will-change-transform",
+            "absolute left-0 top-0 h-full w-full sm:w-[400px] bg-[#141413] border-r border-white/5 flex flex-col transform-gpu will-change-transform",
             "transition-transform duration-700 ease-expo-out",
             menuOpen ? "translate-x-0" : "-translate-x-full"
           )}
@@ -161,7 +164,7 @@ export default function Header() {
                 <div className="overflow-hidden">
                   <span className={cn(
                     "block font-sans text-2xl sm:text-3xl uppercase tracking-[0.1em] font-medium transition-transform duration-500",
-                    link.label === "Sale" ? "text-kaaj-rose group-hover:text-kaaj-rose/70" : "text-kaaj-charcoal group-hover:text-kaaj-gold",
+                    link.label === "Sale" ? "text-kaaj-rose group-hover:text-kaaj-rose/70" : "text-white group-hover:text-kaaj-gold",
                     menuOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
                   )}
                     style={{ transitionDelay: `${idx * 100}ms` }}
@@ -173,21 +176,21 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="px-12 py-12 border-t border-black/5">
-            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-6 drop-shadow-sm">
+          <div className="px-12 py-12 border-t border-white/5">
+            <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-white/50 mb-6 drop-shadow-sm">
               Connect
             </p>
             <div className="flex gap-6">
               <a href="https://www.instagram.com/wearkaaj/" target="_blank" rel="noopener noreferrer"
-                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Instagram">
+                className="text-white/80 hover:text-kaaj-gold transition-colors" aria-label="Instagram">
                 <InstagramIcon />
               </a>
               <a href="https://www.facebook.com/people/K-A-A-J/61593156713945/" target="_blank" rel="noopener noreferrer"
-                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="Facebook">
+                className="text-white/80 hover:text-kaaj-gold transition-colors" aria-label="Facebook">
                 <FacebookIcon />
               </a>
               <a href="https://wa.me/923013305325" target="_blank" rel="noopener noreferrer"
-                className="text-kaaj-charcoal hover:text-kaaj-gold transition-colors" aria-label="WhatsApp">
+                className="text-white/80 hover:text-kaaj-gold transition-colors" aria-label="WhatsApp">
                 <WhatsAppIcon />
               </a>
             </div>

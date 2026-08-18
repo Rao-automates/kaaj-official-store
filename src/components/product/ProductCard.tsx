@@ -25,6 +25,8 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
   const imageUrl = product.image?.sourceUrl;
   const altText = product.image?.altText || product.name;
+  const secondaryImageUrl = product.galleryImages?.nodes?.[0]?.sourceUrl;
+  const secondaryAltText = product.galleryImages?.nodes?.[0]?.altText || `${product.name} alternate view`;
 
   const handleQuickAdd = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -56,22 +58,40 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           {isOutOfStock && <Badge variant="soldout" />}
         </div>
 
-        {/* Product Image */}
+        {/* Product Image Container */}
         {imageUrl && !imgError ? (
-          <Image
-            src={imageUrl}
-            alt={altText}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className={cn(
-              "object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
-              "group-hover:scale-110"
+          <>
+            {/* Secondary Image (Fades in on hover) */}
+            {secondaryImageUrl && (
+              <Image
+                src={secondaryImageUrl}
+                alt={secondaryAltText}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className={cn(
+                  "object-cover transition-transform duration-[3000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "scale-100 group-hover:scale-110"
+                )}
+                priority={priority}
+              />
             )}
-            priority={priority}
-            onError={() => setImgError(true)}
-          />
+            {/* Primary Image (Fades out on hover if secondary exists) */}
+            <Image
+              src={imageUrl}
+              alt={altText}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className={cn(
+                "object-cover transition-all duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-[1]",
+                "group-hover:scale-110",
+                secondaryImageUrl ? "group-hover:opacity-0" : ""
+              )}
+              priority={priority}
+              onError={() => setImgError(true)}
+            />
+          </>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-kaaj-cream-dark">
+          <div className="w-full h-full flex items-center justify-center bg-kaaj-cream-dark z-[1] relative">
             <KaajPlaceholder />
           </div>
         )}

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ProductCard from "@/components/product/ProductCard";
 import FadeIn from "@/components/ui/FadeIn";
 import type { Product } from "@/lib/types";
@@ -32,11 +33,16 @@ const cardReveal = {
 
 export default function FeaturedGrid({ products }: FeaturedGridProps) {
   const hasProducts = products && products.length > 0;
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
   if (!hasProducts) return null;
 
   return (
-    <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 bg-transparent section-divider-top">
+    <section ref={containerRef} className="relative pt-32 pb-24 md:pt-48 md:pb-48 bg-transparent section-divider-top">
       {/* Smooth transition gradient from dark hero */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#FAF9F6] to-transparent pointer-events-none -mt-1" />
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,9 +98,14 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
                 <span className="absolute -top-8 md:-top-12 left-0 font-serif text-[4rem] md:text-[6rem] text-kaaj-charcoal/[0.04] leading-none pointer-events-none select-none z-0">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
-                <div className="relative z-10">
+                <motion.div 
+                  className="relative z-10"
+                  style={{ 
+                    y: useTransform(scrollYProgress, [0, 1], [0, (idx % 2 === 0 ? -120 : -60)]) 
+                  }}
+                >
                   <ProductCard product={product} priority={idx < 2} />
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}
