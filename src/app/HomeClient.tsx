@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import FeaturedGrid from "@/components/sections/FeaturedGrid";
 import BrandStory from "@/components/sections/BrandStory";
 import ProductGrid from "@/components/product/ProductGrid";

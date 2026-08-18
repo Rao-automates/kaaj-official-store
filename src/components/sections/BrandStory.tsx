@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -12,8 +11,6 @@ import React, { useEffect, useState } from "react";
  *  Silk-textured KAAJ letterforms + hero backdrop + CTA.
  *  Uses Inter (logo font) — no serif.
  * ───────────────────────────────────────────────────────────── */
-
-const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 
 export default function BrandStory() {
@@ -59,11 +56,9 @@ export default function BrandStory() {
         <div className="absolute inset-y-0 left-0 z-0 bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent w-[65%]" />
 
         {/* Editorial Floating Layout - Masterpiece */}
-        <motion.div
-           className="relative z-10 ml-0 lg:ml-12"
-           initial={{ opacity: 0, y: 30 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        <div
+           className="relative z-10 ml-0 lg:ml-12 animate-fade-up"
+           style={{ animationDelay: "0.2s", animationDuration: "1.2s", animationFillMode: "both" }}
         >
           <div className="relative group flex items-stretch">
             
@@ -122,16 +117,13 @@ export default function BrandStory() {
             </div>
 
           </div>
-        </motion.div>
+        </div>
         {/* Scroll indicator (Desktop) */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: hasScrolled ? 0 : 1 }}
-          transition={{ duration: 0.4 }}
+        <div
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu transition-opacity duration-500 ${hasScrolled ? 'opacity-0' : 'opacity-100'}`}
         >
           <div className="w-px h-12 bg-gradient-to-b from-[#141413]/20 to-transparent animate-scroll-pulse" />
-        </motion.div>
+        </div>
       </div>
 
       {/* ==============================================================
@@ -192,14 +184,11 @@ export default function BrandStory() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: hasScrolled ? 0 : 1 }}
-        transition={{ duration: 0.4 }}
+      <div
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu transition-opacity duration-500 ${hasScrolled ? 'opacity-0' : 'opacity-100'}`}
       >
-        <div className="w-px h-10 sm:h-12 bg-gradient-to-b from-[#141413]/30 sm:from-[#141413]/20 to-transparent animate-scroll-pulse" />
-      </motion.div>
+        <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent animate-scroll-pulse" />
+      </div>
 
     </section>
   );
