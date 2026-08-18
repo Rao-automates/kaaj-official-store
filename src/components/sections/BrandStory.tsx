@@ -49,55 +49,60 @@ export default function BrandStory() {
         {/* Soft cream gradient on the left to frame the editorial insert */}
         <div className="absolute inset-y-0 left-0 z-0 bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent w-[65%]" />
 
-        {/* Editorial Floating Layout */}
+        {/* Editorial Floating Layout - Masterpiece */}
         <motion.div
-           className="relative flex items-center gap-10 lg:gap-16 z-10 max-w-[850px]"
-           initial={{ opacity: 0, x: -30 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+           className="relative z-10 ml-0 lg:ml-12"
+           initial={{ opacity: 0, y: 30 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Portrait Video Insert (On Left Side) - Polaroid Style Frame */}
-          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] bg-[#FAF9F6] p-2 lg:p-3 overflow-hidden shadow-2xl flex-shrink-0">
-            <div className="relative w-full h-full overflow-hidden">
+          <div className="relative group flex items-stretch">
+            
+            {/* The Video Pillar */}
+            <div className="relative w-[300px] h-[480px] lg:w-[380px] lg:h-[620px] overflow-hidden rounded-none shadow-2xl">
               <video
                 src="/videos/combo.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
-              {/* Very subtle inner border overlay */}
-              <div className="absolute inset-0 border border-black/5 pointer-events-none" />
+              {/* Subtle inner border */}
+              <div className="absolute inset-0 border border-black/5 pointer-events-none z-10" />
+              
+              {/* Dark gradient at bottom for button visibility */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none z-10" />
+              
+              {/* Floating Button inside Video */}
+              <div className="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 w-full px-6 lg:px-10 z-20">
+                <Link
+                  href="/shop"
+                  className="flex items-center justify-between w-full py-4 px-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500"
+                >
+                  <span className="font-sans text-[10px] lg:text-[11px] text-white uppercase tracking-[0.25em] font-medium">
+                    Explore Collection
+                  </span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="group-hover:translate-x-1 transition-transform duration-500">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+              </div>
             </div>
-          </div>
 
-          {/* Minimalist Editorial Placard (Replacing massive headline) */}
-          <div className="flex flex-col items-start justify-center max-w-[280px] pl-6 lg:pl-12 mt-12 lg:mt-24">
-            <div className="w-10 h-[1px] bg-kaaj-charcoal/30 mb-6" />
-            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 font-semibold leading-[2] mb-10">
-              Discover the latest arrivals featuring authentic craftsmanship and timeless silhouettes.
-            </p>
-            <Link
-              href="/shop"
-              className="group inline-flex items-center justify-center gap-4 px-8 py-3.5 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
-            >
-              <span className="font-sans text-[12px] font-medium uppercase tracking-[0.15em]">
-                shop now
-              </span>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                className="group-hover:translate-x-1 transition-transform duration-500 transform-gpu"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </Link>
+            {/* Vertical Editorial Spine */}
+            <div className="flex flex-col items-center justify-between py-6 px-6 lg:px-10">
+               <div className="w-[1px] h-12 lg:h-20 bg-kaaj-charcoal/30" />
+               <p 
+                 className="font-sans text-[9px] lg:text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/60 whitespace-nowrap" 
+                 style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+               >
+                 Vol. 01 — The Festive Edit
+               </p>
+               <div className="w-[1px] h-12 lg:h-20 bg-kaaj-charcoal/30" />
+            </div>
+
           </div>
         </motion.div>
         {/* Scroll indicator (Desktop) */}
