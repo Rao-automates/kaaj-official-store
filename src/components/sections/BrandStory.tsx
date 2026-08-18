@@ -57,9 +57,9 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 600,
-                  color: "rgba(20, 20, 19, 0.4)", // Dark frosted fill
-                  mixBlendMode: "multiply", // Darkens the background smoothly
-                  filter: "blur(0.5px) drop-shadow(0 10px 30px rgba(0,0,0,0.15))", // Subtle dark glow
+                  color: "transparent", // Hollow text
+                  WebkitTextStroke: "1.5px rgba(20, 20, 19, 0.6)", // Delicate charcoal outline
+                  filter: "drop-shadow(0 4px 12px rgba(0, 0, 0, 0.05))", // Extremely subtle depth
                 }}
                 initial={{ opacity: 0, y: "60%" }}
                 animate={{ opacity: 1, y: "0%" }}
@@ -80,7 +80,7 @@ export default function BrandStory() {
 
           <Link
             href="/shop"
-            className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#141413]/40 backdrop-blur-md border border-[#141413]/30 text-white shadow-lg hover:bg-[#141413]/60 hover:border-[#141413]/50 transition-all duration-500"
+            className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-transparent border border-[#141413]/40 text-[#141413] hover:bg-[#141413] hover:text-white hover:border-[#141413] transition-all duration-500 backdrop-blur-sm"
           >
             <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
               Shop Now
