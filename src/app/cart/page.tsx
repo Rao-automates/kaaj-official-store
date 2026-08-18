@@ -198,7 +198,7 @@ export default function CartPage() {
                 </div>
 
                 <Link href="/checkout" className="block w-full">
-                  <button className="group relative w-full flex items-center justify-center gap-4 py-4 border border-kaaj-charcoal hover:border-kaaj-gold transition-colors duration-500 bg-kaaj-charcoal text-[#2E302A] hover:bg-transparent hover:text-kaaj-gold">
+                  <button className="group relative w-full flex items-center justify-center gap-4 py-4 border border-kaaj-olive hover:border-kaaj-gold transition-colors duration-500 bg-kaaj-olive text-kaaj-cream hover:bg-transparent hover:text-kaaj-gold">
                     <span className="font-sans text-[10px] uppercase tracking-[0.3em] transition-colors duration-500">
                       Proceed to Checkout
                     </span>

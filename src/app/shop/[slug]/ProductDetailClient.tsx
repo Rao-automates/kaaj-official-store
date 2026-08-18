@@ -354,7 +354,7 @@ export default function ProductDetailClient({
                     "w-full h-14 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-all rounded-sm text-center flex items-center justify-center",
                     isOOS || variantNotSelected
                       ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
-                      : "bg-[#252525] text-white hover:bg-black shadow-lg"
+                      : "bg-kaaj-olive text-kaaj-cream hover:opacity-90 shadow-lg"
                   )}
                 >
                   {isOOS

@@ -16,13 +16,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-kaaj-charcoal text-kaaj-cream hover:bg-kaaj-charcoal-light active:scale-[0.98]",
+    "bg-kaaj-olive text-kaaj-cream hover:opacity-90 active:scale-[0.98]",
   secondary:
     "bg-kaaj-cream text-kaaj-charcoal border border-kaaj-border hover:bg-kaaj-blush active:scale-[0.98]",
   ghost:
     "bg-transparent text-kaaj-charcoal hover:bg-kaaj-cream/60 active:scale-[0.98]",
   outline:
-    "bg-transparent text-kaaj-charcoal border border-kaaj-charcoal hover:bg-kaaj-charcoal hover:text-kaaj-cream active:scale-[0.98]",
+    "bg-transparent text-kaaj-olive border border-kaaj-olive hover:bg-kaaj-olive hover:text-kaaj-cream active:scale-[0.98]",
   gold:
     "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark active:scale-[0.98]",
 };
