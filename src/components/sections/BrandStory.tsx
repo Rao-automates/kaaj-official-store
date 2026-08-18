@@ -80,7 +80,7 @@ export default function BrandStory() {
 
           <Link
             href="/shop"
-            className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#141413] text-white hover:bg-[#141413]/90 transition-all duration-500 btn-shimmer"
+            className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-white/40 backdrop-blur-md border border-white/50 text-[#141413] shadow-lg hover:bg-white/60 hover:border-white/70 transition-all duration-500"
           >
             <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
               Shop Now
@@ -112,9 +112,9 @@ export default function BrandStory() {
       </div>
 
       {/* ==============================================================
-       *  MOBILE LAYOUT (The Monogram Jewel) - COMPLETELY REDESIGNED
+       *  MOBILE LAYOUT (Cinematic Video) - MINIMALIST LUXURY
        * ============================================================== */}
-      <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2]">
+      <Link href="/shop" className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2] cursor-pointer group">
         
         {/* Cinematic Video Background */}
         <div className="absolute inset-0 z-0 bg-[#141413]">
@@ -126,7 +126,7 @@ export default function BrandStory() {
               muted
               playsInline
               preload="auto"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             >
               <source src="/videos/combo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -134,31 +134,22 @@ export default function BrandStory() {
           </div>
           {/* Moody Dark Gradients to ensure text readability */}
           <div className="absolute top-0 inset-x-0 h-[30vh] bg-gradient-to-b from-[#141413]/80 via-[#141413]/40 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#141413] via-[#141413]/50 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#141413] via-[#141413]/60 to-transparent pointer-events-none" />
         </div>
 
-
-
-        {/* Bottom CTA Area — CSS-only animations */}
+        {/* Bottom CTA Area — Refined Luxury Floating Text */}
         <div
-          className="absolute bottom-10 flex flex-col items-center z-10 w-full px-8 animate-fade-up"
+          className="absolute bottom-12 flex flex-col items-center z-10 w-full animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-
-          <Link
-            href="/shop"
-            className="group flex items-center justify-center gap-3 w-full max-w-[280px] py-4 bg-white text-[#141413] transition-all duration-500 shadow-xl"
-          >
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
-              Shop Now
+          <div className="flex flex-col items-center gap-3 text-white/70 group-active:text-white transition-colors duration-500">
+            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.4em]">
+              Explore Collection
             </span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:translate-x-1 transition-transform duration-500">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+            <div className="w-8 h-[1px] bg-white/30 group-active:w-16 group-active:bg-white transition-all duration-700 ease-out" />
+          </div>
         </div>
-      </div>
+      </Link>
 
       {/* Scroll indicator */}
       <motion.div
