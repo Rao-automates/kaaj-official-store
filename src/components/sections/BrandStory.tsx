@@ -74,16 +74,16 @@ export default function BrandStory() {
               {/* Dark gradient at bottom for button visibility */}
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none z-10" />
               
-              {/* Floating Button inside Video */}
+              {/* Floating Solid Olive Button inside Video */}
               <div className="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 w-full px-6 lg:px-10 z-20">
                 <Link
                   href="/shop"
-                  className="flex items-center justify-between w-full py-4 px-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500"
+                  className="group flex items-center justify-between w-full py-4 px-6 bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-colors duration-300 shadow-xl"
                 >
-                  <span className="font-sans text-[10px] lg:text-[11px] text-white uppercase tracking-[0.25em] font-medium">
+                  <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.2em] font-semibold">
                     Explore Collection
                   </span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="group-hover:translate-x-1 transition-transform duration-500">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:translate-x-1 transition-transform duration-300">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
@@ -91,16 +91,15 @@ export default function BrandStory() {
               </div>
             </div>
 
-            {/* Vertical Editorial Spine */}
-            <div className="flex flex-col items-center justify-between py-6 px-6 lg:px-10">
-               <div className="w-[1px] h-12 lg:h-20 bg-kaaj-charcoal/30" />
-               <p 
-                 className="font-sans text-[9px] lg:text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/60 whitespace-nowrap" 
-                 style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-               >
-                 Vol. 01 — The Festive Edit
-               </p>
-               <div className="w-[1px] h-12 lg:h-20 bg-kaaj-charcoal/30" />
+            {/* Cute Geometric Editorial Spine */}
+            <div className="flex flex-col items-center justify-center gap-6 py-6 px-6 lg:px-10">
+               <div className="w-[1px] h-12 lg:h-24 bg-kaaj-charcoal/20" />
+               <div className="flex flex-col gap-2">
+                 <div className="w-1.5 h-1.5 rounded-full bg-kaaj-olive/90" />
+                 <div className="w-1 h-1 rounded-full bg-kaaj-charcoal/30 mx-auto" />
+                 <div className="w-1.5 h-1.5 rounded-full bg-kaaj-olive/90" />
+               </div>
+               <div className="w-[1px] h-12 lg:h-24 bg-kaaj-charcoal/20" />
             </div>
 
           </div>
@@ -151,10 +150,14 @@ export default function BrandStory() {
           className="absolute bottom-12 flex flex-col items-center z-10 w-full animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <div className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-none border border-white/70 text-white hover:bg-white/10 transition-colors duration-500">
-            <span className="font-sans text-[13px] font-medium uppercase tracking-[1.5px]">
+          <div className="group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-colors duration-300 shadow-xl">
+            <span className="font-sans text-[12px] font-semibold uppercase tracking-[0.15em]">
               Explore Collection
             </span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:translate-x-1 transition-transform duration-300">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </div>
         </div>
       </Link>
