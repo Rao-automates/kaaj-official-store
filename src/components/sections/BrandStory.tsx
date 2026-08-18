@@ -56,12 +56,26 @@ export default function BrandStory() {
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Text Content (Moved to Left) */}
-          <div className="flex flex-col items-start max-w-[420px]">
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/80 font-bold mb-5">
+          {/* Portrait Video Insert (On Left Side) */}
+          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] overflow-hidden rounded-none shadow-2xl flex-shrink-0">
+            <video
+              src="/videos/combo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+            {/* Very subtle border overlay for print-feel */}
+            <div className="absolute inset-0 border border-black/10 pointer-events-none" />
+          </div>
+
+          {/* Text Content (On Right of Video, Compact) */}
+          <div className="flex flex-col items-start max-w-[320px] pl-2 lg:pl-6">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/80 font-bold mb-4">
               new season
             </p>
-            <h2 className="font-sans text-[3rem] lg:text-[4.2rem] text-kaaj-charcoal font-medium leading-[0.95] tracking-tighter mb-10 drop-shadow-sm">
+            <h2 className="font-sans text-[2.2rem] lg:text-[2.8rem] text-kaaj-charcoal font-medium leading-[1] tracking-tighter mb-8 drop-shadow-sm">
               Effortless<br />elegance,<br />redefined
             </h2>
             <Link
@@ -84,20 +98,6 @@ export default function BrandStory() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
-          </div>
-
-          {/* Portrait Video Insert (Moved to Right) */}
-          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] overflow-hidden rounded-none shadow-2xl flex-shrink-0">
-            <video
-              src="/videos/combo.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-            {/* Very subtle border overlay for print-feel */}
-            <div className="absolute inset-0 border border-black/10 pointer-events-none" />
           </div>
         </motion.div>
         {/* Scroll indicator (Desktop) */}
