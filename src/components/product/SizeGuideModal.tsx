@@ -206,7 +206,6 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
             <p className="font-sans text-xs text-kaaj-deep leading-relaxed">
               <strong className="uppercase tracking-wide">Note:</strong> Sizes may vary slightly
               between collections due to the nature of hand-crafted fabrics and embroidery.
-              For unstitched fabric, please consult your local tailor for exact measurements.
             </p>
           </div>
         </div>
