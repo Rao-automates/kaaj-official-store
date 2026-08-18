@@ -56,33 +56,19 @@ export default function BrandStory() {
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Portrait Video Insert */}
-          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] overflow-hidden rounded-sm shadow-2xl flex-shrink-0">
-            <video
-              src="/videos/combo.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-            {/* Very subtle border overlay for print-feel */}
-            <div className="absolute inset-0 border border-black/5 pointer-events-none" />
-          </div>
-
-          {/* Text Content */}
-          <div className="flex flex-col items-start max-w-[380px]">
-            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 font-bold mb-5">
+          {/* Text Content (Moved to Left) */}
+          <div className="flex flex-col items-start max-w-[420px]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/80 font-bold mb-5">
               new season
             </p>
-            <h2 className="font-serif text-[2.8rem] lg:text-[3.5rem] text-kaaj-charcoal font-light leading-[1.05] tracking-tight mb-8 drop-shadow-sm">
-              Effortless <br />elegance, <br />redefined.
+            <h2 className="font-sans text-[3rem] lg:text-[4.2rem] text-kaaj-charcoal font-medium leading-[0.95] tracking-tighter mb-10 drop-shadow-sm">
+              Effortless<br />elegance,<br />redefined
             </h2>
             <Link
               href="/shop"
               className="group inline-flex items-center justify-center gap-4 px-8 py-3.5 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
             >
-              <span className="font-sans text-[12px] font-medium lowercase tracking-[0.1em]">
+              <span className="font-sans text-[12px] font-medium uppercase tracking-[0.15em]">
                 shop now
               </span>
               <svg
@@ -98,6 +84,20 @@ export default function BrandStory() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
+          </div>
+
+          {/* Portrait Video Insert (Moved to Right) */}
+          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] overflow-hidden rounded-none shadow-2xl flex-shrink-0">
+            <video
+              src="/videos/combo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+            {/* Very subtle border overlay for print-feel */}
+            <div className="absolute inset-0 border border-black/10 pointer-events-none" />
           </div>
         </motion.div>
         {/* Scroll indicator (Desktop) */}
