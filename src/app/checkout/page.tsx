@@ -14,20 +14,11 @@ interface FormData {
   phone: string;
   address: string;
   city: string;
-  province: string;
   postcode: string;
   notes: string;
 }
 
-const PROVINCES = [
-  "Punjab",
-  "Sindh",
-  "Khyber Pakhtunkhwa",
-  "Balochistan",
-  "Islamabad Capital Territory",
-  "Gilgit-Baltistan",
-  "Azad Kashmir",
-];
+
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -38,12 +29,12 @@ export default function CheckoutPage() {
     phone: "",
     address: "",
     city: "",
-    province: "",
     postcode: "",
     notes: "",
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{ email?: string; phone?: string }>({});
   const [paymentMethod, setPaymentMethod] = useState<"cod" | "bacs">("cod");
   const [orderNumber] = useState(
     () => `KO-${Date.now().toString().slice(-6)}`
@@ -57,24 +48,39 @@ export default function CheckoutPage() {
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
-  const isValid = () => {
+  const validateForm = () => {
+    const newErrors: { email?: string; phone?: string } = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!emailRegex.test(form.email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+    
+    const phoneClean = form.phone.replace(/[\s-]/g, '');
+    if (!/^\+?[0-9]{10,15}$/.test(phoneClean)) {
+      newErrors.phone = "Please enter a valid phone number.";
+    }
+
+    setErrors(newErrors);
+    
     return (
+      Object.keys(newErrors).length === 0 &&
       form.firstName.trim() !== "" &&
       form.lastName.trim() !== "" &&
-      emailRegex.test(form.email) &&
-      form.phone.length >= 10 &&
       form.address.trim() !== "" &&
-      form.city.trim() !== "" &&
-      form.province.trim() !== ""
+      form.city.trim() !== ""
     );
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValid() || loading || cart.items.length === 0) return;
+    if (!validateForm() || loading || cart.items.length === 0) return;
     setLoading(true);
     
     try {
@@ -169,7 +175,7 @@ export default function CheckoutPage() {
                 {form.firstName} {form.lastName}
               </p>
               <p className="font-sans text-sm text-kaaj-charcoal/70 pt-2">
-                {form.address}, {form.city}, {form.province}
+                {form.address}, {form.city}
               </p>
               <p className="font-sans text-sm text-kaaj-charcoal/70">{form.phone}</p>
             </div>
@@ -281,8 +287,9 @@ export default function CheckoutPage() {
                       onChange={handleChange}
                       required
                       placeholder="03XX-XXXXXXX"
-                      className={inputClass}
+                      className={`${inputClass} ${errors.phone ? 'border-red-500/50' : ''}`}
                     />
+                    {errors.phone && <p className="font-sans text-[10px] text-red-500 mt-2">{errors.phone}</p>}
                   </div>
                   <div>
                     <label htmlFor="email" className={labelClass}>Email *</label>
@@ -294,8 +301,9 @@ export default function CheckoutPage() {
                       onChange={handleChange}
                       required
                       placeholder="jane@example.com"
-                      className={inputClass}
+                      className={`${inputClass} ${errors.email ? 'border-red-500/50' : ''}`}
                     />
+                    {errors.email && <p className="font-sans text-[10px] text-red-500 mt-2">{errors.email}</p>}
                   </div>
                 </div>
               </div>
@@ -343,29 +351,6 @@ export default function CheckoutPage() {
                       placeholder="54000"
                       className={inputClass}
                     />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="province" className={labelClass}>Province *</label>
-                  <div className="relative">
-                    <select
-                      id="province"
-                      name="province"
-                      value={form.province}
-                      onChange={handleChange}
-                      required
-                      className={`${inputClass} appearance-none cursor-pointer`}
-                    >
-                      <option value="" className="bg-white text-kaaj-charcoal">Select Province</option>
-                      {PROVINCES.map((p) => (
-                        <option key={p} value={p} className="bg-white text-kaaj-charcoal">{p}</option>
-                      ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none text-kaaj-charcoal/70">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </div>
                   </div>
                 </div>
                 <div>
@@ -450,7 +435,7 @@ export default function CheckoutPage() {
                           Bank Transfer
                         </p>
                         <span className="border border-kaaj-gold/30 text-kaaj-gold text-[9px] px-2 py-1 uppercase tracking-widest">
-                          Complimentary Delivery
+                          Free Shipping
                         </span>
                       </div>
                       <p className="font-sans text-xs text-kaaj-charcoal/70 mt-1">
@@ -517,7 +502,7 @@ export default function CheckoutPage() {
                   <div className="flex justify-between text-kaaj-charcoal/80">
                     <span className="text-[10px] uppercase tracking-[0.2em]">Shipping</span>
                     <span className={shipping === 0 ? "font-sans text-lg text-kaaj-gold" : "font-sans text-lg text-kaaj-charcoal"}>
-                      {shipping === 0 ? "Complimentary" : formatPKR(String(shipping))}
+                      {shipping === 0 ? "Free Shipping" : formatPKR(String(shipping))}
                     </span>
                   </div>
                 </div>

@@ -27,7 +27,7 @@ export async function POST(request: Request) {
           last_name: form.lastName,
           address_1: form.address,
           city: form.city,
-          state: form.province,
+          state: "",
           postcode: form.postcode || "",
           country: "PK",
           email: form.email,
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
           last_name: form.lastName,
           address_1: form.address,
           city: form.city,
-          state: form.province,
+          state: "",
           postcode: form.postcode || "",
           country: "PK"
         },
@@ -174,7 +174,7 @@ export async function POST(request: Request) {
           <p style="color: #DCD8D0; line-height: 1.6;">
             <strong style="color: #DCD8D0;">${form.firstName} ${form.lastName}</strong><br>
             ${form.address}<br>
-            ${form.city}, ${form.province} ${form.postcode || ''}<br>
+            ${form.city} ${form.postcode || ''}<br>
             Phone: ${form.phone}<br>
             Method: ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Direct Bank Transfer'}
           </p>

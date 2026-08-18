@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
  * ───────────────────────────────────────────────────────────── */
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
-const LETTERS = ["K", "A", "A", "J"];
+
 
 export default function BrandStory() {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -49,55 +49,41 @@ export default function BrandStory() {
         <div className="absolute inset-0 z-0 bg-[#FAF9F6]/10" />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6]/30 via-transparent to-[#FAF9F6]/60" />
 
-        <h1 className="relative z-[2] flex items-center justify-center w-full px-4">
-          {LETTERS.map((letter, i) => (
-            <span key={i} className="overflow-hidden inline-block pb-4">
-              <motion.span
-                className="inline-block text-center leading-[0.78] select-none cursor-default transform-gpu text-[clamp(5rem,20vw,16rem)] tracking-[0.3em]"
-                style={{
-                  fontFamily: "var(--font-inter), 'Inter', sans-serif",
-                  fontWeight: 600,
-                  color: "transparent", // Hollow text
-                  WebkitTextStroke: "1.5px rgba(20, 20, 19, 0.6)", // Delicate charcoal outline
-                  filter: "drop-shadow(0 4px 12px rgba(0, 0, 0, 0.05))", // Extremely subtle depth
-                }}
-                initial={{ opacity: 0, y: "60%" }}
-                animate={{ opacity: 1, y: "0%" }}
-                transition={{ duration: 1.2, delay: 0.15 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {letter}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
+        {/* Redesigned Solid Card Layout (Desktop) */}
         <motion.div
-           className="absolute bottom-12 left-12 lg:bottom-20 lg:left-20 flex flex-col items-start transform-gpu z-[2]"
+           className="absolute bottom-12 left-6 lg:bottom-20 lg:left-20 flex flex-col items-start transform-gpu z-[2]"
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-
-          <Link
-            href="/shop"
-            className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-transparent border border-[#141413]/40 text-[#141413] hover:bg-[#141413] hover:text-white hover:border-[#141413] transition-all duration-500 backdrop-blur-sm"
-          >
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
-              Shop Now
-            </span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu"
+          <div className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-8 sm:p-10 shadow-2xl max-w-[340px] sm:max-w-[400px]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#A3A3A3] font-semibold mb-4">
+              new season
+            </p>
+            <h2 className="font-sans text-3xl sm:text-4xl text-[#F5F5F5] font-medium leading-[1.15] tracking-tight mb-8">
+              Effortless elegance, <br className="hidden sm:block" />redefined
+            </h2>
+            <Link
+              href="/shop"
+              className="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg border border-white/20 text-[#E5E5E5] hover:bg-white hover:text-[#0A0A0A] transition-colors duration-500"
             >
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+              <span className="font-sans text-[11px] font-medium lowercase tracking-[0.05em]">
+                shop now
+              </span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="group-hover:translate-x-1 transition-transform duration-500 transform-gpu"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+          </div>
         </motion.div>
         
         {/* Scroll indicator (Desktop) */}
