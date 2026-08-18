@@ -123,13 +123,17 @@ export default function BrandStory() {
         <div className="absolute inset-0 z-0 bg-[#141413]">
           <div className="absolute inset-0 z-0">
             <video
-              src="/videos/combo.mov"
+              src="/videos/combo.mp4"
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/videos/combo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
           {/* Moody Dark Gradients to ensure text readability */}
           <div className="absolute top-0 inset-x-0 h-[30vh] bg-gradient-to-b from-[#141413]/80 via-[#141413]/40 to-transparent pointer-events-none" />

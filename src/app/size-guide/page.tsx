@@ -181,8 +181,7 @@ export default function SizeGuidePage() {
         <div className="mt-12 text-center">
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 leading-loose max-w-2xl mx-auto">
             <span className="text-kaaj-gold mr-2 block sm:inline">Note:</span>
-            Sizes may vary slightly between collections due to the nature of hand-crafted fabrics and embroidery. 
-            For unstitched fabric, please consult your local tailor for exact measurements.
+            Sizes may vary slightly between collections due to the nature of hand-crafted fabrics and embroidery.
           </p>
         </div>
       </div>
