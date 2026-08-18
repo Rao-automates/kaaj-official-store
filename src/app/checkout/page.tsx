@@ -63,8 +63,9 @@ export default function CheckoutPage() {
     }
     
     const phoneClean = form.phone.replace(/[\s-]/g, '');
-    if (!/^\+?[0-9]{10,15}$/.test(phoneClean)) {
-      newErrors.phone = "Please enter a valid phone number.";
+    const pakPhoneRegex = /^((\+92)?(0092)?(92)?(0)?)(3)([0-9]{9})$/;
+    if (!pakPhoneRegex.test(phoneClean)) {
+      newErrors.phone = "Please enter a valid Pakistani mobile number (e.g., 03XX-XXXXXXX).";
     }
 
     setErrors(newErrors);

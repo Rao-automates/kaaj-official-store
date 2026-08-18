@@ -49,25 +49,25 @@ export default function BrandStory() {
         <div className="absolute inset-0 z-0 bg-[#FAF9F6]/10" />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6]/30 via-transparent to-[#FAF9F6]/60" />
 
-        {/* Redesigned Solid Card Layout (Desktop) */}
+        {/* Refined Frosted Card Layout (Desktop) */}
         <motion.div
-           className="absolute bottom-12 left-6 lg:bottom-20 lg:left-20 flex flex-col items-start transform-gpu z-[2]"
+           className="absolute bottom-16 left-6 lg:bottom-32 lg:left-24 flex flex-col items-start transform-gpu z-[2]"
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="bg-[#0A0A0A] border border-white/5 rounded-2xl p-8 sm:p-10 shadow-2xl max-w-[340px] sm:max-w-[400px]">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#A3A3A3] font-semibold mb-4">
+          <div className="bg-[#141413]/55 backdrop-blur-xl border border-white/10 rounded-[20px] p-6 sm:p-8 shadow-2xl max-w-[320px] sm:max-w-[380px]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-white/80 font-medium mb-3">
               new season
             </p>
-            <h2 className="font-sans text-3xl sm:text-4xl text-[#F5F5F5] font-medium leading-[1.15] tracking-tight mb-8">
+            <h2 className="font-serif text-3xl text-[#F5F5F5] font-light leading-[1.2] tracking-normal mb-8">
               Effortless elegance, <br className="hidden sm:block" />redefined
             </h2>
             <Link
               href="/shop"
-              className="group inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg border border-white/20 text-[#E5E5E5] hover:bg-white hover:text-[#0A0A0A] transition-colors duration-500"
+              className="group inline-flex items-center justify-center gap-3 px-6 py-2.5 rounded-full border border-white/30 text-[#E5E5E5] hover:bg-white/10 transition-colors duration-500"
             >
-              <span className="font-sans text-[11px] font-medium lowercase tracking-[0.05em]">
+              <span className="font-sans text-[11px] font-medium lowercase tracking-[0.1em]">
                 shop now
               </span>
               <svg
@@ -76,7 +76,7 @@ export default function BrandStory() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth="1.2"
                 className="group-hover:translate-x-1 transition-transform duration-500 transform-gpu"
               >
                 <line x1="5" y1="12" x2="19" y2="12" />
