@@ -49,6 +49,28 @@ export default function BrandStory() {
         <div className="absolute inset-0 z-0 bg-[#FAF9F6]/10" />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6]/30 via-transparent to-[#FAF9F6]/60" />
 
+        <h1 className="relative z-[2] flex items-center justify-center w-full px-4">
+          {LETTERS.map((letter, i) => (
+            <span key={i} className="overflow-hidden inline-block pb-4">
+              <motion.span
+                className="inline-block text-center leading-[0.78] select-none cursor-default transform-gpu text-[clamp(5rem,20vw,16rem)] tracking-[0.3em]"
+                style={{
+                  fontFamily: "var(--font-inter), 'Inter', sans-serif",
+                  fontWeight: 600,
+                  color: "transparent",
+                  WebkitTextStroke: "2px rgba(250, 249, 246, 0.8)", // bright white-cream stroke
+                  filter: "drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15))", // bubbly shadow
+                }}
+                initial={{ opacity: 0, y: "60%" }}
+                animate={{ opacity: 1, y: "0%" }}
+                transition={{ duration: 1.2, delay: 0.15 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {letter}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
         <motion.div
           className="absolute bottom-12 left-12 lg:bottom-20 lg:left-20 flex flex-col items-start transform-gpu z-[2]"
           initial={{ opacity: 0, y: 20 }}
