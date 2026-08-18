@@ -119,13 +119,10 @@ export default function BrandStory() {
        * ============================================================== */}
       <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#FAF9F6] overflow-hidden z-[2]">
         
-        {/* Moody Background Texture - Extreme GPU Optimization */}
+        {/* Moody Background Texture - Pure CSS for mobile performance */}
         <div className="absolute inset-0 z-0 bg-[#FAF9F6]">
-          <motion.div 
-            className="absolute inset-0 z-0 transform-gpu"
-            initial={{ scale: 1.12 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 10, ease: "easeOut" }}
+          <div 
+            className="absolute inset-0 z-0 transform-gpu hero-zoom"
             style={{ willChange: "transform" }}
           >
             <Image
@@ -133,30 +130,24 @@ export default function BrandStory() {
               alt="KAAJ Editorial"
               fill
               sizes="100vw"
-              quality={100}
+              quality={75}
               className="object-cover object-[center_30%]"
               priority
             />
-          </motion.div>
+          </div>
           {/* Gradients to ensure text readability at the top and bottom, without muting the dress */}
           <div className="absolute top-0 inset-x-0 h-[25vh] bg-gradient-to-b from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/90 via-transparent to-transparent pointer-events-none" />
         </div>
 
-        {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
-        {/* The Massive Brand Symbol (Buttonhole) filled with Silk */}
-        <motion.div 
-          className="relative z-10 flex flex-col items-center mt-[-8vh]"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+        {/* The Massive Brand Symbol (Buttonhole) - CSS-only animation for mobile */}
+        <div 
+          className="relative z-10 flex flex-col items-center mt-[-8vh] animate-fade-in"
+          style={{ animationDuration: "1.5s" }}
         >
           <div className="w-[150vw] h-[150vw] drop-shadow-2xl pointer-events-none">
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-              <defs>
-              </defs>
               <g transform="translate(87, 100)" stroke="#141413" fill="none">
-                {/* Exact original paths preserved for shape. Stroke width reduced by half to make it less bold. Sharp edges restored. */}
                 <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="3" />
                 <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="3" />
                 <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="1.25" opacity="0.6" />
@@ -164,23 +155,19 @@ export default function BrandStory() {
             </svg>
           </div>
           
-          {/* Elegant Sub-branding - Made noticeably larger and pulled up closer to symbol */}
-          <motion.p 
-            className="font-inter text-[32px] font-medium tracking-[1em] text-[#141413] mt-[-35vw] ml-[1em]"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+          {/* Elegant Sub-branding */}
+          <p 
+            className="font-inter text-[32px] font-medium tracking-[1em] text-[#141413] mt-[-35vw] ml-[1em] animate-fade-up"
+            style={{ animationDelay: "0.8s", animationFillMode: "both" }}
           >
             KAAJ
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        {/* Bottom CTA Area */}
-        <motion.div
-          className="absolute bottom-10 flex flex-col items-center z-10 w-full px-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.2 }}
+        {/* Bottom CTA Area — CSS-only animations */}
+        <div
+          className="absolute bottom-10 flex flex-col items-center z-10 w-full px-6 animate-fade-up"
+          style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
           <div className="w-px h-10 bg-gradient-to-b from-[#141413]/40 to-transparent mb-8 animate-scroll-pulse" />
           <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal text-center mb-6 drop-shadow-sm">
@@ -198,7 +185,7 @@ export default function BrandStory() {
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}

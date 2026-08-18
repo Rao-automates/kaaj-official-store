@@ -10,7 +10,6 @@ const COLLECTIONS = [
 ];
 
 const HELP = [
-  { label: "Size Guide", href: "/size-guide" },
   { label: "Care Instructions", href: "/shop" },
   { label: "Track Order", href: "/track-order" },
   { label: "Returns & Exchange", href: "/returns" },
