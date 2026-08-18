@@ -134,15 +134,29 @@ export default function BrandStory() {
        * ============================================================== */}
       <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2] group">
         
-        {/* Background Banner Image */}
+        {/* Cinematic Video Background / Banner */}
         <div className="absolute inset-0 z-0 bg-[#141413]">
-          <Image
-            src="/images/hero-mobile-bg.webp"
-            alt="KAAJ Banner Background"
-            fill
-            className="object-cover opacity-80"
-            priority
-          />
+          {isInstagram ? (
+            <Image
+              src="/images/hero-mobile-bg.webp"
+              alt="KAAJ Banner Background"
+              fill
+              className="object-cover opacity-80"
+              priority
+            />
+          ) : (
+            <video
+              poster="/images/hero-mobile-bg.webp"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            >
+              <source src="/videos/combo.mp4" type="video/mp4" />
+            </video>
+          )}
           {/* Moody Dark Gradients to ensure text readability */}
           <div 
             className="absolute inset-0 pointer-events-none" 
