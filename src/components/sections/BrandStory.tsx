@@ -118,11 +118,11 @@ export default function BrandStory() {
       {/* ==============================================================
        *  MOBILE LAYOUT (Cinematic Video) - MINIMALIST LUXURY
        * ============================================================== */}
-      <Link href="/shop" className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2] cursor-pointer group">
+      <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2] group">
         
         {/* Cinematic Video Background */}
         <div className="absolute inset-0 z-0 bg-[#141413]">
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-0 pointer-events-none">
             <video
               src="/videos/combo.mp4"
               autoPlay
@@ -147,10 +147,10 @@ export default function BrandStory() {
 
         {/* Bottom CTA Area — Refined Luxury Floating Text */}
         <div
-          className="absolute bottom-12 flex flex-col items-center z-10 w-full animate-fade-up"
+          className="absolute bottom-12 flex flex-col items-center z-20 w-full animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <div className="group flex items-center justify-between w-[85%] max-w-[320px] py-4 px-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500">
+          <Link href="/shop" className="group flex items-center justify-between w-[85%] max-w-[320px] py-4 px-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500">
             <span className="font-sans text-[10px] text-white uppercase tracking-[0.25em] font-medium">
               Explore Collection
             </span>
@@ -158,9 +158,9 @@ export default function BrandStory() {
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </div>
+          </Link>
         </div>
-      </Link>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
