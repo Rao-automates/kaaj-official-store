@@ -67,7 +67,7 @@ export default function ShopClient() {
       {/* Page Header - Editorial */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-32">
         <div className="flex flex-col items-start max-w-4xl">
-          <h1 className="font-sans font-medium text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+          <h1 className="font-sans font-medium text-[clamp(2rem,5vw,4.5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Shop All.
           </h1>
           <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 max-w-xl leading-relaxed">

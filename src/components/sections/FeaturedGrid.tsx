@@ -52,7 +52,7 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-24 md:mb-40 gap-8">
             <div className="max-w-2xl">
 
-              <h2 className="font-sans font-medium text-[clamp(2.5rem,8vw,6rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
+              <h2 className="font-sans font-medium text-[clamp(2rem,5vw,4rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
                 Shop All.
               </h2>
             </div>

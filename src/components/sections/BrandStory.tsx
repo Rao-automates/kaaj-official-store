@@ -57,9 +57,9 @@ export default function BrandStory() {
                 style={{
                   fontFamily: "var(--font-inter), 'Inter', sans-serif",
                   fontWeight: 600,
-                  color: "rgba(250, 249, 246, 0.1)", // Very subtle glass fill
-                  WebkitTextStroke: "1.5px rgba(20, 20, 19, 0.5)", // Dark charcoal stroke for contrast
-                  filter: "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2))", // Bubbly shadow
+                  color: "rgba(255, 255, 255, 0.7)", // Frosted white fill
+                  mixBlendMode: "overlay", // Premium integrated effect
+                  filter: "blur(0.5px) drop-shadow(0 10px 30px rgba(255,255,255,0.3))", // Subtle frost glow
                 }}
                 initial={{ opacity: 0, y: "60%" }}
                 animate={{ opacity: 1, y: "0%" }}
