@@ -56,8 +56,8 @@ export default function BrandStory() {
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="bg-[#141413]/55 backdrop-blur-xl border border-white/10 rounded-[20px] p-6 sm:p-8 shadow-2xl max-w-[320px] sm:max-w-[380px]">
-            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-white/80 font-medium mb-3">
+          <div className="bg-[#141413]/55 backdrop-blur-xl border border-white/15 rounded-[20px] p-6 sm:p-8 shadow-lg overflow-hidden max-w-[320px] sm:max-w-[380px]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-[#F5F5F5] font-bold mb-3">
               new season
             </p>
             <h2 className="font-serif text-3xl text-[#F5F5F5] font-light leading-[1.2] tracking-normal mb-8">

@@ -59,7 +59,7 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
 
             <Link
               href="/shop"
-              className="group inline-flex items-center gap-3 px-8 py-3.5 bg-[#141413] text-white hover:bg-[#141413]/90 transition-all duration-500 btn-shimmer"
+              className="group inline-flex items-center gap-3 px-8 py-3.5 bg-kaaj-olive text-kaaj-cream hover:opacity-90 transition-all duration-500 btn-shimmer"
             >
               <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em]">
                 Shop All
