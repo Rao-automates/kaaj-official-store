@@ -117,47 +117,43 @@ export default function BrandStory() {
       {/* ==============================================================
        *  MOBILE LAYOUT (The Monogram Jewel) - COMPLETELY REDESIGNED
        * ============================================================== */}
-      <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#FAF9F6] overflow-hidden z-[2]">
+      <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2]">
         
-        {/* Moody Background Texture - Pure CSS for mobile performance */}
-        <div className="absolute inset-0 z-0 bg-[#FAF9F6]">
-          <div 
-            className="absolute inset-0 z-0 transform-gpu hero-zoom"
-            style={{ willChange: "transform" }}
-          >
-            <Image
-              src="/images/launch_1_decoration/IMG_4792.JPG"
-              alt="KAAJ Editorial"
-              fill
-              sizes="100vw"
-              quality={75}
-              className="object-cover object-[center_30%]"
-              priority
+        {/* Cinematic Video Background */}
+        <div className="absolute inset-0 z-0 bg-[#141413]">
+          <div className="absolute inset-0 z-0">
+            <video
+              src="/videos/combo.mov"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
             />
           </div>
-          {/* Gradients to ensure text readability at the top and bottom, without muting the dress */}
-          <div className="absolute top-0 inset-x-0 h-[25vh] bg-gradient-to-b from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/90 via-transparent to-transparent pointer-events-none" />
+          {/* Moody Dark Gradients to ensure text readability */}
+          <div className="absolute top-0 inset-x-0 h-[30vh] bg-gradient-to-b from-[#141413]/80 via-[#141413]/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#141413] via-[#141413]/50 to-transparent pointer-events-none" />
         </div>
 
-        {/* The Massive Brand Symbol (Buttonhole) - CSS-only animation for mobile */}
+        {/* Brand Symbol - Scaled down for video overlay and turned white */}
         <div 
-          className="relative z-10 flex flex-col items-center mt-[-8vh] animate-fade-in"
+          className="relative z-10 flex flex-col items-center mt-[-10vh] animate-fade-in"
           style={{ animationDuration: "1.5s" }}
         >
-          <div className="w-[150vw] h-[150vw] drop-shadow-2xl pointer-events-none">
+          <div className="w-[80vw] h-[80vw] drop-shadow-2xl pointer-events-none opacity-80">
             <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-              <g transform="translate(87, 100)" stroke="#141413" fill="none">
-                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="3" />
-                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="3" />
-                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="1.25" opacity="0.6" />
+              <g transform="translate(87, 100)" stroke="#FFFFFF" fill="none">
+                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" />
+                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" />
+                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="1" opacity="0.6" />
               </g>
             </svg>
           </div>
           
           {/* Elegant Sub-branding */}
           <p 
-            className="font-inter text-[32px] font-medium tracking-[1em] text-[#141413] mt-[-35vw] ml-[1em] animate-fade-up"
+            className="font-inter text-[28px] font-medium tracking-[1em] text-white mt-[-18vw] ml-[1em] animate-fade-up drop-shadow-lg"
             style={{ animationDelay: "0.8s", animationFillMode: "both" }}
           >
             KAAJ
@@ -169,12 +165,12 @@ export default function BrandStory() {
           className="absolute bottom-10 flex flex-col items-center z-10 w-full px-8 animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal text-center mb-6 drop-shadow-sm">
+          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-white/80 text-center mb-6 drop-shadow-sm">
             Heritage artistry, modern silhouettes.
           </p>
           <Link
             href="/shop"
-            className="group flex items-center justify-center gap-3 w-full max-w-[280px] py-4 bg-[#141413] text-white transition-all duration-500"
+            className="group flex items-center justify-center gap-3 w-full max-w-[280px] py-4 bg-white text-[#141413] transition-all duration-500 shadow-xl"
           >
             <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
               Shop Now

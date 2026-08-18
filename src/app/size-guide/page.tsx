@@ -1,4 +1,5 @@
 import { sizeData, shalwarSizeData, dupattaSizeData } from "@/lib/constants";
+import { KameezFigure, ShalwarFigure } from "@/components/ui/MeasurementFigures";
 
 export const metadata = {
   title: "Size Guide | K A A J",
@@ -51,6 +52,8 @@ export default function SizeGuidePage() {
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
           </div>
 
+          <KameezFigure />
+
           <div className="border border-kaaj-charcoal/20">
             <div className="overflow-x-auto">
               <table className="w-full text-sm font-sans whitespace-nowrap">
@@ -95,6 +98,8 @@ export default function SizeGuidePage() {
             <h2 className="font-serif text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Shalwar</h2>
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
           </div>
+
+          <ShalwarFigure />
 
           <div className="border border-kaaj-charcoal/20">
             <div className="overflow-x-auto">

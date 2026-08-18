@@ -45,3 +45,6 @@ next-env.d.ts
 /catalog_images/
 /website_decoration/
 /scratch/
+
+# Large media assets
+/public/videos/

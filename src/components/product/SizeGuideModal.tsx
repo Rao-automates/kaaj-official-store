@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { sizeData, shalwarSizeData, dupattaSizeData } from "@/lib/constants";
+import { KameezFigure, ShalwarFigure } from "@/components/ui/MeasurementFigures";
 
 interface SizeGuideModalProps {
   isOpen: boolean;
@@ -92,7 +93,9 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
 
           {/* Kameez Table */}
           {activeTab === "Kameez" && (
-            <div className="overflow-x-auto">
+            <div className="space-y-8">
+              <KameezFigure />
+              <div className="overflow-x-auto">
               <table className="w-full text-sm font-sans whitespace-nowrap">
                 <thead>
                   <tr className="border-b border-kaaj-border bg-kaaj-cream-dark">
@@ -125,11 +128,14 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
                 </tbody>
               </table>
             </div>
+            </div>
           )}
 
           {/* Shalwar Table */}
           {activeTab === "Shalwar" && (
-            <div className="overflow-x-auto">
+            <div className="space-y-8">
+              <ShalwarFigure />
+              <div className="overflow-x-auto">
               <table className="w-full text-sm font-sans whitespace-nowrap">
                 <thead>
                   <tr className="border-b border-kaaj-border bg-kaaj-cream-dark">
@@ -160,6 +166,7 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
                   ))}
                 </tbody>
               </table>
+            </div>
             </div>
           )}
 
