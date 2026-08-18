@@ -1,7 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+
+// 1. Single Global Observer (fixes Desktop stutter by avoiding 50 observer instances)
+let observer: IntersectionObserver | null = null;
+const callbacks = new WeakMap<Element, () => void>();
+
+function getObserver() {
+  if (typeof window === "undefined") return null;
+  if (!observer) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cb = callbacks.get(entry.target);
+            if (cb) {
+              // Add a small rAF to ensure smooth paint
+              requestAnimationFrame(() => {
+                cb();
+              });
+              callbacks.delete(entry.target);
+              observer?.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { rootMargin: "-50px", threshold: 0 }
+    );
+  }
+  return observer;
+}
 
 interface FadeInProps {
   children: ReactNode;
@@ -16,34 +45,51 @@ export default function FadeIn({
   direction = "up",
   fullWidth = false,
 }: FadeInProps) {
-  const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
-    none: { x: 0, y: 0 },
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const obs = getObserver();
+    if (!obs) return;
+
+    // 2. Direct DOM Mutation (fixes Desktop stutter by bypassing React VDOM re-renders)
+    callbacks.set(el, () => {
+      el.classList.remove("opacity-0", "translate-y-10", "-translate-y-10", "translate-x-10", "-translate-x-10");
+      el.classList.add("opacity-100", "translate-y-0", "translate-x-0");
+    });
+
+    obs.observe(el);
+
+    return () => {
+      callbacks.delete(el);
+      obs.unobserve(el);
+    };
+  }, []);
+
+  const getInitialClass = () => {
+    switch (direction) {
+      case "up": return "translate-y-10 opacity-0";
+      case "down": return "-translate-y-10 opacity-0";
+      case "left": return "translate-x-10 opacity-0";
+      case "right": return "-translate-x-10 opacity-0";
+      case "none": return "opacity-0";
+      default: return "translate-y-10 opacity-0";
+    }
   };
 
   return (
-    <motion.div
-      className={fullWidth ? "w-full" : ""}
-      initial={{
-        opacity: 0,
-        ...directions[direction],
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-        y: 0,
-      }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{
-        duration: 0.8,
-        ease: [0.21, 0.47, 0.32, 0.98], // Custom ease-out
-        delay: delay,
-      }}
+    <div
+      ref={ref}
+      className={cn(
+        "transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.21,0.47,0.32,0.98)]",
+        getInitialClass(),
+        fullWidth ? "w-full" : ""
+      )}
+      style={{ transitionDelay: `${delay}s` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
