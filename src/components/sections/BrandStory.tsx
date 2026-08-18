@@ -18,6 +18,15 @@ const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 export default function BrandStory() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isInstagram, setIsInstagram] = useState(false);
+
+  useEffect(() => {
+    // Detect Instagram browser
+    const ua = navigator.userAgent || navigator.vendor || (window as any).opera;
+    if (ua.indexOf("Instagram") > -1) {
+      setIsInstagram(true);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,14 +69,24 @@ export default function BrandStory() {
             
             {/* The Video Pillar */}
             <div className="relative w-[300px] h-[480px] lg:w-[380px] lg:h-[620px] overflow-hidden rounded-none shadow-2xl">
-              <video
-                src="/videos/combo.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-              />
+              {isInstagram ? (
+                <Image
+                  src="/images/hero-slide-1.webp"
+                  alt="KAAJ Cinematic"
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  priority
+                />
+              ) : (
+                <video
+                  src="/videos/combo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+              )}
               {/* Subtle inner border */}
               <div className="absolute inset-0 border border-black/5 pointer-events-none z-10" />
               
@@ -123,18 +142,28 @@ export default function BrandStory() {
         {/* Cinematic Video Background */}
         <div className="absolute inset-0 z-0 bg-[#141413]">
           <div className="absolute inset-0 z-0 pointer-events-none">
-            <video
-              src="/videos/combo.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            >
-              <source src="/videos/combo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {isInstagram ? (
+              <Image
+                src="/images/hero-slide-1.webp"
+                alt="KAAJ Cinematic"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                priority
+              />
+            ) : (
+              <video
+                src="/videos/combo.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              >
+                <source src="/videos/combo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
           {/* Moody Dark Gradients to ensure text readability */}
           <div 
