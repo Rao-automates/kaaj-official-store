@@ -119,8 +119,12 @@ export default function BrandStory() {
             </video>
           </div>
           {/* Moody Dark Gradients to ensure text readability */}
-          <div className="absolute top-0 inset-x-0 h-[30vh] bg-gradient-to-b from-[#141413]/80 via-[#141413]/40 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#141413] via-[#141413]/60 to-transparent pointer-events-none" />
+          <div 
+            className="absolute inset-0 pointer-events-none" 
+            style={{
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.55) 80%, rgba(0,0,0,0.65) 100%)'
+            }}
+          />
         </div>
 
         {/* Bottom CTA Area — Refined Luxury Floating Text */}
@@ -128,11 +132,10 @@ export default function BrandStory() {
           className="absolute bottom-12 flex flex-col items-center z-10 w-full animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <div className="flex flex-col items-center gap-3 text-white/70 group-active:text-white transition-colors duration-500">
-            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.4em]">
+          <div className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/70 text-white hover:bg-white/10 transition-colors duration-500">
+            <span className="font-sans text-[13px] font-medium uppercase tracking-[1.5px]">
               Explore Collection
             </span>
-            <div className="w-8 h-[1px] bg-white/30 group-active:w-16 group-active:bg-white transition-all duration-700 ease-out" />
           </div>
         </div>
       </Link>
