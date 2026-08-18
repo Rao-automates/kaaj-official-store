@@ -152,34 +152,7 @@ export default function BrandStory() {
           />
         </div>
         
-        {/* Centered Video Pillar */}
-        <div className="relative z-10 w-[260px] h-[400px] mt-[-10vh] overflow-hidden shadow-2xl animate-fade-up" style={{ animationDelay: "0.4s", animationFillMode: "both" }}>
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            {isInstagram ? (
-              <Image
-                src="/images/hero-slide-1.webp"
-                alt="KAAJ Cinematic"
-                fill
-                className="object-cover"
-                priority
-              />
-            ) : (
-              <video
-                poster="/images/hero-slide-1.webp"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-cover"
-              >
-                <source src="/videos/combo.mp4" type="video/mp4" />
-              </video>
-            )}
-          </div>
-          {/* Subtle inner border */}
-          <div className="absolute inset-0 border border-white/10 pointer-events-none z-10" />
-        </div>
+
 
         {/* Bottom CTA Area — Refined Luxury Floating Text */}
         <div
