@@ -134,15 +134,33 @@ export default function BrandStory() {
        * ============================================================== */}
       <div className="absolute inset-0 flex sm:hidden flex-col items-center justify-center bg-[#141413] overflow-hidden z-[2] group">
         
-        {/* Cinematic Video Background */}
+        {/* Background Banner Image */}
         <div className="absolute inset-0 z-0 bg-[#141413]">
+          <Image
+            src="/images/hero-mobile-bg.webp"
+            alt="KAAJ Banner Background"
+            fill
+            className="object-cover opacity-80"
+            priority
+          />
+          {/* Moody Dark Gradients to ensure text readability */}
+          <div 
+            className="absolute inset-0 pointer-events-none" 
+            style={{
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.7) 80%, rgba(0,0,0,0.85) 100%)'
+            }}
+          />
+        </div>
+        
+        {/* Centered Video Pillar */}
+        <div className="relative z-10 w-[260px] h-[400px] mt-[-10vh] overflow-hidden shadow-2xl animate-fade-up" style={{ animationDelay: "0.4s", animationFillMode: "both" }}>
           <div className="absolute inset-0 z-0 pointer-events-none">
             {isInstagram ? (
               <Image
                 src="/images/hero-slide-1.webp"
                 alt="KAAJ Cinematic"
                 fill
-                className="object-cover transition-[transform,opacity] duration-1000 group-hover:scale-105"
+                className="object-cover"
                 priority
               />
             ) : (
@@ -159,13 +177,8 @@ export default function BrandStory() {
               </video>
             )}
           </div>
-          {/* Moody Dark Gradients to ensure text readability */}
-          <div 
-            className="absolute inset-0 pointer-events-none" 
-            style={{
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.55) 80%, rgba(0,0,0,0.65) 100%)'
-            }}
-          />
+          {/* Subtle inner border */}
+          <div className="absolute inset-0 border border-white/10 pointer-events-none z-10" />
         </div>
 
         {/* Bottom CTA Area — Refined Luxury Floating Text */}
