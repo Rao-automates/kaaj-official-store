@@ -61,18 +61,15 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         {/* Product Image Container */}
         {imageUrl && !imgError ? (
           <>
-            {/* Secondary Image (Fades in on hover) */}
+            {/* Secondary Image (Fades in on hover) — lazy loaded */}
             {secondaryImageUrl && (
               <Image
                 src={secondaryImageUrl}
                 alt={secondaryAltText}
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className={cn(
-                  "object-cover transition-[transform,opacity] duration-[3000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
-                  "scale-100 group-hover:scale-110"
-                )}
-                priority={priority}
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
               />
             )}
             {/* Primary Image (Fades out on hover if secondary exists) */}
@@ -82,8 +79,8 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className={cn(
-                "object-cover transition-[transform,opacity] duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-[1]",
-                "group-hover:scale-110",
+                "object-cover transition-[transform,opacity] duration-700 ease-out z-[1]",
+                "group-hover:scale-105",
                 secondaryImageUrl ? "group-hover:opacity-0" : ""
               )}
               priority={priority}

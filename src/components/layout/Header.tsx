@@ -137,7 +137,7 @@ export default function Header() {
         />
         <div
           className={cn(
-            "absolute left-0 top-0 h-full w-full sm:w-[400px] bg-[#141413] border-r border-white/5 flex flex-col transform-gpu will-change-transform",
+            "absolute left-0 top-0 h-full w-full sm:w-[400px] bg-[#141413] border-r border-white/5 flex flex-col transform-gpu",
             "transition-transform duration-700 ease-expo-out",
             menuOpen ? "translate-x-0" : "-translate-x-full"
           )}

@@ -40,12 +40,12 @@ export default function EditorialGallery() {
         */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6 pb-20">
           {IMAGES.map((src, i) => (
-            <FadeIn key={i} delay={0.05 * i}>
+            <FadeIn key={i} delay={Math.min(i * 0.05, 0.2)}>
               <Link href="/shop" className="block relative aspect-[3/4] w-full overflow-hidden group bg-[#EAE6DF] cursor-pointer">
                 {/* Dark gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 {/* Shop Now label on hover */}
-                <div className="absolute bottom-0 left-0 right-0 z-20 p-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                <div className="absolute bottom-0 left-0 right-0 z-20 p-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/90 border-b border-white/40 pb-1">
                     Shop Now
                   </span>
@@ -55,7 +55,8 @@ export default function EditorialGallery() {
                   alt={`Aks by Kaaj Editorial ${i + 1}`}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  loading={i < 4 ? undefined : "lazy"}
                 />
               </Link>
             </FadeIn>

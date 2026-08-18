@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import ProductCard from "@/components/product/ProductCard";
 import FadeIn from "@/components/ui/FadeIn";
 import type { Product } from "@/lib/types";
@@ -11,38 +9,20 @@ interface FeaturedGridProps {
   products: Product[];
 }
 
-const cardReveal = {
-  hidden: {
-    opacity: 0,
-    clipPath: "inset(8% 0 8% 0)",
-    y: 40,
-    scale: 0.96,
-  },
-  visible: (i: number) => ({
-    opacity: 1,
-    clipPath: "inset(0% 0 0% 0)",
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 1,
-      delay: i * 0.15,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  }),
-};
-
 export default function FeaturedGrid({ products }: FeaturedGridProps) {
   const hasProducts = products && products.length > 0;
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
 
   if (!hasProducts) return null;
 
+  const gridClasses = [
+    "md:col-span-6 lg:col-span-5 md:col-start-1 lg:col-start-2",
+    "md:col-span-5 lg:col-span-4 md:col-start-8 lg:col-start-8 md:mt-48",
+    "md:col-span-7 lg:col-span-6 md:col-start-2 lg:col-start-3 md:mt-32",
+    "md:col-span-4 lg:col-span-4 md:col-start-9 lg:col-start-9 md:-mt-24",
+  ];
+
   return (
-    <section ref={containerRef} className="relative pt-32 pb-24 md:pt-48 md:pb-48 bg-transparent section-divider-top">
+    <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 bg-transparent section-divider-top">
       {/* Smooth transition gradient from dark hero */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#FAF9F6] to-transparent pointer-events-none -mt-1" />
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,42 +53,24 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
           </div>
         </FadeIn>
 
-        {/* Floating Editorial Grid with clip-path reveals */}
+        {/* Editorial Grid — no framer-motion, pure CSS */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-24 md:gap-y-0">
-          {products.slice(0, 4).map((product, idx) => {
-            // Asymmetrical grid logic mapping
-            const gridClasses = [
-              "md:col-span-6 lg:col-span-5 md:col-start-1 lg:col-start-2",
-              "md:col-span-5 lg:col-span-4 md:col-start-8 lg:col-start-8 md:mt-48",
-              "md:col-span-7 lg:col-span-6 md:col-start-2 lg:col-start-3 md:mt-32",
-              "md:col-span-4 lg:col-span-4 md:col-start-9 lg:col-start-9 md:-mt-24",
-            ][idx % 4];
-
-            return (
-              <motion.div
-                key={product.id}
-                className={`col-span-1 ${gridClasses} relative`}
-                custom={idx}
-                variants={cardReveal}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                {/* Editorial number watermark */}
-                <span className="absolute -top-8 md:-top-12 left-0 font-sans text-[4rem] md:text-[6rem] text-kaaj-charcoal/[0.04] leading-none pointer-events-none select-none z-0">
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
-                <motion.div 
-                  className="relative z-10"
-                  style={{ 
-                    y: useTransform(scrollYProgress, [0, 1], [0, (idx % 2 === 0 ? -120 : -60)]) 
-                  }}
-                >
+          {products.slice(0, 4).map((product, idx) => (
+            <div
+              key={product.id}
+              className={`col-span-1 ${gridClasses[idx % 4]} relative`}
+            >
+              {/* Editorial number watermark */}
+              <span className="absolute -top-8 md:-top-12 left-0 font-sans text-[4rem] md:text-[6rem] text-kaaj-charcoal/[0.04] leading-none pointer-events-none select-none z-0">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <FadeIn delay={idx * 0.1}>
+                <div className="relative z-10">
                   <ProductCard product={product} priority={idx < 2} />
-                </motion.div>
-              </motion.div>
-            );
-          })}
+                </div>
+              </FadeIn>
+            </div>
+          ))}
         </div>
       </div>
     </section>

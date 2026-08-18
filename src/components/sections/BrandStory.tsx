@@ -73,14 +73,17 @@ export default function BrandStory() {
                   priority
                 />
               ) : (
-                <video
-                  src="/videos/combo.mp4"
+              <video
+                  poster="/images/hero-slide-1.webp"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover transition-[transform,opacity] duration-1000 group-hover:scale-105"
-                />
+                  preload="metadata"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                >
+                  <source src="/videos/combo.mp4" type="video/mp4" />
+                </video>
               )}
               {/* Subtle inner border */}
               <div className="absolute inset-0 border border-black/5 pointer-events-none z-10" />
@@ -144,16 +147,15 @@ export default function BrandStory() {
               />
             ) : (
               <video
-                src="/videos/combo.mp4"
                 poster="/images/hero-slide-1.webp"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover transition-[transform,opacity] duration-1000 group-hover:scale-105"
+                preload="metadata"
+                className="w-full h-full object-cover"
               >
                 <source src="/videos/combo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
               </video>
             )}
           </div>

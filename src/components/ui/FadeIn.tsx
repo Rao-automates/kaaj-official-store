@@ -3,27 +3,28 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
-// Global observer to save memory
+// Single shared observer — one instance handles ALL FadeIn elements on the page.
+// This avoids creating 50+ separate observers which kills low-end devices.
 let observer: IntersectionObserver | null = null;
-const callbacks = new WeakMap<Element, (isVisible: boolean) => void>();
+const callbacks = new WeakMap<Element, () => void>();
 
 function getObserver() {
   if (typeof window === "undefined") return null;
   if (!observer) {
     observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const cb = callbacks.get(entry.target);
+        for (let i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            const cb = callbacks.get(entries[i].target);
             if (cb) {
-              cb(true);
-              callbacks.delete(entry.target);
-              observer?.unobserve(entry.target);
+              cb();
+              callbacks.delete(entries[i].target);
+              observer?.unobserve(entries[i].target);
             }
           }
-        });
+        }
       },
-      { rootMargin: "0px", threshold: 0 }
+      { rootMargin: "50px", threshold: 0 }
     );
   }
   return observer;
@@ -52,10 +53,7 @@ export default function FadeIn({
     const obs = getObserver();
     if (!obs) return;
 
-    callbacks.set(el, (visible) => {
-      setIsVisible(visible);
-    });
-
+    callbacks.set(el, () => setIsVisible(true));
     obs.observe(el);
 
     return () => {
@@ -68,11 +66,11 @@ export default function FadeIn({
     <div
       ref={ref}
       className={cn(
-        "transition-opacity duration-[800ms] ease-[cubic-bezier(0.21,0.47,0.32,0.98)]",
+        "transition-opacity duration-700 ease-out",
         isVisible ? "opacity-100" : "opacity-0",
         fullWidth ? "w-full" : ""
       )}
-      style={{ transitionDelay: `${delay}s` }}
+      style={delay > 0 ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
     </div>
