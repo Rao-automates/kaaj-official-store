@@ -246,6 +246,25 @@ export default function ProductDetailClient({
 
               <div className="h-px bg-kaaj-charcoal/10" />
 
+              {/* Size Guide — Always Visible */}
+              <button
+                onClick={() => setSizeGuideOpen(true)}
+                className="group flex items-center gap-3 w-full py-3 px-4 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm hover:border-kaaj-gold/40 hover:bg-kaaj-gold/5 transition-all duration-300"
+              >
+                <svg className="w-4 h-4 text-kaaj-charcoal/70 group-hover:text-kaaj-gold transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <path d="M9 4v16"/>
+                  <path d="M14 4v4"/>
+                  <path d="M19 4v8"/>
+                </svg>
+                <span className="font-sans text-[11px] uppercase tracking-[0.15em] text-kaaj-charcoal/80 group-hover:text-kaaj-gold transition-colors">
+                  Size Guide
+                </span>
+                <svg className="w-3 h-3 ml-auto text-kaaj-charcoal/40 group-hover:text-kaaj-gold group-hover:translate-x-1 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+
               {/* Variant Selectors */}
               {isVariable && attributes.length > 0 && (
                 <div className="space-y-6">
