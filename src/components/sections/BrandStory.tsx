@@ -149,7 +149,6 @@ export default function BrandStory() {
                 loop
                 muted
                 playsInline
-                preload="none"
                 className="w-full h-full object-cover transition-[transform,opacity] duration-1000 group-hover:scale-105"
               >
                 <source src="/videos/combo.mp4" type="video/mp4" />
