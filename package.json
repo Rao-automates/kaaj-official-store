@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.3.0",
-    "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.42.2",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.2",
     "hostinger-mail-api-sdk": "^1.0.2",
@@ -33,11 +31,5 @@
     "postcss": "^8.5.23",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "overrides": {
-    "@studio-freight/react-lenis": {
-      "react": "$react",
-      "react-dom": "$react-dom"
-    }
   }
 }

@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --font-cormorant: "Cormorant Garamond", Georgia, serif;
   --font-inter: "Inter", system-ui, sans-serif;
 
   --color-kaaj-cream: #FAF9F6;
@@ -38,36 +37,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 body {
   color: var(--color-kaaj-charcoal);
   font-family: var(--font-inter), system-ui, sans-serif;
-  position: relative;
+  background: linear-gradient(135deg, #FAF9F6 0%, #F5F3EC 50%, #EBE9E1 100%);
+  background-attachment: fixed;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(135deg, #FAF9F6 0%, #F5F3EC 50%, #EBE9E1 100%);
-  pointer-events: none;
-}
 
 
-
-
-/* ── Typography ─────────────────────────────────────────────────────────────── */
-h1, h2, h3, h4 {
-  font-family: var(--font-inter), system-ui, sans-serif;
-}
 
 /* ── Scrollbar ──────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
