@@ -50,6 +50,8 @@ export default function BrandStory() {
             fetchPriority="high"
             className="object-cover object-center"
             sizes="100vw"
+            quality={100}
+            unoptimized
           />
         </div>
         {/* Soft cream gradient on the left to frame the editorial insert */}
