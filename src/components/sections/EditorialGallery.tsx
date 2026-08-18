@@ -67,7 +67,7 @@ export default function EditorialGallery() {
           <FadeIn delay={0.2}>
             <Link
               href="/shop"
-              className="group inline-flex items-center gap-3 px-10 py-4 bg-[#141413] text-white hover:bg-[#141413]/90 transition-all duration-500 btn-shimmer"
+              className="group inline-flex items-center gap-3 px-10 py-4 bg-kaaj-olive text-kaaj-cream hover:opacity-90 transition-all duration-500 btn-shimmer"
             >
               <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
                 Shop Aks Collection
