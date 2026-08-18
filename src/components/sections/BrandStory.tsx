@@ -34,7 +34,7 @@ export default function BrandStory() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[100dvh] hidden sm:flex flex-col items-center justify-center bg-[#FAF9F6] overflow-hidden">
+    <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-[#FAF9F6] overflow-hidden">
 
       {/* ==============================================================
        *  DESKTOP LAYOUT (Massive Centered Text)
@@ -145,6 +145,7 @@ export default function BrandStory() {
             ) : (
               <video
                 src="/videos/combo.mp4"
+                poster="/images/hero-slide-1.webp"
                 autoPlay
                 loop
                 muted
