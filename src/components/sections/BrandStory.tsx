@@ -77,9 +77,6 @@ export default function BrandStory() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="font-sans text-[11px] uppercase tracking-[0.35em] text-kaaj-charcoal leading-[2] text-left max-w-[280px] mb-8 drop-shadow-sm">
-            Heritage artistry, modern silhouettes.
-          </p>
 
           <Link
             href="/shop"
@@ -147,9 +144,7 @@ export default function BrandStory() {
           className="absolute bottom-10 flex flex-col items-center z-10 w-full px-8 animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-white/80 text-center mb-6 drop-shadow-sm">
-            Heritage artistry, modern silhouettes.
-          </p>
+
           <Link
             href="/shop"
             className="group flex items-center justify-center gap-3 w-full max-w-[280px] py-4 bg-white text-[#141413] transition-all duration-500 shadow-xl"
