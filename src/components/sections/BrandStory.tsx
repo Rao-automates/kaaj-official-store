@@ -66,7 +66,7 @@ export default function BrandStory() {
             <div className="relative w-[300px] h-[480px] lg:w-[380px] lg:h-[620px] overflow-hidden rounded-none shadow-2xl">
               {isInstagram ? (
                 <Image
-                  src="/images/hero-slide-1.webp"
+                  src="/images/hero-desktop-bg.webp"
                   alt="KAAJ Cinematic"
                   fill
                   className="object-cover transition-[transform,opacity] duration-1000 group-hover:scale-105"
@@ -74,7 +74,7 @@ export default function BrandStory() {
                 />
               ) : (
               <video
-                  poster="/images/hero-slide-1.webp"
+                  poster="/images/hero-desktop-bg.webp"
                   autoPlay
                   loop
                   muted
