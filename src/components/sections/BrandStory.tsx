@@ -56,27 +56,31 @@ export default function BrandStory() {
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Portrait Video Insert (On Left Side) */}
-          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] overflow-hidden rounded-none shadow-2xl flex-shrink-0">
-            <video
-              src="/videos/combo.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-            {/* Very subtle border overlay for print-feel */}
-            <div className="absolute inset-0 border border-black/10 pointer-events-none" />
+          {/* Portrait Video Insert (On Left Side) - Polaroid Style Frame */}
+          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] bg-[#FAF9F6] p-2 lg:p-3 overflow-hidden shadow-2xl flex-shrink-0">
+            <div className="relative w-full h-full overflow-hidden">
+              <video
+                src="/videos/combo.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
+              {/* Very subtle inner border overlay */}
+              <div className="absolute inset-0 border border-black/5 pointer-events-none" />
+            </div>
           </div>
 
-          {/* Text Content (On Right of Video, Compact) */}
-          <div className="flex flex-col items-start max-w-[320px] pl-2 lg:pl-6">
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/80 font-bold mb-4">
-              new season
+          {/* Text Content (On Right of Video, Editorial Typography) */}
+          <div className="flex flex-col items-start max-w-[340px] pl-2 lg:pl-8">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/70 font-bold mb-4">
+              vol. 1
             </p>
-            <h2 className="font-sans text-[2.2rem] lg:text-[2.8rem] text-kaaj-charcoal font-medium leading-[1] tracking-tighter mb-8 drop-shadow-sm">
-              Effortless<br />elegance,<br />redefined
+            <h2 className="font-sans text-[2.5rem] lg:text-[3.2rem] text-kaaj-charcoal font-light leading-[1.05] tracking-tighter mb-10 drop-shadow-sm">
+              The <br />
+              <span className="font-serif italic text-kaaj-olive pr-2">festive</span><br />
+              edit.
             </h2>
             <Link
               href="/shop"
