@@ -211,57 +211,6 @@ export async function POST(request: Request) {
       });
     }
 
-    // 3. Send WhatsApp Confirmation via Meta Cloud API
-    const META_WA_PHONE_NUMBER_ID = process.env.META_WA_PHONE_NUMBER_ID;
-    const META_WA_ACCESS_TOKEN = process.env.META_WA_ACCESS_TOKEN;
-
-    if (META_WA_PHONE_NUMBER_ID && META_WA_ACCESS_TOKEN) {
-      try {
-        // Format phone number: remove any non-digit characters
-        let waPhone = form.phone.replace(/\D/g, '');
-        // If it starts with 0 (e.g. 0300...), replace it with 92 (for Pakistan)
-        if (waPhone.startsWith('0')) {
-          waPhone = '92' + waPhone.substring(1);
-        }
-        
-        const waPayload = {
-          messaging_product: "whatsapp",
-          to: waPhone,
-          type: "template",
-          template: {
-            name: "kaaj_order_confirmation",
-            language: { code: "en" },
-            components: [
-              {
-                type: "body",
-                parameters: [
-                  { type: "text", text: form.firstName },
-                  { type: "text", text: finalOrderId },
-                  { type: "text", text: `Rs. ${total.toLocaleString()}` },
-                  { type: "text", text: paymentMethod === 'cod' ? 'Cash on Delivery' : 'Direct Bank Transfer' }
-                ]
-              }
-            ]
-          }
-        };
-
-        const waRes = await fetch(`https://graph.facebook.com/v18.0/${META_WA_PHONE_NUMBER_ID}/messages`, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${META_WA_ACCESS_TOKEN}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(waPayload)
-        });
-        
-        if (!waRes.ok) {
-          const waError = await waRes.text();
-          console.error("WhatsApp API failed:", waError);
-        }
-      } catch (waErr) {
-        console.error("WhatsApp integration error:", waErr);
-        // Don't throw, let the checkout complete successfully
-      }
     }
 
     return NextResponse.json({ success: true, orderNumber: finalOrderId });
