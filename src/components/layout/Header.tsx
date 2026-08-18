@@ -47,9 +47,9 @@ export default function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-500 py-4 transform-gpu will-change-transform",
+          "fixed top-0 left-0 right-0 z-50 transition-colors duration-500 py-4",
           scrolled || menuOpen
-            ? "bg-[#FAF9F6]/95 backdrop-blur-md border-b border-black/5"
+            ? "bg-[#FAF9F6]/98 sm:bg-[#FAF9F6]/95 sm:backdrop-blur-md border-b border-black/5"
             : "bg-transparent"
         )}
       >

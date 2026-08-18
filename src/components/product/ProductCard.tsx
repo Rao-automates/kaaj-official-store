@@ -69,7 +69,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className={cn(
-                  "object-cover transition-transform duration-[3000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "object-cover transition-[transform,opacity] duration-[3000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
                   "scale-100 group-hover:scale-110"
                 )}
                 priority={priority}
@@ -82,7 +82,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className={cn(
-                "object-cover transition-all duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-[1]",
+                "object-cover transition-[transform,opacity] duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-[1]",
                 "group-hover:scale-110",
                 secondaryImageUrl ? "group-hover:opacity-0" : ""
               )}
@@ -100,7 +100,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         <div
           className={cn(
             "absolute inset-0 flex items-center justify-center",
-            "bg-kaaj-cream/20 backdrop-blur-[2px] opacity-0",
+            "bg-kaaj-cream/20 sm:backdrop-blur-[2px] opacity-0",
             "transition-opacity duration-700 ease-expo-out",
             "group-hover:opacity-100",
             isOutOfStock && "hidden"
