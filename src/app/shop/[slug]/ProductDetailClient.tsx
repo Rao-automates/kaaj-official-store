@@ -195,13 +195,13 @@ export default function ProductDetailClient({
               </div>
 
               {/* Product Name */}
-              <h1 className="font-serif text-heading-xl text-kaaj-charcoal leading-tight">
+              <h1 className="font-sans text-heading-xl text-kaaj-charcoal leading-tight">
                 {product.name}
               </h1>
 
               {/* Price */}
               <div className="flex items-baseline gap-3">
-                <span className="font-serif text-2xl text-kaaj-charcoal">
+                <span className="font-sans text-2xl text-kaaj-charcoal">
                   {formatPKR(displayPrice)}
                 </span>
                 {onSale && displayRegularPrice && (
@@ -457,7 +457,7 @@ export default function ProductDetailClient({
                 <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-gold mb-3">
                   — You May Also Like
                 </p>
-                <h2 className="font-serif text-heading-lg text-kaaj-charcoal">
+                <h2 className="font-sans text-heading-lg text-kaaj-charcoal">
                   Related Products
                 </h2>
               </div>
@@ -495,7 +495,7 @@ export default function ProductDetailClient({
                   <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal/70 truncate max-w-[180px]">
                     {product.name}
                   </p>
-                  <p className="font-serif text-sm text-kaaj-charcoal">
+                  <p className="font-sans text-sm text-kaaj-charcoal">
                     {formatPKR(displayPrice)}
                   </p>
                 </div>

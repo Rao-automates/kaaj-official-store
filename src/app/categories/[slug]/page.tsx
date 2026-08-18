@@ -130,7 +130,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       {/* Page Header */}
       <div className="bg-kaaj-cream pt-40 pb-16 text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter mb-4">
+          <h1 className="font-sans text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter mb-4">
             {displayName}.
           </h1>
           {meta?.description && (

@@ -135,7 +135,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             {category.name}
           </p>
         )}
-        <h3 className="font-serif text-base leading-snug text-kaaj-charcoal group-hover:text-kaaj-deep transition-colors duration-200 line-clamp-2">
+        <h3 className="font-sans text-base leading-snug text-kaaj-charcoal group-hover:text-kaaj-deep transition-colors duration-200 line-clamp-2">
           {product.name}
         </h3>
         <div className="flex items-center gap-2 pt-0.5">

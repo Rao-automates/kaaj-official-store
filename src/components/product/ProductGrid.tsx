@@ -38,7 +38,7 @@ export default function ProductGrid({
           <div className="flex justify-center opacity-20">
             <div className="w-16 h-px bg-kaaj-charcoal/50" />
           </div>
-          <p className="font-serif text-3xl text-kaaj-charcoal">
+          <p className="font-sans text-3xl text-kaaj-charcoal">
             {emptyMessage || "New works arriving soon."}
           </p>
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 leading-loose">

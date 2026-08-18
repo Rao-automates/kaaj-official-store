@@ -39,7 +39,7 @@ export default function ProductImageGallery({
     return (
       <div className="aspect-[3/4] bg-kaaj-cream-dark flex items-center justify-center">
         <div className="opacity-20 text-center">
-          <p className="font-serif text-4xl text-kaaj-charcoal">Kaaj</p>
+          <p className="font-sans text-4xl text-kaaj-charcoal">Kaaj</p>
           <p className="font-sans text-xs uppercase tracking-widest text-kaaj-muted mt-2">
             Image Coming Soon
           </p>

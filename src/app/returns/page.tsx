@@ -52,7 +52,7 @@ export default function ReturnsPage() {
       {/* Editorial Header */}
       <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
         <div className="flex flex-col items-start max-w-4xl">
-          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+          <h1 className="font-sans text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Returns.
           </h1>
         </div>
@@ -64,14 +64,14 @@ export default function ReturnsPage() {
         {/* Policies */}
         <div className="prose prose-sm md:prose-base prose-kaaj max-w-none text-kaaj-charcoal/80 font-sans leading-loose space-y-8">
           <section>
-            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">DAMAGED, SHORT-MEASURED, OR DEFECTIVE ITEMS</h2>
+            <h2 className="font-sans text-2xl text-kaaj-charcoal mb-4">DAMAGED, SHORT-MEASURED, OR DEFECTIVE ITEMS</h2>
             <p>
               If an order arrives damaged, short-measured beyond tolerance, or incorrect, you must notify us within 48 hours of delivery via email at <a href="mailto:support@kaajofficial.com" className="underline hover:text-kaaj-gold transition-colors">support@kaajofficial.com</a> with order details and photographic evidence. Verified defective or wrong items will be replaced or corrected at our cost, including return shipping.
             </p>
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">REFUND POLICY & SALE ITEMS</h2>
+            <h2 className="font-sans text-2xl text-kaaj-charcoal mb-4">REFUND POLICY & SALE ITEMS</h2>
             <p>
               We operate on an Exchange or Store Credit policy. Cash refunds are not issued except in cases where an item is defective and a replacement is unavailable. Items purchased on sale, clearance, or custom promotional drop are Final Sale and non-exchangeable unless defective.
             </p>
@@ -80,7 +80,7 @@ export default function ReturnsPage() {
         
         {status === "success" ? (
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16 text-center">
-            <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Request Received</h2>
+            <h2 className="font-sans text-3xl text-kaaj-charcoal mb-4">Request Received</h2>
             <p className="font-sans text-xs text-kaaj-charcoal/70 mb-12 leading-relaxed max-w-md mx-auto">
               Your return request has been submitted successfully. Our client services team will review your request and get back to you within 24-48 hours.
             </p>
@@ -97,7 +97,7 @@ export default function ReturnsPage() {
         ) : (
           <div className="border border-kaaj-charcoal/20 p-8 md:p-16">
             <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl text-kaaj-charcoal mb-4">Initiate a Return</h2>
+              <h2 className="font-sans text-3xl text-kaaj-charcoal mb-4">Initiate a Return</h2>
               <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed max-w-lg mx-auto">
                 Please enter your order details below to request a return or exchange.
               </p>

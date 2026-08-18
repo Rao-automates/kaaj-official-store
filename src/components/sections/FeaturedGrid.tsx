@@ -95,7 +95,7 @@ export default function FeaturedGrid({ products }: FeaturedGridProps) {
                 viewport={{ once: true, margin: "-50px" }}
               >
                 {/* Editorial number watermark */}
-                <span className="absolute -top-8 md:-top-12 left-0 font-serif text-[4rem] md:text-[6rem] text-kaaj-charcoal/[0.04] leading-none pointer-events-none select-none z-0">
+                <span className="absolute -top-8 md:-top-12 left-0 font-sans text-[4rem] md:text-[6rem] text-kaaj-charcoal/[0.04] leading-none pointer-events-none select-none z-0">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
                 <motion.div 

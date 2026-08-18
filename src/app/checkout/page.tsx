@@ -129,7 +129,7 @@ export default function CheckoutPage() {
             <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-gold mb-6">
               Order Confirmed
             </p>
-            <h1 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-none text-kaaj-charcoal tracking-tight mb-8">
+            <h1 className="font-sans text-[clamp(2.5rem,8vw,5rem)] leading-none text-kaaj-charcoal tracking-tight mb-8">
               Thank You, {form.firstName}.
             </h1>
             
@@ -165,7 +165,7 @@ export default function CheckoutPage() {
               Delivery Details
             </p>
             <div className="space-y-1">
-              <p className="font-serif text-xl text-kaaj-charcoal">
+              <p className="font-sans text-xl text-kaaj-charcoal">
                 {form.firstName} {form.lastName}
               </p>
               <p className="font-sans text-sm text-kaaj-charcoal/70 pt-2">
@@ -182,7 +182,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between items-end">
                 <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70">Order Total</span>
-                <span className="font-serif text-2xl text-kaaj-charcoal">
+                <span className="font-sans text-2xl text-kaaj-charcoal">
                   {formatPKR(String(total))}
                 </span>
               </div>
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
       {/* Editorial Header */}
       <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
         <div className="flex flex-col items-start max-w-4xl">
-          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+          <h1 className="font-sans text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Details.
           </h1>
         </div>
@@ -219,7 +219,7 @@ export default function CheckoutPage() {
 
       {cart.items.length === 0 ? (
         <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center py-20 border border-kaaj-charcoal/20">
-          <p className="font-serif text-3xl text-kaaj-charcoal mb-4">Your bag is empty</p>
+          <p className="font-sans text-3xl text-kaaj-charcoal mb-4">Your bag is empty</p>
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 mb-12 max-w-xs mx-auto leading-loose">
             Explore our curated archives and find something you love.
           </p>
@@ -239,7 +239,7 @@ export default function CheckoutPage() {
             <div className="xl:col-span-3 space-y-16">
               {/* Contact */}
               <div className="space-y-8">
-                <h2 className="font-serif text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
+                <h2 className="font-sans text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
                   Contact
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -302,7 +302,7 @@ export default function CheckoutPage() {
 
               {/* Delivery Address */}
               <div className="space-y-8">
-                <h2 className="font-serif text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
+                <h2 className="font-sans text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
                   Delivery
                 </h2>
                 <div>
@@ -384,7 +384,7 @@ export default function CheckoutPage() {
 
               {/* Payment Method */}
               <div className="space-y-8">
-                <h2 className="font-serif text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
+                <h2 className="font-sans text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
                   Payment
                 </h2>
                 <div className="flex flex-col gap-6">
@@ -410,7 +410,7 @@ export default function CheckoutPage() {
                       {paymentMethod === "cod" && <div className="w-2 h-2 rounded-full bg-kaaj-charcoal" />}
                     </div>
                     <div className="flex-1">
-                      <p className={`font-serif text-xl transition-colors duration-500 ${
+                      <p className={`font-sans text-xl transition-colors duration-500 ${
                         paymentMethod === "cod" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/70"
                       }`}>
                         Cash on Delivery
@@ -444,7 +444,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-4">
-                        <p className={`font-serif text-xl transition-colors duration-500 ${
+                        <p className={`font-sans text-xl transition-colors duration-500 ${
                           paymentMethod === "bacs" ? "text-kaaj-charcoal" : "text-kaaj-charcoal/70"
                         }`}>
                           Bank Transfer
@@ -465,7 +465,7 @@ export default function CheckoutPage() {
             {/* Right: Order Summary */}
             <div className="xl:col-span-2">
               <div className="border border-kaaj-charcoal/20 p-8 sticky top-32 bg-kaaj-charcoal/5 backdrop-blur-md">
-                <h2 className="font-serif text-2xl text-kaaj-charcoal mb-8 pb-6 border-b border-kaaj-charcoal/20">
+                <h2 className="font-sans text-2xl text-kaaj-charcoal mb-8 pb-6 border-b border-kaaj-charcoal/20">
                   Summary
                 </h2>
 
@@ -489,7 +489,7 @@ export default function CheckoutPage() {
                       </div>
                       <div className="flex-1 min-w-0 flex flex-col justify-between py-1">
                         <div>
-                          <p className="font-serif text-sm text-kaaj-charcoal line-clamp-2">
+                          <p className="font-sans text-sm text-kaaj-charcoal line-clamp-2">
                             {item.name}
                           </p>
                           {Object.entries(item.selectedAttributes).map(([k, v]) => (
@@ -512,11 +512,11 @@ export default function CheckoutPage() {
                 <div className="space-y-4 font-sans text-sm mb-8">
                   <div className="flex justify-between text-kaaj-charcoal/80">
                     <span className="text-[10px] uppercase tracking-[0.2em]">Subtotal</span>
-                    <span className="font-serif text-lg text-kaaj-charcoal">{formatPKR(String(cartTotal))}</span>
+                    <span className="font-sans text-lg text-kaaj-charcoal">{formatPKR(String(cartTotal))}</span>
                   </div>
                   <div className="flex justify-between text-kaaj-charcoal/80">
                     <span className="text-[10px] uppercase tracking-[0.2em]">Shipping</span>
-                    <span className={shipping === 0 ? "font-serif text-lg text-kaaj-gold" : "font-serif text-lg text-kaaj-charcoal"}>
+                    <span className={shipping === 0 ? "font-sans text-lg text-kaaj-gold" : "font-sans text-lg text-kaaj-charcoal"}>
                       {shipping === 0 ? "Complimentary" : formatPKR(String(shipping))}
                     </span>
                   </div>
@@ -528,7 +528,7 @@ export default function CheckoutPage() {
                   <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70">
                     Total
                   </span>
-                  <span className="font-serif text-3xl text-kaaj-charcoal">
+                  <span className="font-sans text-3xl text-kaaj-charcoal">
                     {formatPKR(String(total))}
                   </span>
                 </div>

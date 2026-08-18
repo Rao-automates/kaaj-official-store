@@ -30,10 +30,10 @@ export default function Marquee({
         onMouseEnter={(e) => { (e.currentTarget.style.animationPlayState = "paused"); }}
         onMouseLeave={(e) => { (e.currentTarget.style.animationPlayState = "running"); }}
       >
-        <span className="font-serif text-[clamp(1rem,2.5vw,1.75rem)] text-kaaj-charcoal/70 tracking-[0.3em] uppercase">
+        <span className="font-sans text-[clamp(1rem,2.5vw,1.75rem)] text-kaaj-charcoal/70 tracking-[0.3em] uppercase">
           {repeated}
         </span>
-        <span className="font-serif text-[clamp(1rem,2.5vw,1.75rem)] text-kaaj-charcoal/70 tracking-[0.3em] uppercase">
+        <span className="font-sans text-[clamp(1rem,2.5vw,1.75rem)] text-kaaj-charcoal/70 tracking-[0.3em] uppercase">
           {repeated}
         </span>
       </div>

@@ -53,7 +53,7 @@ export default function CartDrawer() {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-kaaj-border flex-shrink-0">
           <div>
-            <h2 className="font-serif text-xl text-kaaj-charcoal">Your Bag</h2>
+            <h2 className="font-sans text-xl text-kaaj-charcoal">Your Bag</h2>
             {itemCount > 0 && (
               <p className="font-sans text-xs text-kaaj-muted mt-0.5">
                 {itemCount} {itemCount === 1 ? "item" : "items"}
@@ -83,7 +83,7 @@ export default function CartDrawer() {
                   <path d="M16 10a4 4 0 01-8 0" />
                 </svg>
               </div>
-              <p className="font-serif text-xl text-kaaj-charcoal">Your bag is empty</p>
+              <p className="font-sans text-xl text-kaaj-charcoal">Your bag is empty</p>
               <p className="font-sans text-xs text-kaaj-muted max-w-xs">
                 Explore our curated collections and add your favourites.
               </p>
@@ -121,7 +121,7 @@ export default function CartDrawer() {
                   <Link
                     href={`/shop/${item.slug}`}
                     onClick={closeDrawer}
-                    className="font-serif text-sm leading-snug text-kaaj-charcoal hover:text-kaaj-deep transition-colors line-clamp-2"
+                    className="font-sans text-sm leading-snug text-kaaj-charcoal hover:text-kaaj-deep transition-colors line-clamp-2"
                   >
                     {item.name}
                   </Link>
@@ -192,7 +192,7 @@ export default function CartDrawer() {
               <span className="font-sans text-xs uppercase tracking-widest text-kaaj-muted">
                 Subtotal
               </span>
-              <span className="font-serif text-lg text-kaaj-charcoal">
+              <span className="font-sans text-lg text-kaaj-charcoal">
                 {formatPKR(String(cartTotal))}
               </span>
             </div>

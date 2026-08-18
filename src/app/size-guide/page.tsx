@@ -12,7 +12,7 @@ export default function SizeGuidePage() {
       {/* Editorial Header */}
       <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
         <div className="flex flex-col items-start max-w-4xl">
-          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+          <h1 className="font-sans text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Sizing.
           </h1>
           <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 max-w-xl leading-relaxed">
@@ -26,7 +26,7 @@ export default function SizeGuidePage() {
         
         {/* ── How to Measure ── */}
         <div className="max-w-3xl">
-          <h2 className="font-serif text-2xl md:text-3xl text-kaaj-charcoal mb-6">How to Measure</h2>
+          <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal mb-6">How to Measure</h2>
           <div className="space-y-3">
             {[
               { label: "Shoulder", desc: "Measure from one shoulder bone to the other across the back." },
@@ -48,7 +48,7 @@ export default function SizeGuidePage() {
         <div>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
-            <h2 className="font-serif text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Kameez</h2>
+            <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Kameez</h2>
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
           </div>
 
@@ -75,7 +75,7 @@ export default function SizeGuidePage() {
                       key={row.size}
                       className="border-b border-kaaj-charcoal/10 hover:bg-kaaj-gold/5 transition-colors duration-500 last:border-b-0"
                     >
-                      <td className="py-6 px-6 text-center font-serif text-lg text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.size}</td>
+                      <td className="py-6 px-6 text-center font-sans text-lg text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.size}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.length}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.shoulder}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.chest}</td>
@@ -95,7 +95,7 @@ export default function SizeGuidePage() {
         <div>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
-            <h2 className="font-serif text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Shalwar</h2>
+            <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Shalwar</h2>
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
           </div>
 
@@ -122,7 +122,7 @@ export default function SizeGuidePage() {
                       key={row.size}
                       className="border-b border-kaaj-charcoal/10 hover:bg-kaaj-gold/5 transition-colors duration-500 last:border-b-0"
                     >
-                      <td className="py-6 px-6 text-center font-serif text-lg text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.size}</td>
+                      <td className="py-6 px-6 text-center font-sans text-lg text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.size}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.length}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.waist}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.fullness}</td>
@@ -141,7 +141,7 @@ export default function SizeGuidePage() {
         <div>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
-            <h2 className="font-serif text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Dupatta</h2>
+            <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Dupatta</h2>
             <div className="h-px flex-1 bg-kaaj-charcoal/10" />
           </div>
 
@@ -166,7 +166,7 @@ export default function SizeGuidePage() {
                       key={row.type}
                       className="border-b border-kaaj-charcoal/10 hover:bg-kaaj-gold/5 transition-colors duration-500 last:border-b-0"
                     >
-                      <td className="py-6 px-6 text-center font-serif text-base text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.type}</td>
+                      <td className="py-6 px-6 text-center font-sans text-base text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.type}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.length}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80">{row.width}</td>
                     </tr>

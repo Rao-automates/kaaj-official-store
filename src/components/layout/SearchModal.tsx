@@ -61,7 +61,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search collections, products, or colors..."
-            className="w-full bg-transparent border-b-2 border-kaaj-charcoal/20 text-kaaj-charcoal text-2xl md:text-4xl font-serif py-4 px-2 focus:outline-none focus:border-kaaj-gold placeholder-kaaj-charcoal/30 transition-colors text-center"
+            className="w-full bg-transparent border-b-2 border-kaaj-charcoal/20 text-kaaj-charcoal text-2xl md:text-4xl font-sans py-4 px-2 focus:outline-none focus:border-kaaj-gold placeholder-kaaj-charcoal/30 transition-colors text-center"
           />
           <button
             type="submit"

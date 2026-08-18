@@ -18,7 +18,7 @@ export default function Error({
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center bg-kaaj-cream px-4 text-center">
       <div className="w-px h-16 bg-gradient-to-b from-transparent to-kaaj-charcoal/20 mb-8" />
-      <h1 className="font-serif text-4xl md:text-6xl text-kaaj-charcoal tracking-tighter mb-4">
+      <h1 className="font-sans text-4xl md:text-6xl text-kaaj-charcoal tracking-tighter mb-4">
         Unexpected Error
       </h1>
       <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-kaaj-charcoal mb-8">

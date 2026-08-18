@@ -17,7 +17,7 @@ export default function CartPage() {
       {/* Editorial Header */}
       <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
         <div className="flex flex-col items-start max-w-4xl">
-          <h1 className="font-serif text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
+          <h1 className="font-sans text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Bag.
           </h1>
         </div>
@@ -34,7 +34,7 @@ export default function CartPage() {
                 <path d="M16 10a4 4 0 01-8 0" />
               </svg>
             </div>
-            <p className="font-serif text-3xl text-kaaj-charcoal mb-4">
+            <p className="font-sans text-3xl text-kaaj-charcoal mb-4">
               Your bag is empty
             </p>
             <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 mb-12 max-w-xs mx-auto leading-loose">
@@ -51,7 +51,7 @@ export default function CartPage() {
             {/* Cart Items — left 2/3 */}
             <div className="lg:col-span-2 space-y-12">
               <div className="flex items-center justify-between pb-6 border-b border-kaaj-charcoal/20">
-                <h2 className="font-serif text-3xl text-kaaj-charcoal">
+                <h2 className="font-sans text-3xl text-kaaj-charcoal">
                   {itemCount} {itemCount === 1 ? "Item" : "Items"}
                 </h2>
                 <Link
@@ -91,7 +91,7 @@ export default function CartPage() {
                       <div className="flex justify-between gap-4 items-start">
                         <Link
                           href={`/shop/${item.slug}`}
-                          className="font-serif text-2xl leading-snug text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
+                          className="font-sans text-2xl leading-snug text-kaaj-charcoal hover:text-kaaj-gold transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -145,7 +145,7 @@ export default function CartPage() {
                       </div>
 
                       {/* Line total */}
-                      <span className="font-serif text-2xl text-kaaj-charcoal">
+                      <span className="font-sans text-2xl text-kaaj-charcoal">
                         {formatPKR(String(item.price * item.quantity))}
                       </span>
                     </div>
@@ -157,18 +157,18 @@ export default function CartPage() {
             {/* Order Summary — right 1/3 */}
             <div className="lg:col-span-1">
               <div className="border border-kaaj-charcoal/20 p-8 sticky top-28 bg-kaaj-charcoal/5 backdrop-blur-md">
-                <h2 className="font-serif text-2xl text-kaaj-charcoal mb-8 pb-6 border-b border-kaaj-charcoal/20">
+                <h2 className="font-sans text-2xl text-kaaj-charcoal mb-8 pb-6 border-b border-kaaj-charcoal/20">
                   Summary
                 </h2>
 
                 <div className="space-y-6 text-sm font-sans mb-8">
                   <div className="flex justify-between text-kaaj-charcoal/80">
                     <span className="uppercase tracking-[0.2em] text-[10px]">Subtotal</span>
-                    <span className="font-serif text-lg">{formatPKR(String(cartTotal))}</span>
+                    <span className="font-sans text-lg">{formatPKR(String(cartTotal))}</span>
                   </div>
                   <div className="flex justify-between text-kaaj-charcoal/80">
                     <span className="uppercase tracking-[0.2em] text-[10px]">Shipping</span>
-                    <span className={shipping === 0 ? "text-kaaj-gold font-serif text-lg" : "font-serif text-lg"}>
+                    <span className={shipping === 0 ? "text-kaaj-gold font-sans text-lg" : "font-sans text-lg"}>
                       {shipping === 0 ? "Complimentary" : formatPKR(String(shipping))}
                     </span>
                   </div>
@@ -185,7 +185,7 @@ export default function CartPage() {
                   <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70">
                     Total
                   </span>
-                  <span className="font-serif text-3xl text-kaaj-charcoal">
+                  <span className="font-sans text-3xl text-kaaj-charcoal">
                     {formatPKR(String(total))}
                   </span>
                 </div>

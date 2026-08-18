@@ -27,7 +27,7 @@ export default function EditorialGallery() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="flex flex-row items-center justify-center">
-              <span className="font-serif text-[clamp(4rem,10vw,7rem)] font-medium text-[#141413] leading-none pb-4">
+              <span className="font-sans text-[clamp(4rem,10vw,7rem)] font-medium text-[#141413] leading-none pb-4">
                 عکس
               </span>
             </h2>

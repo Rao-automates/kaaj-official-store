@@ -46,7 +46,7 @@ function SearchResultsContent() {
       {/* Search Header */}
       <div className="bg-kaaj-cream pt-40 pb-16 text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="font-serif text-[clamp(2rem,6vw,4rem)] leading-[1] text-kaaj-charcoal tracking-tight mb-4">
+          <h1 className="font-sans text-[clamp(2rem,6vw,4rem)] leading-[1] text-kaaj-charcoal tracking-tight mb-4">
             {query ? (
               <>
                 Results for <span className="text-kaaj-charcoal/70">"{query}"</span>
@@ -84,7 +84,7 @@ function SearchResultsContent() {
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
-            <h2 className="font-serif text-2xl text-kaaj-charcoal mb-4">
+            <h2 className="font-sans text-2xl text-kaaj-charcoal mb-4">
               No results found
             </h2>
             <p className="font-sans text-sm text-kaaj-muted mb-8">

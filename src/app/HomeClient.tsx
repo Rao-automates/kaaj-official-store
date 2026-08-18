@@ -40,7 +40,7 @@ export default function HomeClient({
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-24 gap-8">
               <div>
 
-                <h2 className="font-serif text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
+                <h2 className="font-sans text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
                   New Arrivals.
                 </h2>
               </div>
@@ -108,7 +108,7 @@ export default function HomeClient({
       <section className="relative py-32 sm:py-48 section-void">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
           <FadeIn>
-            <p className="font-serif text-[clamp(2.5rem,6vw,4rem)] text-kaaj-charcoal mb-4 leading-[1.1] tracking-tight">
+            <p className="font-sans text-[clamp(2.5rem,6vw,4rem)] text-kaaj-charcoal mb-4 leading-[1.1] tracking-tight">
               Follow the making.
             </p>
           </FadeIn>

@@ -82,14 +82,12 @@ export default function Header() {
               </div>
             </button>
 
-            {/* Center: Logo — hidden on homepage hero, visible after scroll or on other pages */}
+            {/* Center: Logo */}
             <Link
               href="/"
               className={cn(
                 "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-700 hover:scale-105",
-                isHomepage && !pastHero && !menuOpen
-                  ? "opacity-0 pointer-events-none translate-y-2"
-                  : "opacity-100 pointer-events-auto translate-y-0"
+                "opacity-100 pointer-events-auto translate-y-0"
               )}
               aria-label="KAAJ Home"
               onClick={() => setMenuOpen(false)}
