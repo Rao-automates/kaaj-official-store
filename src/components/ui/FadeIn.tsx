@@ -26,7 +26,7 @@ function getObserver() {
           }
         });
       },
-      { rootMargin: "-50px", threshold: 0 }
+      { rootMargin: "0px", threshold: 0 }
     );
   }
   return observer;
@@ -56,8 +56,8 @@ export default function FadeIn({
 
     // 2. Direct DOM Mutation (fixes Desktop stutter by bypassing React VDOM re-renders)
     callbacks.set(el, () => {
-      el.classList.remove("opacity-0", "translate-y-10", "-translate-y-10", "translate-x-10", "-translate-x-10");
-      el.classList.add("opacity-100", "translate-y-0", "translate-x-0");
+      el.classList.remove("opacity-0");
+      el.classList.add("opacity-100");
     });
 
     obs.observe(el);
@@ -70,12 +70,8 @@ export default function FadeIn({
 
   const getInitialClass = () => {
     switch (direction) {
-      case "up": return "translate-y-10 opacity-0";
-      case "down": return "-translate-y-10 opacity-0";
-      case "left": return "translate-x-10 opacity-0";
-      case "right": return "-translate-x-10 opacity-0";
       case "none": return "opacity-0";
-      default: return "translate-y-10 opacity-0";
+      default: return "opacity-0"; // Removed translate to fix WebKit hit-area bug
     }
   };
 
