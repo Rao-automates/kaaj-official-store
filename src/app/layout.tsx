@@ -7,6 +7,7 @@ import PerformanceProvider from "@/components/providers/PerformanceProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
+import InAppBrowserNotice from "@/components/layout/InAppBrowserNotice";
 import Script from "next/script";
 
 const cormorant = Cormorant_Garamond({
@@ -146,6 +147,7 @@ export default function RootLayout({
           <PerformanceProvider />
           <Header />
           <CartDrawer />
+          <InAppBrowserNotice />
           <main id="main-content">{children}</main>
           <Footer />
         </CartProvider>
