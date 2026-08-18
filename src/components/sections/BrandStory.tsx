@@ -140,29 +140,7 @@ export default function BrandStory() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#141413] via-[#141413]/50 to-transparent pointer-events-none" />
         </div>
 
-        {/* Brand Symbol - Scaled down for video overlay and turned white */}
-        <div 
-          className="relative z-10 flex flex-col items-center mt-[-10vh] animate-fade-in"
-          style={{ animationDuration: "1.5s" }}
-        >
-          <div className="w-[80vw] h-[80vw] drop-shadow-2xl pointer-events-none opacity-80">
-            <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-              <g transform="translate(87, 100)" stroke="#FFFFFF" fill="none">
-                <line x1="-12" y1="-45" x2="-12" y2="45" strokeWidth="2" />
-                <path d="M 38,-45 C -28,-20 -28,20 38,45" strokeWidth="2" />
-                <path d="M 18,-45 C -18,-20 -18,20 18,45" strokeWidth="1" opacity="0.6" />
-              </g>
-            </svg>
-          </div>
-          
-          {/* Elegant Sub-branding */}
-          <p 
-            className="font-inter text-[28px] font-medium tracking-[1em] text-white mt-[-18vw] ml-[1em] animate-fade-up drop-shadow-lg"
-            style={{ animationDelay: "0.8s", animationFillMode: "both" }}
-          >
-            KAAJ
-          </p>
-        </div>
+
 
         {/* Bottom CTA Area — CSS-only animations */}
         <div
