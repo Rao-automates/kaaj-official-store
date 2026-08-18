@@ -74,16 +74,16 @@ export default function BrandStory() {
               {/* Dark gradient at bottom for button visibility */}
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none z-10" />
               
-              {/* Floating Glassmorphic Button inside Video */}
+              {/* Floating Solid Olive Button inside Video */}
               <div className="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 w-full px-6 lg:px-10 z-20">
                 <Link
                   href="/shop"
-                  className="group flex items-center justify-between w-full py-4 px-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500"
+                  className="group flex items-center justify-between w-full py-4 px-6 bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-colors duration-300 shadow-xl"
                 >
-                  <span className="font-sans text-[10px] lg:text-[11px] text-white uppercase tracking-[0.25em] font-medium">
+                  <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.2em] font-semibold">
                     Explore Collection
                   </span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="group-hover:translate-x-1 transition-transform duration-500">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:translate-x-1 transition-transform duration-300">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
@@ -150,11 +150,11 @@ export default function BrandStory() {
           className="absolute bottom-12 flex flex-col items-center z-20 w-full animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <Link href="/shop" className="group flex items-center justify-between w-[85%] max-w-[320px] py-4 px-6 border border-white/30 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500">
-            <span className="font-sans text-[10px] text-white uppercase tracking-[0.25em] font-medium">
+          <Link href="/shop" className="group flex items-center justify-between w-[85%] max-w-[320px] py-4 px-6 bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-colors duration-300 shadow-xl">
+            <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.2em] font-semibold">
               Explore Collection
             </span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="group-hover:translate-x-1 transition-transform duration-500">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:translate-x-1 transition-transform duration-300">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
