@@ -211,8 +211,6 @@ export async function POST(request: Request) {
       });
     }
 
-    }
-
     return NextResponse.json({ success: true, orderNumber: finalOrderId });
   } catch (error) {
     console.error('Checkout error:', error);

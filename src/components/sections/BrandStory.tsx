@@ -56,18 +56,18 @@ export default function BrandStory() {
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="bg-black/40 backdrop-blur-lg border border-white/20 rounded-[20px] p-6 sm:p-8 overflow-hidden max-w-[320px] sm:max-w-[380px] shadow-none">
-            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-[#F5F5F5] font-bold mb-3">
+          <div className="max-w-[320px] sm:max-w-[420px] hidden sm:block">
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 font-bold mb-4">
               new season
             </p>
-            <h2 className="font-serif text-3xl text-[#F5F5F5] font-light leading-[1.2] tracking-normal mb-8">
+            <h2 className="font-serif text-[2.5rem] lg:text-[3.2rem] text-kaaj-charcoal font-light leading-[1.1] tracking-tight mb-10 drop-shadow-sm">
               Effortless elegance, <br className="hidden sm:block" />redefined
             </h2>
             <Link
               href="/shop"
-              className="group inline-flex items-center justify-center gap-3 px-6 py-2.5 rounded-full border border-white/30 text-[#E5E5E5] hover:bg-white/10 transition-colors duration-500"
+              className="group inline-flex items-center justify-center gap-4 px-8 py-3.5 rounded-full bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
             >
-              <span className="font-sans text-[11px] font-medium lowercase tracking-[0.1em]">
+              <span className="font-sans text-[12px] font-medium lowercase tracking-[0.1em]">
                 shop now
               </span>
               <svg

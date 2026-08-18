@@ -63,14 +63,14 @@ export default function EditorialGallery() {
         </div>
 
         {/* Footer CTA */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-12">
           <FadeIn delay={0.2}>
             <Link
               href="/shop"
-              className="group inline-flex items-center gap-3 px-10 py-4 bg-kaaj-olive text-kaaj-cream hover:opacity-90 transition-all duration-500 btn-shimmer"
+              className="group inline-flex items-center gap-4 px-10 py-4 rounded-full bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
             >
               <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
-                Shop Aks Collection
+                Shop عکس Collection
               </span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
                 className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu">
