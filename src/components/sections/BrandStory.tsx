@@ -72,16 +72,12 @@ export default function BrandStory() {
             </div>
           </div>
 
-          {/* Text Content (On Right of Video, Editorial Typography) */}
-          <div className="flex flex-col items-start max-w-[340px] pl-2 lg:pl-8">
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/70 font-bold mb-4">
-              vol. 1
+          {/* Minimalist Editorial Placard (Replacing massive headline) */}
+          <div className="flex flex-col items-start justify-center max-w-[280px] pl-6 lg:pl-12 mt-12 lg:mt-24">
+            <div className="w-10 h-[1px] bg-kaaj-charcoal/30 mb-6" />
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 font-semibold leading-[2] mb-10">
+              Discover the latest arrivals featuring authentic craftsmanship and timeless silhouettes.
             </p>
-            <h2 className="font-sans text-[2.5rem] lg:text-[3.2rem] text-kaaj-charcoal font-light leading-[1.05] tracking-tighter mb-10 drop-shadow-sm">
-              The <br />
-              <span className="font-serif italic text-kaaj-olive pr-2">festive</span><br />
-              edit.
-            </h2>
             <Link
               href="/shop"
               className="group inline-flex items-center justify-center gap-4 px-8 py-3.5 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
