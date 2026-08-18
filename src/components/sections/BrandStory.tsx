@@ -83,10 +83,10 @@ export default function BrandStory() {
 
           <Link
             href="/shop"
-            className="group flex items-center justify-start gap-5 pb-3 border-b border-[#141413]/10 hover:border-[#C9A84C]/60 transition-all duration-500 w-full"
+            className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#141413] text-white hover:bg-[#141413]/90 transition-all duration-500 btn-shimmer"
           >
-            <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-[#141413]/80 group-hover:text-[#C9A84C] transition-colors duration-500">
-              Explore Collection
+            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
+              Shop Now
             </span>
             <svg
               width="14"
@@ -95,7 +95,7 @@ export default function BrandStory() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
-              className="text-[#141413]/60 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-2 duration-500 transform-gpu"
+              className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -166,21 +166,20 @@ export default function BrandStory() {
 
         {/* Bottom CTA Area — CSS-only animations */}
         <div
-          className="absolute bottom-10 flex flex-col items-center z-10 w-full px-6 animate-fade-up"
+          className="absolute bottom-10 flex flex-col items-center z-10 w-full px-8 animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <div className="w-px h-10 bg-gradient-to-b from-[#141413]/40 to-transparent mb-8 animate-scroll-pulse" />
           <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-kaaj-charcoal text-center mb-6 drop-shadow-sm">
-            Heritage artistry.
+            Heritage artistry, modern silhouettes.
           </p>
           <Link
             href="/shop"
-            className="group flex items-center gap-4 pb-2 border-b border-[#141413]/20 hover:border-[#C9A84C]/60 transition-all duration-500"
+            className="group flex items-center justify-center gap-3 w-full max-w-[280px] py-4 bg-[#141413] text-white transition-all duration-500"
           >
-            <span className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-[#141413]/90 group-hover:text-[#C9A84C] transition-colors duration-500">
-              Explore
+            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
+              Shop Now
             </span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#141413]/80 group-hover:text-[#C9A84C] transition-all group-hover:translate-x-1 duration-500">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:translate-x-1 transition-transform duration-500">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>

@@ -63,16 +63,20 @@ export default function EditorialGallery() {
         </div>
 
         {/* Footer CTA */}
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-8">
           <FadeIn delay={0.2}>
             <Link
               href="/shop"
-              className="group flex flex-col items-center gap-4"
+              className="group inline-flex items-center gap-3 px-10 py-4 bg-[#141413] text-white hover:bg-[#141413]/90 transition-all duration-500 btn-shimmer"
             >
-              <span className="font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-[#141413]/60 group-hover:text-[#C9A84C] transition-colors duration-500">
-                Explore The Pieces
+              <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
+                Shop Aks Collection
               </span>
-              <div className="h-10 w-px bg-gradient-to-b from-[#141413]/20 to-transparent group-hover:from-[#C9A84C]/60 transition-colors duration-500" />
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </Link>
           </FadeIn>
         </div>

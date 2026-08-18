@@ -46,19 +46,19 @@ export default function HomeClient({
               </div>
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-4 pb-2 border-b border-kaaj-charcoal/40 hover:border-kaaj-charcoal transition-colors duration-700"
+                className="group inline-flex items-center gap-3 px-8 py-3.5 bg-[#141413] text-white hover:bg-[#141413]/90 transition-all duration-500 btn-shimmer"
               >
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-700">
-                  View Collection
+                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em]">
+                  Shop New Arrivals
                 </span>
                 <svg
-                  width="16"
-                  height="16"
+                  width="14"
+                  height="14"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="text-kaaj-charcoal group-hover:text-kaaj-gold transition-all group-hover:translate-x-3 duration-700 transform-gpu"
+                  className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
