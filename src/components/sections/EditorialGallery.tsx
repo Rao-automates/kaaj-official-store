@@ -67,7 +67,7 @@ export default function EditorialGallery() {
           <FadeIn delay={0.2}>
             <Link
               href="/shop"
-              className="group inline-flex items-center gap-4 px-10 py-4 rounded-full bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
+              className="group inline-flex items-center gap-4 px-10 py-4 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
             >
               <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
                 Shop عکس Collection

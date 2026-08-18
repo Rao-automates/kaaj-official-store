@@ -33,7 +33,7 @@ export default function BrandStory() {
       {/* ==============================================================
        *  DESKTOP LAYOUT (Massive Centered Text)
        * ============================================================== */}
-      <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center z-[2]">
+      <div className="absolute inset-0 hidden sm:flex items-center justify-start z-[2] px-8 lg:px-24">
         {/* Desktop Image & Overlays */}
         <div className="absolute inset-0 z-0 hero-zoom">
           <Image
@@ -46,26 +46,41 @@ export default function BrandStory() {
             sizes="100vw"
           />
         </div>
-        <div className="absolute inset-0 z-0 bg-[#FAF9F6]/10" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6]/30 via-transparent to-[#FAF9F6]/60" />
+        {/* Soft cream gradient on the left to frame the editorial insert */}
+        <div className="absolute inset-y-0 left-0 z-0 bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent w-[65%]" />
 
-        {/* Refined Frosted Card Layout (Desktop) */}
+        {/* Editorial Floating Layout */}
         <motion.div
-           className="absolute bottom-16 left-6 lg:bottom-32 lg:left-24 flex flex-col items-start transform-gpu z-[2]"
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+           className="relative flex items-center gap-10 lg:gap-16 z-10 max-w-[850px]"
+           initial={{ opacity: 0, x: -30 }}
+           animate={{ opacity: 1, x: 0 }}
+           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="max-w-[320px] sm:max-w-[420px] hidden sm:block">
-            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 font-bold mb-4">
+          {/* Portrait Video Insert */}
+          <div className="relative w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] overflow-hidden rounded-sm shadow-2xl flex-shrink-0">
+            <video
+              src="/videos/combo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+            {/* Very subtle border overlay for print-feel */}
+            <div className="absolute inset-0 border border-black/5 pointer-events-none" />
+          </div>
+
+          {/* Text Content */}
+          <div className="flex flex-col items-start max-w-[380px]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/80 font-bold mb-5">
               new season
             </p>
-            <h2 className="font-serif text-[2.5rem] lg:text-[3.2rem] text-kaaj-charcoal font-light leading-[1.1] tracking-tight mb-10 drop-shadow-sm">
-              Effortless elegance, <br className="hidden sm:block" />redefined
+            <h2 className="font-serif text-[2.8rem] lg:text-[3.5rem] text-kaaj-charcoal font-light leading-[1.05] tracking-tight mb-8 drop-shadow-sm">
+              Effortless <br />elegance, <br />redefined.
             </h2>
             <Link
               href="/shop"
-              className="group inline-flex items-center justify-center gap-4 px-8 py-3.5 rounded-full bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
+              className="group inline-flex items-center justify-center gap-4 px-8 py-3.5 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
             >
               <span className="font-sans text-[12px] font-medium lowercase tracking-[0.1em]">
                 shop now
@@ -85,7 +100,6 @@ export default function BrandStory() {
             </Link>
           </div>
         </motion.div>
-        
         {/* Scroll indicator (Desktop) */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu"
@@ -132,7 +146,7 @@ export default function BrandStory() {
           className="absolute bottom-12 flex flex-col items-center z-10 w-full animate-fade-up"
           style={{ animationDelay: "1.2s", animationFillMode: "both" }}
         >
-          <div className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/70 text-white hover:bg-white/10 transition-colors duration-500">
+          <div className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-none border border-white/70 text-white hover:bg-white/10 transition-colors duration-500">
             <span className="font-sans text-[13px] font-medium uppercase tracking-[1.5px]">
               Explore Collection
             </span>
