@@ -71,7 +71,7 @@ export default function ShopClient() {
             Shop All.
           </h1>
           <p className="font-sans text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 max-w-xl leading-relaxed">
-            Discover the complete KAAJ range — an exploration of heritage artistry through modern silhouettes.
+            Discover the complete KAAJ range.
           </p>
         </div>
       </div>
