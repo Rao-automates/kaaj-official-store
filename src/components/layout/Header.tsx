@@ -60,10 +60,7 @@ export default function Header() {
             {/* Left: Hamburger ↔ Close toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className={cn(
-                "relative w-12 h-12 flex items-center justify-start transition-colors z-[60]",
-                menuOpen ? "text-white hover:text-kaaj-gold" : "text-kaaj-charcoal hover:text-kaaj-gold"
-              )}
+              className="relative w-12 h-12 flex items-center justify-start transition-colors z-[60] text-kaaj-charcoal hover:text-kaaj-gold"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
               <div className="relative w-6 h-4 flex flex-col justify-between">
@@ -88,7 +85,7 @@ export default function Header() {
               className={cn(
                 "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-700 hover:scale-105",
                 isHomepage && !pastHero && !menuOpen
-                  ? "opacity-0 pointer-events-none translate-y-2"
+                  ? "opacity-100 md:opacity-0 pointer-events-auto md:pointer-events-none translate-y-0 md:translate-y-2"
                   : "opacity-100 pointer-events-auto translate-y-0"
               )}
               aria-label="KAAJ Home"
