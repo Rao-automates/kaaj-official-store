@@ -16,7 +16,6 @@ import React, { useEffect, useState } from "react";
 export default function BrandStory() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isInstagram, setIsInstagram] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     // Detect Instagram browser
@@ -24,12 +23,6 @@ export default function BrandStory() {
     if (ua.indexOf("Instagram") > -1) {
       setIsInstagram(true);
     }
-    
-    // Only load video on desktop to save RAM/Bandwidth on cheap phones
-    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 640);
-    checkIsDesktop();
-    window.addEventListener("resize", checkIsDesktop, { passive: true });
-    return () => window.removeEventListener("resize", checkIsDesktop);
   }, []);
 
   useEffect(() => {
@@ -71,7 +64,7 @@ export default function BrandStory() {
             
             {/* The Video Pillar */}
             <div className="relative w-[300px] h-[480px] lg:w-[380px] lg:h-[620px] overflow-hidden rounded-none shadow-2xl">
-              {isInstagram || !isDesktop ? (
+              {isInstagram ? (
                 <Image
                   src="/images/hero-slide-1.webp"
                   alt="KAAJ Cinematic"
@@ -141,7 +134,7 @@ export default function BrandStory() {
         {/* Cinematic Video Background */}
         <div className="absolute inset-0 z-0 bg-[#141413]">
           <div className="absolute inset-0 z-0 pointer-events-none">
-            {isInstagram || !isDesktop ? (
+            {isInstagram ? (
               <Image
                 src="/images/hero-slide-1.webp"
                 alt="KAAJ Cinematic"

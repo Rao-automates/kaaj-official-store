@@ -1,11 +1,11 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface FadeInProps {
   children: ReactNode;
-  delay?: number; // Delay in seconds (e.g. 0.2)
+  delay?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
   fullWidth?: boolean;
 }
@@ -16,61 +16,34 @@ export default function FadeIn({
   direction = "up",
   fullWidth = false,
 }: FadeInProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Highly optimized IntersectionObserver
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Add a small requestAnimationFrame to ensure browser has painted before animating
-          requestAnimationFrame(() => {
-            setIsVisible(true);
-          });
-          if (ref.current) observer.unobserve(ref.current);
-        }
-      },
-      {
-        rootMargin: "-20px", // Trigger when slightly visible
-        threshold: 0,
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
-
-  // Hardware-accelerated CSS classes for animation
-  const getDirectionClass = () => {
-    if (isVisible) return "translate-x-0 translate-y-0 opacity-100";
-    
-    switch (direction) {
-      case "up": return "translate-y-10 opacity-0";
-      case "down": return "-translate-y-10 opacity-0";
-      case "left": return "translate-x-10 opacity-0";
-      case "right": return "-translate-x-10 opacity-0";
-      case "none": return "opacity-0";
-      default: return "translate-y-10 opacity-0";
-    }
+  const directions = {
+    up: { y: 40, x: 0 },
+    down: { y: -40, x: 0 },
+    left: { x: 40, y: 0 },
+    right: { x: -40, y: 0 },
+    none: { x: 0, y: 0 },
   };
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "transition-[opacity,transform] duration-700 ease-out",
-        fullWidth ? "w-full" : "",
-        getDirectionClass()
-      )}
-      style={{ transitionDelay: `${delay}s` }}
+    <motion.div
+      className={fullWidth ? "w-full" : ""}
+      initial={{
+        opacity: 0,
+        ...directions[direction],
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        y: 0,
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.8,
+        ease: [0.21, 0.47, 0.32, 0.98], // Custom ease-out
+        delay: delay,
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
