@@ -78,8 +78,12 @@ export default function ProductImageGallery({
 
       {/* Main Image */}
       <div
-        className="relative flex-1 aspect-[3/4] bg-kaaj-cream-dark overflow-hidden cursor-zoom-in"
-        onMouseEnter={() => setZoomed(true)}
+        className="relative flex-1 aspect-[3/4] bg-kaaj-cream-dark overflow-hidden md:cursor-zoom-in"
+        onMouseEnter={() => {
+          if (typeof window !== "undefined" && window.innerWidth >= 768) {
+            setZoomed(true);
+          }
+        }}
         onMouseLeave={() => setZoomed(false)}
         onMouseMove={handleMouseMove}
       >

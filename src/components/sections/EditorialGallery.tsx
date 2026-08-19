@@ -11,11 +11,7 @@ export default function EditorialGallery() {
           
           {/* Text Content */}
           <div className="w-full lg:w-5/12 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
-            <FadeIn>
-              <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal mb-8 border-b border-kaaj-charcoal/10 pb-3 inline-block">
-                Atelier Collection
-              </p>
-            </FadeIn>
+
             
             <FadeIn delay={0.1}>
               <h2 className="font-sans text-[5rem] lg:text-[7.5rem] font-medium text-[#141413] leading-none tracking-tight mb-8">

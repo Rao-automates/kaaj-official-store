@@ -10,7 +10,6 @@ import SearchModal from "./SearchModal";
 const NAV_LINKS = [
   { label: "Shop All", href: "/shop" },
   { label: "New Arrivals", href: "/shop" },
-  { label: "Atelier Collection", href: "/shop" },
   { label: "Sale", href: "/categories/sale" },
   { label: "Story", href: "/about" },
 ];
