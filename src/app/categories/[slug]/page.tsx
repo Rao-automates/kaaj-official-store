@@ -93,8 +93,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const allCategories = rawCategories.filter((c: any) => c.slug !== "uncategorized");
 
-  const meta = CATEGORY_META[slug];
-  const displayName = slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const categoryData = rawCategories.find((c: any) => c.slug === slug);
+  let displayName = categoryData?.name || slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  
+  if (slug === 'aks') {
+    displayName = 'عکس';
+  }
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
