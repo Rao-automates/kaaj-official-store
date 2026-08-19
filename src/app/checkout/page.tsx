@@ -35,6 +35,8 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [finalOrderTotal, setFinalOrderTotal] = useState(0);
+  const [finalOrderItems, setFinalOrderItems] = useState<any[]>([]);
+  const [finalShipping, setFinalShipping] = useState(0);
   const [errors, setErrors] = useState<{ email?: string; phone?: string }>({});
   const [paymentMethod, setPaymentMethod] = useState<"cod" | "bacs">("cod");
   const [orderNumber] = useState(
@@ -105,6 +107,8 @@ export default function CheckoutPage() {
       }
 
       setFinalOrderTotal(total);
+      setFinalOrderItems([...cart.items]);
+      setFinalShipping(shipping);
       setSubmitted(true);
       clearCart();
     } catch (error) {
@@ -166,6 +170,42 @@ export default function CheckoutPage() {
                   placed successfully. Our team will confirm your order via call or WhatsApp shortly.
                 </p>
               )}
+            </div>
+          </div>
+
+          {/* Order Summary */}
+          <div className="max-w-2xl mx-auto border border-kaaj-charcoal/10 p-8 text-left mb-8">
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal/70 mb-6">
+              Order Summary
+            </p>
+            <div className="space-y-4 mb-6">
+              {finalOrderItems.map((item, idx) => (
+                <div key={`${item.productId}-${idx}`} className="flex justify-between items-start border-b border-kaaj-charcoal/5 pb-4">
+                  <div>
+                    <p className="font-sans text-sm text-kaaj-charcoal font-medium">
+                      {item.name} <span className="text-kaaj-charcoal/50 font-normal">x {item.quantity}</span>
+                    </p>
+                    {item.selectedAttributes && Object.keys(item.selectedAttributes).length > 0 && (
+                      <p className="font-sans text-[10px] uppercase tracking-[0.1em] text-kaaj-charcoal/60 mt-1">
+                        {Object.entries(item.selectedAttributes).map(([k, v]) => `${k}: ${v}`).join(', ')}
+                      </p>
+                    )}
+                  </div>
+                  <p className="font-sans text-sm text-kaaj-charcoal">
+                    {formatPKR(String(item.price * item.quantity))}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-2 pt-2">
+              <div className="flex justify-between items-center">
+                <span className="font-sans text-[11px] text-kaaj-charcoal/70">Subtotal</span>
+                <span className="font-sans text-sm text-kaaj-charcoal/80">{formatPKR(String(finalOrderTotal - finalShipping))}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="font-sans text-[11px] text-kaaj-charcoal/70">Shipping</span>
+                <span className="font-sans text-sm text-kaaj-charcoal/80">{finalShipping === 0 ? "Free" : formatPKR(String(finalShipping))}</span>
+              </div>
             </div>
           </div>
 

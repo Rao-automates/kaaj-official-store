@@ -52,16 +52,16 @@ export default function HomeClient({
           </FadeIn>
 
           <FadeIn delay={0.15} direction="none">
-            <ProductGrid products={initialArrivals.slice(0, 5)} columns={4} />
+            <ProductGrid products={initialArrivals.slice(0, 8)} columns={4} />
           </FadeIn>
           
           <FadeIn delay={0.3} direction="up">
             <div className="mt-16 md:mt-24 flex justify-center">
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-3 py-2 text-kaaj-charcoal transition-all duration-500"
+                className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-charcoal/20 hover:border-kaaj-gold transition-colors duration-500 justify-center w-full max-w-sm"
               >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em] border-b border-kaaj-charcoal/30 pb-0.5 group-hover:border-kaaj-charcoal transition-colors">
+                <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-charcoal group-hover:text-kaaj-gold transition-colors duration-500">
                   Shop All Arrivals
                 </span>
                 <svg
@@ -71,7 +71,7 @@ export default function HomeClient({
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu"
+                  className="text-kaaj-charcoal group-hover:text-kaaj-gold group-hover:translate-x-2 transition-all duration-500 transform-gpu"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
