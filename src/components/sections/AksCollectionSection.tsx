@@ -95,7 +95,7 @@ export default function AksCollectionSection({
           {/* CTA Button */}
           <Link
             href={ctaHref}
-            className="group inline-flex items-center gap-4 bg-[#6B6E47] text-[#F7F3EC] px-10 py-4 font-jost uppercase tracking-[0.2em] text-sm md:text-[13px] font-semibold transition-colors duration-300 hover:bg-[#5a5c3c] mb-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#6B6E47] focus-visible:ring-offset-[#F7F3EC]"
+            className="group inline-flex items-center gap-4 bg-[#6B6E47]/70 backdrop-blur-md text-[#F7F3EC] px-10 py-4 font-jost uppercase tracking-[0.2em] text-sm md:text-[13px] font-semibold transition-colors duration-300 hover:bg-[#6B6E47]/90 mb-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#6B6E47] focus-visible:ring-offset-[#F7F3EC]"
           >
             <span>{ctaLabel}</span>
             <svg 

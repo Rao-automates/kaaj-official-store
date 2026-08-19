@@ -34,6 +34,7 @@ export default function CheckoutPage() {
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [finalOrderTotal, setFinalOrderTotal] = useState(0);
   const [errors, setErrors] = useState<{ email?: string; phone?: string }>({});
   const [paymentMethod, setPaymentMethod] = useState<"cod" | "bacs">("cod");
   const [orderNumber] = useState(
@@ -103,6 +104,7 @@ export default function CheckoutPage() {
         throw new Error("Failed to process order");
       }
 
+      setFinalOrderTotal(total);
       setSubmitted(true);
       clearCart();
     } catch (error) {
@@ -190,7 +192,7 @@ export default function CheckoutPage() {
               <div className="flex justify-between items-end">
                 <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-kaaj-charcoal/70">Order Total</span>
                 <span className="font-sans text-2xl text-kaaj-charcoal">
-                  {formatPKR(String(total))}
+                  {formatPKR(String(finalOrderTotal))}
                 </span>
               </div>
             </div>

@@ -53,9 +53,9 @@ export default function HomeClient({
               </div>
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-3 px-8 py-3.5 bg-kaaj-olive text-kaaj-cream hover:opacity-90 transition-all duration-500 btn-shimmer"
+                className="group inline-flex items-center gap-3 py-2 text-kaaj-charcoal transition-all duration-500"
               >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em]">
+                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em] border-b border-kaaj-charcoal/30 pb-0.5 group-hover:border-kaaj-charcoal transition-colors">
                   Shop New Arrivals
                 </span>
                 <svg
