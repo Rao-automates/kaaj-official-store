@@ -194,13 +194,37 @@ export async function POST(request: Request) {
       });
 
       // 2. Send notification to Store Owner
+      // Format customer phone for WhatsApp (ensure it starts with 92 for PK)
+      let cleanPhone = form.phone.replace(/[^0-9]/g, '');
+      if (cleanPhone.startsWith('0')) cleanPhone = '92' + cleanPhone.substring(1);
+      else if (!cleanPhone.startsWith('92') && cleanPhone.length === 10) cleanPhone = '92' + cleanPhone; // handle 3001234567
+
+      const waTemplate = `Hello ${form.firstName},
+
+Thank you for shopping with KAAJ! We have received your order ${finalOrderId}.
+Your total is Rs. ${total.toLocaleString()}.
+
+${paymentMethod === 'cod' 
+  ? 'We are preparing your order for dispatch. Please confirm this message to proceed.' 
+  : 'Please reply with a screenshot of your bank transfer so we can process your order.'}
+
+Best,
+KAAJ Team`;
+
+      const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(waTemplate)}`;
+
       const adminEmailHtml = `
         <div style="font-family: sans-serif; color: #1a1a1a; padding: 20px;">
           <h2>New Order Received: ${finalOrderId}</h2>
           <p><strong>Customer:</strong> ${form.firstName} ${form.lastName} (${form.email})</p>
+          <p><strong>Phone:</strong> ${form.phone}</p>
           <p><strong>Payment Method:</strong> ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Direct Bank Transfer'}</p>
           <p><strong>Total:</strong> Rs. ${total.toLocaleString()}</p>
           <p>The order has been successfully logged into WooCommerce.</p>
+          
+          <a href="${waUrl}" style="display: inline-block; background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px;">
+            Send WhatsApp Confirmation
+          </a>
         </div>
       `;
       
