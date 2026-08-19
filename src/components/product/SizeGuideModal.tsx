@@ -94,111 +94,28 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
           {/* Kameez Table */}
           {activeTab === "Kameez" && (
             <div className="space-y-8">
+            <div className="space-y-4">
               <KameezFigure />
-              <div className="overflow-x-auto">
-              <table className="w-full text-sm font-sans whitespace-nowrap">
-                <thead>
-                  <tr className="border-b border-kaaj-border bg-kaaj-cream-dark">
-                    {["Size", "Length", "Shoulder", "Chest", "Front Border", "Arm Hole", "Sleeve Length", "Sleeve Opening"].map((h) => (
-                      <th
-                        key={h}
-                        className="py-3 px-4 text-center text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal font-semibold border-r border-kaaj-border last:border-r-0"
-                      >
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {sizeData.map((row) => (
-                    <tr
-                      key={row.size}
-                      className="border-b border-kaaj-border/50 hover:bg-kaaj-gold/5 transition-colors"
-                    >
-                      <td className="py-4 px-4 text-center font-bold text-kaaj-charcoal border-r border-kaaj-border bg-kaaj-cream-dark/30">{row.size}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.length}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.shoulder}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.chest}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.frontBorder}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.armHole}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.sleeveLength}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal">{row.sleeveOpening}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
             </div>
           )}
 
           {/* Shalwar Table */}
           {activeTab === "Shalwar" && (
             <div className="space-y-8">
+            <div className="space-y-4">
               <ShalwarFigure />
-              <div className="overflow-x-auto">
-              <table className="w-full text-sm font-sans whitespace-nowrap">
-                <thead>
-                  <tr className="border-b border-kaaj-border bg-kaaj-cream-dark">
-                    {["Size", "Length", "Waist", "Fullness", "Front Rise", "Back Rise", "Hem"].map((h) => (
-                      <th
-                        key={h}
-                        className="py-3 px-4 text-center text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal font-semibold border-r border-kaaj-border last:border-r-0"
-                      >
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {shalwarSizeData.map((row) => (
-                    <tr
-                      key={row.size}
-                      className="border-b border-kaaj-border/50 hover:bg-kaaj-gold/5 transition-colors"
-                    >
-                      <td className="py-4 px-4 text-center font-bold text-kaaj-charcoal border-r border-kaaj-border bg-kaaj-cream-dark/30">{row.size}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.length}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.waist}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.fullness}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.frontRise}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.backRise}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal">{row.hem}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
             </div>
           )}
 
           {/* Dupatta Table */}
           {activeTab === "Dupatta" && (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm font-sans whitespace-nowrap">
-                <thead>
-                  <tr className="border-b border-kaaj-border bg-kaaj-cream-dark">
-                    {["Type", "Length", "Width"].map((h) => (
-                      <th
-                        key={h}
-                        className="py-3 px-4 text-center text-[10px] uppercase tracking-[0.15em] text-kaaj-charcoal font-semibold border-r border-kaaj-border last:border-r-0"
-                      >
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {dupattaSizeData.map((row) => (
-                    <tr
-                      key={row.type}
-                      className="border-b border-kaaj-border/50 hover:bg-kaaj-gold/5 transition-colors"
-                    >
-                      <td className="py-4 px-4 text-center font-bold text-kaaj-charcoal border-r border-kaaj-border bg-kaaj-cream-dark/30">{row.type}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal border-r border-kaaj-border">{row.length}</td>
-                      <td className="py-4 px-4 text-center text-kaaj-charcoal">{row.width}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="space-y-4">
+              {dupattaSizeData.map((row) => (
+                <div key={row.type} className="bg-kaaj-cream-dark/50 border border-kaaj-border/60 p-5 text-center">
+                  <p className="font-sans text-sm font-bold text-kaaj-charcoal uppercase tracking-widest mb-1">{row.type}</p>
+                  <p className="font-sans text-xs text-kaaj-charcoal/70 tracking-widest uppercase">Length: {row.length} &mdash; Width: {row.width}</p>
+                </div>
+              ))}
             </div>
           )}
 
