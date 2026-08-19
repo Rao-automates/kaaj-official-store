@@ -93,7 +93,6 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
 
           {/* Kameez Table */}
           {activeTab === "Kameez" && (
-            <div className="space-y-8">
             <div className="space-y-4">
               <KameezFigure />
             </div>
@@ -101,7 +100,6 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
 
           {/* Shalwar Table */}
           {activeTab === "Shalwar" && (
-            <div className="space-y-8">
             <div className="space-y-4">
               <ShalwarFigure />
             </div>
