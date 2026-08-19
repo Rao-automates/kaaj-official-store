@@ -30,20 +30,22 @@ export default function EditorialGallery() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.3} className="w-full flex justify-center lg:justify-start">
-              <Link
-                href="/categories/aks"
-                className="group inline-flex items-center gap-4 px-10 py-4 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
-              >
-                <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
-                  Shop عکس Collection
-                </span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                  className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
+            <FadeIn delay={0.3}>
+              <div className="w-full flex justify-center lg:justify-start">
+                <Link
+                  href="/categories/aks"
+                  className="group inline-flex items-center gap-4 px-10 py-4 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
+                >
+                  <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
+                    Shop عکس Collection
+                  </span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
+                    className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+              </div>
             </FadeIn>
           </div>
 
