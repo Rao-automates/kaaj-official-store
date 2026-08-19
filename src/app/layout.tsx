@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Nastaliq_Urdu, Jost } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import PerformanceProvider from "@/components/providers/PerformanceProvider";
@@ -14,6 +14,20 @@ import Script from "next/script";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const nastaliq = Noto_Nastaliq_Urdu({
+  subsets: ["arabic"],
+  weight: ["400", "600", "700"],
+  variable: "--font-nastaliq",
+  display: "swap",
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jost",
   display: "swap",
 });
 
@@ -135,7 +149,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
         />
       </head>
-      <body className="font-sans bg-kaaj-cream text-kaaj-charcoal antialiased">
+      <body className={`${inter.variable} ${nastaliq.variable} ${jost.variable} font-sans bg-kaaj-cream text-kaaj-charcoal antialiased`}>
         <CartProvider>
           <PerformanceProvider />
           <Header />

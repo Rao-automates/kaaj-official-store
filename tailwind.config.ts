@@ -32,6 +32,8 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-cormorant)", "Cormorant Garamond", "Georgia", "serif"],
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        nastaliq: ["var(--font-nastaliq)", "Arial", "sans-serif"],
+        jost: ["var(--font-jost)", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(3rem, 8vw, 7rem)", { lineHeight: "1.0" }],

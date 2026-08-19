@@ -6,7 +6,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 import CategoryPill from "@/components/ui/CategoryPill";
 import FadeIn from "@/components/ui/FadeIn";
 import Link from "next/link";
-import EditorialGallery from "@/components/sections/EditorialGallery";
+import AksCollectionSection from "@/components/sections/AksCollectionSection";
 
 interface HomeClientProps {
   initialFeatured: any[];
@@ -30,7 +30,15 @@ export default function HomeClient({
       )}
 
       {/* Editorial Lookbook (Aks Collection) */}
-      <EditorialGallery />
+      <AksCollectionSection
+        eyebrow="NEW COLLECTION"
+        heading="عکس"
+        subtext="آپ کی شخصیت کا ایک نیا عکس۔"
+        features={['Pure Silk', 'Hand Finished', 'Limited Pieces']}
+        ctaLabel="SHOP COLLECTION"
+        ctaHref="/categories/aks"
+        mainImage={{ src: '/images/launch_1_decoration/ed-6.webp', alt: 'Aks' }}
+      />
 
       {/* New Arrivals */}
       <section className="py-24 sm:py-40 bg-transparent section-divider-top">
