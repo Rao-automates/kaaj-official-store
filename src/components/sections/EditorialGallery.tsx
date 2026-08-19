@@ -21,8 +21,7 @@ export default function EditorialGallery() {
 
             <FadeIn delay={0.2}>
               <div className="space-y-3 font-sans text-lg lg:text-[20px] leading-relaxed text-[#141413]/60 font-light mb-14 w-full lg:text-right" dir="rtl">
-                <p>وقت سے بالاتر ایک حسین عکس۔</p>
-                <p>ہر دھاگے میں بُنی روایت اور فنکاری کا احساس۔</p>
+                <p>آپ کی شخصیت کا ایک نیا عکس۔</p>
               </div>
             </FadeIn>
 
@@ -30,7 +29,7 @@ export default function EditorialGallery() {
               <div className="w-full flex justify-center lg:justify-start">
                 <Link
                   href="/categories/aks"
-                  className="group inline-flex items-center gap-4 px-10 py-[18px] rounded-none bg-[#141413] text-[#FAF9F6] hover:bg-[#2A2A28] transition-colors duration-500"
+                  className="group inline-flex items-center gap-4 px-10 py-[18px] rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-colors duration-500"
                 >
                   <span className="font-sans text-[11px] font-medium uppercase tracking-[0.25em]">
                     Shop Collection
