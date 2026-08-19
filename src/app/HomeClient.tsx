@@ -33,8 +33,8 @@ export default function HomeClient({
       <AksCollectionSection
         eyebrow="NEW COLLECTION"
         heading="عکس"
-        subtext="آپ کی شخصیت کا ایک نیا عکس۔"
-        features={['Pure Silk', 'Hand Finished', 'Limited Pieces']}
+        subtext="Explore our latest collection."
+        features={[]}
         ctaLabel="SHOP COLLECTION"
         ctaHref="/categories/aks"
         mainImage={{ src: '/images/launch_1_decoration/ed-6.webp', alt: 'Aks' }}
