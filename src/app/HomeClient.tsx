@@ -44,19 +44,25 @@ export default function HomeClient({
       <section className="py-24 sm:py-40 bg-transparent section-divider-top">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-24 gap-8">
-              <div>
+            <div className="mb-16 md:mb-24">
+              <h2 className="font-sans text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
+                New Arrivals.
+              </h2>
+            </div>
+          </FadeIn>
 
-                <h2 className="font-sans text-[clamp(2.5rem,8vw,5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
-                  New Arrivals.
-                </h2>
-              </div>
+          <FadeIn delay={0.15} direction="none">
+            <ProductGrid products={initialArrivals.slice(0, 5)} columns={4} />
+          </FadeIn>
+          
+          <FadeIn delay={0.3} direction="up">
+            <div className="mt-16 md:mt-24 flex justify-center">
               <Link
                 href="/shop"
                 className="group inline-flex items-center gap-3 py-2 text-kaaj-charcoal transition-all duration-500"
               >
                 <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em] border-b border-kaaj-charcoal/30 pb-0.5 group-hover:border-kaaj-charcoal transition-colors">
-                  Shop New Arrivals
+                  Shop All Arrivals
                 </span>
                 <svg
                   width="14"
@@ -72,10 +78,6 @@ export default function HomeClient({
                 </svg>
               </Link>
             </div>
-          </FadeIn>
-
-          <FadeIn delay={0.15} direction="none">
-            <ProductGrid products={initialArrivals} columns={4} />
           </FadeIn>
         </div>
       </section>
