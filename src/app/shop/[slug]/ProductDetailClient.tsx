@@ -204,7 +204,7 @@ export default function ProductDetailClient({
                 <span className="font-sans text-2xl text-kaaj-charcoal">
                   {formatPKR(displayPrice)}
                 </span>
-                {onSale && displayRegularPrice && (
+                {displayRegularPrice && (
                   <span className="font-sans text-sm text-kaaj-charcoal/70 line-through">
                     {formatPKR(displayRegularPrice)}
                   </span>
@@ -225,8 +225,8 @@ export default function ProductDetailClient({
                     <div key={attr.name} className="flex flex-col gap-0.5 p-3 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm">
                       <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-kaaj-charcoal/70 flex items-center gap-1.5">
                         <svg className="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                          <line x1="3" y1="9" x2="21" y2="9"/>
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                          <line x1="3" y1="9" x2="21" y2="9" />
                         </svg>
                         {attr.name.replace(/^pa_/, "")}
                       </span>
@@ -244,10 +244,10 @@ export default function ProductDetailClient({
                 className="group flex items-center gap-3 w-full py-3 px-4 bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 rounded-sm hover:border-kaaj-gold/40 hover:bg-kaaj-gold/5 transition-all duration-300"
               >
                 <svg className="w-4 h-4 text-kaaj-charcoal/70 group-hover:text-kaaj-gold transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <path d="M9 4v16"/>
-                  <path d="M14 4v4"/>
-                  <path d="M19 4v8"/>
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <path d="M9 4v16" />
+                  <path d="M14 4v4" />
+                  <path d="M19 4v8" />
                 </svg>
                 <span className="font-sans text-[11px] uppercase tracking-[0.15em] text-kaaj-charcoal/80 group-hover:text-kaaj-gold transition-colors">
                   Size Guide
@@ -278,8 +278,8 @@ export default function ProductDetailClient({
                               className="font-sans text-[10px] uppercase tracking-[0.1em] text-kaaj-charcoal flex items-center gap-1 hover:text-kaaj-gold transition-colors"
                             >
                               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <path d="M9 4v16"/>
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <path d="M9 4v16" />
                               </svg>
                               Find my size
                             </button>
@@ -290,7 +290,7 @@ export default function ProductDetailClient({
                   {/* Specific Size Details */}
                   {Object.entries(selectedAttrs).map(([key, val]) => {
                     if (!key.toLowerCase().includes("size")) return null;
-                    
+
                     let mappedSize = val.toUpperCase();
                     if (val.toLowerCase() === "small") mappedSize = "S";
                     if (val.toLowerCase() === "medium") mappedSize = "M";
@@ -300,7 +300,7 @@ export default function ProductDetailClient({
 
                     const measurements = sizeData.find((s) => s.size.toUpperCase() === mappedSize);
                     if (!measurements) return null;
-                    
+
                     return (
                       <div key={`size-details-${val}`} className="mt-4 p-4 bg-kaaj-cream-dark/50 border border-kaaj-border/60">
                         <p className="font-sans text-[11px] uppercase tracking-widest text-kaaj-charcoal font-semibold mb-2">
@@ -360,10 +360,10 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Out of Stock"
                     : variantNotSelected
-                    ? "Select Options"
-                    : addedToCart
-                    ? "✓ Added To Cart"
-                    : "ADD TO CART"}
+                      ? "Select Options"
+                      : addedToCart
+                        ? "✓ Added To Cart"
+                        : "ADD TO CART"}
                 </button>
                 <button
                   onClick={handleOrderNow}
@@ -378,8 +378,8 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Out of Stock"
                     : variantNotSelected
-                    ? "Select Options"
-                    : "BUY NOW"}
+                      ? "Select Options"
+                      : "BUY NOW"}
                 </button>
                 {variantNotSelected && (
                   <p className="font-sans text-[10px] text-kaaj-charcoal/70 text-center mt-2">
@@ -393,27 +393,27 @@ export default function ProductDetailClient({
                 <div className="grid grid-cols-3 gap-2 px-1">
                   <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
                     <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0110 0v4"/>
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0110 0v4" />
                     </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Secure<br/>Checkout</span>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Secure<br />Checkout</span>
                   </div>
                   <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
                     <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="2" y1="12" x2="22" y2="12"/>
-                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                     </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">7-Day<br/>Returns</span>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">7-Day<br />Returns</span>
                   </div>
                   <div className="flex flex-col items-center gap-3 p-4 bg-kaaj-charcoal/5 border border-kaaj-border/40 rounded-sm text-center">
                     <svg className="w-5 h-5 text-kaaj-charcoal/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M12 3L2 20h20L12 3z"/>
+                      <path d="M12 3L2 20h20L12 3z" />
                     </svg>
-                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Handcrafted<br/>In PK</span>
+                    <span className="font-sans text-[8px] text-kaaj-charcoal font-bold uppercase tracking-[0.15em]">Handcrafted<br />In PK</span>
                   </div>
                 </div>
-                
+
                 <DeliveryTimeline />
               </div>
 
@@ -516,10 +516,10 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Sold Out"
                     : variantNotSelected
-                    ? "Select Options"
-                    : addedToCart
-                    ? "✓ Added"
-                    : "Add to Cart"}
+                      ? "Select Options"
+                      : addedToCart
+                        ? "✓ Added"
+                        : "Add to Cart"}
                 </button>
                 <button
                   onClick={handleOrderNow}
@@ -534,8 +534,8 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Sold Out"
                     : variantNotSelected
-                    ? "Select Options"
-                    : "Buy Now"}
+                      ? "Select Options"
+                      : "Buy Now"}
                 </button>
               </div>
             </div>
@@ -548,7 +548,7 @@ export default function ProductDetailClient({
 
 function DeliveryTimeline() {
   const formatDate = (date: Date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  
+
   const today = new Date();
   const readyStart = new Date(today); readyStart.setDate(today.getDate() + 1);
   const readyEnd = new Date(today); readyEnd.setDate(today.getDate() + 2);
@@ -559,15 +559,15 @@ function DeliveryTimeline() {
     <div className="relative pt-4 pb-2 px-6">
       {/* Connecting Line */}
       <div className="absolute top-8 left-12 right-12 h-0.5 bg-kaaj-charcoal/20"></div>
-      
+
       <div className="flex justify-between relative z-10">
         {/* Step 1 */}
         <div className="flex flex-col items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-kaaj-charcoal text-white flex items-center justify-center">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 01-8 0"/>
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
             </svg>
           </div>
           <div className="text-center">
@@ -580,10 +580,10 @@ function DeliveryTimeline() {
         <div className="flex flex-col items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#252525] text-white flex items-center justify-center ring-4 ring-kaaj-cream">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="1" y="3" width="15" height="13"/>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
+              <rect x="1" y="3" width="15" height="13" />
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
             </svg>
           </div>
           <div className="text-center">
@@ -596,8 +596,8 @@ function DeliveryTimeline() {
         <div className="flex flex-col items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#252525] text-white flex items-center justify-center ring-4 ring-kaaj-cream">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </div>
           <div className="text-center">
