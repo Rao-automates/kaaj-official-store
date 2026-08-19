@@ -8,7 +8,7 @@ import { useCart } from "@/context/CartContext";
 import ProductImageGallery from "@/components/product/ProductImageGallery";
 import VariantSelector from "@/components/product/VariantSelector";
 import SizeGuideModal from "@/components/product/SizeGuideModal";
-import { sizeData, shalwarSizeData } from "@/lib/constants";
+import { getSizeGuide } from "@/lib/constants";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import ProductGrid from "@/components/product/ProductGrid";
@@ -311,8 +311,9 @@ export default function ProductDetailClient({
                     if (val.toLowerCase() === "extra small") mappedSize = "XS";
                     if (val.toLowerCase() === "extra large") mappedSize = "XL";
 
-                    const measurements = sizeData.find((s) => s.size.toUpperCase() === mappedSize);
-                    const shalwarMeasurements = shalwarSizeData.find((s) => s.size.toUpperCase() === mappedSize);
+                    const { kameez, shalwar } = getSizeGuide(product.name);
+                    const measurements = kameez.find((s) => s.size.toUpperCase() === mappedSize);
+                    const shalwarMeasurements = shalwar.find((s) => s.size.toUpperCase() === mappedSize);
                     
                     if (!measurements) return null;
 
@@ -336,20 +337,12 @@ export default function ProductDetailClient({
                               <span className="text-kaaj-charcoal font-medium">{measurements.chest}"</span>
                             </div>
                             <div className="flex justify-between items-center text-xs font-sans">
-                              <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Arm Hole</span>
-                              <span className="text-kaaj-charcoal font-medium">{measurements.armHole}"</span>
-                            </div>
-                            <div className="flex justify-between items-center text-xs font-sans">
                               <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Sleeve Length</span>
                               <span className="text-kaaj-charcoal font-medium">{measurements.sleeveLength}"</span>
                             </div>
                             <div className="flex justify-between items-center text-xs font-sans">
                               <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Sleeve Opening</span>
                               <span className="text-kaaj-charcoal font-medium">{measurements.sleeveOpening}"</span>
-                            </div>
-                            <div className="flex justify-between items-center text-xs font-sans">
-                              <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Front Border</span>
-                              <span className="text-kaaj-charcoal font-medium">{measurements.frontBorder}"</span>
                             </div>
                           </div>
                         </div>
@@ -369,19 +362,15 @@ export default function ProductDetailClient({
                                 <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.waist}"</span>
                               </div>
                               <div className="flex justify-between items-center text-xs font-sans">
-                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Fullness</span>
-                                <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.fullness}"</span>
+                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Hip</span>
+                                <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.hip}"</span>
                               </div>
                               <div className="flex justify-between items-center text-xs font-sans">
-                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Front Rise</span>
-                                <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.frontRise}"</span>
+                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Thigh</span>
+                                <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.thigh}"</span>
                               </div>
                               <div className="flex justify-between items-center text-xs font-sans">
-                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Back Rise</span>
-                                <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.backRise}"</span>
-                              </div>
-                              <div className="flex justify-between items-center text-xs font-sans">
-                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Hem</span>
+                                <span className="text-kaaj-charcoal/60 uppercase tracking-widest text-[9px]">Bottom Hem</span>
                                 <span className="text-kaaj-charcoal font-medium">{shalwarMeasurements.hem}"</span>
                               </div>
                             </div>
