@@ -59,7 +59,7 @@ export default function SizeGuidePage() {
               <table className="w-full text-sm font-sans whitespace-nowrap">
                 <thead>
                   <tr className="border-b border-kaaj-charcoal/20 bg-kaaj-charcoal/5">
-                    {["Size", "Length", "Shoulder", "Chest", "Front Border", "Arm Hole", "Sleeve Length", "Sleeve Opening"].map((h) => (
+                    {["Size", "Length", "Shoulder", "Chest", "Sleeve Length", "Sleeve Opening"].map((h) => (
                       <th
                         key={h}
                         className="py-6 px-6 text-center text-[10px] sm:text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 font-normal border-r border-kaaj-charcoal/10 last:border-r-0"
@@ -79,8 +79,6 @@ export default function SizeGuidePage() {
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.length}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.shoulder}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.chest}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.frontBorder}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.armHole}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.sleeveLength}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80">{row.sleeveOpening}</td>
                     </tr>
@@ -106,7 +104,7 @@ export default function SizeGuidePage() {
               <table className="w-full text-sm font-sans whitespace-nowrap">
                 <thead>
                   <tr className="border-b border-kaaj-charcoal/20 bg-kaaj-charcoal/5">
-                    {["Size", "Length", "Waist", "Fullness", "Front Rise", "Back Rise", "Hem"].map((h) => (
+                    {["Size", "Length", "Waist", "Hip", "Thigh", "Hem"].map((h) => (
                       <th
                         key={h}
                         className="py-6 px-6 text-center text-[10px] sm:text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 font-normal border-r border-kaaj-charcoal/10 last:border-r-0"
@@ -125,9 +123,8 @@ export default function SizeGuidePage() {
                       <td className="py-6 px-6 text-center font-sans text-lg text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.size}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.length}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.waist}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.fullness}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.frontRise}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.backRise}</td>
+                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.hip}</td>
+                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.thigh}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80">{row.hem}</td>
                     </tr>
                   ))}
