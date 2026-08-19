@@ -199,10 +199,22 @@ export async function POST(request: Request) {
       if (cleanPhone.startsWith('0')) cleanPhone = '92' + cleanPhone.substring(1);
       else if (!cleanPhone.startsWith('92') && cleanPhone.length === 10) cleanPhone = '92' + cleanPhone; // handle 3001234567
 
+      const waProductsList = cart.map((item: any) => {
+        const attributesStr = item.selectedAttributes 
+          ? Object.entries(item.selectedAttributes)
+              .map(([k, v]) => `${k}: ${v}`)
+              .join(', ')
+          : '';
+        return `- ${item.quantity}x ${item.name}${attributesStr ? ` (${attributesStr})` : ''}`;
+      }).join('\n');
+
       const waTemplate = `Hello ${form.firstName},
 
 Thank you for shopping with KAAJ! We have received your order ${finalOrderId}.
-Your total is Rs. ${total.toLocaleString()}.
+
+*Order Summary:*
+${waProductsList}
+*Total:* Rs. ${total.toLocaleString()}
 
 ${paymentMethod === 'cod' 
   ? 'We are preparing your order for dispatch. Please confirm this message to proceed.' 
