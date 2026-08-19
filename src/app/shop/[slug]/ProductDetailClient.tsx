@@ -142,6 +142,23 @@ export default function ProductDetailClient({
     router.push("/checkout");
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: product.name,
+          text: `Check out ${product.name} on KAAJ`,
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
+
   const galleryImages = product.galleryImages?.nodes ?? [];
   const category = product.productCategories?.nodes?.[0];
 
@@ -199,11 +216,25 @@ export default function ProductDetailClient({
                 {product.name}
               </h1>
 
-              {/* Price */}
-              <div className="flex items-baseline gap-3">
-                <span className="font-sans text-2xl text-kaaj-charcoal">
-                  {formatPKR(displayPrice)}
-                </span>
+              {/* Price & Share */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-sans text-2xl text-kaaj-charcoal">
+                    {formatPKR(displayPrice)}
+                  </span>
+                </div>
+                <button
+                  onClick={handleShare}
+                  className="p-2 text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors flex items-center gap-2 font-sans text-[10px] uppercase tracking-widest"
+                  aria-label="Share product"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                    <polyline points="16 6 12 2 8 6" />
+                    <line x1="12" y1="2" x2="12" y2="15" />
+                  </svg>
+                  <span className="hidden sm:inline">Share</span>
+                </button>
               </div>
 
               {/* Short Description */}
