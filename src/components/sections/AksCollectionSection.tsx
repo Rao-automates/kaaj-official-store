@@ -36,16 +36,16 @@ export default function AksCollectionSection({
             <div className="absolute top-[10px] left-[10px] md:top-[16px] md:left-[16px] w-full h-full border border-[#C9A227] z-0 pointer-events-none" />
             
             {/* Main Image */}
-            <div className="relative w-full h-full z-10 bg-[#EAE8E3]">
+            <Link href={ctaHref} className="relative w-full h-full z-10 bg-[#EAE8E3] block group cursor-pointer">
               <Image
                 src={mainImage.src}
                 alt={mainImage.alt}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
               />
-            </div>
+            </Link>
 
             {/* Optional Detail Image */}
             {detailImage && (

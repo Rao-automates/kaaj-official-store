@@ -112,15 +112,15 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               product.type === "VARIABLE"
                 ? "cursor-pointer"
                 : adding
-                ? "text-kaaj-gold"
-                : ""
+                  ? "text-kaaj-gold"
+                  : ""
             )}
           >
             {product.type === "VARIABLE"
               ? "Select Options"
               : adding
-              ? "✓ Added"
-              : "Quick Add"}
+                ? "✓ Added"
+                : "Quick Add"}
           </button>
         </div>
       </div>
