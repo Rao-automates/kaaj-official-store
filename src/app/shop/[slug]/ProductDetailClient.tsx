@@ -148,16 +148,21 @@ export default function ProductDetailClient({
     window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
   };
 
-  const shareInstagram = () => {
-    navigator.clipboard.writeText(window.location.href);
-    
-    // Try to open Instagram app
-    window.location.href = 'instagram://camera';
-    
-    // Fallback
-    setTimeout(() => {
+  const shareInstagram = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: product.name,
+          text: `Check out ${product.name} on KAAJ`,
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
       alert("Link copied! You can paste this in your Instagram app.");
-    }, 500);
+    }
   };
 
   const copyLink = () => {
