@@ -33,7 +33,7 @@ export default function HomeClient({
       <AksCollectionSection
         eyebrow="NEW COLLECTION"
         heading="عکس"
-        subtext="Explore our latest collection."
+        subtext="Explore our latest collection"
         features={[]}
         ctaLabel="SHOP COLLECTION"
         ctaHref="/categories/aks"
