@@ -50,11 +50,6 @@ export function KameezFigure() {
         <circle cx="220" cy="135" r="2" fill="#6B7053" stroke="none" />
         <text x="258" y="139" textAnchor="start" fill="#6B7053" fontSize="10" fontFamily="var(--font-inter), sans-serif" stroke="none">Chest</text>
 
-        {/* Arm Hole */}
-        <path d="M 80,120 Q 75,90 60,55" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" fill="none" />
-        <text x="42" y="82" textAnchor="end" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Arm</text>
-        <text x="42" y="93" textAnchor="end" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Hole</text>
-
         {/* Sleeve Length */}
         <line x1="35" y1="55" x2="35" y2="170" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
         <circle cx="35" cy="55" r="2" fill="#6B7053" stroke="none" />
@@ -70,13 +65,6 @@ export function KameezFigure() {
         {/* Sleeve Opening */}
         <line x1="30" y1="180" x2="75" y2="180" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
         <text x="52" y="195" textAnchor="middle" fill="#6B7053" fontSize="8" fontFamily="var(--font-inter), sans-serif" stroke="none">Sleeve Opening</text>
-
-        {/* Front Border / Hip */}
-        <line x1="85" y1="300" x2="215" y2="300" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
-        <circle cx="85" cy="300" r="2" fill="#6B7053" stroke="none" />
-        <circle cx="215" cy="300" r="2" fill="#6B7053" stroke="none" />
-        <text x="56" y="304" textAnchor="end" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Front</text>
-        <text x="56" y="315" textAnchor="end" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Border</text>
       </svg>
     </div>
   );
@@ -124,11 +112,11 @@ export function ShalwarFigure() {
         <circle cx="210" cy="37" r="2" fill="#6B7053" stroke="none" />
         <text x="140" y="24" textAnchor="middle" fill="#6B7053" fontSize="10" fontFamily="var(--font-inter), sans-serif" stroke="none">Waist</text>
 
-        {/* Fullness (at widest point) */}
+        {/* Hip (at widest point) */}
         <line x1="50" y1="130" x2="230" y2="130" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
         <circle cx="50" cy="130" r="2" fill="#6B7053" stroke="none" />
         <circle cx="230" cy="130" r="2" fill="#6B7053" stroke="none" />
-        <text x="252" y="134" textAnchor="start" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Fullness</text>
+        <text x="252" y="134" textAnchor="start" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Hip</text>
 
         {/* Length (full) */}
         <line x1="38" y1="30" x2="38" y2="370" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
@@ -136,12 +124,11 @@ export function ShalwarFigure() {
         <circle cx="38" cy="370" r="2" fill="#6B7053" stroke="none" />
         <text x="20" y="205" textAnchor="middle" fill="#6B7053" fontSize="10" fontFamily="var(--font-inter), sans-serif" stroke="none" transform="rotate(-90 20 205)">Length</text>
 
-        {/* Front Rise */}
-        <line x1="140" y1="37" x2="140" y2="182" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
-        <circle cx="140" cy="37" r="2" fill="#6B7053" stroke="none" />
-        <circle cx="140" cy="182" r="2" fill="#6B7053" stroke="none" />
-        <text x="148" y="115" textAnchor="start" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Front</text>
-        <text x="148" y="126" textAnchor="start" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Rise</text>
+        {/* Thigh */}
+        <line x1="53" y1="230" x2="97" y2="230" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
+        <circle cx="53" cy="230" r="2" fill="#6B7053" stroke="none" />
+        <circle cx="97" cy="230" r="2" fill="#6B7053" stroke="none" />
+        <text x="45" y="233" textAnchor="end" fill="#6B7053" fontSize="9" fontFamily="var(--font-inter), sans-serif" stroke="none">Thigh</text>
 
         {/* Hem */}
         <line x1="55" y1="380" x2="95" y2="380" stroke="#6B7053" strokeWidth="0.75" strokeDasharray="4 3" />
