@@ -171,5 +171,16 @@ A robust, free architecture has been designed to automate WhatsApp order confirm
     4.  n8n hits the Meta WhatsApp Cloud API using a Permanent System User Token to send a pre-approved template message to the customer.
 
 ---
-*End of Document. Last updated: August 13, 2026*
+## 12. Aks Collection Spotlight Redesign (August 19, 2026)
 
+Based on a detailed design brief, the homepage's "Aks" (عکس) category spotlight (`EditorialGallery.tsx`) was completely redesigned into `AksCollectionSection.tsx`:
+*   **Typography Expansion:** `Noto Nastaliq Urdu` (for authentic, calligraphic Urdu rendering) and `Jost` (for uppercase brand-matched tracking) were added to the `layout.tsx` via `next/font/google` and configured in `tailwind.config.ts`.
+*   **Layout:** Implemented a strict CSS Grid structure (`1fr 1fr` desktop, stacked mobile) centered at max `1240px`.
+*   **Image Styling:** The main image features a distinct `16px` offset thin gold (`#C9A227`) outline to create a "frame behind the photo" effect. The image is clickable with a `Link` pointing to `/categories/aks` and features a smooth `scale-105` hover animation.
+*   **Optimization:** Content is passed via hardcoded props from `HomeClient` to avoid heavy GraphQL queries and maintain 100/100 performance scores.
+
+## 13. UI Refinements (August 19, 2026)
+*   **Price Display (Quiet Luxury):** Crossed-out "regular prices" (`product.regularPrice`) were entirely removed from both the product cards (`ProductCard.tsx`) and the main product page (`ProductDetailClient.tsx`). Only the current/sale price is displayed to maintain a cleaner, less cluttered, and more premium aesthetic (and to resolve a visual glitch). The `onSale` variable in `ProductCard` was preserved specifically for rendering the "Sale" badge logic correctly.
+
+---
+*End of Document. Last updated: August 19, 2026*
