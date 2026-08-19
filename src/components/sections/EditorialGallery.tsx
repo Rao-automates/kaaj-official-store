@@ -41,7 +41,7 @@ export default function EditorialGallery() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6 pb-20">
           {IMAGES.map((src, i) => (
             <FadeIn key={i} delay={Math.min(i * 0.05, 0.2)}>
-              <Link href="/shop" className="block relative aspect-[3/4] w-full overflow-hidden group bg-[#EAE6DF] cursor-pointer">
+              <Link href="/categories/aks" className="block relative aspect-[3/4] w-full overflow-hidden group bg-[#EAE6DF] cursor-pointer">
                 {/* Dark gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 {/* Shop Now label on hover */}
@@ -67,7 +67,7 @@ export default function EditorialGallery() {
         <div className="flex justify-center mt-12">
           <FadeIn delay={0.2}>
             <Link
-              href="/shop"
+              href="/categories/aks"
               className="group inline-flex items-center gap-4 px-10 py-4 rounded-none bg-kaaj-olive text-kaaj-cream hover:bg-[#4A4D45] transition-all duration-500 shadow-sm"
             >
               <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em]">
