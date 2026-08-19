@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-[#141413] pt-24 pb-20 lg:pt-32 lg:pb-32 selection:bg-black selection:text-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-24">
-        
+
         {/* Left Column - Image */}
         <div className="w-full lg:w-5/12 flex-shrink-0 animate-fade-up" style={{ animationDelay: "0.2s", animationFillMode: "both" }}>
           <div className="relative w-full aspect-[4/5] bg-[#EAE8E3]">
@@ -32,7 +32,7 @@ export default function AboutPage() {
           <h1 className="font-sans text-4xl lg:text-6xl tracking-tighter font-medium mb-10 lg:mb-16 uppercase">
             Our Story
           </h1>
-          
+
           <div className="space-y-6 font-sans text-[15px] lg:text-[17px] leading-relaxed text-[#141413]/80 font-light max-w-2xl">
             <p>
               Fifteen years ago, our founder wasn't running a brand. She was a housewife with a single sewing machine and a lot of determination.
@@ -68,7 +68,7 @@ export default function AboutPage() {
 
           <div className="mt-16 pt-8 border-t border-[#141413]/10">
             <p className="font-sans text-lg lg:text-xl font-medium tracking-tight">
-              Kaaj, by Mehwish Imran
+              K A A J, by Mehwish Imran
             </p>
           </div>
         </div>
