@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "New Arrivals", href: "/shop" },
   { label: "Atelier Collection", href: "/shop" },
   { label: "Sale", href: "/categories/sale" },
+  { label: "Story", href: "/about" },
 ];
 
 export default function Header() {
