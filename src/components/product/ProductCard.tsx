@@ -137,14 +137,11 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         </h3>
         <div className="flex items-center gap-2 pt-0.5">
           <span className="font-sans text-sm text-kaaj-charcoal">
-            {formatPKR(product.salePrice || product.price)}
+            {formatPKR(product.price)}
           </span>
-          {onSale && product.regularPrice && (
-            <span className="font-sans text-xs text-kaaj-muted line-through">
-              {formatPKR(product.regularPrice)}
-            </span>
-          )}
+          {/* Crossed-out regular price removed to hide the glitch */}
         </div>
+
       </div>
     </Link>
   );
