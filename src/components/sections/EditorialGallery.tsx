@@ -52,17 +52,17 @@ export default function EditorialGallery() {
           {/* Image Content */}
           <div className="w-full lg:w-6/12 order-1 lg:order-2">
             <FadeIn delay={0.2}>
-              <div className="relative aspect-[4/5] w-full max-w-[500px] mx-auto lg:mx-0 lg:ml-auto overflow-hidden bg-[#EAE8E3]">
+              <Link href="/categories/aks" className="block relative aspect-[4/5] w-full max-w-[500px] mx-auto lg:mx-0 lg:ml-auto overflow-hidden bg-[#EAE8E3] group">
                 <Image 
                   src="/images/launch_1_decoration/ed-6.webp"
                   alt="Aks Collection by Kaaj"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-[2000ms] ease-out hover:scale-105"
+                  className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105"
                   priority
                   quality={90}
                 />
-              </div>
+              </Link>
             </FadeIn>
           </div>
 
