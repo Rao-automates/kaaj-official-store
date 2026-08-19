@@ -32,8 +32,8 @@ export default function AksCollectionSection({
         <div className="order-first md:order-last relative w-full h-full flex justify-center md:justify-end items-center">
           {/* Main Image Frame Container */}
           <div className="relative w-full max-w-[500px] aspect-[4/5] mx-auto md:mx-0">
-            {/* 16px Offset Gold Frame (10px on mobile) */}
-            <div className="absolute top-[10px] left-[10px] md:top-[16px] md:left-[16px] w-full h-full border border-[#C9A227] z-0 pointer-events-none" />
+            {/* 16px Offset Charcoal Frame (10px on mobile) */}
+            <div className="absolute top-[10px] left-[10px] md:top-[16px] md:left-[16px] w-full h-full border border-[#241F1A] z-0 pointer-events-none" />
             
             {/* Main Image */}
             <Link href={ctaHref} className="relative w-full h-full z-10 bg-[#EAE8E3] block group cursor-pointer">
@@ -80,8 +80,8 @@ export default function AksCollectionSection({
             {heading}
           </h2>
 
-          {/* Thin Gold Rule */}
-          <div className="w-[56px] h-px bg-[#C9A227] mb-6" />
+          {/* Thin Rule */}
+          <div className="w-[56px] h-px bg-[#241F1A] mb-6" />
 
           {/* Subtext */}
           <p 
@@ -119,7 +119,7 @@ export default function AksCollectionSection({
                 <React.Fragment key={idx}>
                   <span>{feature}</span>
                   {idx < features.length - 1 && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227]" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#241F1A]" aria-hidden="true" />
                   )}
                 </React.Fragment>
               ))}
