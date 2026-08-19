@@ -1,4 +1,4 @@
-import { sizeData, shalwarSizeData, dupattaSizeData } from "@/lib/constants";
+import { sizeData, shalwarSizeData } from "@/lib/constants";
 import { KameezFigure, ShalwarFigure } from "@/components/ui/MeasurementFigures";
 
 export const metadata = {
@@ -126,46 +126,6 @@ export default function SizeGuidePage() {
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.hip}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.thigh}</td>
                       <td className="py-6 px-6 text-center text-kaaj-charcoal/80">{row.hem}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Dupatta Size Chart ── */}
-        <div>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="h-px flex-1 bg-kaaj-charcoal/10" />
-            <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal whitespace-nowrap">Dupatta</h2>
-            <div className="h-px flex-1 bg-kaaj-charcoal/10" />
-          </div>
-
-          <div className="border border-kaaj-charcoal/20">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm font-sans whitespace-nowrap">
-                <thead>
-                  <tr className="border-b border-kaaj-charcoal/20 bg-kaaj-charcoal/5">
-                    {["Type", "Length", "Width"].map((h) => (
-                      <th
-                        key={h}
-                        className="py-6 px-6 text-center text-[10px] sm:text-xs uppercase tracking-[0.2em] text-kaaj-charcoal/70 font-normal border-r border-kaaj-charcoal/10 last:border-r-0"
-                      >
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {dupattaSizeData.map((row) => (
-                    <tr
-                      key={row.type}
-                      className="border-b border-kaaj-charcoal/10 hover:bg-kaaj-gold/5 transition-colors duration-500 last:border-b-0"
-                    >
-                      <td className="py-6 px-6 text-center font-sans text-base text-kaaj-charcoal border-r border-kaaj-charcoal/10 bg-kaaj-charcoal/5">{row.type}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80 border-r border-kaaj-charcoal/10">{row.length}</td>
-                      <td className="py-6 px-6 text-center text-kaaj-charcoal/80">{row.width}</td>
                     </tr>
                   ))}
                 </tbody>

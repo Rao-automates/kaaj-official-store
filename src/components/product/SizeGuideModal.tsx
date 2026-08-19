@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { sizeData, shalwarSizeData, dupattaSizeData } from "@/lib/constants";
+import { sizeData, shalwarSizeData } from "@/lib/constants";
 import { KameezFigure, ShalwarFigure } from "@/components/ui/MeasurementFigures";
 
 interface SizeGuideModalProps {
@@ -10,7 +10,7 @@ interface SizeGuideModalProps {
   onClose: () => void;
 }
 
-const TABS = ["Kameez", "Shalwar", "Dupatta"] as const;
+const TABS = ["Kameez", "Shalwar"] as const;
 type TabType = typeof TABS[number];
 
 export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps) {
@@ -102,18 +102,6 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
           {activeTab === "Shalwar" && (
             <div className="space-y-4">
               <ShalwarFigure />
-            </div>
-          )}
-
-          {/* Dupatta Table */}
-          {activeTab === "Dupatta" && (
-            <div className="space-y-4">
-              {dupattaSizeData.map((row) => (
-                <div key={row.type} className="bg-kaaj-cream-dark/50 border border-kaaj-border/60 p-5 text-center">
-                  <p className="font-sans text-sm font-bold text-kaaj-charcoal uppercase tracking-widest mb-1">{row.type}</p>
-                  <p className="font-sans text-xs text-kaaj-charcoal/70 tracking-widest uppercase">Length: {row.length} &mdash; Width: {row.width}</p>
-                </div>
-              ))}
             </div>
           )}
 
