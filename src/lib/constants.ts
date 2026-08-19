@@ -55,7 +55,7 @@ const PRODUCT_SPECIFICS: Record<string, { length: string[], sleeveOpening: strin
     sleeveOpening: ["4", "4", "4.5", "4.5", "5"],
     bottomOpening: ["7", "7", "8", "8", "9"],
   },
-  "royal dust": {
+  "rose dust": {
     length: ["45", "46", "48", "49", "50"],
     sleeveOpening: ["8", "9", "9", "9", "10"],
     bottomOpening: ["6", "6", "6.5", "7", "8"],
@@ -80,8 +80,7 @@ function getSpecifics(productName: string) {
   if (n.includes("crimson") || n.includes("crimso")) return PRODUCT_SPECIFICS["crimson aura"];
   if (n.includes("vanilla")) return PRODUCT_SPECIFICS["vanilla meadows"];
   if (n.includes("royal") && n.includes("velvet")) return PRODUCT_SPECIFICS["royal velvet"];
-  if (n.includes("royal") && n.includes("dust")) return PRODUCT_SPECIFICS["royal dust"];
-  if (n.includes("angarkha") || (n.includes("rose") && n.includes("dust"))) return PRODUCT_SPECIFICS["royal dust"];
+  if (n.includes("angarkha") || (n.includes("rose") && n.includes("dust"))) return PRODUCT_SPECIFICS["rose dust"];
   if (n.includes("blush") || n.includes("heaven")) return PRODUCT_SPECIFICS["blush heaven"];
   if (n.includes("pastel")) return PRODUCT_SPECIFICS["pastel lilac"];
   if (n.includes("ocean") || n.includes("ocene")) return PRODUCT_SPECIFICS["ocean mist"];
