@@ -142,21 +142,20 @@ export default function ProductDetailClient({
     router.push("/checkout");
   };
 
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: product.name,
-          text: `Check out ${product.name} on KAAJ`,
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.error("Error sharing:", err);
-      }
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
-    }
+  const shareWhatsApp = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Check out ${product.name} on KAAJ`);
+    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+  };
+
+  const shareFacebook = () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  };
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied to clipboard!");
   };
 
   const galleryImages = product.galleryImages?.nodes ?? [];
@@ -216,27 +215,13 @@ export default function ProductDetailClient({
                 {product.name}
               </h1>
 
-              {/* Price & Share */}
+              {/* Price */}
               <div className="flex items-center justify-between">
                 <div className="flex items-baseline gap-3">
                   <span className="font-sans text-2xl text-kaaj-charcoal">
                     {formatPKR(displayPrice)}
                   </span>
                 </div>
-                <button
-                  onClick={handleShare}
-                  className="p-2 text-kaaj-charcoal/60 hover:text-kaaj-gold transition-colors flex items-center gap-2 font-sans text-[10px] uppercase tracking-widest"
-                  aria-label="Share product"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="18" cy="5" r="3" />
-                    <circle cx="6" cy="12" r="3" />
-                    <circle cx="18" cy="19" r="3" />
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-                  </svg>
-                  <span className="hidden sm:inline">Share</span>
-                </button>
               </div>
 
               {/* Short Description */}
@@ -453,6 +438,14 @@ export default function ProductDetailClient({
                 )}
               </div>
 
+              {/* Disclaimer */}
+              <div className="bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 p-4 mt-6 rounded-sm">
+                <p className="font-sans text-[10px] uppercase tracking-[0.1em] text-kaaj-charcoal/70 leading-relaxed text-center">
+                  <span className="text-kaaj-gold font-bold mr-1">Note:</span>
+                  Actual colors may vary slightly due to lighting. Measurements may have minor variations due to the handcrafted nature of the garments.
+                </p>
+              </div>
+
               {/* Trust & Timeline */}
               <div className="pt-6 border-t border-kaaj-border mt-6 space-y-8">
                 <div className="grid grid-cols-3 gap-2 px-1">
@@ -480,6 +473,31 @@ export default function ProductDetailClient({
                 </div>
 
                 <DeliveryTimeline />
+              </div>
+
+              {/* Share This Look */}
+              <div className="pt-6 mt-6">
+                <h3 className="font-sans text-sm uppercase text-kaaj-charcoal tracking-wide mb-4">
+                  SHARE THIS LOOK
+                </h3>
+                <div className="flex items-center gap-2">
+                  <button onClick={shareWhatsApp} className="w-11 h-11 flex items-center justify-center border border-kaaj-border/80 rounded hover:border-kaaj-charcoal transition-colors text-kaaj-charcoal" aria-label="Share on WhatsApp">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                  </button>
+                  <button onClick={shareFacebook} className="w-11 h-11 flex items-center justify-center border border-kaaj-border/80 rounded hover:border-kaaj-charcoal transition-colors text-kaaj-charcoal" aria-label="Share on Facebook">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </button>
+                  <button onClick={copyLink} className="w-11 h-11 flex items-center justify-center border border-kaaj-border/80 rounded hover:border-kaaj-charcoal transition-colors text-kaaj-charcoal" aria-label="Copy Link">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <div className="h-px bg-kaaj-border" />
