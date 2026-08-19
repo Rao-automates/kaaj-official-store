@@ -148,14 +148,16 @@ export default function ProductDetailClient({
     window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
   };
 
-  const shareFacebook = () => {
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-  };
-
   const shareInstagram = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert("Link copied! Open Instagram to share this look.");
+    
+    // Try to open Instagram app
+    window.location.href = 'instagram://camera';
+    
+    // Fallback
+    setTimeout(() => {
+      alert("Link copied! You can paste this in your Instagram app.");
+    }, 500);
   };
 
   const copyLink = () => {
@@ -491,11 +493,7 @@ export default function ProductDetailClient({
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                     </svg>
                   </button>
-                  <button onClick={shareFacebook} className="w-11 h-11 flex items-center justify-center border border-kaaj-border/80 rounded hover:border-kaaj-charcoal transition-colors text-kaaj-charcoal" aria-label="Share on Facebook">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                  </button>
+
                   <button onClick={shareInstagram} className="w-11 h-11 flex items-center justify-center border border-kaaj-border/80 rounded hover:border-kaaj-charcoal transition-colors text-kaaj-charcoal" aria-label="Share on Instagram">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
