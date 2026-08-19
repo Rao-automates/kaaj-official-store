@@ -204,11 +204,6 @@ export default function ProductDetailClient({
                 <span className="font-sans text-2xl text-kaaj-charcoal">
                   {formatPKR(displayPrice)}
                 </span>
-                {displayRegularPrice && (
-                  <span className="font-sans text-sm text-kaaj-charcoal/70 line-through">
-                    {formatPKR(displayRegularPrice)}
-                  </span>
-                )}
               </div>
 
               {/* Short Description */}
