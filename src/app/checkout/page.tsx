@@ -43,7 +43,7 @@ export default function CheckoutPage() {
     () => `KO-${Date.now().toString().slice(-6)}`
   );
 
-  const shipping = paymentMethod === "bacs" ? 0 : (cartTotal >= 5000 ? 0 : 250);
+  const shipping = paymentMethod === "bacs" ? 0 : 250;
   const total = cartTotal + shipping;
 
   const handleChange = (

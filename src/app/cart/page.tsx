@@ -9,7 +9,7 @@ import Button from "@/components/ui/Button";
 export default function CartPage() {
   const { cart, removeFromCart, updateQty, cartTotal, itemCount } = useCart();
 
-  const shipping = cartTotal >= 5000 ? 0 : 250;
+  const shipping = 250;
   const total = cartTotal + shipping;
 
   return (
