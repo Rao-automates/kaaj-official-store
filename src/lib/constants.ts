@@ -16,10 +16,22 @@ const STANDARD_TROUSER = {
   length: ["36.5", "37", "37.5", "38.5", "39.5"],
   waist: ["13", "14", "15", "16", "17"],
   hip: ["19.5", "21", "22.5", "24", "25.5"],
-  thigh: ["12", "12.5", "13.5", "14.5", "15"],
+  thigh: ["12", "12.5", "13.5", "14.5", "16"],
 };
 
-const PRODUCT_SPECIFICS: Record<string, { length: string[], sleeveOpening: string[], bottomOpening: string[] }> = {
+interface ProductSpecifics {
+  length: string[];
+  sleeveOpening: string[];
+  bottomOpening: string[];
+  shoulder?: string[];
+  chest?: string[];
+  waist?: string[];
+  hip?: string[];
+  sleeveLength?: string[];
+  thigh?: string[];
+}
+
+const PRODUCT_SPECIFICS: Record<string, ProductSpecifics> = {
   "obsidian black": {
     length: ["36", "36", "36", "36", "38"],
     sleeveOpening: ["8", "9", "9", "9", "10"],
@@ -62,8 +74,11 @@ const PRODUCT_SPECIFICS: Record<string, { length: string[], sleeveOpening: strin
   },
   "pastel lilac": {
     length: ["45", "46", "48", "49", "50"],
-    sleeveOpening: ["8", "9", "9", "9", "10"],
+    sleeveOpening: ["8", "9", "9", "9", "7.5"],
     bottomOpening: ["8", "9", "9", "9", "10"],
+    shoulder: ["13", "13.5", "14", "15", "16"],
+    waist: ["13", "14", "15", "16", "23"],
+    hip: ["19.5", "21", "22.5", "24", "26"],
   },
   "ocean mist": {
     length: ["36", "36", "36", "36", "38"],
@@ -94,18 +109,18 @@ export function getSizeGuide(productName: string) {
   const kameez = STANDARD_SHIRT.sizes.map((size, index) => ({
     size,
     length: specifics.length[index],
-    shoulder: STANDARD_SHIRT.shoulder[index],
-    chest: STANDARD_SHIRT.chest[index],
-    sleeveLength: STANDARD_SHIRT.sleeveLength[index],
+    shoulder: specifics.shoulder ? specifics.shoulder[index] : STANDARD_SHIRT.shoulder[index],
+    chest: specifics.chest ? specifics.chest[index] : STANDARD_SHIRT.chest[index],
+    sleeveLength: specifics.sleeveLength ? specifics.sleeveLength[index] : STANDARD_SHIRT.sleeveLength[index],
     sleeveOpening: specifics.sleeveOpening[index],
   }));
 
   const shalwar = STANDARD_TROUSER.sizes.map((size, index) => ({
     size,
     length: STANDARD_TROUSER.length[index],
-    waist: STANDARD_TROUSER.waist[index],
-    hip: STANDARD_TROUSER.hip[index],
-    thigh: STANDARD_TROUSER.thigh[index],
+    waist: specifics.waist ? specifics.waist[index] : STANDARD_TROUSER.waist[index],
+    hip: specifics.hip ? specifics.hip[index] : STANDARD_TROUSER.hip[index],
+    thigh: specifics.thigh ? specifics.thigh[index] : STANDARD_TROUSER.thigh[index],
     hem: specifics.bottomOpening[index],
   }));
 
