@@ -168,15 +168,10 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between text-kaaj-charcoal/80">
                     <span className="uppercase tracking-[0.2em] text-[10px]">Shipping</span>
-                    <span className={shipping === 0 ? "text-kaaj-gold font-sans text-lg" : "font-sans text-lg"}>
-                      {shipping === 0 ? "Complimentary" : formatPKR(String(shipping))}
+                    <span className="font-sans text-lg">
+                      {formatPKR(String(shipping))}
                     </span>
                   </div>
-                  {shipping > 0 && (
-                    <p className="text-[9px] uppercase tracking-[0.1em] text-kaaj-gold text-right">
-                      Add {formatPKR(String(5000 - cartTotal))} more for complimentary delivery
-                    </p>
-                  )}
                 </div>
 
                 <div className="h-px bg-kaaj-charcoal/20 my-8" />
