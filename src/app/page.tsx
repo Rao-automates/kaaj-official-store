@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "K A A J \u2014 Premium Pakistani Women\u2019s Fashion | KAAJ",
+  title: "K A A J",
   description:
-    "KAAJ \u2014 Discover KAAJ\u2019s exquisite collection of Pret, Unstitched, Luxury Lawn, and Formal wear. Premium Pakistani women\u2019s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
+    "KAAJ — Discover KAAJ’s exquisite collection of Pret, Luxury Lawn, and Formal wear. Pakistani women’s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "K A A J \u2014 Premium Pakistani Women\u2019s Fashion",
+    title: "K A A J",
     description:
-      "Discover KAAJ\u2019s exquisite Pret, Unstitched, Luxury Lawn, and Formal collections. Shop Pakistani women\u2019s fashion online.",
+      "Discover KAAJ’s exquisite Pret, Luxury Lawn, and Formal collections. Shop Pakistani women’s fashion online.",
     url: "https://kaajofficial.com",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "K A A J \u2014 Premium Pakistani Women\u2019s Fashion",
+    title: "K A A J",
     description:
-      "Shop KAAJ\u2019s exquisite Pret, Unstitched, Luxury Lawn, and Formal collections online.",
+      "Shop KAAJ’s exquisite Pret, Luxury Lawn, and Formal collections online.",
   },
 };
 
