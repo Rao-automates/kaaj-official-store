@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: "%s | K A A J",
   },
   description:
-    "KAAJ — Discover KAAJ’s exquisite collection of Pret, Luxury Lawn, and Formal wear. Pakistani women’s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
+    "KAAJ — Discover KAAJ’s exquisite collections. Pakistani women’s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
   keywords: [
     "Pakistani women’s fashion",
     "Pakistani designer dresses",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     siteName: "K A A J",
     title: "K A A J",
     description:
-      "KAAJ — Exquisite Pret, Luxury Lawn, and Formal collections for the modern Pakistani woman. Shop KAAJ online.",
+      "KAAJ — Exquisite collections for the modern Pakistani woman. Shop KAAJ online.",
   },
   twitter: {
     card: "summary_large_image",
@@ -104,7 +104,7 @@ export default function RootLayout({
     alternateName: "K A A J",
     url: "https://kaajofficial.com",
     logo: "https://kaajofficial.com/icon.svg",
-    description: "KAAJ — Pakistani Women’s Fashion. Shop Pret, Luxury Lawn, and Formal wear online.",
+    description: "KAAJ — Pakistani Women’s Fashion. Shop exquisite collections online.",
     sameAs: [
       "https://www.instagram.com/wearkaaj/"
     ],

@@ -4,14 +4,14 @@ import HomeClient from "./HomeClient";
 export const metadata: Metadata = {
   title: "K A A J",
   description:
-    "KAAJ — Discover KAAJ’s exquisite collection of Pret, Luxury Lawn, and Formal wear. Pakistani women’s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
+    "KAAJ — Discover KAAJ’s exquisite collections. Pakistani women’s fashion crafted with heritage and contemporary elegance. Shop KAAJ online.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "K A A J",
     description:
-      "Discover KAAJ’s exquisite Pret, Luxury Lawn, and Formal collections. Shop Pakistani women’s fashion online.",
+      "Discover KAAJ’s exquisite collections. Shop Pakistani women’s fashion online.",
     url: "https://kaajofficial.com",
     type: "website",
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "K A A J",
     description:
-      "Shop KAAJ’s exquisite Pret, Luxury Lawn, and Formal collections online.",
+      "Shop KAAJ’s exquisite collections online.",
   },
 };
 
