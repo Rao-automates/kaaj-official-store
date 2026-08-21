@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shop All Collections | K A A J",
     description:
-      "Browse KAAJ\u2019s exquisite collections. Free delivery on orders over Rs. 5,000.",
+      "Browse KAAJ\u2019s exquisite collections.",
     url: "https://kaajofficial.com/shop",
   },
 };
