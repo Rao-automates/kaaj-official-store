@@ -6,7 +6,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 import FadeIn from "@/components/ui/FadeIn";
 import Link from "next/link";
 import Image from "next/image";
-import AksCollectionSection from "@/components/sections/AksCollectionSection";
+
 
 interface HomeClientProps {
   initialFeatured: any[];
@@ -44,16 +44,7 @@ export default function HomeClient({
       {/* ── 2. Editorial Lookbook — Full-Bleed Photo Strips ── */}
       <FeaturedGrid />
 
-      {/* ── 3. Aks Collection — Cinematic Full-Bleed ── */}
-      <AksCollectionSection
-        eyebrow="THE COLLECTION"
-        heading="عکس"
-        subtext="Tradition, reimagined — explore the Aks edit."
-        features={[]}
-        ctaLabel="SHOP AKS"
-        ctaHref="/categories/aks"
-        mainImage={{ src: "/images/launch_1_decoration/ed-6.webp", alt: "Aks Collection" }}
-      />
+
 
       {/* ── 4. New Arrivals — Typographic Header + Product Grid ── */}
       <section className="bg-[#FAF9F6] pt-16 sm:pt-24 pb-20 sm:pb-28">

@@ -15,7 +15,7 @@ const LOOKBOOK_ITEMS = [
     image: "/images/launch_1_decoration/ed-1.webp",
     alt: "KAAJ Editorial — Crimson Artistry",
     tagline: "The modern edit",
-    label: "Aks Collection",
+    label: "عکس Collection",
     href: "/categories/aks",
     align: "right" as const,
   },
@@ -81,7 +81,14 @@ export default function FeaturedGrid() {
                     idx % 2 === 0 ? "text-white/50" : "text-kaaj-charcoal/50"
                   }`}
                 >
-                  {item.label}
+                  {item.label.includes("عکس") ? (
+                    <>
+                      <span className="font-nastaliq tracking-normal text-base lowercase">عکس</span>
+                      {item.label.replace("عکس", "")}
+                    </>
+                  ) : (
+                    item.label
+                  )}
                 </p>
 
                 <h2
