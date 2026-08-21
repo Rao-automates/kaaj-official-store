@@ -35,6 +35,7 @@ interface FadeInProps {
   delay?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
   fullWidth?: boolean;
+  className?: string;
 }
 
 export default function FadeIn({
@@ -42,6 +43,7 @@ export default function FadeIn({
   delay = 0,
   direction = "up",
   fullWidth = false,
+  className,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -68,7 +70,8 @@ export default function FadeIn({
       className={cn(
         "transition-opacity duration-700 ease-out",
         isVisible ? "opacity-100" : "opacity-0",
-        fullWidth ? "w-full" : ""
+        fullWidth ? "w-full" : "",
+        className
       )}
       style={delay > 0 ? { transitionDelay: `${delay}s` } : undefined}
     >
