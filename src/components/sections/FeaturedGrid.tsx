@@ -48,19 +48,22 @@ export default function FeaturedGrid() {
               item.align === "right" ? "lg:order-2" : "lg:order-1"
             }`}
           >
-            <FadeIn delay={0.1} direction="none">
-              <div className="relative w-full h-[60vh] lg:h-full min-h-[400px] lg:min-h-[85vh]">
+            <FadeIn delay={0.1} direction="none" className="h-full block">
+              <Link
+                href={item.href}
+                className="block relative w-full h-[60vh] lg:h-full min-h-[400px] lg:min-h-[85vh] group"
+              >
                 <Image
                   src={item.image}
                   alt={item.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority={idx === 0}
                 />
                 {/* Subtle inner shadow for depth */}
-                <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.08)]" />
-              </div>
+                <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.08)] pointer-events-none" />
+              </Link>
             </FadeIn>
           </div>
 
