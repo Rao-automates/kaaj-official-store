@@ -110,25 +110,11 @@ export default function BrandStory() {
               </div>
             </div>
 
-            {/* Cute Geometric Editorial Spine */}
-            <div className="flex flex-col items-center justify-center gap-6 py-6 px-6 lg:px-10">
-               <div className="w-[1px] h-12 lg:h-24 bg-kaaj-charcoal/20" />
-               <div className="flex flex-col gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-kaaj-olive/90" />
-                 <div className="w-1 h-1 rounded-full bg-kaaj-charcoal/30 mx-auto" />
-                 <div className="w-1.5 h-1.5 rounded-full bg-kaaj-olive/90" />
-               </div>
-               <div className="w-[1px] h-12 lg:h-24 bg-kaaj-charcoal/20" />
-            </div>
+
 
           </div>
         </div>
-        {/* Scroll indicator (Desktop) */}
-        <div
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu transition-opacity duration-500 ${hasScrolled ? 'opacity-0' : 'opacity-100'}`}
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-[#141413]/20 to-transparent animate-scroll-pulse" />
-        </div>
+
       </div>
 
       {/* ==============================================================
@@ -187,12 +173,7 @@ export default function BrandStory() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div
-        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-3 transform-gpu transition-opacity duration-500 ${hasScrolled ? 'opacity-0' : 'opacity-100'}`}
-      >
-        <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent animate-scroll-pulse" />
-      </div>
+
 
     </section>
   );

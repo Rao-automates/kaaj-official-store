@@ -1,78 +1,112 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import ProductCard from "@/components/product/ProductCard";
 import FadeIn from "@/components/ui/FadeIn";
-import type { Product } from "@/lib/types";
 
-interface FeaturedGridProps {
-  products: Product[];
-}
+/**
+ * Editorial Lookbook — Full-bleed alternating photo + text strips.
+ * Uses launch editorial photography instead of product cards.
+ * Creates dramatic visual rhythm between sections.
+ */
 
-export default function FeaturedGrid({ products }: FeaturedGridProps) {
-  const hasProducts = products && products.length > 0;
+const LOOKBOOK_ITEMS = [
+  {
+    image: "/images/launch_1_decoration/ed-1.webp",
+    alt: "KAAJ Editorial — Crimson Artistry",
+    tagline: "The modern edit",
+    label: "Aks Collection",
+    href: "/categories/aks",
+    align: "right" as const,
+  },
+  {
+    image: "/images/launch_1_decoration/ed-4.webp",
+    alt: "KAAJ Editorial — Quiet Luxury",
+    tagline: "Shop the lookbook",
+    label: "New Season",
+    href: "/shop",
+    align: "left" as const,
+  },
+];
 
-  if (!hasProducts) return null;
-
-  const gridClasses = [
-    "md:col-span-6 lg:col-span-5 md:col-start-1 lg:col-start-2",
-    "md:col-span-5 lg:col-span-4 md:col-start-8 lg:col-start-8 md:mt-48",
-    "md:col-span-7 lg:col-span-6 md:col-start-2 lg:col-start-3 md:mt-32",
-    "md:col-span-4 lg:col-span-4 md:col-start-9 lg:col-start-9 md:-mt-24",
-  ];
-
+export default function FeaturedGrid() {
   return (
-    <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 bg-transparent section-divider-top">
-      {/* Smooth transition gradient from dark hero */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#FAF9F6] to-transparent pointer-events-none -mt-1" />
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative bg-transparent">
+      {/* Smooth transition from hero */}
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#FAF9F6] to-transparent pointer-events-none -mt-1 z-10" />
 
-        {/* Section Header - Editorial minimal */}
-        <FadeIn>
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-24 md:mb-40 gap-8">
-            <div className="max-w-2xl">
-
-              <h2 className="font-sans font-medium text-[clamp(2rem,5vw,4rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1">
-                Shop All.
-              </h2>
-            </div>
-
-            <Link
-              href="/shop"
-              className="group inline-flex items-center gap-3 px-8 py-3.5 bg-kaaj-olive text-kaaj-cream hover:opacity-90 transition-all duration-500 btn-shimmer"
-            >
-              <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em]">
-                Shop All
-              </span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                className="group-hover:translate-x-2 transition-transform duration-500 transform-gpu">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </Link>
+      {LOOKBOOK_ITEMS.map((item, idx) => (
+        <div
+          key={idx}
+          className={`relative w-full grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] lg:min-h-[85vh] ${
+            idx > 0 ? "" : ""
+          }`}
+        >
+          {/* Image Side */}
+          <div
+            className={`relative overflow-hidden ${
+              item.align === "right" ? "lg:order-2" : "lg:order-1"
+            }`}
+          >
+            <FadeIn delay={0.1} direction="none">
+              <div className="relative w-full h-[60vh] lg:h-full min-h-[400px] lg:min-h-[85vh]">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority={idx === 0}
+                />
+                {/* Subtle inner shadow for depth */}
+                <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.08)]" />
+              </div>
+            </FadeIn>
           </div>
-        </FadeIn>
 
-        {/* Editorial Grid — no framer-motion, pure CSS */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-24 md:gap-y-0">
-          {products.slice(0, 4).map((product, idx) => (
-            <div
-              key={product.id}
-              className={`col-span-1 ${gridClasses[idx % 4]} relative`}
-            >
-              {/* Editorial number watermark */}
-              <span className="absolute -top-8 md:-top-12 left-0 font-sans text-[4rem] md:text-[6rem] text-kaaj-charcoal/[0.04] leading-none pointer-events-none select-none z-0">
-                {String(idx + 1).padStart(2, "0")}
-              </span>
-              <FadeIn delay={idx * 0.1}>
-                <div className="relative z-10">
-                  <ProductCard product={product} priority={idx < 2} />
-                </div>
+          {/* Text Side */}
+          <div
+            className={`relative flex items-center ${
+              item.align === "right" ? "lg:order-1" : "lg:order-2"
+            } ${
+              idx % 2 === 0
+                ? "bg-[#141413]"
+                : "bg-[#F5F3EC]"
+            }`}
+          >
+            <div className="w-full px-8 sm:px-12 lg:px-20 xl:px-28 py-20 lg:py-0">
+              <FadeIn delay={0.2}>
+                <p
+                  className={`font-sans text-[10px] uppercase tracking-[0.4em] mb-6 ${
+                    idx % 2 === 0 ? "text-white/50" : "text-kaaj-charcoal/50"
+                  }`}
+                >
+                  {item.label}
+                </p>
+
+                <h2
+                  className={`font-sans text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-tight mb-10 max-w-md ${
+                    idx % 2 === 0 ? "text-white" : "text-kaaj-charcoal"
+                  }`}
+                >
+                  {item.tagline}
+                </h2>
+
+                <Link
+                  href={item.href}
+                  className={`group inline-flex items-center font-sans text-[10px] uppercase tracking-[0.3em] font-medium py-4 px-10 border transition-all duration-500 ${
+                    idx % 2 === 0
+                      ? "border-white/20 text-white hover:bg-white hover:text-kaaj-deep"
+                      : "border-kaaj-charcoal/20 text-kaaj-charcoal hover:bg-kaaj-charcoal hover:text-white"
+                  }`}
+                >
+                  Shop Now
+                </Link>
               </FadeIn>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      ))}
     </section>
   );
 }

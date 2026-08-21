@@ -41,8 +41,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed max-w-xs mt-4">
-              Where tradition meets modernity. K A A J brings the finest Pakistani
-              craftsmanship to women who celebrate their heritage with pride.
+              Premium womenswear — rooted in Pakistani craft.
             </p>
             {/* Social */}
             <div className="flex gap-4 pt-2">
@@ -120,7 +119,7 @@ export default function Footer() {
               Stay Connected
             </h3>
             <p className="font-sans text-xs text-kaaj-charcoal/70 leading-relaxed">
-              Be the first to know about new collections, exclusive offers, and styling inspiration.
+              New drops, delivered.
             </p>
             <NewsletterForm />
           </div>
@@ -264,9 +263,7 @@ function NewsletterForm() {
       {status === "error" && (
         <p className="font-sans text-[10px] text-red-400 mt-1">{message}</p>
       )}
-      <p className="font-sans text-[10px] text-kaaj-charcoal/70 mt-1">
-        No spam. Unsubscribe anytime.
-      </p>
+
     </div>
   );
 }
