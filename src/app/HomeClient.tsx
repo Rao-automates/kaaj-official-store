@@ -1,6 +1,5 @@
 "use client";
 
-import FeaturedGrid from "@/components/sections/FeaturedGrid";
 import BrandStory from "@/components/sections/BrandStory";
 import ProductGrid from "@/components/product/ProductGrid";
 import FadeIn from "@/components/ui/FadeIn";
@@ -41,10 +40,6 @@ export default function HomeClient({
       {/* ── 1. Hero — Cinematic Video Landing ── */}
       <BrandStory />
 
-      {/* ── 2. Editorial Lookbook — Full-Bleed Photo Strips ── */}
-      <FeaturedGrid />
-
-
 
       {/* ── 4. New Arrivals — Typographic Header + Product Grid ── */}
       <section className="bg-[#FAF9F6] pt-16 sm:pt-24 pb-20 sm:pb-28">
@@ -53,10 +48,7 @@ export default function HomeClient({
           {/* Header & Desktop CTA */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8 border-b border-kaaj-charcoal/10 pb-12 sm:pb-16">
             <FadeIn>
-              <p className="font-sans text-[10px] uppercase tracking-[0.5em] text-kaaj-charcoal/50 mb-6">
-                Latest Drops
-              </p>
-              <h2 className="font-sans text-[clamp(3.5rem,8vw,7rem)] leading-[0.85] text-kaaj-charcoal tracking-tighter">
+              <h2 className="font-sans text-[clamp(2.5rem,6vw,5rem)] leading-none text-kaaj-charcoal tracking-tight">
                 New Arrivals
               </h2>
             </FadeIn>
@@ -93,14 +85,11 @@ export default function HomeClient({
 
       {/* ── 5. Visual Category Showcase ── */}
       {initialCategories.length > 0 && (
-        <section className="py-20 sm:py-28 bg-[#141413]">
+        <section className="py-20 sm:py-28 bg-[#FAF9F6]">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn>
               <div className="mb-16 md:mb-20">
-                <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-white/40 mb-4">
-                  Browse
-                </p>
-                <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] leading-[0.9] text-white tracking-tighter">
+                <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter">
                   Collections
                 </h2>
               </div>
@@ -191,9 +180,9 @@ export default function HomeClient({
           href="https://www.instagram.com/wearkaaj/"
           target="_blank"
           rel="noopener noreferrer"
-          className="block bg-[#141413] py-5 text-center group hover:bg-[#1a1a18] transition-colors duration-300"
+          className="block bg-[#FAF9F6] py-8 text-center group hover:bg-[#F5F3EC] transition-colors duration-300"
         >
-          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-white/50 group-hover:text-white/80 transition-colors duration-300">
+          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 group-hover:text-kaaj-charcoal/80 transition-colors duration-300">
             @wearkaaj
           </span>
         </a>
