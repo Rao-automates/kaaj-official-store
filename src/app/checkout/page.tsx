@@ -301,7 +301,6 @@ export default function CheckoutPage() {
                       value={form.firstName}
                       onChange={handleChange}
                       required
-                      placeholder="Jane"
                       className={inputClass}
                     />
                   </div>
@@ -314,7 +313,6 @@ export default function CheckoutPage() {
                       value={form.lastName}
                       onChange={handleChange}
                       required
-                      placeholder="Doe"
                       className={inputClass}
                     />
                   </div>
@@ -329,7 +327,6 @@ export default function CheckoutPage() {
                       value={form.phone}
                       onChange={handleChange}
                       required
-                      placeholder="03XX-XXXXXXX"
                       className={`${inputClass} ${errors.phone ? 'border-red-500/50' : ''}`}
                     />
                     {errors.phone && <p className="font-sans text-[10px] text-red-500 mt-2">{errors.phone}</p>}
@@ -343,7 +340,6 @@ export default function CheckoutPage() {
                       value={form.email}
                       onChange={handleChange}
                       required
-                      placeholder="jane@example.com"
                       className={`${inputClass} ${errors.email ? 'border-red-500/50' : ''}`}
                     />
                     {errors.email && <p className="font-sans text-[10px] text-red-500 mt-2">{errors.email}</p>}
@@ -365,7 +361,6 @@ export default function CheckoutPage() {
                     value={form.address}
                     onChange={handleChange}
                     required
-                    placeholder="House #, Street, Area"
                     className={inputClass}
                   />
                 </div>
@@ -379,7 +374,6 @@ export default function CheckoutPage() {
                       value={form.city}
                       onChange={handleChange}
                       required
-                      placeholder="Lahore"
                       className={inputClass}
                     />
                   </div>
@@ -391,7 +385,6 @@ export default function CheckoutPage() {
                       type="text"
                       value={form.postcode}
                       onChange={handleChange}
-                      placeholder="54000"
                       className={inputClass}
                     />
                   </div>
@@ -404,7 +397,6 @@ export default function CheckoutPage() {
                     value={form.notes}
                     onChange={handleChange}
                     rows={3}
-                    placeholder="Special instructions, preferred delivery time, etc."
                     className={`${inputClass} resize-none`}
                   />
                 </div>
