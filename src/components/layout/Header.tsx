@@ -27,9 +27,10 @@ export default function Header() {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      setScrolled(window.scrollY > 120);
+      setScrolled(window.scrollY > 80);
       setPastHero(window.scrollY > window.innerHeight * 0.6);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -83,8 +84,8 @@ export default function Header() {
             <Link
               href="/"
               className={cn(
-                "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-700 pointer-events-auto translate-y-0",
-                isHomepage && !scrolled ? "opacity-0 scale-75" : "opacity-100 scale-100 hover:scale-105"
+                "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-500 pointer-events-auto translate-y-0",
+                isHomepage && !scrolled ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100 hover:scale-105"
               )}
               aria-label="KAAJ Home"
               onClick={() => setMenuOpen(false)}

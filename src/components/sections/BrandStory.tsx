@@ -28,16 +28,16 @@ export default function BrandStory() {
       .fromTo(".hero-text", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.8")
       .fromTo(".hero-media", { scale: 1.05, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" }, "-=1")
     // Scroll animation to shrink the title into the navbar
-    gsap.to(".hero-title", {
-      scale: 0.15,
-      y: -150,
+    gsap.to(".hero-scroll-wrap", {
+      scale: 0.5,
+      y: -100,
       opacity: 0,
       ease: "power1.inOut",
       scrollTrigger: {
         trigger: container.current,
         start: "top top",
-        end: "bottom 80%",
-        scrub: 1,
+        end: "+=120",
+        scrub: true,
       },
       immediateRender: false,
     });
@@ -51,7 +51,7 @@ export default function BrandStory() {
         
         {/* Left: Typography Anchor */}
         <div className="flex-1 flex flex-col items-start pr-12">
-          <div className="overflow-hidden mb-8">
+          <div className="hero-scroll-wrap overflow-hidden mb-8 origin-left">
             <h1 className="hero-title font-sans text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter text-kaaj-charcoal -ml-2">
               K A A J
             </h1>
@@ -105,7 +105,7 @@ export default function BrandStory() {
         
         {/* Mobile Text Anchor */}
         <div className="mb-8 flex flex-col items-center text-center">
-          <div className="overflow-hidden mb-4">
+          <div className="hero-scroll-wrap overflow-hidden mb-4 origin-center">
             <h1 className="hero-title font-sans text-[4.5rem] leading-[0.8] tracking-tighter text-kaaj-charcoal">
               K A A J
             </h1>
