@@ -256,9 +256,9 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent flex flex-col pt-32 md:pt-48 pb-32">
+    <div className="min-h-screen bg-transparent flex flex-col pt-24 md:pt-48 pb-20 md:pb-32">
       {/* Editorial Header */}
-      <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
+      <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-10 md:mb-24">
         <div className="flex flex-col items-start max-w-4xl">
           <h1 className="font-sans text-[clamp(3rem,10vw,7rem)] leading-[0.9] text-kaaj-charcoal tracking-tighter -ml-1 md:-ml-2 mb-8">
             Details.
@@ -282,16 +282,16 @@ export default function CheckoutPage() {
         <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-1 xl:grid-cols-5 gap-16 xl:gap-24"
+            className="grid grid-cols-1 xl:grid-cols-5 gap-12 xl:gap-24"
           >
             {/* Left: Contact + Address */}
-            <div className="xl:col-span-3 space-y-16">
+            <div className="xl:col-span-3 space-y-12 md:space-y-16">
               {/* Contact */}
-              <div className="space-y-8">
-                <h2 className="font-sans text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
+              <div className="space-y-6 md:space-y-8">
+                <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-4 md:pb-6">
                   Contact
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                   <div>
                     <label htmlFor="firstName" className={labelClass}>First Name *</label>
                     <input
@@ -319,7 +319,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                   <div>
                     <label htmlFor="phone" className={labelClass}>Phone / WhatsApp *</label>
                     <input
@@ -352,8 +352,8 @@ export default function CheckoutPage() {
               </div>
 
               {/* Delivery Address */}
-              <div className="space-y-8">
-                <h2 className="font-sans text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
+              <div className="space-y-6 md:space-y-8">
+                <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-4 md:pb-6">
                   Delivery
                 </h2>
                 <div>
@@ -369,7 +369,7 @@ export default function CheckoutPage() {
                     className={inputClass}
                   />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                   <div>
                     <label htmlFor="city" className={labelClass}>City *</label>
                     <input
@@ -411,11 +411,11 @@ export default function CheckoutPage() {
               </div>
 
               {/* Payment Method */}
-              <div className="space-y-8">
-                <h2 className="font-sans text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-6">
+              <div className="space-y-6 md:space-y-8">
+                <h2 className="font-sans text-2xl md:text-3xl text-kaaj-charcoal border-b border-kaaj-charcoal/20 pb-4 md:pb-6">
                   Payment
                 </h2>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-4 md:gap-6">
                   {/* COD */}
                   <label 
                     className={`flex items-center gap-6 border p-6 cursor-pointer transition-colors duration-500 ${
@@ -492,8 +492,8 @@ export default function CheckoutPage() {
 
             {/* Right: Order Summary */}
             <div className="xl:col-span-2">
-              <div className="border border-kaaj-charcoal/20 p-8 sticky top-32 bg-kaaj-charcoal/5 backdrop-blur-md">
-                <h2 className="font-sans text-2xl text-kaaj-charcoal mb-8 pb-6 border-b border-kaaj-charcoal/20">
+              <div className="border border-kaaj-charcoal/20 p-5 md:p-8 sticky top-32 bg-kaaj-charcoal/5 backdrop-blur-md">
+                <h2 className="font-sans text-xl md:text-2xl text-kaaj-charcoal mb-6 md:mb-8 pb-4 md:pb-6 border-b border-kaaj-charcoal/20">
                   Summary
                 </h2>
 
