@@ -22,11 +22,20 @@ export default function BrandStory() {
   }, []);
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const mm = gsap.matchMedia();
 
-    tl.fromTo(".hero-title", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, stagger: 0.1 })
-      .fromTo(".hero-text", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.8")
-      .fromTo(".hero-media", { scale: 1.05, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" }, "-=1")
+    mm.add("(min-width: 1024px)", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.fromTo(".hero-title", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, stagger: 0.1 })
+        .fromTo(".hero-text", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, "-=0.8")
+        .fromTo(".hero-media", { scale: 1.05, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" }, "-=1");
+    });
+
+    mm.add("(max-width: 1023px)", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.fromTo(".hero-media", { scale: 1.05, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" });
+    });
+
     // Scroll animation to shrink the title into the navbar
     gsap.to(".hero-scroll-wrap", {
       scale: 0.5,
