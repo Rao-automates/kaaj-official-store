@@ -242,7 +242,7 @@ function NewsletterForm() {
 
   return (
     <div className="flex flex-col gap-2.5">
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <input
           type="email"
           value={email}
@@ -255,7 +255,7 @@ function NewsletterForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="bg-kaaj-olive text-kaaj-cream py-3 px-6 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-olive/90 transition-colors duration-300 disabled:opacity-70 flex items-center justify-center gap-2 whitespace-nowrap btn-shimmer"
+          className="bg-kaaj-olive text-kaaj-cream py-3 px-4 sm:px-6 font-sans text-[11px] uppercase tracking-[0.2em] hover:bg-kaaj-olive/90 transition-colors duration-300 disabled:opacity-70 flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 btn-shimmer"
         >
           {status === "loading" ? "..." : "Subscribe"}
         </button>

@@ -1,34 +1,12 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useRef } from "react";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Single shared observer — one instance handles ALL FadeIn elements on the page.
-// This avoids creating 50+ separate observers which kills low-end devices.
-let observer: IntersectionObserver | null = null;
-const callbacks = new WeakMap<Element, () => void>();
-
-function getObserver() {
-  if (typeof window === "undefined") return null;
-  if (!observer) {
-    observer = new IntersectionObserver(
-      (entries) => {
-        for (let i = 0; i < entries.length; i++) {
-          if (entries[i].isIntersecting) {
-            const cb = callbacks.get(entries[i].target);
-            if (cb) {
-              cb();
-              callbacks.delete(entries[i].target);
-              observer?.unobserve(entries[i].target);
-            }
-          }
-        }
-      },
-      { rootMargin: "50px", threshold: 0 }
-    );
-  }
-  return observer;
-}
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 interface FadeInProps {
   children: ReactNode;
@@ -46,34 +24,57 @@ export default function FadeIn({
   className,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+  useGSAP(() => {
+    if (!ref.current) return;
 
-    const obs = getObserver();
-    if (!obs) return;
+    let y = 0;
+    let x = 0;
 
-    callbacks.set(el, () => setIsVisible(true));
-    obs.observe(el);
+    switch (direction) {
+      case "up":
+        y = 50;
+        break;
+      case "down":
+        y = -50;
+        break;
+      case "left":
+        x = 50;
+        break;
+      case "right":
+        x = -50;
+        break;
+      case "none":
+        break;
+    }
 
-    return () => {
-      callbacks.delete(el);
-      obs.unobserve(el);
-    };
-  }, []);
+    gsap.fromTo(
+      ref.current,
+      {
+        opacity: 0,
+        y: y,
+        x: x,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        duration: 1.2,
+        delay: delay,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 85%", // Triggers when the top of the element hits 85% of the viewport height
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, { scope: ref });
 
   return (
     <div
       ref={ref}
-      className={cn(
-        "transition-opacity duration-700 ease-out",
-        isVisible ? "opacity-100" : "opacity-0",
-        fullWidth ? "w-full" : "",
-        className
-      )}
-      style={delay > 0 ? { transitionDelay: `${delay}s` } : undefined}
+      className={cn(fullWidth ? "w-full" : "", className)}
     >
       {children}
     </div>

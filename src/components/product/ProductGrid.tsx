@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import ProductCard from "./ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
 import type { Product } from "@/lib/types";
@@ -27,6 +28,7 @@ export default function ProductGrid({
   className,
   emptyMessage,
 }: ProductGridProps) {
+
   if (loading) {
     return <ProductGridSkeleton count={columns === 2 ? 4 : columns === 3 ? 6 : 8} />;
   }

@@ -422,7 +422,7 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Out of Stock"
                     : variantNotSelected
-                      ? "Select Options"
+                      ? "Select Size"
                       : addedToCart
                         ? "✓ Added To Cart"
                         : "ADD TO CART"}
@@ -440,12 +440,12 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Out of Stock"
                     : variantNotSelected
-                      ? "Select Options"
+                      ? "Select Size"
                       : "BUY NOW"}
                 </button>
                 {variantNotSelected && (
                   <p className="font-sans text-[10px] text-kaaj-charcoal/70 text-center mt-2">
-                    Please select all options above to continue.
+                    Please select a size above to continue.
                   </p>
                 )}
               </div>
@@ -614,7 +614,7 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Sold Out"
                     : variantNotSelected
-                      ? "Select Options"
+                      ? "Select Size"
                       : addedToCart
                         ? "✓ Added"
                         : "Add to Cart"}
@@ -632,7 +632,7 @@ export default function ProductDetailClient({
                   {isOOS
                     ? "Sold Out"
                     : variantNotSelected
-                      ? "Select Options"
+                      ? "Select Size"
                       : "Buy Now"}
                 </button>
               </div>

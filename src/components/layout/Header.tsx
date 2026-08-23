@@ -27,7 +27,7 @@ export default function Header() {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 120);
       setPastHero(window.scrollY > window.innerHeight * 0.6);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -79,10 +79,13 @@ export default function Header() {
               </div>
             </button>
 
-            {/* Center: Logo — always visible */}
+            {/* Center: Logo */}
             <Link
               href="/"
-              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-700 hover:scale-105 opacity-100 pointer-events-auto translate-y-0"
+              className={cn(
+                "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-700 pointer-events-auto translate-y-0",
+                isHomepage && !scrolled ? "opacity-0 scale-75" : "opacity-100 scale-100 hover:scale-105"
+              )}
               aria-label="KAAJ Home"
               onClick={() => setMenuOpen(false)}
             >

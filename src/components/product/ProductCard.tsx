@@ -117,7 +117,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             )}
           >
             {product.type === "VARIABLE"
-              ? "Select Options"
+              ? "Select Size"
               : adding
                 ? "✓ Added"
                 : "Quick Add"}

@@ -151,41 +151,48 @@ export default function HomeClient({
         </section>
       )}
 
-      {/* ── 6. Instagram Photo Mosaic + Social CTA ── */}
-      <section>
-        {/* Mosaic Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] sm:auto-rows-[250px] lg:auto-rows-[280px]">
+      {/* ── 6. The Journal (Instagram) ── */}
+      <section className="bg-kaaj-charcoal pt-24 pb-32 overflow-hidden text-[#FAF9F6]">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-[#FAF9F6]/20 pb-8 gap-8">
+          <div className="flex flex-col">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[#FAF9F6]/60 mb-6">
+              Connect
+            </p>
+            <h2 className="font-sans text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-tighter">
+              THE ARCHIVE
+            </h2>
+          </div>
+          <a
+            href="https://www.instagram.com/wearkaaj/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 font-sans text-[10px] uppercase tracking-[0.3em] hover:text-kaaj-gold transition-colors duration-300"
+          >
+            <span>Follow @wearkaaj</span>
+          </a>
+        </div>
+        
+        {/* Horizontal scrollable track for images */}
+        <div className="flex gap-4 sm:gap-8 px-4 sm:px-6 lg:px-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8">
           {MOSAIC_IMAGES.map((img, idx) => (
             <a
               key={idx}
               href="https://www.instagram.com/wearkaaj/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`relative overflow-hidden group ${img.span}`}
+              className="relative flex-none w-[75vw] sm:w-[45vw] lg:w-[28vw] aspect-[3/4] snap-center overflow-hidden group cursor-pointer"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover transition-all duration-[1500ms] group-hover:scale-110 grayscale-[50%] group-hover:grayscale-0"
+                sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 28vw"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
             </a>
           ))}
         </div>
-
-        {/* Simple Instagram Bar */}
-        <a
-          href="https://www.instagram.com/wearkaaj/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block bg-[#FAF9F6] py-8 text-center group hover:bg-[#F5F3EC] transition-colors duration-300"
-        >
-          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-kaaj-charcoal/50 group-hover:text-kaaj-charcoal/80 transition-colors duration-300">
-            @wearkaaj
-          </span>
-        </a>
       </section>
     </>
   );
