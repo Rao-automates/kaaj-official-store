@@ -95,15 +95,12 @@ export default function Header() {
               href="/"
               className={cn(
                 "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-500 pointer-events-auto",
-                isHomepage && !scrolled ? "scale-95" : "scale-100 hover:scale-105"
+                isHomepage && (!mounted || !scrolled) 
+                  ? "opacity-0 invisible pointer-events-none scale-95" 
+                  : "opacity-100 visible pointer-events-auto scale-100 hover:scale-105"
               )}
               aria-label="KAAJ Home"
               onClick={() => setMenuOpen(false)}
-              style={{
-                opacity: isHomepage && !scrolled ? 0 : 1,
-                visibility: isHomepage && !scrolled ? "hidden" : "visible",
-                pointerEvents: isHomepage && !scrolled ? "none" : "auto",
-              }}
             >
               <KaajLogo />
             </Link>
