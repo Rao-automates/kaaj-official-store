@@ -25,7 +25,7 @@ const CATEGORY_VISUALS: Record<string, string> = {
 const MOSAIC_IMAGES = [
   { src: "/images/launch_1_decoration/ed-2.webp", alt: "KAAJ Editorial 1", span: "row-span-2" },
   { src: "/images/launch_1_decoration/ed-5.webp", alt: "KAAJ Editorial 2", span: "" },
-  { src: "/images/launch_1_decoration/ed-9.webp", alt: "KAAJ Editorial 3", span: "" },
+  { src: "/images/launch_1_decoration/ed-9-v3.webp", alt: "KAAJ Editorial 3", span: "" },
   { src: "/images/launch_1_decoration/ed-7.webp", alt: "KAAJ Editorial 4", span: "row-span-2" },
   { src: "/images/launch_1_decoration/ed-3.webp", alt: "KAAJ Editorial 5", span: "" },
   { src: "/images/launch_1_decoration/ed-8.webp", alt: "KAAJ Editorial 6", span: "" },
@@ -177,7 +177,7 @@ export default function HomeClient({
             href="https://www.instagram.com/wearkaaj/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 font-sans text-[10px] uppercase tracking-[0.3em] hover:text-kaaj-rose transition-colors duration-300"
+            className="group flex items-center gap-4 font-sans text-xs tracking-widest hover:text-kaaj-rose transition-colors duration-300"
           >
             <span>Follow @wearkaaj</span>
           </a>
