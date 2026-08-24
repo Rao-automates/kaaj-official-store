@@ -48,14 +48,24 @@ export default function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-500 py-4",
+          "fixed top-0 left-0 right-0 z-50 transition-colors duration-500",
           scrolled || menuOpen
             ? "bg-[#FAF9F6]/98 sm:bg-[#FAF9F6]/95 sm:backdrop-blur-md border-b border-black/5"
             : "bg-transparent"
         )}
       >
+        {/* Announcement Bar */}
+        <div className="w-full bg-kaaj-rose text-[#FAF9F6] py-1.5 px-4 flex items-center justify-center">
+          <Link 
+            href="/categories/sale" 
+            className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-medium hover:text-[#FAF9F6]/80 transition-colors text-center"
+          >
+            END OF SEASON SALE — ENJOY 22% OFF ENTIRE STOCK
+          </Link>
+        </div>
+
         {/* Main Header */}
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between h-16">
 
             {/* Left: Hamburger ↔ Close toggle */}
@@ -84,11 +94,16 @@ export default function Header() {
             <Link
               href="/"
               className={cn(
-                "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-500 pointer-events-auto translate-y-0",
-                isHomepage && !scrolled ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100 hover:scale-105"
+                "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-500 pointer-events-auto",
+                isHomepage && !scrolled ? "scale-95" : "scale-100 hover:scale-105"
               )}
               aria-label="KAAJ Home"
               onClick={() => setMenuOpen(false)}
+              style={{
+                opacity: isHomepage && !scrolled ? 0 : 1,
+                visibility: isHomepage && !scrolled ? "hidden" : "visible",
+                pointerEvents: isHomepage && !scrolled ? "none" : "auto",
+              }}
             >
               <KaajLogo />
             </Link>

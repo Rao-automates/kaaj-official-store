@@ -94,7 +94,8 @@ export default function ProductDetailClient({
 
   const displayRegularPrice = useMemo(() => {
     if (matchingVariation) return matchingVariation.regularPrice;
-    return product.regularPrice;
+    const extractedRegular = product.price?.match(/<del[^>]*>(.*?)<\/del>/i)?.[1];
+    return product.regularPrice || extractedRegular;
   }, [matchingVariation, product]);
 
   const onSale = isOnSale({ salePrice: displayPrice, onSale: product.onSale });
@@ -233,6 +234,11 @@ export default function ProductDetailClient({
                   <span className="font-sans text-2xl text-kaaj-charcoal">
                     {formatPKR(displayPrice)}
                   </span>
+                  {onSale && displayRegularPrice && (
+                    <span className="font-sans text-lg text-kaaj-charcoal/50 line-through">
+                      {formatPKR(displayRegularPrice)}
+                    </span>
+                  )}
                 </div>
               </div>
 

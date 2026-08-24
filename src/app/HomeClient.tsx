@@ -3,6 +3,7 @@
 import BrandStory from "@/components/sections/BrandStory";
 import ProductGrid from "@/components/product/ProductGrid";
 import FadeIn from "@/components/ui/FadeIn";
+import Marquee from "@/components/ui/Marquee";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -40,6 +41,16 @@ export default function HomeClient({
       {/* ── 1. Hero — Cinematic Video Landing ── */}
       <BrandStory />
 
+      {/* ── 2. Sale Announcement Marquee ── */}
+      <div className="bg-[#FAF9F6] border-b border-kaaj-charcoal/10 cursor-pointer hover:opacity-90 transition-opacity">
+        <Link href="/categories/sale" className="block">
+          <Marquee 
+            text="END OF SEASON SALE — ENJOY 22% OFF ENTIRE STOCK" 
+            speed="normal" 
+            className="text-kaaj-rose"
+          />
+        </Link>
+      </div>
 
       {/* ── 4. New Arrivals — Typographic Header + Product Grid ── */}
       <section className="bg-[#FAF9F6] pt-16 sm:pt-24 pb-20 sm:pb-28">
@@ -152,10 +163,10 @@ export default function HomeClient({
       )}
 
       {/* ── 6. The Journal (Instagram) ── */}
-      <section className="bg-kaaj-charcoal pt-24 pb-32 overflow-hidden text-[#FAF9F6]">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-[#FAF9F6]/20 pb-8 gap-8">
+      <section className="bg-[#FAF9F6] pt-24 pb-32 overflow-hidden text-kaaj-charcoal">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-kaaj-charcoal/10 pb-8 gap-8">
           <div className="flex flex-col">
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[#FAF9F6]/60 mb-6">
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-kaaj-charcoal/60 mb-6">
               Connect
             </p>
             <h2 className="font-sans text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-tighter">
@@ -166,7 +177,7 @@ export default function HomeClient({
             href="https://www.instagram.com/wearkaaj/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 font-sans text-[10px] uppercase tracking-[0.3em] hover:text-kaaj-gold transition-colors duration-300"
+            className="group flex items-center gap-4 font-sans text-[10px] uppercase tracking-[0.3em] hover:text-kaaj-rose transition-colors duration-300"
           >
             <span>Follow @wearkaaj</span>
           </a>

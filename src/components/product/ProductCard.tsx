@@ -19,7 +19,9 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   const [adding, setAdding] = useState(false);
 
   const onSale = isOnSale(product);
-  const discount = discountPercent(product.regularPrice, product.salePrice);
+  const extractedRegular = product.price?.match(/<del[^>]*>(.*?)<\/del>/i)?.[1];
+  const actualRegularPrice = product.regularPrice || extractedRegular;
+  const discount = discountPercent(actualRegularPrice, product.salePrice || product.price);
   const isOutOfStock = product.stockStatus === "OUT_OF_STOCK";
   const category = product.productCategories?.nodes?.[0];
 
@@ -139,7 +141,11 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           <span className="font-sans text-sm text-kaaj-charcoal">
             {formatPKR(product.price)}
           </span>
-          {/* Crossed-out regular price removed to hide the glitch */}
+          {onSale && actualRegularPrice && (
+            <span className="font-sans text-xs text-kaaj-muted line-through">
+              {formatPKR(actualRegularPrice)}
+            </span>
+          )}
         </div>
 
       </div>
