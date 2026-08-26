@@ -56,11 +56,11 @@ export default function Header() {
       >
         {/* Announcement Bar */}
         <div className="w-full bg-kaaj-rose text-[#FAF9F6] py-1.5 px-4 flex items-center justify-center">
-          <Link 
-            href="/categories/sale" 
+          <Link
+            href="/categories/sale"
             className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-medium hover:text-[#FAF9F6]/80 transition-colors text-center"
           >
-            END OF SEASON SALE — ENJOY 22% OFF ENTIRE STOCK
+            END OF SEASON SALE — ENJOY 11% OFF ENTIRE STOCK
           </Link>
         </div>
 
@@ -95,8 +95,8 @@ export default function Header() {
               href="/"
               className={cn(
                 "absolute left-1/2 -translate-x-1/2 flex flex-col items-center group transition-all duration-500 pointer-events-auto",
-                isHomepage && (!mounted || !scrolled) 
-                  ? "opacity-0 invisible pointer-events-none scale-95" 
+                isHomepage && (!mounted || !scrolled)
+                  ? "opacity-0 invisible pointer-events-none scale-95"
                   : "opacity-100 visible pointer-events-auto scale-100 hover:scale-105"
               )}
               aria-label="KAAJ Home"
