@@ -44,9 +44,9 @@ export default function HomeClient({
       {/* ── 2. Sale Announcement Marquee ── */}
       <div className="bg-[#FAF9F6] border-b border-kaaj-charcoal/10 cursor-pointer hover:opacity-90 transition-opacity">
         <Link href="/categories/sale" className="block">
-          <Marquee 
-            text="END OF SEASON SALE — ENJOY 22% OFF ENTIRE STOCK" 
-            speed="normal" 
+          <Marquee
+            text="END OF SEASON SALE — ENJOY 11% OFF ENTIRE STOCK"
+            speed="normal"
             className="text-kaaj-rose"
           />
         </Link>
@@ -55,7 +55,7 @@ export default function HomeClient({
       {/* ── 4. New Arrivals — Typographic Header + Product Grid ── */}
       <section className="bg-[#FAF9F6] pt-16 sm:pt-24 pb-20 sm:pb-28">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header & Desktop CTA */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8 border-b border-kaaj-charcoal/10 pb-12 sm:pb-16">
             <FadeIn>
@@ -90,7 +90,7 @@ export default function HomeClient({
               </Link>
             </div>
           </FadeIn>
-          
+
         </div>
       </section>
 
@@ -182,7 +182,7 @@ export default function HomeClient({
             <span>Follow @wearkaaj</span>
           </a>
         </div>
-        
+
         {/* Horizontal scrollable track for images */}
         <div className="flex gap-4 sm:gap-8 px-4 sm:px-6 lg:px-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8">
           {MOSAIC_IMAGES.map((img, idx) => (
