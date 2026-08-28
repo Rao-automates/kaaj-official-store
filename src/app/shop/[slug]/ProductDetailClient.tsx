@@ -12,6 +12,7 @@ import { getSizeGuide } from "@/lib/constants";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import ProductGrid from "@/components/product/ProductGrid";
+import { ProductReviewTicker } from "@/components/sections/GoogleReviews";
 import {
   formatPKR,
   parsePKR,
@@ -455,6 +456,9 @@ export default function ProductDetailClient({
                   </p>
                 )}
               </div>
+
+              {/* Google Reviews Ticker */}
+              <ProductReviewTicker />
 
               {/* Disclaimer */}
               <div className="bg-kaaj-charcoal/5 border border-kaaj-charcoal/10 p-4 mt-6 rounded-sm">

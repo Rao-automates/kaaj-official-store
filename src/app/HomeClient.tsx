@@ -2,6 +2,7 @@
 
 import BrandStory from "@/components/sections/BrandStory";
 import ProductGrid from "@/components/product/ProductGrid";
+import GoogleReviews from "@/components/sections/GoogleReviews";
 import FadeIn from "@/components/ui/FadeIn";
 import Marquee from "@/components/ui/Marquee";
 import Link from "next/link";
@@ -94,7 +95,10 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* ── 5. Visual Category Showcase ── */}
+      {/* ── 5. Google Reviews — Social Proof ── */}
+      <GoogleReviews />
+
+      {/* ── 6. Visual Category Showcase ── */}
       {initialCategories.length > 0 && (
         <section className="py-20 sm:py-28 bg-[#FAF9F6]">
           <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
