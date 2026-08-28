@@ -4,8 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 
 /* ─────────────────────────────────────────────────────────────────
-   Real reviews from KAAJ's Google Business Profile (Place ID: ChIJk2-Rwg4_sz4R91sLzi-921s)
-   When you have a Google Places API key, this swaps to live-fetched data.
+   Real reviews from KAAJ's Google Business Profile
 ───────────────────────────────────────────────────────────────── */
 export const STATIC_REVIEWS = [
   {
@@ -65,6 +64,7 @@ export const STATIC_REVIEWS = [
 ];
 
 const AGGREGATE = { rating: 4.9, total: 15 };
+const PROFILE_URL = "https://maps.app.goo.gl/UA6dRfJpYhWYbyxKA";
 
 /* ── Shared Star Component ── */
 function StarRating({ count = 5, size = 11 }: { count?: number; size?: number }) {
@@ -129,7 +129,7 @@ export function ProductReviewTicker() {
 
   return (
     <a
-      href="https://maps.app.goo.gl/UA6dRfJpYhWYbyxKA"
+      href={PROFILE_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="group flex items-start gap-3 bg-[#2A2B29] hover:bg-[#323430] border border-white/[0.06] hover:border-kaaj-gold/30 transition-all duration-500 px-4 py-3.5 cursor-pointer"
@@ -139,8 +139,12 @@ export function ProductReviewTicker() {
 
       {/* Middle: Review content */}
       <div
-        className="flex-1 min-w-0 transition-all duration-400"
-        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(4px)" }}
+        className="flex-1 min-w-0"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(4px)",
+          transition: "opacity 0.4s, transform 0.4s",
+        }}
       >
         <p className="font-sans text-[11px] leading-relaxed text-white/65 line-clamp-2 group-hover:text-white/80 transition-colors duration-300">
           {review.text}
@@ -177,18 +181,19 @@ export function ProductReviewTicker() {
 }
 
 /* ════════════════════════════════════════════════
-   HOMEPAGE: Full editorial reviews section
+   HOMEPAGE: Full editorial reviews section — horizontal scroll
 ════════════════════════════════════════════════ */
 export default function GoogleReviews() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="bg-[#FAF9F6] pt-20 sm:pt-28 pb-24 sm:pb-32">
+    <section className="bg-[#FAF9F6] pt-20 sm:pt-28 pb-24 sm:pb-32 overflow-hidden">
 
       {/* ── Section Header ── */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
         <FadeIn>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-kaaj-charcoal/10 pb-8">
+
             {/* Left: Title + location eyebrow */}
             <div>
               <div className="flex items-center gap-2 mb-4">
@@ -213,7 +218,7 @@ export default function GoogleReviews() {
                 </div>
                 <StarRating count={5} size={13} />
                 <a
-                  href="https://maps.app.goo.gl/UA6dRfJpYhWYbyxKA"
+                  href={PROFILE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 mt-1 group"
@@ -225,124 +230,99 @@ export default function GoogleReviews() {
                 </a>
               </div>
             </div>
+
           </div>
         </FadeIn>
       </div>
 
-      {/* ── 2×2 Grid with internal vertical scroll — no visible scrollbar ── */}
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn direction="none">
-          {/*
-            Fixed height = 2 card rows (260px each) + 1 gap (16px) = 536px.
-            scrollbar-hide keeps the page still; only this container scrolls.
-          */}
-          <div
-            ref={scrollRef}
-            className="overflow-y-auto scrollbar-hide"
-            style={{ maxHeight: "556px" }}
+      {/* ── Horizontally Scrollable Review Cards ── */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 sm:gap-5 px-4 sm:px-6 lg:px-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
+        {STATIC_REVIEWS.map((review, idx) => (
+          <FadeIn key={review.id} delay={idx * 0.07} direction="none">
+            <a
+              href={PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex-none w-[85vw] sm:w-[400px] lg:w-[360px] snap-center bg-[#2A2B29] hover:bg-[#323430] border border-white/[0.06] hover:border-kaaj-gold/30 transition-all duration-500 p-7 sm:p-8 flex flex-col gap-5 min-h-[260px] relative overflow-hidden cursor-pointer"
+            >
+              {/* Decorative quote watermark */}
+              <span className="absolute top-2 right-4 font-serif text-[7rem] leading-none text-white/[0.04] select-none pointer-events-none transition-all duration-500 group-hover:text-kaaj-gold/10">
+                &ldquo;
+              </span>
+
+              {/* Stars + verified badge */}
+              <div className="flex items-center justify-between">
+                <StarRating count={review.rating} size={12} />
+                <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-70 transition-opacity duration-300">
+                  <GoogleLogo size={11} />
+                  <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-white/60">Verified</span>
+                </div>
+              </div>
+
+              {/* Review text */}
+              <blockquote className="font-sans text-[13.5px] leading-relaxed text-white/70 group-hover:text-white/85 transition-colors duration-300 flex-1 relative z-10">
+                &ldquo;{review.text}&rdquo;
+              </blockquote>
+
+              {/* Author + location + date */}
+              <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center flex-none">
+                    <span className="font-sans text-[10px] font-semibold text-white/50">
+                      {review.initials}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-sans text-[11px] font-medium text-white/65 tracking-wide group-hover:text-white/80 transition-colors duration-300">
+                      {review.author}
+                    </p>
+                    <div className="flex items-center gap-1 mt-0.5 text-white/30 group-hover:text-kaaj-gold/50 transition-colors duration-300">
+                      <LocationPin />
+                      <span className="font-sans text-[9px] tracking-wide">{review.location}</span>
+                    </div>
+                  </div>
+                </div>
+                <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/25">
+                  {review.date}
+                </span>
+              </div>
+            </a>
+          </FadeIn>
+        ))}
+
+        {/* Leave a review CTA */}
+        <FadeIn delay={STATIC_REVIEWS.length * 0.07} direction="none">
+          <a
+            href={PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex-none w-[60vw] sm:w-[200px] lg:w-[180px] snap-center bg-[#2A2B29] hover:bg-[#323430] border border-dashed border-white/[0.08] hover:border-kaaj-gold/40 transition-all duration-500 p-7 sm:p-8 flex flex-col items-start justify-between min-h-[260px]"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-              {STATIC_REVIEWS.map((review) => (
-                <a
-                  key={review.id}
-                  href="https://maps.app.goo.gl/UA6dRfJpYhWYbyxKA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block bg-[#2A2B29] hover:bg-[#323430] border border-white/[0.06] hover:border-kaaj-gold/30 transition-all duration-500 p-6 sm:p-7 flex flex-col gap-4 min-h-[260px] relative overflow-hidden cursor-pointer"
-                >
-                  {/* Decorative quote watermark */}
-                  <span className="absolute top-2 right-4 font-serif text-[7rem] leading-none text-white/[0.04] select-none pointer-events-none transition-all duration-500 group-hover:text-kaaj-gold/10">
-                    &ldquo;
-                  </span>
-
-                  {/* Stars + verified badge */}
-                  <div className="flex items-center justify-between">
-                    <StarRating count={review.rating} size={12} />
-                    <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-70 transition-opacity duration-300">
-                      <GoogleLogo size={11} />
-                      <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-white/60">
-                        Verified
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Review text */}
-                  <blockquote className="font-sans text-[13.5px] leading-relaxed text-white/70 group-hover:text-white/85 transition-colors duration-300 flex-1 relative z-10">
-                    &ldquo;{review.text}&rdquo;
-                  </blockquote>
-
-                  {/* Author + location + date */}
-                  <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/10 flex items-center justify-center flex-none">
-                        <span className="font-sans text-[10px] font-semibold text-white/50">
-                          {review.initials}
-                        </span>
-                      </div>
-                      <div>
-                        <p className="font-sans text-[11px] font-medium text-white/65 tracking-wide group-hover:text-white/80 transition-colors duration-300">
-                          {review.author}
-                        </p>
-                        <div className="flex items-center gap-1 mt-0.5 text-white/30 group-hover:text-kaaj-gold/50 transition-colors duration-300">
-                          <LocationPin />
-                          <span className="font-sans text-[9px] tracking-wide">
-                            {review.location}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-white/25">
-                      {review.date}
-                    </span>
-                  </div>
-                </a>
-              ))}
-
-              {/* Leave a review CTA */}
-              <a
-                href="https://maps.app.goo.gl/UA6dRfJpYhWYbyxKA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-[#2A2B29] hover:bg-[#323430] border border-dashed border-white/[0.08] hover:border-kaaj-gold/40 transition-all duration-500 p-6 sm:p-7 flex flex-col items-start justify-between min-h-[260px]"
-              >
-                <div className="w-10 h-10 border border-kaaj-gold/30 rounded-full flex items-center justify-center group-hover:border-kaaj-gold/70 group-hover:bg-kaaj-gold/10 transition-all duration-300">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" className="text-kaaj-gold/70 group-hover:text-kaaj-gold group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all duration-300">
-                    <line x1="7" y1="17" x2="17" y2="7"/>
-                    <polyline points="7 7 17 7 17 17"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-sans text-[11px] uppercase tracking-[0.25em] text-white/40 group-hover:text-white/65 transition-colors duration-300 leading-loose mb-3">
-                    Loved your experience?<br />Share it on Google.
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <GoogleLogo size={12} />
-                    <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-white/30 group-hover:text-kaaj-gold transition-colors duration-300">
-                      View Our Profile
-                    </span>
-                  </div>
-                </div>
-              </a>
-
+            <div className="w-10 h-10 border border-kaaj-gold/30 rounded-full flex items-center justify-center group-hover:border-kaaj-gold/70 group-hover:bg-kaaj-gold/10 transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" className="text-kaaj-gold/70 group-hover:text-kaaj-gold group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all duration-300">
+                <line x1="7" y1="17" x2="17" y2="7"/>
+                <polyline points="7 7 17 7 17 17"/>
+              </svg>
             </div>
-          </div>
-
-          {/* Scroll hint */}
-          <div className="flex items-center justify-center gap-2 mt-5 opacity-35">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-kaaj-charcoal/50">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="8 12 12 16 16 12"/>
-            </svg>
-            <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-charcoal/40">
-              Scroll for more
-            </span>
-          </div>
-
+            <div>
+              <p className="font-sans text-[11px] uppercase tracking-[0.25em] text-white/40 group-hover:text-white/65 transition-colors duration-300 leading-loose mb-3">
+                Loved your experience?<br />Share it on Google.
+              </p>
+              <div className="flex items-center gap-2">
+                <GoogleLogo size={12} />
+                <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-white/30 group-hover:text-kaaj-gold transition-colors duration-300">
+                  View Our Profile
+                </span>
+              </div>
+            </div>
+          </a>
         </FadeIn>
       </div>
+
     </section>
   );
 }
-
-
