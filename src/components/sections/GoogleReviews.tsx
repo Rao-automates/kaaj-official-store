@@ -129,7 +129,7 @@ export function ProductReviewTicker() {
 
   return (
     <a
-      href="https://www.google.com/maps/place/?q=place_id:ChIJk2-Rwg4_sz4R91sLzi-921s"
+      href="https://share.google/9KRwByp2Jy8OML3Tt"
       target="_blank"
       rel="noopener noreferrer"
       className="group flex items-start gap-3 bg-[#2A2B29] hover:bg-[#323430] border border-white/[0.06] hover:border-kaaj-gold/30 transition-all duration-500 px-4 py-3.5 cursor-pointer"
@@ -213,7 +213,7 @@ export default function GoogleReviews() {
                 </div>
                 <StarRating count={5} size={13} />
                 <a
-                  href="https://www.google.com/maps/place/?q=place_id:ChIJk2-Rwg4_sz4R91sLzi-921s"
+                  href="https://share.google/9KRwByp2Jy8OML3Tt"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 mt-1 group"
@@ -246,7 +246,7 @@ export default function GoogleReviews() {
               {STATIC_REVIEWS.map((review) => (
                 <a
                   key={review.id}
-                  href="https://www.google.com/maps/place/?q=place_id:ChIJk2-Rwg4_sz4R91sLzi-921s"
+                  href="https://share.google/9KRwByp2Jy8OML3Tt"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block bg-[#2A2B29] hover:bg-[#323430] border border-white/[0.06] hover:border-kaaj-gold/30 transition-all duration-500 p-6 sm:p-7 flex flex-col gap-4 min-h-[260px] relative overflow-hidden cursor-pointer"
@@ -301,7 +301,7 @@ export default function GoogleReviews() {
 
               {/* Leave a review CTA */}
               <a
-                href="https://www.google.com/maps/place/?q=place_id:ChIJk2-Rwg4_sz4R91sLzi-921s"
+                href="https://share.google/9KRwByp2Jy8OML3Tt"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-[#2A2B29] hover:bg-[#323430] border border-dashed border-white/[0.08] hover:border-kaaj-gold/40 transition-all duration-500 p-6 sm:p-7 flex flex-col items-start justify-between min-h-[260px]"
