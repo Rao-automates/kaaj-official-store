@@ -3,7 +3,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import ProductImageGallery from "@/components/product/ProductImageGallery";
 import VariantSelector from "@/components/product/VariantSelector";
@@ -34,10 +33,11 @@ export default function ProductDetailClient({
   relatedProducts,
 }: ProductDetailClientProps) {
   const { addToCart } = useCart();
-  const router = useRouter();
   const [selectedAttrs, setSelectedAttrs] = useState<Record<string, string>>({});
   const [quantity, setQuantity] = useState(1);
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
+  const [sizeError, setSizeError] = useState(false);
+  const sizeRef = useRef<HTMLDivElement>(null);
   const [descOpen, setDescOpen] = useState(true);
   const [addedToCart, setAddedToCart] = useState(false);
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -111,8 +111,19 @@ export default function ProductDetailClient({
 
   const variantNotSelected = isVariable && Object.keys(selectedAttrs).length < attributes.filter((a) => a.variation).length;
 
-  const handleAddToCart = () => {
-    if (isOOS || variantNotSelected) return;
+  // Nudge user to pick a size — scroll + shake + inline error
+  const nudgeSelectSize = () => {
+    setSizeError(true);
+    sizeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    // Add shake animation via class
+    sizeRef.current?.classList.add("pdp-shake");
+    setTimeout(() => sizeRef.current?.classList.remove("pdp-shake"), 600);
+    setTimeout(() => setSizeError(false), 4000);
+  };
+
+  const handleAddToBag = () => {
+    if (isOOS) return;
+    if (variantNotSelected) { nudgeSelectSize(); return; }
     addToCart({
       productId: product.id,
       variationId: matchingVariation?.id,
@@ -125,23 +136,7 @@ export default function ProductDetailClient({
       stockStatus: isOOS ? "OUT_OF_STOCK" : "IN_STOCK",
     });
     setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2500);
-  };
-
-  const handleOrderNow = () => {
-    if (isOOS || variantNotSelected) return;
-    addToCart({
-      productId: product.id,
-      variationId: matchingVariation?.id,
-      name: product.name,
-      slug: product.slug,
-      price: parsePKR(displayPrice),
-      quantity,
-      image: matchingVariation?.image || product.image,
-      selectedAttributes: selectedAttrs,
-      stockStatus: isOOS ? "OUT_OF_STOCK" : "IN_STOCK",
-    });
-    router.push("/checkout");
+    setTimeout(() => setAddedToCart(false), 4000);
   };
 
   const shareWhatsApp = () => {
@@ -292,20 +287,40 @@ export default function ProductDetailClient({
               {/* Variant Selectors */}
               {isVariable && attributes.length > 0 && (
                 <div className="space-y-6">
-                  {attributes
-                    .filter((attr) => attr.variation)
-                    .map((attr) => (
-                      <VariantSelector
-                        key={attr.name}
-                        attributeName={attr.name}
-                        options={attr.options}
-                        selected={selectedAttrs[attr.name] || ""}
-                        onChange={(val) =>
-                          setSelectedAttrs((prev) => ({ ...prev, [attr.name]: val }))
-                        }
-                        rightElement={undefined}
-                      />
-                    ))}
+                  <div
+                    ref={sizeRef}
+                    className={cn(
+                      "transition-all duration-300 rounded-sm",
+                      sizeError && "ring-2 ring-red-500/70 ring-offset-2 ring-offset-kaaj-cream bg-red-50/30 p-3"
+                    )}
+                  >
+                    {attributes
+                      .filter((attr) => attr.variation)
+                      .map((attr) => (
+                        <VariantSelector
+                          key={attr.name}
+                          attributeName={attr.name}
+                          options={attr.options}
+                          selected={selectedAttrs[attr.name] || ""}
+                          onChange={(val) => {
+                            setSelectedAttrs((prev) => ({ ...prev, [attr.name]: val }));
+                            setSizeError(false);
+                          }}
+                          rightElement={undefined}
+                        />
+                      ))}
+                    {/* Inline error — appears when user clicks a button without selecting */}
+                    {sizeError && (
+                      <p className="mt-2.5 font-sans text-[11px] text-red-600 flex items-center gap-1.5 animate-in fade-in slide-in-from-top-1">
+                        <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="12" y1="8" x2="12" y2="12" />
+                          <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        Please select a size to continue
+                      </p>
+                    )}
+                  </div>
                   {/* Specific Size Details */}
                   {Object.entries(selectedAttrs).map(([key, val]) => {
                     if (!key.toLowerCase().includes("size")) return null;
@@ -414,46 +429,41 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              {/* Add to Cart & Order Now */}
-              <div ref={buttonsRef} className="pt-4 space-y-3">
+              {/* Add to Bag — single primary CTA */}
+              <div ref={buttonsRef} className="pt-4 space-y-2.5">
                 <button
-                  onClick={handleAddToCart}
-                  disabled={isOOS || variantNotSelected}
+                  onClick={handleAddToBag}
+                  disabled={isOOS}
                   className={cn(
-                    "w-full h-14 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-all rounded-sm text-center flex items-center justify-center",
-                    isOOS || variantNotSelected
+                    "w-full h-14 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-sm text-center flex items-center justify-center gap-2",
+                    isOOS
                       ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
-                      : "bg-kaaj-olive text-kaaj-cream hover:opacity-90 shadow-lg"
-                  )}
-                >
-                  {isOOS
-                    ? "Out of Stock"
-                    : variantNotSelected
-                      ? "Select Size"
                       : addedToCart
-                        ? "✓ Added To Cart"
-                        : "ADD TO CART"}
-                </button>
-                <button
-                  onClick={handleOrderNow}
-                  disabled={isOOS || variantNotSelected}
-                  className={cn(
-                    "w-full h-14 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-all rounded-sm text-center flex items-center justify-center",
-                    isOOS || variantNotSelected
-                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
-                      : "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark shadow-lg"
+                        ? "bg-kaaj-charcoal text-kaaj-cream shadow-lg"
+                        : "bg-kaaj-charcoal text-kaaj-cream hover:bg-kaaj-charcoal/90 shadow-lg"
                   )}
                 >
-                  {isOOS
-                    ? "Out of Stock"
-                    : variantNotSelected
-                      ? "Select Size"
-                      : "BUY NOW"}
+                  {isOOS ? "Sold Out" : addedToCart ? (
+                    <>
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      Added to Bag
+                    </>
+                  ) : "ADD TO BAG"}
                 </button>
-                {variantNotSelected && (
-                  <p className="font-sans text-[10px] text-kaaj-charcoal/70 text-center mt-2">
-                    Please select a size above to continue.
-                  </p>
+
+                {/* Proceed to Checkout — appears after adding */}
+                {addedToCart && (
+                  <Link
+                    href="/checkout"
+                    className="w-full h-11 flex items-center justify-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-kaaj-gold hover:text-kaaj-gold-dark transition-all duration-300 border border-kaaj-gold/30 hover:border-kaaj-gold/60 rounded-sm animate-fade-up"
+                  >
+                    Proceed to Checkout
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </Link>
                 )}
               </div>
 
@@ -609,42 +619,32 @@ export default function ProductDetailClient({
                 </div>
               </div>
 
-              {/* Buttons */}
+              {/* Single CTA — always active, nudge if no size */}
               <div className="flex items-center gap-2 flex-1 sm:flex-none sm:ml-auto">
-                <button
-                  onClick={handleAddToCart}
-                  disabled={isOOS || variantNotSelected}
-                  className={cn(
-                    "flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center",
-                    isOOS || variantNotSelected
-                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
-                      : "bg-[#252525] text-white hover:bg-black border border-kaaj-border/30"
-                  )}
-                >
-                  {isOOS
-                    ? "Sold Out"
-                    : variantNotSelected
-                      ? "Select Size"
-                      : addedToCart
-                        ? "✓ Added"
-                        : "Add to Cart"}
-                </button>
-                <button
-                  onClick={handleOrderNow}
-                  disabled={isOOS || variantNotSelected}
-                  className={cn(
-                    "flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center",
-                    isOOS || variantNotSelected
-                      ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
-                      : "bg-kaaj-gold text-white hover:bg-kaaj-gold-dark"
-                  )}
-                >
-                  {isOOS
-                    ? "Sold Out"
-                    : variantNotSelected
-                      ? "Select Size"
-                      : "Buy Now"}
-                </button>
+                {addedToCart ? (
+                  <Link
+                    href="/checkout"
+                    className="flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center gap-1.5 bg-kaaj-gold text-white hover:bg-kaaj-gold-dark"
+                  >
+                    ✓ Checkout
+                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleAddToBag}
+                    disabled={isOOS}
+                    className={cn(
+                      "flex-1 sm:w-auto sm:px-10 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center",
+                      isOOS
+                        ? "bg-kaaj-charcoal/10 text-kaaj-muted cursor-not-allowed"
+                        : "bg-[#252525] text-white hover:bg-black border border-kaaj-border/30"
+                    )}
+                  >
+                    {isOOS ? "Sold Out" : "Add to Bag"}
+                  </button>
+                )}
               </div>
             </div>
           </div>

@@ -115,6 +115,17 @@ body {
 .animate-slide-in-right { animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .animate-skeleton   { animation: skeleton 1.5s ease-in-out infinite; }
 
+/* PDP size-selector shake — nudges user to pick a size */
+@keyframes pdpShake {
+  0%, 100% { transform: translateX(0); }
+  15%      { transform: translateX(-6px); }
+  30%      { transform: translateX(5px); }
+  45%      { transform: translateX(-4px); }
+  60%      { transform: translateX(3px); }
+  75%      { transform: translateX(-2px); }
+}
+.pdp-shake { animation: pdpShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
 /* ── Premium Animations ────────────────────────────────────────────────────── */
 
 /* Text clip reveal — words/lines slide up from behind a mask */
