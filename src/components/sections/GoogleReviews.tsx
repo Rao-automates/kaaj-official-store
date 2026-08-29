@@ -128,11 +128,8 @@ export function ProductReviewTicker() {
   const review = STATIC_REVIEWS[current];
 
   return (
-    <a
-      href={PROFILE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex items-start gap-3 bg-[#2A2B29] hover:bg-[#323430] border border-white/[0.06] hover:border-kaaj-gold/30 transition-all duration-500 px-4 py-3.5 cursor-pointer"
+    <div
+      className="group flex items-start gap-3 bg-[#2A2B29] border border-white/[0.06] transition-all duration-500 px-4 py-3.5"
     >
       {/* Left: Decorative quote mark */}
       <span className="font-serif text-3xl leading-none text-kaaj-gold/50 mt-0.5 flex-none select-none">&ldquo;</span>
@@ -146,7 +143,7 @@ export function ProductReviewTicker() {
           transition: "opacity 0.4s, transform 0.4s",
         }}
       >
-        <p className="font-sans text-[11px] leading-relaxed text-white/65 line-clamp-2 group-hover:text-white/80 transition-colors duration-300">
+        <p className="font-sans text-[11px] leading-relaxed text-white/65 line-clamp-2 transition-colors duration-300">
           {review.text}
         </p>
         <div className="flex items-center gap-2 mt-2">
@@ -158,7 +155,7 @@ export function ProductReviewTicker() {
 
       {/* Right: Google badge + dot indicator */}
       <div className="flex flex-col items-end gap-2 flex-none">
-        <div className="flex items-center gap-1 opacity-40 group-hover:opacity-70 transition-opacity duration-300">
+        <div className="flex items-center gap-1 opacity-40 transition-opacity duration-300">
           <GoogleLogo size={10} />
           <span className="font-sans text-[7px] uppercase tracking-[0.15em] text-white/50">Review</span>
         </div>
@@ -176,7 +173,7 @@ export function ProductReviewTicker() {
           ))}
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
