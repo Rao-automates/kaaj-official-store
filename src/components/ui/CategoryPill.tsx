@@ -28,8 +28,8 @@ export default function CategoryPill({
         "font-sans text-xs uppercase tracking-[0.18em] whitespace-nowrap",
         "border transition-all duration-300",
         active
-          ? "bg-kaaj-olive text-kaaj-cream border-kaaj-olive"
-          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-olive hover:text-kaaj-charcoal"
+          ? "bg-kaaj-cream text-kaaj-charcoal border-kaaj-charcoal"
+          : "bg-transparent text-kaaj-charcoal border-kaaj-border hover:border-kaaj-charcoal hover:text-kaaj-charcoal"
       )}
     >
       {name}

@@ -244,8 +244,8 @@ export default function CheckoutPage() {
                 Continue Shopping
               </span>
             </Link>
-            <a href={`https://wa.me/923013305325?text=${encodeURIComponent(`Hello, my order ID is ${orderNumber}. ${paymentMethod === 'bacs' ? 'Here is my transaction screenshot:' : ''}`)}`} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-4 py-4 px-12 border border-kaaj-olive bg-kaaj-olive hover:bg-transparent hover:border-kaaj-gold transition-colors duration-500 justify-center">
-              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-kaaj-cream group-hover:text-kaaj-gold transition-colors duration-500">
+            <a href={`https://wa.me/923013305325?text=${encodeURIComponent(`Hello, my order ID is ${orderNumber}. ${paymentMethod === 'bacs' ? 'Here is my transaction screenshot:' : ''}`)}`} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-4 py-4 px-12 border border-[#252525] bg-[#252525] hover:bg-black transition-colors duration-500 justify-center">
+              <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-white group-hover:text-kaaj-gold transition-colors duration-500">
                 {paymentMethod === "bacs" ? "Send Screenshot on WhatsApp" : "Contact via WhatsApp"}
               </span>
             </a>
@@ -557,7 +557,7 @@ export default function CheckoutPage() {
                   <button
                     type="submit"
                     disabled={loading || cart.items.length === 0}
-                    className="group relative w-full flex items-center justify-center gap-4 py-4 border border-kaaj-olive hover:border-kaaj-gold transition-colors duration-500 bg-kaaj-olive text-kaaj-cream hover:bg-transparent hover:text-kaaj-gold disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group relative w-full flex items-center justify-center gap-4 py-4 border border-[#252525] hover:border-black transition-colors duration-500 bg-[#252525] text-white hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="font-sans text-[10px] uppercase tracking-[0.3em] transition-colors duration-500">
                       {loading ? "Processing..." : `Place Order — ${paymentMethod === 'cod' ? 'COD' : 'Bank Transfer'}`}

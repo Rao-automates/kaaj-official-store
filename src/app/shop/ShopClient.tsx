@@ -108,8 +108,8 @@ export default function ShopClient() {
                   }}
                   className={`px-4 py-2 font-sans text-[9px] uppercase tracking-[0.2em] transition-colors duration-500 border ${
                     currentSort === opt.value
-                      ? "bg-kaaj-olive text-kaaj-cream border-kaaj-olive"
-                      : "bg-transparent text-kaaj-charcoal border-kaaj-charcoal/20 hover:border-kaaj-olive"
+                      ? "bg-kaaj-cream text-kaaj-charcoal border-kaaj-charcoal"
+                      : "bg-transparent text-kaaj-charcoal border-kaaj-charcoal/20 hover:border-kaaj-charcoal"
                   }`}
                 >
                   {opt.label}

@@ -92,7 +92,7 @@ function SearchResultsContent() {
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center border border-kaaj-olive text-kaaj-olive hover:bg-kaaj-olive hover:text-kaaj-cream transition-colors duration-300 px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em]"
+              className="inline-flex items-center justify-center border border-[#252525] text-[#252525] hover:bg-[#252525] hover:text-white transition-colors duration-300 px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em]"
             >
               Back to Shop
             </Link>
