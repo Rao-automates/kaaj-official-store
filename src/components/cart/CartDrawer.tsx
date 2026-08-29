@@ -31,7 +31,7 @@ export default function CartDrawer() {
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 glass-overlay z-40 transition-opacity duration-400",
+          "fixed inset-0 glass-overlay z-[90] transition-opacity duration-400",
           isDrawerOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         onClick={closeDrawer}
@@ -44,7 +44,7 @@ export default function CartDrawer() {
         aria-modal="true"
         aria-label="Shopping cart"
         className={cn(
-          "fixed right-0 top-0 h-full w-full sm:w-[420px] bg-kaaj-cream z-50",
+          "fixed right-0 top-0 h-full w-full sm:w-[420px] bg-kaaj-cream z-[100]",
           "flex flex-col shadow-2xl",
           "transition-transform duration-400 ease-expo-out transform-gpu will-change-transform",
           isDrawerOpen ? "translate-x-0" : "translate-x-full"

@@ -457,7 +457,7 @@ export default function ProductDetailClient({
                 {addedToCart && (
                   <Link
                     href="/checkout"
-                    className="w-full h-11 flex items-center justify-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-kaaj-gold hover:text-kaaj-gold-dark transition-all duration-300 border border-kaaj-gold/30 hover:border-kaaj-gold/60 rounded-sm animate-fade-up"
+                    className="w-full h-11 flex items-center justify-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] bg-[#252525] text-white hover:bg-black transition-all duration-300 rounded-sm animate-fade-up"
                   >
                     Proceed to Checkout
                     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -624,7 +624,7 @@ export default function ProductDetailClient({
                 {addedToCart ? (
                   <Link
                     href="/checkout"
-                    className="flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center gap-1.5 bg-kaaj-gold text-white hover:bg-kaaj-gold-dark"
+                    className="flex-1 sm:w-auto sm:px-8 h-11 font-sans text-[10px] font-bold uppercase tracking-[0.15em] transition-all rounded-sm flex items-center justify-center gap-1.5 bg-[#252525] text-white hover:bg-black"
                   >
                     ✓ Checkout
                     <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
