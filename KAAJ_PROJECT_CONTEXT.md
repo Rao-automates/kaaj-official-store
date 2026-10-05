@@ -373,4 +373,13 @@ Based on a detailed design brief, the homepage's "Aks" (عکس) category spotlig
     *   **Page Consistency:** Updated the table columns in the standalone `/size-guide` page to strictly match the new streamlined data interfaces (removing obsolete properties like `frontBorder`, `armHole`, `frontRise`, and `backRise` to prevent build errors).
 
 ---
-*End of Document. Last updated: August 20, 2026*
+## 15. Analytics & Tracking (October 5, 2026)
+*   **Meta Pixel & Tracking Setup:** The Meta Pixel base script is injected globally via `src/app/layout.tsx` using Next.js's `<Script>` component (`strategy="afterInteractive"`). It relies on the Vercel environment variable `NEXT_PUBLIC_META_PIXEL_ID` to dynamically set the Pixel ID.
+*   **Standard E-commerce Events Tracking:** A secure client-side utility `src/lib/meta-pixel.ts` (`trackEvent`) wraps the `window.fbq` object to prevent hydration and SSR errors in Next.js.
+    *   **ViewContent:** Triggers natively on the Product Detail Page (`ProductDetailClient.tsx`) load via a `useEffect`, passing the product ID, name, price, and currency.
+    *   **AddToCart:** Integrated directly into `src/context/CartContext.tsx` inside the `addToCart` function. Tracks value based on item price multiplied by quantity.
+    *   **InitiateCheckout:** Triggers via `useEffect` in `src/app/checkout/page.tsx` when a user enters the checkout with items in their cart.
+    *   **Purchase:** Triggers upon successful order submission in the `handleSubmit` block of `checkout/page.tsx`, passing the total cart value, currency, and an array of purchased product IDs.
+
+---
+*End of Document. Last updated: October 5, 2026*
