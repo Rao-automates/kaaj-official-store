@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import type { CartItem, CartAction, CartState } from "@/lib/types";
 import { generateCartId, parsePKR } from "@/lib/utils";
+import { trackEvent } from "@/lib/meta-pixel";
 
 // ── Reducer ──────────────────────────────────────────────────────────────────
 
@@ -123,6 +124,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       dispatch({
         type: "ADD_ITEM",
         payload: { ...item, id, selectedAttributes: item.selectedAttributes || attributes },
+      });
+      trackEvent('AddToCart', {
+        content_ids: [item.productId],
+        content_name: item.name,
+        content_type: 'product',
+        value: item.price * (item.quantity || 1),
+        currency: 'PKR',
       });
       setIsDrawerOpen(true);
     },

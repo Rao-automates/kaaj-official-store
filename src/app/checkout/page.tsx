@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPKR } from "@/lib/utils";
 import Button from "@/components/ui/Button";
+import { trackEvent } from "@/lib/meta-pixel";
 
 interface FormData {
   firstName: string;
@@ -45,6 +46,17 @@ export default function CheckoutPage() {
 
   const shipping = paymentMethod === "bacs" ? 0 : 250;
   const total = cartTotal + shipping;
+
+  // Track InitiateCheckout
+  useEffect(() => {
+    if (cartTotal > 0 && !submitted) {
+      trackEvent('InitiateCheckout', {
+        value: cartTotal,
+        currency: 'PKR',
+        num_items: cart.items.length
+      });
+    }
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -111,6 +123,14 @@ export default function CheckoutPage() {
       setFinalShipping(shipping);
       setSubmitted(true);
       clearCart();
+      
+      trackEvent('Purchase', {
+        value: total,
+        currency: 'PKR',
+        content_ids: cart.items.map(i => i.productId),
+        content_type: 'product',
+        num_items: cart.items.length
+      });
     } catch (error) {
       console.error("Checkout error:", error);
       alert("There was an error processing your order. Please try again.");

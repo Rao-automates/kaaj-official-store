@@ -22,6 +22,7 @@ import {
   cn,
 } from "@/lib/utils";
 import type { Product, ProductVariation } from "@/lib/types";
+import { trackEvent } from "@/lib/meta-pixel";
 
 interface ProductDetailClientProps {
   product: Product;
@@ -110,6 +111,18 @@ export default function ProductDetailClient({
   }, [matchingVariation, isVariable, product.stockStatus]);
 
   const variantNotSelected = isVariable && Object.keys(selectedAttrs).length < attributes.filter((a) => a.variation).length;
+
+  useEffect(() => {
+    if (product) {
+      trackEvent('ViewContent', {
+        content_ids: [product.id],
+        content_name: product.name,
+        content_type: 'product',
+        value: parsePKR(displayPrice),
+        currency: 'PKR',
+      });
+    }
+  }, [product.id]);
 
   // Nudge user to pick a size — scroll + shake + inline error
   const nudgeSelectSize = () => {
