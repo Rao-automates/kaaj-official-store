@@ -20,6 +20,8 @@ const CATEGORY_VISUALS: Record<string, string> = {
   aks: "/images/launch_1_decoration/ed-3.webp",
   "signature-stitched": "/images/launch_1_decoration/ed-5.webp",
   sale: "/images/launch_1_decoration/ed-7.webp",
+  "autumn-collection": "/images/IMG_4776.jpg",
+  "autumn-colection": "/images/IMG_4776.jpg",
 };
 
 /* ─── Instagram Mosaic Photos ─── */
