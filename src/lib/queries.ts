@@ -43,7 +43,7 @@ export const GET_PRODUCTS = `
     products(
       first: $first
       after: $after
-      where: { status: "publish" }
+      where: { status: "publish", orderby: [{ field: DATE, order: DESC }] }
     ) {
       nodes {
         ...ProductCard
@@ -102,7 +102,7 @@ export const GET_PRODUCTS_BY_CATEGORY = `
     products(
       first: $first
       after: $after
-      where: { status: "publish", categoryIn: $slug }
+      where: { status: "publish", categoryIn: $slug, orderby: [{ field: DATE, order: DESC }] }
     ) {
       nodes {
         ...ProductCard
