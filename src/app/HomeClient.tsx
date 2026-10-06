@@ -114,10 +114,7 @@ export default function HomeClient({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {initialCategories.map((cat, idx) => {
-                const isAutumn = cat.name.toLowerCase().includes('autumn');
-                const imgSrc = isAutumn
-                  ? "/images/IMG_4776.jpg"
-                  : (CATEGORY_VISUALS[cat.slug] || `/images/launch_1_decoration/ed-${(idx % 9) + 1}.webp`);
+                const imgSrc = cat.image?.sourceUrl || CATEGORY_VISUALS[cat.slug] || `/images/launch_1_decoration/ed-${(idx % 9) + 1}.webp`;
 
                 return (
                   <FadeIn key={cat.slug} delay={idx * 0.1}>
