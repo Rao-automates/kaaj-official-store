@@ -3,7 +3,8 @@ import { gqlFetch } from "@/lib/graphql-client";
 import { 
   GET_PRODUCTS_BY_CATEGORY, 
   GET_CATEGORIES,
-  GET_ALL_CATEGORY_SLUGS 
+  GET_ALL_CATEGORY_SLUGS,
+  GET_SALE_PRODUCTS
 } from "@/lib/queries";
 import type { ProductsQueryResponse, CategoriesQueryResponse } from "@/lib/types";
 import ProductGrid from "@/components/product/ProductGrid";
@@ -33,10 +34,21 @@ const CATEGORY_META: Record<string, { title: string; description: string }> = {
     title: "Formal Wear",
     description: "Occasion-ready formal wear for weddings, events, and celebrations.",
   },
+  sale: {
+    title: "Sale",
+    description: "Shop discounted styles on sale.",
+  },
 };
 
 async function getCategoryProducts(slug: string) {
   try {
+    if (slug === 'sale') {
+      const data = await gqlFetch<ProductsQueryResponse>(GET_SALE_PRODUCTS, {
+        first: 24,
+      });
+      return data?.products?.nodes ?? [];
+    }
+
     const data = await gqlFetch<ProductsQueryResponse>(GET_PRODUCTS_BY_CATEGORY, {
       slug: [slug],
       first: 24,

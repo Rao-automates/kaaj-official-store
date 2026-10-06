@@ -115,6 +115,26 @@ export const GET_PRODUCTS_BY_CATEGORY = `
   }
 `;
 
+// ── Get Sale Products ────────────────────────────────────────────────────────
+export const GET_SALE_PRODUCTS = `
+  ${PRODUCT_CARD_FRAGMENT}
+  query GetSaleProducts($first: Int = 24, $after: String) {
+    products(
+      first: $first
+      after: $after
+      where: { status: "publish", onSale: true, orderby: [{ field: DATE, order: DESC }] }
+    ) {
+      nodes {
+        ...ProductCard
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+`;
+
 // ── Get Single Product Detail ─────────────────────────────────────────────────
 export const GET_PRODUCT_BY_SLUG = `
   query GetProductBySlug($slug: ID!) {
