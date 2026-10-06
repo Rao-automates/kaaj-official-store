@@ -29,6 +29,7 @@ interface ProductSpecifics {
   hip?: string[];
   sleeveLength?: string[];
   thigh?: string[];
+  trouserLength?: string[];
 }
 
 const PRODUCT_SPECIFICS: Record<string, ProductSpecifics> = {
@@ -85,6 +86,15 @@ const PRODUCT_SPECIFICS: Record<string, ProductSpecifics> = {
     sleeveOpening: ["8", "9", "9", "9", "10"],
     bottomOpening: ["8", "9", "9", "9", "10"],
   },
+  "new short shirts": {
+    length: ["32", "32", "33", "35", "37"],
+    shoulder: ["13", "13", "14", "15", "16"],
+    chest: ["18", "18", "20", "22", "24"],
+    sleeveLength: ["21", "21", "22", "23", "23"],
+    sleeveOpening: ["8", "8", "8", "8", "8"],
+    bottomOpening: ["12", "12", "12", "12", "12"],
+    trouserLength: ["37", "37", "38", "40", "40"],
+  },
 };
 
 function getSpecifics(productName: string) {
@@ -99,6 +109,9 @@ function getSpecifics(productName: string) {
   if (n.includes("blush") || n.includes("heaven")) return PRODUCT_SPECIFICS["blush heaven"];
   if (n.includes("pastel")) return PRODUCT_SPECIFICS["pastel lilac"];
   if (n.includes("ocean") || n.includes("ocene")) return PRODUCT_SPECIFICS["ocean mist"];
+  if (n.includes("longbutton") || n.includes("redshort") || n.includes("dustypink") || n.includes("shortshirt")) {
+    return PRODUCT_SPECIFICS["new short shirts"];
+  }
   
   return PRODUCT_SPECIFICS["obsidian black"]; // Fallback
 }
@@ -117,7 +130,7 @@ export function getSizeGuide(productName: string) {
 
   const shalwar = STANDARD_TROUSER.sizes.map((size, index) => ({
     size,
-    length: STANDARD_TROUSER.length[index],
+    length: specifics.trouserLength ? specifics.trouserLength[index] : STANDARD_TROUSER.length[index],
     waist: specifics.waist ? specifics.waist[index] : STANDARD_TROUSER.waist[index],
     hip: specifics.hip ? specifics.hip[index] : STANDARD_TROUSER.hip[index],
     thigh: specifics.thigh ? specifics.thigh[index] : STANDARD_TROUSER.thigh[index],
