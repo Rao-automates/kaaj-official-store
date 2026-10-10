@@ -230,13 +230,20 @@ KAAJ Team`;
           <h2>New Order Received: ${finalOrderId}</h2>
           <p><strong>Customer:</strong> ${form.firstName} ${form.lastName} (${form.email})</p>
           <p><strong>Phone:</strong> ${form.phone}</p>
+          <p><strong>Address:</strong> ${form.address}, ${form.city} ${form.postcode}</p>
           <p><strong>Payment Method:</strong> ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Direct Bank Transfer'}</p>
           <p><strong>Total:</strong> Rs. ${total.toLocaleString()}</p>
           <p>The order has been successfully logged into WooCommerce.</p>
           
-          <a href="${waUrl}" style="display: inline-block; background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px;">
+          <a href="${waUrl}" style="display: inline-block; background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px; margin-bottom: 20px;">
             Send WhatsApp Confirmation
           </a>
+
+          <hr style="border: 1px solid #ccc; margin: 30px 0;" />
+          <h3>Customer Receipt Copy:</h3>
+          <div style="border: 1px solid #eee; padding: 20px; border-radius: 8px;">
+            ${emailHtml}
+          </div>
         </div>
       `;
       
