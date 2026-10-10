@@ -249,7 +249,7 @@ export default function ProductDetailClient({
                   <span className="font-sans text-2xl text-kaaj-charcoal">
                     {formatPKR(displayPrice)}
                   </span>
-                  {onSale && displayRegularPrice && (
+                  {onSale && discount !== null && displayRegularPrice && (
                     <span className="font-sans text-lg text-kaaj-charcoal/50 line-through">
                       {formatPKR(displayRegularPrice)}
                     </span>
