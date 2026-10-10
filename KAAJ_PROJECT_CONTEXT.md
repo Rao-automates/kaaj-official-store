@@ -382,4 +382,16 @@ Based on a detailed design brief, the homepage's "Aks" (عکس) category spotlig
     *   **Purchase:** Triggers upon successful order submission in the `handleSubmit` block of `checkout/page.tsx`, passing the total cart value, currency, and an array of purchased product IDs.
 
 ---
-*End of Document. Last updated: October 5, 2026*
+## 16. Autumn Collection Refinements & Bug Fixes (October 10, 2026)
+*   **Product Sorting & Sales Display:** 
+    *   GraphQL queries (`GET_PRODUCTS`, `GET_PRODUCTS_BY_CATEGORY`) were updated to sort by `DATE_DESC` to ensure the newest arrivals appear first on all category pages.
+    *   The "Sale" category page (`slug === 'sale'`) was converted from a static taxonomy lookup to dynamically query any products marked `onSale: true` across the entire catalog using a dedicated `GET_SALE_PRODUCTS` query.
+*   **Bug Fix: False Sale Prices:** Fixed a display bug in `ProductCard.tsx` and `ProductDetailClient.tsx` where a product falsely marked "on sale" by WooCommerce (where the Sale Price equaled the Regular Price) would redundantly display the same price twice. The logic now strictly requires a mathematical discount `> 0` before displaying a struck-through price.
+*   **Customer Support Workflow (WhatsApp):** 
+    *   Added a floating "Need Help?" WhatsApp widget to the Product Detail Page to increase conversion rates. It opens a pre-filled chat template containing the exact product URL and name.
+    *   Admin checkout notification emails (`api/checkout/route.ts`) were upgraded to include the customer's full address and a complete embedded copy of the customer's HTML receipt. A direct WhatsApp confirmation button remains to seamlessly open chats in WhatsApp Business.
+*   **Sizing Engine Expansion:** Custom `trouserLength` overrides were added to `getSizeGuide` in `constants.ts` to support specific Autumn products (Long Button Down Shirt, Red Short Shirt, Dusty Pink Kurti, Short Shirt Kurti). XS sizes were mapped to mirror S sizes per client specifications.
+*   **Typography Correction Interception:** Implemented a frontend `.replace("Colection", "Collection")` text intercept in `HomeClient.tsx` and `categories/[slug]/page.tsx` to automatically correct a typo coming directly from the WooCommerce admin dashboard without needing backend access.
+
+---
+*End of Document. Last updated: October 10, 2026*
