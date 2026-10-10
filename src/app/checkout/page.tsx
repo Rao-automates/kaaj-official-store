@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPKR } from "@/lib/utils";
 import Button from "@/components/ui/Button";
-import { trackEvent } from "@/lib/meta-pixel";
+import { trackEvent, trackGAEvent } from "@/lib/meta-pixel";
 
 interface FormData {
   firstName: string;
@@ -54,6 +54,16 @@ export default function CheckoutPage() {
         value: cartTotal,
         currency: 'PKR',
         num_items: cart.items.length
+      });
+      trackGAEvent('begin_checkout', {
+        currency: 'PKR',
+        value: cartTotal,
+        items: cart.items.map(item => ({
+          item_id: item.productId,
+          item_name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }))
       });
     }
   }, []);
@@ -130,6 +140,18 @@ export default function CheckoutPage() {
         content_ids: cart.items.map(i => i.productId),
         content_type: 'product',
         num_items: cart.items.length
+      });
+      trackGAEvent('purchase', {
+        transaction_id: orderNumber,
+        value: total,
+        currency: 'PKR',
+        shipping: shipping,
+        items: cart.items.map(item => ({
+          item_id: item.productId,
+          item_name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }))
       });
     } catch (error) {
       console.error("Checkout error:", error);

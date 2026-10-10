@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import type { CartItem, CartAction, CartState } from "@/lib/types";
 import { generateCartId, parsePKR } from "@/lib/utils";
-import { trackEvent } from "@/lib/meta-pixel";
+import { trackEvent, trackGAEvent } from "@/lib/meta-pixel";
 
 // ── Reducer ──────────────────────────────────────────────────────────────────
 
@@ -132,14 +132,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         value: item.price * (item.quantity || 1),
         currency: 'PKR',
       });
+      trackGAEvent('add_to_cart', {
+        currency: 'PKR',
+        value: item.price * (item.quantity || 1),
+        items: [{
+          item_id: item.productId,
+          item_name: item.name,
+          price: item.price,
+          quantity: item.quantity || 1
+        }]
+      });
       setIsDrawerOpen(true);
     },
     []
   );
 
   const removeFromCart = useCallback((id: string) => {
+    const item = cart.items.find((i) => i.id === id);
+    if (item) {
+      trackGAEvent('remove_from_cart', {
+        currency: 'PKR',
+        value: item.price * item.quantity,
+        items: [{
+          item_id: item.productId,
+          item_name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }]
+      });
+    }
     dispatch({ type: "REMOVE_ITEM", payload: { id } });
-  }, []);
+  }, [cart]);
 
   const updateQty = useCallback((id: string, quantity: number) => {
     dispatch({ type: "UPDATE_QTY", payload: { id, quantity } });

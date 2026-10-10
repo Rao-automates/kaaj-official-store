@@ -22,7 +22,7 @@ import {
   cn,
 } from "@/lib/utils";
 import type { Product, ProductVariation } from "@/lib/types";
-import { trackEvent } from "@/lib/meta-pixel";
+import { trackEvent, trackGAEvent } from "@/lib/meta-pixel";
 
 interface ProductDetailClientProps {
   product: Product;
@@ -121,6 +121,15 @@ export default function ProductDetailClient({
         value: parsePKR(displayPrice),
         currency: 'PKR',
       });
+      trackGAEvent('view_item', {
+        currency: 'PKR',
+        value: parsePKR(displayPrice),
+        items: [{
+          item_id: product.id,
+          item_name: product.name,
+          price: parsePKR(displayPrice)
+        }]
+      });
     }
   }, [product.id]);
 
@@ -153,18 +162,22 @@ export default function ProductDetailClient({
   };
 
   const helpWhatsApp = () => {
+    trackEvent('Contact', { content_name: product.name });
+    trackGAEvent('generate_lead', { currency: 'PKR', value: parsePKR(displayPrice), content_name: product.name });
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent(`Hi KAAJ team, I need help with this product: ${product.name}.\n\nLink: `) + url;
     window.open(`https://wa.me/923013305325?text=${text}`, '_blank');
   };
 
   const shareWhatsApp = () => {
+    trackGAEvent('share', { method: 'WhatsApp', content_type: 'product', item_id: product.id });
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent(`Check out ${product.name} on KAAJ`);
     window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
   };
 
   const shareInstagram = async () => {
+    trackGAEvent('share', { method: 'WebShare', content_type: 'product', item_id: product.id });
     if (navigator.share) {
       try {
         await navigator.share({

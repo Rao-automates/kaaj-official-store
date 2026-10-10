@@ -6,6 +6,7 @@ import { ProductGridSkeleton } from "@/components/ui/Skeleton";
 import type { Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { trackGAEvent } from "@/lib/meta-pixel";
 
 interface ProductGridProps {
   products: Product[];
@@ -28,6 +29,18 @@ export default function ProductGrid({
   className,
   emptyMessage,
 }: ProductGridProps) {
+  React.useEffect(() => {
+    if (products && products.length > 0) {
+      trackGAEvent('view_item_list', {
+        item_list_name: 'Product Grid',
+        items: products.slice(0, 12).map((product, idx) => ({
+          item_id: product.id,
+          item_name: product.name,
+          index: idx,
+        }))
+      });
+    }
+  }, [products]);
 
   if (loading) {
     return <ProductGridSkeleton count={columns === 2 ? 4 : columns === 3 ? 6 : 8} />;

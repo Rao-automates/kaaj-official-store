@@ -6,6 +6,7 @@ import { gqlFetch } from "@/lib/graphql-client";
 import { GET_SEARCH_RESULTS } from "@/lib/queries";
 import type { ProductsQueryResponse } from "@/lib/types";
 import ProductGrid from "@/components/product/ProductGrid";
+import { trackEvent, trackGAEvent } from "@/lib/meta-pixel";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -31,6 +32,9 @@ function SearchResultsContent() {
           first: 24,
         });
         setProducts(data?.products?.nodes ?? []);
+        
+        trackEvent('Search', { search_string: query });
+        trackGAEvent('search', { search_term: query });
       } catch (err) {
         console.error("[Search] fetch error:", err);
         setProducts([]);
