@@ -112,6 +112,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   if (slug === 'aks') {
     displayName = 'عکس';
   }
+  displayName = displayName.replace("Colection", "Collection");
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -167,7 +168,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             {allCategories.map((cat) => (
               <CategoryPill
                 key={cat.slug}
-                name={cat.name}
+                name={cat.name.replace("Colection", "Collection")}
                 slug={cat.slug}
                 active={cat.slug === slug}
                 count={cat.count}

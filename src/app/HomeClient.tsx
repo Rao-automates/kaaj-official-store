@@ -135,7 +135,7 @@ export default function HomeClient({
                       {/* Category Info */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 z-10">
                         <h3 className="font-sans text-xl sm:text-2xl text-white tracking-tight mb-1">
-                          {cat.name}
+                          {cat.name.replace("Colection", "Collection")}
                         </h3>
                         <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/50">
                           {cat.count} {cat.count === 1 ? "Piece" : "Pieces"}
