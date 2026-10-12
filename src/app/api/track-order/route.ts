@@ -45,6 +45,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'The email address provided does not match the billing email for this order.' }, { status: 401 });
     }
 
+    // Extract parcel tracking meta
+    const trackingMeta = (wcData.meta_data || []).find((meta: any) => {
+      if (!meta || !meta.key) return false;
+      const normalizedKey = meta.key.toString().trim().toLowerCase().replace(/[\s_-]+/g, '');
+      return (
+        normalizedKey === 'parceltracking' ||
+        normalizedKey === 'tracking' ||
+        normalizedKey === 'trackingshare' ||
+        normalizedKey === 'trackingnumber' ||
+        normalizedKey === 'trackingid'
+      );
+    });
+
+    const rawTrackingValue = trackingMeta?.value || wcData.parcel_tracking || null;
+    const parcelTracking = typeof rawTrackingValue === 'string' ? rawTrackingValue.trim() : (rawTrackingValue ? String(rawTrackingValue).trim() : null);
+
     // Success! Return the safe data back to the client
     return NextResponse.json({
       success: true,
@@ -54,6 +70,7 @@ export async function POST(request: Request) {
         date_created: wcData.date_created,
         total: wcData.total,
         currency: wcData.currency,
+        parcelTracking: parcelTracking || undefined,
         billing: {
           first_name: wcData.billing.first_name,
           last_name: wcData.billing.last_name,

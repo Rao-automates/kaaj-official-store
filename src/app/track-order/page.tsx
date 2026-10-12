@@ -9,6 +9,7 @@ interface OrderData {
   date_created: string;
   total: string;
   currency: string;
+  parcelTracking?: string;
   billing: {
     first_name: string;
     last_name: string;
@@ -136,6 +137,17 @@ export default function TrackOrderPage() {
                   {getStatusDisplay(orderData.status).desc}
                 </p>
               </div>
+
+              {orderData.parcelTracking && (
+                <div className="border border-kaaj-gold/40 bg-kaaj-gold/5 p-6 md:p-8 rounded-none">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-kaaj-gold block mb-3 font-semibold">
+                    Courier & Tracking Details
+                  </span>
+                  <div className="font-sans text-xs text-kaaj-charcoal/90 leading-relaxed whitespace-pre-line">
+                    {orderData.parcelTracking}
+                  </div>
+                </div>
+              )}
 
               <div className="pt-12 border-t border-kaaj-charcoal/10 text-center">
                 <button 

@@ -53,7 +53,7 @@ export async function POST(request: Request) {
 
     if (!HOSTINGER_API_KEY || !MAILBOX_ID) {
       console.error('[Webhook] Hostinger Mail API credentials missing.');
-      return NextResponse.json({ error: 'Mail config missing' }, { status: 500 });
+      return NextResponse.json({ error: 'Mail config missing' }, { status: 200 });
     }
 
     const { Configuration, SendApi } = require('hostinger-mail-api-sdk');
@@ -69,13 +69,59 @@ export async function POST(request: Request) {
     const paymentMethod = order.payment_method_title || 'Unknown';
 
     if (!customerEmail) {
-      console.error(`[Webhook] No customer email found for order ${orderNumber}`);
-      return NextResponse.json({ error: 'No customer email found' }, { status: 400 });
+      console.warn(`[Webhook] No customer email found for order ${orderNumber}. Skipping email.`);
+      return NextResponse.json({ message: 'No customer email found, skipped' }, { status: 200 });
     }
 
-    console.log(`[Webhook] Preparing to send ${status} email to ${customerEmail}`);
+    // 5. Extract "parcel Tracking" Custom Field
+    const trackingMeta = (order.meta_data || []).find((meta: any) => {
+      if (!meta || !meta.key) return false;
+      const normalizedKey = meta.key.toString().trim().toLowerCase().replace(/[\s_-]+/g, '');
+      return (
+        normalizedKey === 'parceltracking' ||
+        normalizedKey === 'tracking' ||
+        normalizedKey === 'trackingshare' ||
+        normalizedKey === 'trackingnumber' ||
+        normalizedKey === 'trackingid'
+      );
+    });
 
-    // 5. Generate Items HTML
+    const rawTrackingValue = trackingMeta?.value || order.parcel_tracking || '';
+    const trackingText = typeof rawTrackingValue === 'string' ? rawTrackingValue.trim() : (rawTrackingValue ? String(rawTrackingValue).trim() : '');
+
+    console.log(`[Webhook] Preparing to send ${status} email to ${customerEmail}. Tracking info:`, trackingText ? 'Present' : 'None');
+
+    // Generate Tracking Box HTML if tracking info is present
+    let trackingCardHtml = '';
+    if (trackingText) {
+      const urlMatch = trackingText.match(/https?:\/\/[^\s<]+/i);
+      const trackUrl = urlMatch ? urlMatch[0] : null;
+
+      // Make URLs clickable and preserve line breaks
+      const formattedTrackingText = trackingText
+        .replace(/(https?:\/\/[^\s<]+)/gi, '<a href="$1" target="_blank" style="color: #C9A84C; font-weight: bold; text-decoration: underline; word-break: break-all;">$1</a>')
+        .replace(/\r?\n/g, '<br/>');
+
+      trackingCardHtml = `
+        <div style="background-color: rgba(201, 168, 76, 0.08); border: 1px solid #C9A84C; border-radius: 6px; padding: 20px; margin: 25px 0;">
+          <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; font-weight: bold; margin-bottom: 10px;">
+            Parcel Tracking & Courier Update
+          </div>
+          <div style="font-size: 13px; line-height: 1.7; color: #F0EDE6;">
+            ${formattedTrackingText}
+          </div>
+          ${trackUrl ? `
+            <div style="margin-top: 16px;">
+              <a href="${trackUrl}" target="_blank" style="display: inline-block; background-color: #C9A84C; color: #1A1A18; padding: 10px 22px; text-decoration: none; font-weight: bold; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px;">
+                Track Your Parcel
+              </a>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // 6. Generate Items HTML
     const itemsHtml = (order.line_items || []).map((item: any) => {
       const attributesStr = (item.meta_data || [])
         .filter((meta: any) => meta.key && !meta.key.startsWith('_')) // hide internal woo meta
@@ -94,7 +140,7 @@ export async function POST(request: Request) {
       </tr>
     `}).join('');
 
-    // 6. Define Custom Messages per Status
+    // 7. Define Custom Messages per Status
     let subject = '';
     let headline = '';
     let messageHtml = '';
@@ -103,7 +149,7 @@ export async function POST(request: Request) {
       subject = `Order Confirmed & Processing - ${orderNumber}`;
       headline = 'Payment Received & Processing';
       messageHtml = `
-        <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
+        <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 25px;">
           Great news! Your order <strong style="color: #DCD8D0;">${orderNumber}</strong> has been confirmed and is now being processed by our team. We are preparing it for shipment.
         </p>
       `;
@@ -111,7 +157,7 @@ export async function POST(request: Request) {
       subject = `Order Shipped! - ${orderNumber}`;
       headline = 'Your Order is on the Way';
       messageHtml = `
-        <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
+        <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 25px;">
           Your order <strong style="color: #DCD8D0;">${orderNumber}</strong> has been successfully fulfilled and handed over to our courier partner. It will be arriving soon!
         </p>
       `;
@@ -119,13 +165,13 @@ export async function POST(request: Request) {
       subject = `Order Cancelled - ${orderNumber}`;
       headline = 'Order Cancelled';
       messageHtml = `
-        <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 30px;">
+        <p style="color: #DCD8D0; line-height: 1.6; margin-bottom: 25px;">
           Your order <strong style="color: #DCD8D0;">${orderNumber}</strong> has been cancelled. If you believe this was a mistake or you have any questions, please contact our support team.
         </p>
       `;
     }
 
-    // 7. Build the Email HTML
+    // 8. Build the Email HTML
     const emailHtml = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #DCD8D0; background: linear-gradient(to right, #44463F 0%, #363832 100%); max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 40px;">
@@ -137,6 +183,8 @@ export async function POST(request: Request) {
         <h3 style="font-size: 16px; color: #C9A84C; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">${headline}</h3>
         
         ${messageHtml}
+
+        ${trackingCardHtml}
         
         <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(220, 216, 208, 0.3); padding-bottom: 10px; margin-bottom: 20px; color: #DCD8D0;">Order Details</h3>
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; color: #DCD8D0;">
@@ -170,20 +218,31 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // 8. Dispatch Email
-    await client.sendEmail(MAILBOX_ID, {
-      to: [customerEmail],
-      subject: subject,
-      html: emailHtml,
-    });
+    // 9. Dispatch Email
+    try {
+      await client.sendEmail(MAILBOX_ID, {
+        to: [customerEmail],
+        subject: subject,
+        html: emailHtml,
+      });
 
-    console.log(`[Webhook] SUCCESS: Email dispatched to ${customerEmail} via Hostinger.`);
-    return NextResponse.json({ success: true, message: `Status email sent for ${orderNumber} (${status})` });
+      console.log(`[Webhook] SUCCESS: Email dispatched to ${customerEmail} via Hostinger.`);
+      return NextResponse.json({ success: true, message: `Status email sent for ${orderNumber} (${status})` });
+    } catch (sendError) {
+      console.error(`[Webhook] Hostinger email dispatch error for ${orderNumber}:`, sendError);
+      // Return 200 to acknowledge webhook receipt so WooCommerce does not auto-disable it
+      return NextResponse.json({
+        success: false,
+        message: 'Order received but email dispatch encountered an issue',
+        error: sendError instanceof Error ? sendError.message : String(sendError)
+      }, { status: 200 });
+    }
   } catch (error) {
     console.error('[Webhook] CRITICAL ERROR:', error);
+    // Return 200 so WooCommerce webhook is not marked as failed and disabled
     return NextResponse.json(
-      { error: 'An error occurred while processing webhook.' },
-      { status: 500 }
+      { error: 'An error occurred while processing webhook.', details: error instanceof Error ? error.message : String(error) },
+      { status: 200 }
     );
   }
 }

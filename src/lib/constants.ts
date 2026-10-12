@@ -109,7 +109,7 @@ function getSpecifics(productName: string) {
   if (n.includes("blush") || n.includes("heaven")) return PRODUCT_SPECIFICS["blush heaven"];
   if (n.includes("pastel")) return PRODUCT_SPECIFICS["pastel lilac"];
   if (n.includes("ocean") || n.includes("ocene")) return PRODUCT_SPECIFICS["ocean mist"];
-  if (n.includes("longbutton") || n.includes("redshort") || n.includes("dustypink") || n.includes("shortshirt")) {
+  if (n.includes("button") || n.includes("redshort") || n.includes("dustypink") || n.includes("shortshirt")) {
     return PRODUCT_SPECIFICS["new short shirts"];
   }
   
